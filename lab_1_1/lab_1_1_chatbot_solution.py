@@ -1,19 +1,13 @@
-r"""Lab 1.1 (STARTER) — build a chatbot, with and without conversation memory.
+r"""Lab 1.1 (SOLUTION) — a chatbot, with and without conversation memory.
 
-Run:  python lab_1_1_chatbot_starter.py
+Run:  python lab_1_1_chatbot_solution.py
 
-Your job (see the Lab 1.1 walkthrough):
-  - Steps 1-2: implement build_no_history_respond() — a chatbot with NO memory.
-  - Step 3: implement build_history_respond() — a chatbot that remembers the
-               conversation by passing the full message history to the LLM.
-
-Then set USE_HISTORY to compare them. Try:
+By default, this runs the memory-enabled chatbot. To see the difference, set
+USE_HISTORY = False and try a two-turn conversation:
     You: When was the War of 1812?
     You: And who won?
-Without history, the follow-up question isn't answered correctly; with history, 
-it's answered in context. 
-  - Step 4: Probe failure modes through interaction (hallucination,
-knowledge gaps, knowledge staleness, and inconsistency).
+Without history, the follow-up question isn't answered correctly ("which competition?"); with history,
+it answers in context. In the final step, probe failure modes through interaction (hallucination, knowledge staleness, and inconsistency).
 
 Setup
 -----
@@ -40,7 +34,7 @@ General-knowledge questions (answered from the model's own training):
                                                       restored the pre-war borders."
                                          memory OFF: confused ("which competition?") —
                                                      it forgot the previous turn.
-This contrast is the point of the lab. Then, probe failure modes (Step 4): Ask
+This contrast is the point of the lab. Then probe failure modes (Step 4): Ask
 something obscure (hallucination), company-specific (knowledge gap), or very recent
 (stale knowledge), and rephrase a question to spot inconsistency.
 """
@@ -53,8 +47,9 @@ from langchain_openai import ChatOpenAI
 
 load_dotenv()
 
+# OpenRouter is the gateway to the LLMs for this course.
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-LLM_MODEL = "openai/gpt-oss-120b:free"  # free; "openai/gpt-4o-mini" (paid, cheap) also good
+LLM_MODEL = "openai/gpt-oss-120b"  # "openai/gpt-4o-mini" (paid, cheap) also good
 SYSTEM_PROMPT = "You are a helpful assistant. Answer the user's questions concisely."
 
 USE_HISTORY = True  # set False to run the no-memory version
@@ -75,7 +70,7 @@ def require_api_key() -> None:
 
 
 def chat_loop(response):
-    """Minimal command-line chat loop: Reads input, prints response(input). (Provided.)"""
+    """Minimal command-line chat loop: Reads input, prints response(input)."""
     print("Type your question and press Enter. Type 'exit' or 'quit' to stop.\n")
     while True:
         user_input = input("You: ").strip()
@@ -101,51 +96,37 @@ def make_llm():
 
 
 def build_no_history_respond():
-    """Step 1-2: Return a `respond(user_input) -> str` with NO memory.
-
-    TODO: build a ChatPromptTemplate from a ("system", SYSTEM_PROMPT) message and
-    a ("human", "{question}") message, compose it with the LLM (chain = prompt |
-    llm), and write respond() to invoke the chain with the user's text as
-    {question} and return the reply string.
-
-    Delete the raise NotImplementedError line once your code works.
-    """
+    """Step 1-2: a chatbot with NO memory (each turn is independent)."""
     llm = make_llm()
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            ("system", SYSTEM_PROMPT),
-            ("human", "{question}"),
-        ]
-    )
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", SYSTEM_PROMPT),
+        ("human", "{question}"),
+    ])
     chain = prompt | llm
 
-    def respond(user_input: str) -> str:
-        reply = chain.invoke({"question": user_input})
-        return str(reply.content)
+    def respond(user_input):
+        response = chain.invoke({"question": user_input})
+        return response.content if hasattr(response, "content") else str(response)
 
     return respond
 
 
 def build_history_respond():
-    """Step 3: Return a `respond(user_input) -> str` that REMEMBERS the conversation.
-
-    TODO: keep a `history` list seeded with SystemMessage(SYSTEM_PROMPT). In
-    respond(), append a HumanMessage(user_input), invoke the LLM on the full
-    history, append the AIMessage(reply), and return the reply.
-
-    Delete the raise NotImplementedError line once your code works.
-    """
+    """Step 3: a chatbot that remembers the conversation by passing the full
+    message history (System + Human/AI turns) to the LLM each time."""
     llm = make_llm()
-    history = [SystemMessage(SYSTEM_PROMPT)]
+    history = [SystemMessage(content=SYSTEM_PROMPT)]
 
-    def respond(user_input: str) -> str:
-        history.append(HumanMessage(user_input))
-
-        reply = llm.invoke(history)
-        reply_text = str(reply.content)
-
-        history.append(AIMessage(reply_text))
-        return reply_text
+    def respond(user_input):
+        history.append(HumanMessage(content=user_input))
+        try:
+            response = llm.invoke(history)
+            answer = response.content if hasattr(response, "content") else str(response)
+        except Exception:
+            history.pop()  # roll back the user turn if the call failed
+            raise
+        history.append(AIMessage(content=answer))
+        return answer
 
     return respond
 
