@@ -28,7 +28,6 @@ plain script AND openable as cells in VS Code / PyCharm / Jupytext.
 #
 # | Scenario | Corpus | What your system must eventually do |
 # |---|---|---|
-# | **Research Paper Navigator** | ~150 research-paper PDFs (`Labs/CapstoneDatasets/ResearchPapers/`) | Answer questions about the papers and **quote them directly**; handle single-paper and cross-paper questions (compare ideas, trace how an idea evolved); maintain conversation history. |
 # | **Wikipedia Retrieval Engine** | ~2,400 Wikipedia HTML articles (`Labs/CapstoneDatasets/Wikipedia/`) | Answer questions about significant figures/places and **back answers with direct quotes** from the articles; handle single-article and cross-article questions; maintain conversation history. |
 #
 # Both model the same real-world pattern: a chat interface over a large body of complex documents where answers must be **grounded and quotable**, not just fluent.
@@ -44,7 +43,12 @@ plain script AND openable as cells in VS Code / PyCharm / Jupytext.
 # 4. Create a `.env` file next to this script: `OPENROUTER_API_KEY=sk-or-v1-...`
 #
 # You do **not** need to download or parse the corpus for this checkpoint — you only need to look at a few documents to write realistic prompts (open a couple of PDFs/articles in the dataset folder by hand).
-
+#
+#Develop a conversational interface that answers questions about significant people, places, and topics using information retrieved from a collection of Wikipedia articles. The system should support both single-document and multi-document questions and provide direct quotations from source material to improve reliability and reduce hallucinations.
+#
+#This scenario is intended to model retrieval systems that provide trustworthy access to large information repositories while maintaining transparency about where information originates.
+#
+#
 # %%
 from __future__ import annotations
 
@@ -67,7 +71,7 @@ TEMPERATURE = 0.2
 LOG_PATH = Path.cwd() / "checkpoint_1_1_responses.log"
 
 # === SET THIS to your chosen scenario ===
-SCENARIO = "research_papers"   # "research_papers" or "wikipedia"
+SCENARIO = "wikipedia"   # "research_papers" or "wikipedia"
 
 SYSTEM_PROMPT = (
     "You are a helpful research assistant. Answer the user's question as "
@@ -134,20 +138,6 @@ def log_response(scenario: str, prompt: str, response: str) -> None:
 # Example baseline prompts per scenario. These reference REAL documents in the
 # capstone datasets so you can check the model's answers against the source.
 EXAMPLE_PROMPTS = {
-    "research_papers": [
-        # Asks for a specific finding from a specific paper in the collection.
-        "In the paper 'The Counterfeit Conundrum: Can Code Language Models "
-        "Grasp the Nuances of Their Incorrect Generations?' (Gu et al., ACL "
-        "2024), what is the main finding about how code models perceive their "
-        "own incorrect generations? Quote the relevant sentence.",
-        # Asks to compare across papers — impossible without the corpus.
-        "Compare how Solar-Lezama's 'The Sketching Approach to Program "
-        "Synthesis' and other program-synthesis papers in this collection "
-        "define the synthesis problem. Cite each paper.",
-        # Asks for a verbatim quote — a no-retrieval model cannot reliably do this.
-        "Quote, word for word, the first sentence of the abstract of "
-        "'The Sketching Approach to Program Synthesis'.",
-    ],
     "wikipedia": [
         # Asks for a current fact that may be stale in the model's training.
         "According to the Wikipedia article on the 100 meters, what is the "
@@ -184,7 +174,14 @@ def my_probe_prompts() -> list[str]:
 
     Delete the raise NotImplementedError line once your code works.
     """
-    raise NotImplementedError("my_probe_prompts() — see the TODO above.")
+   # raise NotImplementedError("my_probe_prompts() — see the TODO above.")
+
+    return [
+        "Who were the 1st 3 players drafted in the NFL in 2026?", # happened after training date
+        "when did Cooter Davenport die in real life?", # died after training date
+        "When and for how much, did the brady bunch house sell?", # sold again after training date
+        "What is your training date?",
+    ]
 
 # %% [markdown]
 # ## Step 4 — Run the baseline probes and capture the evidence
