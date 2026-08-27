@@ -54,7 +54,7 @@ from rank_bm25 import BM25Okapi
 load_dotenv()
 
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-LLM_MODEL = "openai/gpt-oss-120b:free"
+LLM_MODEL = "openai/gpt-oss-120b"
 EMBEDDING_MODEL = "openai/text-embedding-3-small"
 CHROMA_DIR = "chroma_db"
 NUM_RETRIEVED = 4          # Emails sent to the LLM as context.
