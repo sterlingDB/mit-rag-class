@@ -1,0 +1,746 @@
+[
+  {
+    "question": "What significant topics were suggested for discussion during the year-end strategy session that was scheduled at the end of December 2013?",
+    "grading_notes": "The significant topics suggested for discussion during the year-end strategy session included performance data from each department, insights on operational improvements, suggested goals for 2014, ideas for team engagement initiatives, and employee feedback regarding the bonus structure.\n",
+    "sources": [
+      "mail_12_20_13_177.txt",
+      "mail_12_23_13_178.txt",
+      "mail_12_23_13_179.txt",
+      "mail_12_24_13_183.txt",
+      "mail_12_24_13_184.txt",
+      "mail_12_27_13_197.txt",
+      "mail_12_29_13_205.txt",
+      "mail_12_29_13_206.txt",
+      "mail_12_30_13_211.txt",
+      "mail_12_30_13_217.txt"
+    ]
+  },
+  {
+    "question": "What employee concerns did Liam want to address in December of 2016 and how did he address them? ",
+    "grading_notes": "The emails from December 2016 highlight the introduction of cost-saving measures at Precision Paperclip Inc., which raised employee concerns. Liam Patel, the Finance Director, drafted a message to address these concerns, reassuring employees that their roles and job security were a priority and that the company was focused on improving operational efficiency without reducing the team. Amelia approved this message, reinforcing the commitment to inclusivity and support throughout the changes.",
+    "sources": [
+      "mail_01_01_14_225.txt",
+      "mail_02_15_14_362.txt",
+      "mail_09_04_14_1112.txt",
+      "mail_11_04_14_1337.txt",
+      "mail_11_05_14_1342.txt",
+      "mail_12_13_16_4353.txt",
+      "mail_12_19_16_4366.txt",
+      "mail_12_19_16_4370.txt",
+      "mail_01_04_17_4420.txt",
+      "mail_03_24_17_4722.txt"
+    ]
+  },
+  {
+    "question": "What observations did Hannah O\u2019Connor share regarding the mediation sessions with Chloe and Jordan on March 2017, and what did she suggest for future follow-up discussions?",
+    "grading_notes": "The correct answer should mention that Hannah observed signs of progress in the mediation sessions but noted that Chloe and Jordan still had underlying frustrations that needed further attention. She suggested that reaffirming the importance of open communication would be key in future follow-up discussions and proposed carving out dedicated time to check in with them again to ensure they felt supported.",
+    "sources": [
+      "mail_03_26_17_4729.txt",
+      "mail_03_26_17_4730.txt",
+      "mail_03_28_17_4736.txt",
+      "mail_03_29_17_4742.txt",
+      "mail_03_31_17_4747.txt",
+      "mail_04_01_17_4752.txt",
+      "mail_04_01_17_4753.txt",
+      "mail_04_02_17_4757.txt",
+      "mail_04_04_17_4765.txt",
+      "mail_04_17_17_4808.txt"
+    ]
+  },
+  {
+    "question": "What significant product launch was being planned in late 2015, and what preparations were discussed leading up to it?",
+    "grading_notes": "The significant product launch mentioned in the emails is the \"sandwichclip\" launch. Preparations discussed leading up to it included finalizing operations to ensure alignment with suppliers and addressing any potential issues swiftly.",
+    "sources": [
+      "mail_01_01_14_226.txt",
+      "mail_04_29_15_2031.txt",
+      "mail_10_19_15_2796.txt",
+      "mail_01_12_18_5858.txt",
+      "mail_05_07_18_6271.txt"
+    ]
+  },
+  {
+    "question": "What significant engagement initiatives were discussed in the emails leading up to the meetings in February 2014, and what was the focus of these initiatives?",
+    "grading_notes": "The significant engagement initiatives discussed in the emails leading up to the meetings in February 2014 included more hands-on activities based on employee feedback, enhanced interactive components to facilitate deeper interactions, and a proposed timeline for rolling out these initiatives. The focus was on improving employee engagement through interactive ideas and ensuring that the implementation of these initiatives was well-planned and aligned with employee feedback.",
+    "sources": [
+      "mail_01_01_14_226.txt",
+      "mail_02_07_14_334.txt",
+      "mail_02_10_14_340.txt",
+      "mail_02_11_14_345.txt",
+      "mail_02_17_14_368.txt",
+      "mail_04_24_14_640.txt",
+      "mail_05_07_14_679.txt",
+      "mail_09_08_14_1124.txt",
+      "mail_05_18_15_2112.txt",
+      "mail_05_19_15_2115.txt"
+    ]
+  },
+  {
+    "question": "What significant product initiative was discussed in the email from Amelia Grant on February 4, 2019, and what key areas were highlighted for focus?",
+    "grading_notes": "The significant product initiative discussed was the EdibleClip\u2122. The key areas highlighted for focus included ingredient safety, pet compatibility, and recycling information.",
+    "sources": [
+      "mail_03_29_17_4739.txt",
+      "mail_05_22_17_4927.txt",
+      "mail_04_03_18_6147.txt",
+      "mail_10_24_18_6870.txt",
+      "mail_02_04_19_7273.txt"
+    ]
+  },
+  {
+    "question": "What was the main focus of the meetings scheduled for February 20, 2014, as discussed in the emails?",
+    "grading_notes": "The main focus of the meetings scheduled for February 20, 2014, was to emphasize the importance of employee engagement initiatives and to present data points and feedback gathered from recent workshops to support their case.",
+    "sources": [
+      "mail_02_18_14_372.txt",
+      "mail_02_18_14_373.txt",
+      "mail_02_18_14_376.txt",
+      "mail_02_19_14_377.txt",
+      "mail_02_19_14_378.txt",
+      "mail_02_19_14_380.txt",
+      "mail_02_20_14_382.txt",
+      "mail_02_20_14_385.txt",
+      "mail_02_21_14_387.txt",
+      "mail_02_21_14_388.txt"
+    ]
+  },
+  {
+    "question": "What significant announcement was made regarding the financial bonus structure at Precision Paperclip Inc. in December 2013, and how was it communicated to the team?",
+    "grading_notes": "The significant announcement regarding the financial bonus structure was made on December 16, 2013 via an e-mail to the team by Liam Patel. Amelia emphasized to Liam the importance of engaging employees with timely and positive communication as they prepared for the new year and mentioned the need to be ready for questions during the all-hands meeting about how the bonus structure connects to performance goals and overall strategy.",
+    "sources": [
+      "mail_11_04_13_4.txt",
+      "mail_11_07_13_17.txt",
+      "mail_11_08_13_18.txt",
+      "mail_11_19_13_49.txt",
+      "mail_11_19_13_50.txt",
+      "mail_12_16_13_155.txt",
+      "mail_01_01_14_228.txt",
+      "mail_01_01_14_229.txt",
+      "mail_01_02_14_230.txt",
+      "mail_01_02_14_232.txt"
+    ]
+  },
+  {
+    "question": "Was the SandwichClip successful?",
+    "grading_notes": "No,  the SandwichClip was a failure that led to a $100 Million writ-off.",
+    "sources": [
+      "mail_08_18_17_5253.txt",
+      "mail_08_05_18_6560.txt",
+      "mail_08_06_18_6563.txt",
+      "mail_08_07_18_6567.txt"
+    ]
+  },
+  {
+    "question": "What was the financial impact of the SandwichClip failure?",
+    "grading_notes": "The SandwichClip failure led to a $100 Million writ-off.",
+    "sources": [
+      "mail_08_18_17_5253.txt",
+      "mail_08_05_18_6560.txt",
+      "mail_08_06_18_6563.txt",
+      "mail_08_07_18_6567.txt"
+    ]
+  },
+  {
+    "question": "What was the commercial name of the EP-1 project?",
+    "grading_notes": "The EP-1 project was distributed as the EdibleClip.",
+    "sources": [
+      "mail_09_12_18_6692.txt",
+      "mail_10_06_18_6791.txt",
+      "mail_10_08_18_6796.txt"
+    ]
+  },
+  {
+    "question": "What was the alternative name proposed for the EP-1?",
+    "grading_notes": "The marketing team proposed Eat-a-clip.",
+    "sources": [
+      "mail_09_24_18_6739.txt"
+    ]
+  },
+  {
+    "question": "When was the strategy of dual launches for EP-1 first proposed?",
+    "grading_notes": "In an e-mail on September 11, 2018, Amelia Grant mentions the two launch events for distributors and then the general public",
+    "sources": [
+      "mail_09_11_18_6687.txt",
+      "mail_09_24_18_6738.txt"
+    ]
+  },
+  {
+    "question": "Was it easy to settle on a name for EP-1?",
+    "grading_notes": "No, Chloe's team took a several weeks to settle on a name",
+    "sources": [
+      "mail_09_12_18_6692.txt",
+      "mail_09_15_18_6703.txt",
+      "mail_10_06_18_6791.txt"
+    ]
+  },
+  {
+    "question": "When was the date of the distributor launch event?",
+    "grading_notes": "In an e-mail on September 11, 2018, Amelia Grant settles on October 8 as the date for the distributor launch.",
+    "sources": [
+      "mail_09_11_18_6687.txt"
+    ]
+  },
+  {
+    "question": "Who suggested the name EdibleClip?",
+    "grading_notes": "The marketing team led by Chloe Bennett",
+    "sources": [
+      "mail_10_06_18_6791.txt"
+    ]
+  },
+  {
+    "question": "Why was there a distributor launch separate from the main EdibleClip lauch?",
+    "grading_notes": "The  distributor launch is the final milestone before the full launch of the EdibleClip. A successful distributor launch will ensure that distributors are excited and place large orders ahead of the full product launch.",
+    "sources": [
+      "mail_10_09_18_6803.txt"
+    ]
+  },
+  {
+    "question": "When was the hurricane first reported?",
+    "grading_notes": "Sofia ramirez first reported on the hurricane damage by Sofia Ramirez on August 8.",
+    "sources": [
+      "mail_08_08_18_6570.txt"
+    ]
+  },
+  {
+    "question": "Were there any relationships going on in the office?",
+    "grading_notes": "Sofia Ramirez and Daniel Brooks were in a relationship and anounced their engagement on November 13, 2014.",
+    "sources": [
+      "mail_11_13_14_1375.txt",
+      "mail_11_13_14_1376.txt"
+    ]
+  },
+  {
+    "question": "What significant product was launched by Precision Paperclip Inc. in early 2019, and what were the key considerations discussed in the emails regarding its production and marketing strategies?",
+    "grading_notes": "The significant product launched by Precision Paperclip Inc. in early 2019 was the EdibleClip\u2122. The emails discuss key considerations such as ensuring production capacity aligns with marketing strategies, maintaining quality control focused on ingredient safety, and coordinating with suppliers to meet projected demand. There were also discussions about the positive response to the launch and the need for ongoing communication to address any production challenges.",
+    "sources": [
+      "mail_04_05_18_6157.txt",
+      "mail_04_22_18_6215.txt",
+      "mail_04_24_18_6222.txt",
+      "mail_05_21_18_6311.txt",
+      "mail_01_04_19_7159.txt",
+      "mail_02_03_19_7268.txt",
+      "mail_03_21_19_7455.txt",
+      "mail_04_03_19_7505.txt",
+      "mail_05_27_19_7712.txt",
+      "mail_12_17_19_8744.txt"
+    ]
+  },
+  {
+    "question": "What immediate adjustments were discussed regarding the EdibleClip\u2122 launch on December 18, 2019, according to the email from Sofia Ramirez to Marcus Lee?",
+    "grading_notes": "The correct answer should mention that Sofia Ramirez wanted to discuss how production was aligning with the initial sales figures for the EdibleClip\u2122 and to identify any immediate adjustments that may need to be implemented.",
+    "sources": [
+      "mail_12_18_19_8751.txt"
+    ]
+  },
+  {
+    "question": "What significant company event was scheduled for the end of December 2013, and what was its purpose?",
+    "grading_notes": "The significant company event scheduled for the end of December 2013 was the year-end strategy session. Its purpose was to reflect on the achievements of 2013 and outline goals for the upcoming year, 2014, while encouraging contributions from all departments to ensure meaningful discussions and set objectives for success.",
+    "sources": [
+      "mail_12_24_13_183.txt",
+      "mail_12_30_13_211.txt",
+      "mail_12_30_13_217.txt",
+      "mail_12_31_13_222.txt",
+      "mail_01_01_14_228.txt",
+      "mail_01_02_14_233.txt"
+    ]
+  },
+  {
+    "question": "What was the nature of the conversation between Chloe Bennett and Marcus Lee on March 13, 2017, as referenced in Chloe's email about mediation insights and reflections?",
+    "grading_notes": "The conversation involved discussing strategies for improving the dynamic between Chloe and another colleague, Jordan. Chloe expressed optimism about establishing common goals and suggested exploring collaboration on smaller projects to promote teamwork.",
+    "sources": [
+      "mail_01_01_14_229.txt",
+      "mail_03_14_17_4676.txt"
+    ]
+  },
+  {
+    "question": "What significant product launch is being discussed at the start of 2018, and how is the team planning to capitalize on it?",
+    "grading_notes": "The significant product launch mentioned is the \"edible paperclip.\" The team is planning to capitalize on it by brainstorming ideas for upcoming marketing campaigns and client communications to maximize engagement strategies.",
+    "sources": [
+      "mail_01_01_18_5819.txt",
+      "mail_01_01_18_5820.txt"
+    ]
+  },
+  {
+    "question": "What urgent issue regarding supplier material certifications was raised by Marcus Lee in late March 2014, in relation to the government project?",
+    "grading_notes": "The urgent issue raised by Marcus Lee was about inconsistencies with the supplier material certifications, which needed to be verified immediately due to the critical nature of the government project. He emphasized the importance of ensuring compliance and reliability regarding the supplier details.",
+    "sources": [
+      "mail_03_11_14_477.txt",
+      "mail_03_11_14_480.txt",
+      "mail_03_12_14_481.txt",
+      "mail_03_12_14_482.txt",
+      "mail_03_13_14_489.txt",
+      "mail_03_14_14_495.txt",
+      "mail_03_17_14_499.txt",
+      "mail_03_17_14_502.txt",
+      "mail_03_19_14_510.txt",
+      "mail_03_20_14_515.txt"
+    ]
+  },
+  {
+    "question": "What was the final status of the government project proposal documentation as of March 20, 2015, and who was responsible for finalizing it?",
+    "grading_notes": "The final status of the government project proposal documentation as of March 20, 2015, was that it was finalized and ready for submission. Grace Mitchell, the R&D Engineer, was responsible for finalizing the documentation, incorporating supplier details and necessary adjustments based on previous discussions.",
+    "sources": [
+      "mail_03_05_15_1813.txt",
+      "mail_03_06_15_1818.txt",
+      "mail_03_09_15_1821.txt",
+      "mail_03_10_15_1825.txt",
+      "mail_03_17_15_1853.txt",
+      "mail_03_19_15_1866.txt",
+      "mail_03_20_15_1872.txt"
+    ]
+  },
+  {
+    "question": "What significant focus was discussed during the executive meetings regarding the SandwichClip product in September 2016, and how did the team plan to address feedback received about it?",
+    "grading_notes": "The executive meetings in September 2016 emphasized the financial review of the SandwichClip product and the importance of addressing customer satisfaction and cost management strategies. The team planned to highlight user testimonials and product usability in their marketing strategy to enhance their messaging and demonstrate their commitment to quality and customer satisfaction.",
+    "sources": [
+      "mail_06_02_16_3645.txt",
+      "mail_07_25_16_3842.txt",
+      "mail_08_29_16_3959.txt",
+      "mail_08_31_16_3967.txt",
+      "mail_09_02_16_3973.txt",
+      "mail_09_08_16_3991.txt",
+      "mail_09_09_16_3993.txt",
+      "mail_09_12_16_4003.txt",
+      "mail_09_13_16_4008.txt",
+      "mail_12_22_16_4382.txt"
+    ]
+  },
+  {
+    "question": "What significant product launch is discussed in the emails, and what are the key insights or actions related to it as mentioned in the communications from December 2018?",
+    "grading_notes": "The significant product launch discussed in the emails is the EdibleClip\u2122. The key insights and actions related to it include confirming the final sales data from the EdibleClip\u2122 launch to guide promotional efforts, gathering notable trends or feedback from customers, and ensuring that all preparations are finalized for the upcoming user-generated content campaign launch.",
+    "sources": [
+      "mail_07_27_18_6529.txt",
+      "mail_08_22_18_6620.txt",
+      "mail_08_27_18_6635.txt",
+      "mail_08_29_18_6644.txt",
+      "mail_08_31_18_6656.txt",
+      "mail_10_12_18_6815.txt",
+      "mail_10_17_18_6836.txt",
+      "mail_10_20_18_6853.txt",
+      "mail_10_26_18_6880.txt",
+      "mail_12_28_18_7128.txt"
+    ]
+  },
+  {
+    "question": "What were the preliminary sales results for the EdibleClip\u2122 following its launch on January 5, 2019, and how did they compare to initial projections?",
+    "grading_notes": "The preliminary sales results for the EdibleClip\u2122 following its launch on January 5, 2019, showed a substantial increase in sales compared to initial projections, as reported by Liam Patel in his email on the same day.",
+    "sources": [
+      "mail_01_05_19_7161.txt",
+      "mail_01_05_19_7163.txt",
+      "mail_01_15_19_7203.txt",
+      "mail_04_09_19_7525.txt",
+      "mail_04_17_19_7558.txt",
+      "mail_05_28_19_7719.txt",
+      "mail_06_28_19_7884.txt",
+      "mail_08_18_19_8192.txt",
+      "mail_10_15_19_8425.txt",
+      "mail_10_22_19_8470.txt"
+    ]
+  },
+  {
+    "question": "What was the purpose of the email sent by Chloe Bennett on October 23, 2019, regarding the EdibleClip\u2122?",
+    "grading_notes": "The email was to confirm a discussion about the initial launch results of the EdibleClip\u2122 and to strategize on the next steps based on the reception and feedback after the board meeting.",
+    "sources": [
+      "mail_10_23_19_8477.txt"
+    ]
+  },
+  {
+    "question": "What significant project was discussed in the emails around January 2015 that required reassessment and team feedback before restarting?",
+    "grading_notes": "The emails discuss a government project that needed to be reassessed, with Marcus Lee expressing the importance of compiling feedback and meeting with the team to uncover potential solutions before officially restarting the project.",
+    "sources": [
+      "mail_03_19_14_508.txt",
+      "mail_01_01_15_1561.txt",
+      "mail_02_14_15_1737.txt",
+      "mail_02_15_15_1741.txt",
+      "mail_03_12_17_4669.txt",
+      "mail_11_13_17_5625.txt"
+    ]
+  },
+  {
+    "question": "When was the launch day for the SandwichClip product? ",
+    "grading_notes": "The launch day of the SandwichClip product was on January 1, 2016, that's when it was launched to distributors.",
+    "sources": [
+      "mail_10_06_15_2741.txt",
+      "mail_10_07_15_2745.txt",
+      "mail_10_07_15_2746.txt",
+      "mail_10_08_15_2749.txt",
+      "mail_10_09_15_2753.txt",
+      "mail_10_09_15_2755.txt",
+      "mail_10_10_15_2759.txt",
+      "mail_10_11_15_2761.txt",
+      "mail_01_01_16_3088.txt",
+      "mail_01_01_16_3089.txt"
+    ]
+  },
+  {
+    "question": "What was the significance of January 14, 2016, for the SandwichClip product at Precision Paperclip Inc.?",
+    "grading_notes": "January 14, 2016, was the official launch day for the SandwichClip product at Precision Paperclip Inc. The team was excited and prepared for the launch, ensuring that the supply chain was ready to meet potential demand and monitoring early feedback from distributors and consumers.",
+    "sources": [
+      "mail_01_01_16_3090.txt",
+      "mail_01_03_16_3092.txt",
+      "mail_01_03_16_3093.txt",
+      "mail_01_03_16_3094.txt",
+      "mail_01_03_16_3095.txt",
+      "mail_01_06_16_3107.txt",
+      "mail_01_14_16_3132.txt",
+      "mail_01_14_16_3133.txt",
+      "mail_01_14_16_3135.txt",
+      "mail_01_15_16_3136.txt"
+    ]
+  },
+  {
+    "question": "What were the initial sales figures and customer feedback for the SandwichClip following its launch on January 15, 2016, as mentioned in the emails?",
+    "grading_notes": "The initial sales figures for the SandwichClip indicated that approximately 1,200 units were sold on the first day, which was slightly below expectations. Customer feedback was mostly positive, particularly regarding the product's functionality and design, but there were comments noting that the pricing was too high.",
+    "sources": [
+      "mail_01_15_16_3138.txt",
+      "mail_01_15_16_3140.txt",
+      "mail_01_16_16_3141.txt",
+      "mail_01_16_16_3142.txt",
+      "mail_01_17_16_3143.txt",
+      "mail_04_12_16_3473.txt",
+      "mail_11_04_16_4221.txt",
+      "mail_07_21_17_5151.txt",
+      "mail_07_24_17_5163.txt",
+      "mail_07_24_17_5164.txt"
+    ]
+  },
+  {
+    "question": "What key benefits of the SandwichClip were highlighted in the case studies and testimonials gathered by Chloe Bennett for the distributor outreach strategy in early February 2016?",
+    "grading_notes": "The key benefits highlighted in the case studies and testimonials were increased operational efficiency and the appeal for food presentation, both of which are crucial selling points for the distributors.",
+    "sources": [
+      "mail_01_30_16_3190.txt",
+      "mail_01_30_16_3191.txt",
+      "mail_01_31_16_3192.txt",
+      "mail_01_31_16_3194.txt",
+      "mail_02_01_16_3195.txt",
+      "mail_02_02_16_3198.txt",
+      "mail_02_02_16_3199.txt",
+      "mail_02_03_16_3201.txt",
+      "mail_02_03_16_3202.txt",
+      "mail_02_04_16_3204.txt"
+    ]
+  },
+  {
+    "question": "What significant product launch did Precision Paperclip Inc. have on January 1, 2016, and who was involved in the preparations for it?",
+    "grading_notes": "The significant product launch was for the SandwichClip on January 1, 2016. Marcus Lee, the COO, was involved in the preparations, having briefed his team on logistics and operations to respond to queries during the launch call.",
+    "sources": [
+      "mail_10_21_15_2804.txt",
+      "mail_01_01_16_3089.txt",
+      "mail_10_29_19_8506.txt",
+      "mail_10_30_19_8514.txt",
+      "mail_11_02_19_8538.txt"
+    ]
+  },
+  {
+    "question": "What significant updates were made to the marketing materials for the SandwichClip before its launch in December 2015, as discussed in the emails?",
+    "grading_notes": "The marketing materials for the SandwichClip were finalized by Chloe Bennett, incorporating recent distributor feedback to highlight the product's strengths and address any concerns. Key benefits were clearly outlined, and the materials were prepared for a final review before the launch meeting.",
+    "sources": [
+      "mail_05_22_14_724.txt",
+      "mail_08_26_14_1078.txt",
+      "mail_10_02_14_1207.txt",
+      "mail_02_19_15_1763.txt",
+      "mail_10_23_15_2812.txt",
+      "mail_10_29_15_2835.txt",
+      "mail_11_29_15_2964.txt",
+      "mail_11_29_15_2965.txt",
+      "mail_12_27_15_3070.txt",
+      "mail_12_30_15_3080.txt"
+    ]
+  },
+  {
+    "question": "What specific concerns regarding the SandwichClip did the team identify from distributor feedback, and how did they plan to address these in their upcoming strategy meeting on March 17, 2016?",
+    "grading_notes": "The team identified concerns regarding pricing competitiveness and the need to emphasize the unique advantages of the SandwichClip, particularly its eco-friendly features. They planned to address these issues by clarifying pricing concerns and effectively communicating the product's unique value during their strategy meeting on March 17, 2016.",
+    "sources": [
+      "mail_03_13_16_3352.txt",
+      "mail_03_13_16_3353.txt",
+      "mail_03_14_16_3355.txt",
+      "mail_03_14_16_3356.txt",
+      "mail_03_14_16_3358.txt",
+      "mail_03_16_16_3363.txt",
+      "mail_03_16_16_3364.txt",
+      "mail_03_16_16_3365.txt",
+      "mail_03_16_16_3366.txt",
+      "mail_03_17_16_3367.txt"
+    ]
+  },
+  {
+    "question": "What significant product feature was emphasized in the customer inquiries regarding EdibleClip\u2122 in January 2019, and how did it relate to customer concerns?",
+    "grading_notes": "The significant product feature emphasized was ingredient safety and pet compatibility, which were highlighted as important factors to ease customer concerns and broaden the product's appeal.",
+    "sources": [
+      "mail_07_21_18_6504.txt",
+      "mail_01_20_19_7224.txt"
+    ]
+  },
+  {
+    "question": "What was the urgency surrounding the final check-in for the SandwichClip launch strategy mentioned in the emails dated October 16, 2016?",
+    "grading_notes": "The urgency was due to the impending launch of the SandwichClip, which required the team to finalize their positioning and messaging to ensure a cohesive marketing approach. Marcus Lee emphasized the importance of aligning their marketing to highlight the strengths of the SandwichClip, especially in light of competitive pressures, and suggested a quick check-in to go over last-minute details.",
+    "sources": [
+      "mail_09_17_16_4024.txt",
+      "mail_09_18_16_4027.txt",
+      "mail_10_05_16_4093.txt",
+      "mail_10_07_16_4101.txt",
+      "mail_10_12_16_4122.txt",
+      "mail_10_13_16_4126.txt",
+      "mail_10_14_16_4129.txt",
+      "mail_10_15_16_4131.txt",
+      "mail_10_16_16_4135.txt",
+      "mail_10_16_16_4138.txt"
+    ]
+  },
+  {
+    "question": "What significant marketing event related to the edible paperclip was planned for October 2017, and what was the focus of the influencer partnerships involved?",
+    "grading_notes": "The significant marketing event planned for October 2017 was the launch of the #EdiblePaperclipChallenge, which involved influencer partnerships aimed at promoting the edible paperclip. The focus of these partnerships was to highlight both the fun aspect of the product and its nutritional benefits, ensuring that the messaging aligned with the overall product launch strategy.",
+    "sources": [
+      "mail_10_13_17_5468.txt",
+      "mail_10_18_17_5491.txt",
+      "mail_10_18_17_5493.txt",
+      "mail_10_21_17_5511.txt",
+      "mail_10_23_17_5517.txt",
+      "mail_11_28_17_5685.txt",
+      "mail_12_06_17_5720.txt",
+      "mail_12_11_17_5739.txt",
+      "mail_01_17_18_5878.txt",
+      "mail_01_31_18_5927.txt"
+    ]
+  },
+  {
+    "question": "What were the key consumer concerns regarding the EdibleClip\u2122 that the team needed to address before its launch in March 2019?",
+    "grading_notes": "The key consumer concerns regarding the EdibleClip\u2122 that the team needed to address before its launch included ingredient safety, pet compatibility, and sustainability practices. These topics were highlighted in multiple emails as vital areas for customer communication and messaging strategy.",
+    "sources": [
+      "mail_12_09_18_7055.txt",
+      "mail_02_27_19_7366.txt",
+      "mail_03_09_19_7409.txt",
+      "mail_03_25_19_7469.txt",
+      "mail_03_25_19_7472.txt",
+      "mail_03_31_19_7493.txt",
+      "mail_05_15_19_7666.txt",
+      "mail_06_20_19_7843.txt",
+      "mail_07_13_19_7968.txt",
+      "mail_07_15_19_7983.txt"
+    ]
+  },
+  {
+    "question": "What significant announcement did Amelia Grant confirm she would be making during the holiday rush in December 2013, and what was the purpose of this announcement?",
+    "grading_notes": "The significant announcement confirmed by Amelia Grant was regarding the finalized bonus structure for the team. The purpose of this announcement was to motivate the team amidst the holiday rush.",
+    "sources": [
+      "mail_11_20_13_55.txt",
+      "mail_11_21_13_58.txt",
+      "mail_11_25_13_69.txt",
+      "mail_11_26_13_72.txt",
+      "mail_11_27_13_78.txt",
+      "mail_11_29_13_88.txt",
+      "mail_12_10_13_134.txt",
+      "mail_09_23_15_2690.txt",
+      "mail_09_28_15_2713.txt",
+      "mail_09_30_15_2719.txt"
+    ]
+  },
+  {
+    "question": "What significant action was taken by Sofia Ramirez in the email dated August 21, 2015, regarding supplier outreach?",
+    "grading_notes": "The correct answer should mention that Sofia Ramirez was putting together a list of potential new suppliers and alternative materials, indicating the urgency of the situation and the need for the team to align on strategy for the upcoming meeting.",
+    "sources": [
+      "mail_07_28_14_974.txt",
+      "mail_04_08_15_1942.txt",
+      "mail_05_08_15_2069.txt",
+      "mail_05_26_15_2146.txt",
+      "mail_07_09_15_2342.txt",
+      "mail_08_21_15_2546.txt",
+      "mail_01_04_16_3098.txt",
+      "mail_02_23_16_3279.txt",
+      "mail_04_14_16_3483.txt",
+      "mail_09_27_16_4065.txt"
+    ]
+  },
+  {
+    "question": "What event took place in early October of 2019, and why did Ameila consider the event important? ",
+    "grading_notes": "The company launched a new campaign to promote the Edible clip and the new flavors of Guava and Apple.",
+    "sources": [
+      "mail_10_03_19_8376.txt",
+      "mail_10_03_19_8377.txt",
+      "mail_10_03_19_8378.txt"
+    ]
+  },
+  {
+    "question": "Did the plant have issues with paranormal activity?",
+    "grading_notes": "Yes, In July 2015, Hannah described the reports of paranormal activity from the staff.",
+    "sources": [
+      "mail_07_07_15_2326.txt",
+      "mail_07_14_15_2369.txt",
+      "mail_07_07_15_2325.txt",
+      "mail_07_16_15_2386.txt",
+      "mail_07_14_15_2371.txt"
+    ]
+  },
+  {
+    "question": "How does Chloe Bennett's view on the SandwichClip contrast with Jordan Kim's view?",
+    "grading_notes": "Chloe Bennet's view is more positive. Chloe Bennett's view on the SandwichClip was largely positive, as she highlighted that customer feedback emphasized its convenience, unique features, versatility, and the added fun factor in sandwich presentations. She believed these aspects could be great hooks for marketing efforts, whereas  Jordan also pointed out some concerns about price sensitivity among some clients.",
+    "sources": [
+      "mail_12_26_17_5798.txt",
+      "mail_07_15_16_3802.txt",
+      "mail_08_31_18_6657.txt",
+      "mail_12_03_18_7028.txt",
+      "mail_11_02_16_4214.txt",
+      "mail_11_15_16_4267.txt",
+      "mail_11_08_16_4237.txt",
+      "mail_11_04_16_4221.txt"
+    ]
+  },
+  {
+    "question": "What did Sofia Ramirez do to address employee concerns of paranormal activity?",
+    "grading_notes": "She started drafting a communication plan for the employees, addressing their worries directly while assuring them the company is taking their concerns seriously",
+    "sources": [
+      "mail_07_24_15_2422.txt",
+      "mail_07_24_15_2424.txt"
+    ]
+  },
+  {
+    "question": "Why was the government project terminated?",
+    "grading_notes": "The government project was terminated because the feasibility of manufacturing the explosive paperclip product proved to be too challenging under the current parameters set by the secret agency.",
+    "sources": [
+      "mail_05_28_14_745.txt",
+      "mail_12_03_15_2980.txt",
+      "mail_12_03_15_2982.txt",
+      "mail_12_03_15_2981.txt",
+      "mail_12_03_15_2983.txt"
+    ]
+  },
+  {
+    "question": "What concerns did Noah Thompson express regarding production capacity in the lead-up to the holiday season in November 2013?",
+    "grading_notes": "The correct answer should detail Noah Thompson's concerns about potential bottlenecks in production capacity due to increased demand as the holiday season approached. He emphasized the need for additional resources and proactive measures to avoid issues, mentioning that the team was making strides but still needed to address resource allocations to meet anticipated demands.",
+    "sources": [
+      "mail_11_12_13_29.txt",
+      "mail_11_15_13_41.txt",
+      "mail_11_15_13_42.txt",
+      "mail_11_15_13_43.txt",
+      "mail_11_19_13_51.txt",
+      "mail_11_20_13_53.txt",
+      "mail_11_21_13_62.txt",
+      "mail_11_22_13_66.txt",
+      "mail_11_27_13_78.txt",
+      "mail_12_05_13_119.txt"
+    ]
+  },
+  {
+    "question": "What urgent production capacity planning issues were raised regarding the edible paperclips in November 2017, and what actions were suggested to address them?",
+    "grading_notes": "The urgent production capacity planning issues raised in November 2017 regarding the edible paperclips included concerns about sustaining production efficiency at 90% due to increasing sales trends. Noah Thompson highlighted the need to proactively plan for potential spikes in demand and suggested evaluating staffing levels or adding support shifts. Marcus Lee agreed on the necessity of adjustments and proposed scheduling a meeting to discuss production forecasts and staffing changes.",
+    "sources": [
+      "mail_05_12_14_691.txt",
+      "mail_11_09_15_2870.txt",
+      "mail_07_27_17_5176.txt",
+      "mail_09_23_17_5389.txt",
+      "mail_11_06_17_5595.txt",
+      "mail_11_10_17_5614.txt",
+      "mail_11_11_17_5617.txt",
+      "mail_11_11_17_5618.txt",
+      "mail_11_13_17_5623.txt",
+      "mail_11_13_17_5624.txt"
+    ]
+  },
+  {
+    "question": "What significant impact did the hurricane have on Precision Paperclip Inc.'s operations as mentioned in the emails from August 2018?",
+    "grading_notes": "The hurricane affected Precision Paperclip Inc.'s operations, prompting a follow-up meeting to discuss feedback and recovery metrics. The COO, Marcus Lee, indicated that they would present the latest operational metrics to illustrate their recovery from the hurricane and readiness for production during the meeting.",
+    "sources": [
+      "mail_08_28_18_6642.txt",
+      "mail_12_23_18_7108.txt",
+      "mail_01_06_19_7166.txt",
+      "mail_01_21_19_7225.txt",
+      "mail_01_22_19_7229.txt",
+      "mail_01_23_19_7236.txt",
+      "mail_01_27_19_7244.txt",
+      "mail_02_08_19_7288.txt",
+      "mail_02_15_19_7315.txt",
+      "mail_02_25_19_7358.txt"
+    ]
+  },
+  {
+    "question": "What was the main focus of the employee engagement workshop planned by Chloe Bennett and Amelia Grant in January 2014, and what specific elements were included to enhance team involvement?",
+    "grading_notes": "The main focus of the employee engagement workshop was on teamwork and strategy, as discussed by Amelia Grant. Specific elements included feedback forms for gathering insights from the team and a light presentation highlighting successful initiatives to encourage team involvement.",
+    "sources": [
+      "mail_01_07_14_244.txt",
+      "mail_01_07_14_245.txt",
+      "mail_01_14_14_264.txt",
+      "mail_01_14_14_265.txt",
+      "mail_01_22_14_286.txt",
+      "mail_01_24_14_295.txt",
+      "mail_01_27_14_299.txt",
+      "mail_04_22_17_4827.txt",
+      "mail_04_25_17_4837.txt",
+      "mail_04_27_17_4848.txt"
+    ]
+  },
+  {
+    "question": "What did the company do to increase production of the EdibleClip\u2122 in June 2019?",
+    "grading_notes": "The email from June 12, 2019, discusses the possibility of implementing additional shifts for EdibleClip\u2122 production due to growing demand, indicating a significant change in production scheduling to maintain optimal supply for distributors.",
+    "sources": [
+      "mail_01_07_14_244.txt",
+      "mail_04_10_17_4780.txt",
+      "mail_01_22_18_5890.txt",
+      "mail_06_12_19_7790.txt",
+      "mail_10_01_19_8364.txt"
+    ]
+  },
+  {
+    "question": "What significant presentation was the team preparing for on June 12, 2014, and what was emphasized in the communications leading up to it?",
+    "grading_notes": "The team was preparing for a government project presentation on June 12, 2014. The communications emphasized the importance of being well-prepared for potential tough questions, showcasing the team's hard work, and presenting a united front to make a strong impression on stakeholders.",
+    "sources": [
+      "mail_05_13_14_698.txt",
+      "mail_05_19_14_713.txt",
+      "mail_06_05_14_778.txt",
+      "mail_06_11_14_803.txt",
+      "mail_06_12_14_806.txt",
+      "mail_07_31_14_986.txt",
+      "mail_09_27_14_1191.txt",
+      "mail_10_15_14_1251.txt",
+      "mail_11_13_14_1379.txt",
+      "mail_12_01_14_1436.txt"
+    ]
+  },
+  {
+    "question": "What concerns did distributors have about the SandwichClip as mentioned in the emails from November 2015 to January 2016?",
+    "grading_notes": "The distributors expressed concerns about the SandwichClip being slightly overpriced compared to alternatives, which could impact future orders. Additionally, they felt that the current marketing did not fully convey the product's unique benefits, leading them to perceive it as just another novelty item.",
+    "sources": [
+      "mail_11_13_15_2889.txt",
+      "mail_12_23_15_3061.txt",
+      "mail_01_10_16_3116.txt",
+      "mail_01_26_16_3177.txt"
+    ]
+  },
+  {
+    "question": "What unusual event concerning employee concerns was addressed in the emails dated July 24, 2015?",
+    "grading_notes": "The emails discuss concerns about paranormal activity among employees, with Sofia Ramirez drafting a communication plan to address these worries and assure employees that their concerns are being taken seriously.",
+    "sources": [
+      "mail_02_13_14_352.txt",
+      "mail_05_09_14_687.txt",
+      "mail_05_12_14_691.txt",
+      "mail_05_13_14_696.txt",
+      "mail_05_19_14_712.txt",
+      "mail_05_20_14_716.txt",
+      "mail_05_23_14_729.txt",
+      "mail_07_22_14_950.txt",
+      "mail_07_24_15_2422.txt",
+      "mail_07_24_15_2423.txt"
+    ]
+  },
+  {
+    "question": "What was Priya Nandakumar's role in the marketing strategy contributions discussed in the emails from January 2015?",
+    "grading_notes": "The correct answer should state that Priya Nandakumar is the Quality Assurance Manager and that she was contributing her inputs on QA initiatives for the marketing strategy.",
+    "sources": [
+      "mail_01_12_15_1609.txt",
+      "mail_01_13_15_1615.txt"
+    ]
+  },
+  {
+    "question": "What significant financial presentation was discussed in the emails leading up to January 19, 2015, and what was the focus of that presentation?",
+    "grading_notes": "The significant financial presentation discussed in the emails leading up to January 19, 2015, was focused on how recent adjustments and performance metrics would impact the company's growth strategy. Marcus Lee emphasized the importance of aligning the presentation with their growth strategy and highlighting recent adaptations that could positively influence their growth.",
+    "sources": [
+      "mail_01_13_15_1617.txt",
+      "mail_01_19_15_1637.txt",
+      "mail_01_19_15_1638.txt",
+      "mail_02_21_19_7342.txt"
+    ]
+  },
+  {
+    "question": "What assistance is Hannah O'Connor offering to Sofia Ramirez regarding the upcoming wedding?",
+    "grading_notes": "Hannah O'Connor is offering to help Sofia Ramirez with managing time off requests and handling logistics from the HR side for the upcoming wedding preparations.",
+    "sources": [
+      "mail_01_17_15_1632.txt"
+    ]
+  }
+]
