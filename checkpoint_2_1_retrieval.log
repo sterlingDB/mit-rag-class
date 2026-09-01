@@ -1,0 +1,302 @@
+[2026-08-31T17:52:51] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 1.0), ('doc3', 1.0), ('doc5', 1.0)]
+answer=I can’t answer that from the provided documents. The documents only discuss sketching, retrieval-augmented generation, and vector search, and do not contain any information about the 2026 NFL draft.
+------------------------------------------------------------------------
+[2026-08-31T17:52:52] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc3', 1.0)]
+answer=I don’t know from the provided document. The document only says that retrieval-augmented generation “grounds a language model's answers in documents retrieved from a corpus, reducing hallucination,” and does not mention Cooter Davenport or his death.
+------------------------------------------------------------------------
+[2026-08-31T17:52:53] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc2', 2.0), ('doc5', 2.0), ('doc4', 1.0)]
+answer=The provided documents do not contain any information about the Brady Bunch house, its sale date, or its sale price, so I can’t determine when or for how much it sold.
+------------------------------------------------------------------------
+[2026-08-31T17:52:54] QUERY 4: What is your training date?
+retrieved=[('doc4', 1.0)]
+answer=The provided document does not contain my training date. It only says: “BM25 is a keyword ranking function that scores documents by term frequency and inverse document frequency.”
+------------------------------------------------------------------------
+[2026-08-31T17:53:20] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 1.0), ('doc3', 1.0), ('doc5', 1.0)]
+answer=I can’t answer that from the provided documents. They only discuss sketching, retrieval-augmented generation, and vector search, and do not contain any information about the 2026 NFL draft.
+------------------------------------------------------------------------
+[2026-08-31T17:53:22] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc3', 1.0)]
+answer=I can’t find that in the provided document. The only document says that retrieval-augmented generation “grounds a language model's answers in documents retrieved from a corpus, reducing hallucination,” but it does not mention Cooter Davenport or his death.
+------------------------------------------------------------------------
+[2026-08-31T17:53:24] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc2', 2.0), ('doc5', 2.0), ('doc4', 1.0)]
+answer=The provided documents do not contain any information about the Brady Bunch house or its sale, so I can’t determine when it sold or for how much.
+------------------------------------------------------------------------
+[2026-08-31T17:53:26] QUERY 4: What is your training date?
+retrieved=[('doc4', 1.0)]
+answer=The provided document does not contain my training date. It only says that “BM25 is a keyword ranking function that scores documents by term frequency and inverse document frequency.”
+------------------------------------------------------------------------
+[2026-08-31T17:53:47] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 1.0), ('doc3', 1.0), ('doc5', 1.0)]
+answer=The provided documents do not contain information about the 2026 NFL draft or the first 3 players drafted, so I can’t determine the answer from them.
+------------------------------------------------------------------------
+[2026-08-31T17:53:49] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc3', 1.0)]
+answer=I’m sorry, but the provided document does not contain information about Cooter Davenport’s real-life death date.
+------------------------------------------------------------------------
+[2026-08-31T17:53:51] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc2', 2.0), ('doc5', 2.0), ('doc4', 1.0)]
+answer=The provided documents do not contain any information about the Brady Bunch house or its sale, so I can’t determine when or for how much it sold.
+------------------------------------------------------------------------
+[2026-08-31T17:53:52] QUERY 4: What is your training date?
+retrieved=[('doc4', 1.0)]
+answer=I can’t determine my training date from the provided document. The document only says: “BM25 is a keyword ranking function that scores documents by term frequency and inverse document frequency.”
+------------------------------------------------------------------------
+[2026-08-31T18:02:28] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('2008_Miami_Dolphins_season', 10.0), ('2021_NBA_draft', 10.0), ('Baltimore_Ravens', 10.0)]
+answer=The provided documents do not contain the 2026 NFL draft results, so I can’t determine who were the first 3 players drafted in the NFL in 2026 from these sources.
+------------------------------------------------------------------------
+[2026-08-31T18:02:34] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('African-American_presidents_of_the_United_States_in_popular_culture', 7.0), ('Alexander_Graham_Bell', 7.0), ('Amy_Winehouse', 7.0)]
+answer=The provided documents do not mention Cooter Davenport, so I can’t determine when he died in real life from these sources.
+------------------------------------------------------------------------
+[2026-08-31T18:02:41] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('Bill_Clinton', 11.0), ('Katy_Perry', 11.0), ('Netflix', 11.0)]
+answer=The provided documents do not mention the Brady Bunch house or its sale, so I can’t determine when or for how much it sold.
+------------------------------------------------------------------------
+[2026-08-31T18:02:49] QUERY 4: What is your training date?
+retrieved=[('100_metres', 5.0), ('2008_Summer_Olympics', 5.0), ('2016_World_Series', 5.0)]
+answer=I don’t have a training date in the provided documents, so I can’t determine it from them.
+------------------------------------------------------------------------
+[2026-08-31T18:05:52] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('2008_Miami_Dolphins_season', 6.0), ('2020_NFL_draft', 6.0), ('2021_NBA_draft', 6.0)]
+answer=The provided documents do not contain the 2026 NFL draft results, so I can’t determine who the first 3 players drafted in the NFL in 2026 were.
+------------------------------------------------------------------------
+[2026-08-31T18:05:54] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('African-American_presidents_of_the_United_States_in_popular_culture', 4.0), ('Alexander_Graham_Bell', 4.0), ('Amy_Winehouse', 4.0)]
+answer=I can’t determine that from the provided documents. The documents include articles about **African-American presidents in popular culture**, **Alexander Graham Bell**, and **Amy Winehouse**, but none mention **Cooter Davenport** or his real-life death date.
+------------------------------------------------------------------------
+[2026-08-31T18:05:59] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('Bill_Clinton', 5.0), ('Katy_Perry', 5.0), ('Netflix', 5.0)]
+answer=I can’t find the answer in the provided documents. The documents include Bill Clinton, Katy Perry, and Netflix, but nothing about the Brady Bunch house sale.
+------------------------------------------------------------------------
+[2026-08-31T18:14:35] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 1.0), ('doc3', 1.0), ('doc5', 1.0)]
+answer=I can’t answer that from the provided documents. The documents only discuss sketching, retrieval-augmented generation, and vector search, and do not contain any information about the 2026 NFL Draft.
+------------------------------------------------------------------------
+[2026-08-31T18:14:36] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc3', 1.0)]
+answer=I’m sorry, but the provided document does not contain information about Cooter Davenport’s real-life death date. It only says that retrieval-augmented generation “grounds a language model's answers in documents retrieved from a corpus, reducing hallucination.”
+------------------------------------------------------------------------
+[2026-08-31T18:14:37] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc2', 2.0), ('doc5', 2.0), ('doc4', 1.0)]
+answer=The provided documents do not contain any information about the Brady Bunch house, its sale date, or sale price, so I can’t determine when or for how much it sold.
+------------------------------------------------------------------------
+[2026-08-31T18:25:26] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 1.0), ('doc3', 1.0), ('doc5', 1.0)]
+answer=I can’t answer that from the provided documents. The documents are about sketching, retrieval-augmented generation, and vector search, and they do not contain information about the 2026 NFL draft.
+------------------------------------------------------------------------
+[2026-08-31T18:25:26] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc3', 1.0)]
+answer=The provided document does not mention Cooter Davenport or his date of death, so I can’t determine that from the document.
+------------------------------------------------------------------------
+[2026-08-31T18:25:27] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc2', 2.0), ('doc5', 2.0), ('doc4', 1.0)]
+answer=The provided documents do not contain any information about the Brady Bunch house sale, including when it sold or for how much.
+------------------------------------------------------------------------
+[2026-08-31T18:30:08] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 1.0), ('doc3', 1.0), ('doc5', 1.0)]
+answer=The provided documents do not contain any information about the 2026 NFL draft, so I can’t determine who the first 3 players drafted were.
+------------------------------------------------------------------------
+[2026-08-31T18:30:09] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc3', 1.0)]
+answer=The provided document does not contain any information about Cooter Davenport or his date of death, so I can’t determine that from the given material.
+------------------------------------------------------------------------
+[2026-08-31T18:30:10] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc2', 2.0), ('doc5', 2.0), ('doc4', 1.0)]
+answer=The provided documents do not contain any information about the Brady Bunch house, when it sold, or for how much.
+------------------------------------------------------------------------
+[2026-08-31T18:30:33] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 1.0), ('doc3', 1.0), ('doc5', 1.0)]
+answer=The provided documents do not contain information about the 2026 NFL draft, so I can’t determine who the first 3 players drafted were.
+------------------------------------------------------------------------
+[2026-08-31T18:30:34] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc3', 1.0)]
+answer=The provided document does not contain information about Cooter Davenport or when he died in real life, so I can’t determine that from the given material.
+------------------------------------------------------------------------
+[2026-08-31T18:30:36] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc2', 2.0), ('doc5', 2.0), ('doc4', 1.0)]
+answer=The provided documents do not contain any information about the Brady Bunch house sale, including when it sold or for how much.
+------------------------------------------------------------------------
+[2026-08-31T18:46:34] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc6', 6.0), ('doc2', 1.0), ('doc3', 1.0)]
+answer=The first 3 players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza** — QB, Las Vegas Raiders  
+2. **David Bailey** — OLB, New York Jets  
+3. **Jeremiyah Love** — RB, Arizona Cardinals  
+
+These are listed in the draft table: “**1 1 Las Vegas Raiders Fernando Mendoza QB Indiana**,” “**1 2 New York Jets David Bailey OLB Texas Tech**,” and “**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**.”
+------------------------------------------------------------------------
+[2026-08-31T18:46:35] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc3', 1.0), ('doc6', 1.0)]
+answer=I can’t answer that from the provided documents. They only contain information about the 2026 NFL draft and a note about retrieval-augmented generation; they do not mention Cooter Davenport or his death.
+------------------------------------------------------------------------
+[2026-08-31T18:46:36] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc6', 3.0), ('doc2', 2.0), ('doc5', 2.0)]
+answer=I’m sorry, but the provided documents do not contain any information about the Brady Bunch house sale, so I can’t determine when or for how much it sold from these sources.
+------------------------------------------------------------------------
+[2026-09-01T06:58:31] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('2008_Miami_Dolphins_season', 10.0), ('2021_NBA_draft', 10.0), ('Baltimore_Ravens', 10.0)]
+answer=The documents do not contain the 2026 NFL draft, so I can’t answer who the first 3 players drafted in 2026 were.
+
+The provided draft document is for the **2021 NBA draft**, not an NFL draft.
+------------------------------------------------------------------------
+[2026-09-01T06:58:36] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('African-American_presidents_of_the_United_States_in_popular_culture', 7.0), ('Alexander_Graham_Bell', 7.0), ('Amy_Winehouse', 7.0)]
+answer=The provided documents do not contain any information about Cooter Davenport, so I can’t determine when he died in real life from these documents.
+------------------------------------------------------------------------
+[2026-09-01T06:58:40] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('Bill_Clinton', 11.0), ('Katy_Perry', 11.0), ('Netflix', 11.0)]
+answer=The provided documents do not contain any information about the Brady Bunch house selling, so I can’t determine when it sold or for how much from these sources.
+------------------------------------------------------------------------
+[2026-09-01T07:03:16] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 9.0), ('doc3', 6.0), ('doc4', 6.0)]
+answer=The documents do not contain information about the NFL draft in 2026, so I can’t determine who the first 3 players drafted were from these sources.
+------------------------------------------------------------------------
+[2026-09-01T07:03:18] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc4', 7.0), ('doc2', 6.0), ('doc3', 6.0)]
+answer=The documents do not say when Cooter Davenport died in real life.
+
+The only relevant document, **[doc4]**, is about *The Dukes of Hazzard* and mentions cast members and characters, but it does not provide a death date for Cooter Davenport.
+------------------------------------------------------------------------
+[2026-09-01T07:03:19] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc3', 11.0), ('doc2', 9.0), ('doc4', 8.0)]
+answer=The provided documents do not say when or for how much the Brady Bunch house sold.
+------------------------------------------------------------------------
+[2026-09-01T07:04:28] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 9.0), ('doc3', 6.0), ('doc4', 6.0)]
+answer=The documents do not contain information about the 2026 NFL Draft, so I can’t determine who the first 3 players drafted were from the provided text.
+------------------------------------------------------------------------
+[2026-09-01T07:04:29] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc4', 7.0), ('doc2', 6.0), ('doc3', 6.0)]
+answer=The documents do not say when Cooter Davenport died in real life. They mention *The Dukes of Hazzard* and its cast, but there is no information here about Cooter Davenport’s real-life death date.
+------------------------------------------------------------------------
+[2026-09-01T07:04:30] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc3', 11.0), ('doc2', 9.0), ('doc4', 8.0)]
+answer=The documents provided do not say when or for how much the Brady Bunch house sold.
+------------------------------------------------------------------------
+[2026-09-01T07:07:06] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 9.0), ('doc8', 7.0), ('doc3', 6.0)]
+answer=The provided documents do not contain information about the NFL draft in 2026, so I can’t identify the first 3 players drafted from them.
+------------------------------------------------------------------------
+[2026-09-01T07:07:08] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc4', 7.0), ('doc2', 6.0), ('doc3', 6.0)]
+answer=The documents do not say when Cooter Davenport died in real life. They mention *The Dukes of Hazzard* and its cast, but no death date for Cooter Davenport is provided.
+------------------------------------------------------------------------
+[2026-09-01T07:07:08] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc3', 11.0), ('doc2', 9.0), ('doc4', 8.0)]
+answer=The provided documents do not say when or for how much the Brady Bunch house sold. They describe the show and its premise, but do not include any sale information about the house.
+------------------------------------------------------------------------
+[2026-09-01T07:07:48] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 9.0), ('doc8', 7.0), ('doc3', 6.0)]
+answer=The provided documents do not contain information about the NFL 2026 draft, so I can’t determine who the first 3 players drafted were.
+------------------------------------------------------------------------
+[2026-09-01T07:07:49] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc4', 7.0), ('doc2', 6.0), ('doc3', 6.0)]
+answer=The documents do not say when Cooter Davenport died in real life. They mention *The Dukes of Hazzard* and its cast, but do not provide a death date for Cooter Davenport or the actor who played him.
+------------------------------------------------------------------------
+[2026-09-01T07:07:50] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc3', 11.0), ('doc2', 9.0), ('doc4', 8.0)]
+answer=The documents provided do not say when or for how much the Brady Bunch house sold. They mention the house as “a large two-story house designed by Mike, located in a Los Angeles suburb,” but give no sale date or sale price.
+------------------------------------------------------------------------
+[2026-09-01T07:08:47] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 9.0), ('doc8', 7.0), ('doc3', 6.0)]
+answer=The provided documents do not contain information about the 2026 NFL Draft, so I can’t determine who the first 3 players drafted were from these documents.
+------------------------------------------------------------------------
+[2026-09-01T07:08:48] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc4', 7.0), ('doc2', 6.0), ('doc3', 6.0)]
+answer=The provided documents do not say when Cooter Davenport died in real life. They mention *The Dukes of Hazzard* and its cast, but there is no information here about Cooter Davenport’s death date.
+------------------------------------------------------------------------
+[2026-09-01T07:08:49] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc3', 11.0), ('doc2', 9.0), ('doc4', 8.0)]
+answer=The documents provided do not say when or for how much the Brady Bunch house sold.
+------------------------------------------------------------------------
+[2026-09-01T07:18:20] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 9.0), ('doc8', 7.0), ('doc3', 6.0)]
+answer=The provided documents do not contain information about the NFL draft in 2026, so I can’t determine who the first 3 players drafted were.
+------------------------------------------------------------------------
+[2026-09-01T07:18:22] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc4', 7.0), ('doc2', 6.0), ('doc3', 6.0)]
+answer=The documents do not say when Cooter Davenport died in real life. They mention *The Dukes of Hazzard* and its cast, but do not provide a death date for Cooter Davenport.
+------------------------------------------------------------------------
+[2026-09-01T07:18:23] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc3', 11.0), ('doc2', 9.0), ('doc4', 8.0)]
+answer=The provided documents do not say when or for how much the Brady Bunch house sold. They describe the show, cast, and premise, but do not contain that information.
+------------------------------------------------------------------------
+[2026-09-01T07:25:25] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc2', 5.0), ('doc6', 4.0), ('doc4', 3.0)]
+answer=The 1st 3 players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza** — QB, Las Vegas Raiders  
+2. **David Bailey** — OLB, New York Jets  
+3. **Jeremiyah Love** — RB, Arizona Cardinals
+
+This is shown in the document: “**1 1 Las Vegas Raiders Fernando Mendoza QB Indiana**,” “**1 2 New York Jets David Bailey OLB Texas Tech**,” and “**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**.”
+------------------------------------------------------------------------
+[2026-09-01T07:25:26] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc4', 5.0), ('doc2', 4.0), ('doc3', 4.0)]
+answer=The documents do not say when Cooter Davenport died in real life. They mention *The Dukes of Hazzard* and its cast, but not Cooter Davenport’s death date.
+------------------------------------------------------------------------
+[2026-09-01T07:25:27] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc3', 7.0), ('doc2', 5.0), ('doc4', 4.0)]
+answer=The documents provided do not say when or for how much the Brady Bunch house sold. They only describe the house as “a large two-story house designed by Mike, located in a Los Angeles suburb.”
+------------------------------------------------------------------------
+[2026-09-01T07:27:55] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc6', 4.0), ('doc2', 3.0), ('doc4', 2.0)]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. Fernando Mendoza — QB, Las Vegas Raiders  
+2. David Bailey — OLB, New York Jets  
+3. Jeremiyah Love — RB, Arizona Cardinals
+
+The document lists them in order: “1 1 Las Vegas Raiders Fernando Mendoza,” “1 2 New York Jets David Bailey,” and “1 3 Arizona Cardinals Jeremiyah Love.”
+------------------------------------------------------------------------
+[2026-09-01T07:27:56] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc4', 4.0), ('doc2', 3.0), ('doc3', 3.0)]
+answer=The documents do not say when Cooter Davenport died in real life.
+------------------------------------------------------------------------
+[2026-09-01T07:27:56] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc3', 5.0), ('doc2', 3.0), ('doc4', 2.0)]
+answer=The provided documents do not say when or for how much the Brady Bunch house sold. They describe the show and its premise, but contain no information about a house sale.
+------------------------------------------------------------------------
+[2026-09-01T07:39:21] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('doc6', 4.0), ('doc2', 3.0), ('doc4', 2.0)]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza**, QB, **Las Vegas Raiders** — “The Las Vegas Raiders held the first overall pick and selected Indiana Hoosiers quarterback Fernando Mendoza”
+2. **David Bailey**, OLB, **New York Jets**
+3. **Jeremiyah Love**, RB, **Arizona Cardinals**
+
+These are listed in the draft selections as picks 1, 2, and 3.
+------------------------------------------------------------------------
+[2026-09-01T07:39:22] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('doc4', 4.0), ('doc2', 3.0), ('doc3', 3.0)]
+answer=The provided documents do not say when Cooter Davenport died in real life. They mention *The Dukes of Hazzard* and its cast, but do not include any information about Cooter Davenport’s real-life death date.
+------------------------------------------------------------------------
+[2026-09-01T07:39:23] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('doc3', 5.0), ('doc2', 3.0), ('doc4', 2.0)]
+answer=The provided documents do not say when or for how much the Brady Bunch house sold.
+------------------------------------------------------------------------
+[2026-09-01T07:42:04] QUERY 1: Who were the 1st 3 players drafted in the NFL in 2026?
+retrieved=[('1980_NFL_draft', 4.0), ('1995_World_Series', 4.0), ('1997_NFL_draft', 4.0)]
+answer=The documents do not contain information about the 2026 NFL draft.
+
+They only provide details for the 1980 NFL draft and the 1997 NFL draft, such as the first selections:
+- 1980: “With the first overall pick of the draft, the Detroit Lions selected running back Billy Sims.”
+- 1997: “The first overall selection was Orlando Pace, OT St. Louis Rams.”
+
+So I can’t determine the first 3 players drafted in the NFL in 2026 from these documents.
+------------------------------------------------------------------------
+[2026-09-01T07:42:11] QUERY 2: when did Cooter Davenport die in real life?
+retrieved=[('African-American_presidents_of_the_United_States_in_popular_culture', 4.0), ('Alexander_Graham_Bell', 4.0), ('Amy_Winehouse', 4.0)]
+answer=The provided documents do not mention Cooter Davenport or his real-life death, so I can’t answer from these sources.
+------------------------------------------------------------------------
+[2026-09-01T07:42:18] QUERY 3: When and for how much, did the brady bunch house sell?
+retrieved=[('Bill_Clinton', 5.0), ('Katy_Perry', 5.0), ('Netflix', 5.0)]
+answer=The provided documents do not contain any information about the Brady Bunch house selling, so I can’t say when it sold or for how much.
+------------------------------------------------------------------------

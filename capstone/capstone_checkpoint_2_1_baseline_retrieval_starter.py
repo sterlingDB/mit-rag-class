@@ -67,6 +67,11 @@ from pathlib import Path
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
+from chroma_helpers import build_or_load_db, get_embeddings
+from wiki_helpers import load_docs_from_directory, read_wikipedia_article
+#from rank_bm25 import BM25Okapi
+
+
 
 # %%
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
@@ -74,9 +79,12 @@ LLM_MODEL = "openai/gpt-5.4-mini"  # latest small OpenAI model, fast; covered by
 TEMPERATURE = 0.2
 TOP_K = 3
 LOG_PATH = Path.cwd() / "checkpoint_2_1_retrieval.log"
+CHROMA_DIR = "chroma_db"
+EMBEDDING_MODEL = "openai/text-embedding-3-small"
+MAX_CONTEXT_CHARS_PER_DOC = 6000
 
 # === SET THIS to the scenario you chose in Checkpoint 1.1 ===
-SCENARIO = "research_papers"   # "research_papers" or "wikipedia"
+SCENARIO = "wikipedia"   # "research_papers" or "wikipedia"
 
 ANSWER_SYSTEM = (
     "You are a helpful assistant. Answer the question using ONLY the provided "
@@ -122,16 +130,26 @@ def log(label: str, text: str) -> None:
 # folder, and update the path if your checkout puts it elsewhere.
 
 
-# %%
+
+# all 2400+ wiki docs...
+#SAMPLE_DOCS = load_docs_from_directory()
+
+# small test set of 10 wiki docs
 SAMPLE_DOCS = [
-    {"id": "doc1", "text": "Program synthesis: generating programs automatically from a specification, such as input-output examples or a logical formula."},
-    {"id": "doc2", "text": "The sketching approach lets a programmer write a partial program with holes, and a synthesizer fills the holes to satisfy a specification."},
-    {"id": "doc3", "text": "Retrieval-augmented generation grounds a language model's answers in documents retrieved from a corpus, reducing hallucination."},
-    {"id": "doc4", "text": "BM25 is a keyword ranking function that scores documents by term frequency and inverse document frequency."},
-    {"id": "doc5", "text": "Vector search embeds text into dense vectors and ranks documents by cosine similarity to the query embedding."},
-    {"id": "doc6", "text": "Evaluation of retrieval systems measures whether the retrieved documents actually contain the information needed to answer the query."},
+    {"id": "doc1", "text": read_wikipedia_article("28th_Tony_Awards.html")},
+    {"id": "doc2", "text": read_wikipedia_article("The_Beach_Boys.html")},
+    {"id": "doc3", "text": read_wikipedia_article("The_Brady_Bunch.html")},
+    {"id": "doc4", "text": read_wikipedia_article("The_Dukes_of_Hazzard.html")},
+    {"id": "doc5", "text": read_wikipedia_article("Ben_Jones_(American_actor_and_politician).html")},
+    {"id": "doc6", "text": read_wikipedia_article("2026_NFL_draft.html")},
+    {"id": "doc7", "text": read_wikipedia_article("Wide_Mouth_Mason.html")},
+    {"id": "doc8", "text": read_wikipedia_article("United_States_Air_Force.html")},
+    {"id": "doc9", "text": read_wikipedia_article("USS_Mizpah.html")},
+    {"id": "doc10", "text": read_wikipedia_article("Pineapple.html")},
 ]
 DOC_BY_ID = {d["id"]: d for d in SAMPLE_DOCS}
+#print(SAMPLE_DOCS[4])
+
 
 
 # %% [markdown]
@@ -143,8 +161,33 @@ DOC_BY_ID = {d["id"]: d for d in SAMPLE_DOCS}
 # `answer` function then asks the LLM using only the retrieved documents.
 
 # %%
+STOPWORDS = {
+    "a", "about", "above", "across", "after", "along", "an", "and", "are",
+    "around", "as", "at", "be", "been", "before", "being", "below", "between",
+    "but", "by", "did", "do", "does", "during", "for", "from", "had", "has",
+    "have", "he", "her", "him", "his", "how", "i", "if", "in", "into", "is",
+    "it", "its", "me", "my", "no", "nor", "not", "of", "on", "onto", "or",
+    "our", "out", "over", "she", "so", "that", "the", "their", "them",
+    "these", "they", "this", "those", "through", "to", "under", "up", "upon",
+    "us", "was", "we", "were", "what", "when", "where", "which", "who", "why",
+    "with", "yet", "you", "your",
+    "1st", "2nd", "3rd",
+}
+
+def _normalize_token(token: str) -> str:
+    """Handle a couple of simple word endings for this beginner baseline."""
+    if token.endswith("ed") and len(token) > 4:
+        return token[:-2]
+    return token
+
+
 def _tokens(text: str) -> set[str]:
-    return set(re.findall(r"[a-z0-9]+", text.lower()))
+    tokens = re.findall(r"[a-z0-9]+", text.lower())
+    return {
+        _normalize_token(token)
+        for token in tokens
+        if token not in STOPWORDS and not (token.isdigit() and len(token) < 4)
+    }
 
 
 def retrieve(query: str, k: int = TOP_K) -> list[tuple[str, float]]:
@@ -156,7 +199,11 @@ def retrieve(query: str, k: int = TOP_K) -> list[tuple[str, float]]:
 
 
 def answer(llm: ChatOpenAI, query: str, doc_ids: list[str]) -> str:
-    context = "\n\n".join(f"[{i}] {DOC_BY_ID[i]['text']}" for i in doc_ids if i in DOC_BY_ID)
+    context = "\n\n".join(
+        f"[{i}]\n{DOC_BY_ID[i]['text'][:MAX_CONTEXT_CHARS_PER_DOC]}"
+        for i in doc_ids
+        if i in DOC_BY_ID
+    )
     messages = [
         SystemMessage(content=ANSWER_SYSTEM),
         HumanMessage(content=f"Documents:\n{context}\n\nQuestion: {query}"),
@@ -187,7 +234,11 @@ def my_representative_queries() -> list[str]:
 
     Delete the raise NotImplementedError line once your code works.
     """
-    raise NotImplementedError("my_representative_queries() — see the TODO above.")
+    return [
+        "Who were the 1st 3 players drafted in the NFL in 2026?", # happened after training date
+        "when did Cooter Davenport die in real life?", # died after training date
+        "When and for how much, did the brady bunch house sell?", # sold again after training date
+    ]
 
 
 # %% [markdown]
@@ -219,7 +270,8 @@ def run() -> None:
           "describe your REAL baseline (over your full corpus) in the submission.")
 
 
-run()
+if __name__ == "__main__":
+    run()
 
 # %% [markdown]
 # ## Step 5 — Your written submission (the graded deliverable)
