@@ -59,28 +59,23 @@ from __future__ import annotations
 import warnings
 warnings.filterwarnings("ignore")
 
-import os
 import re
 from datetime import datetime
 from pathlib import Path
 
-from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
-from chroma_helpers import build_or_load_db, get_embeddings
-from wiki_helpers import load_docs_from_directory, read_wikipedia_article
+from chroma_helpers import API_KEY, OPENROUTER_BASE_URL
+from hybrid_retriever import HybridRetriever
 #from rank_bm25 import BM25Okapi
 
 
 
 # %%
-OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 LLM_MODEL = "openai/gpt-5.4-mini"  # latest small OpenAI model, fast; covered by course credits
 TEMPERATURE = 0.2
-TOP_K = 3
+TOP_K = 5
 LOG_PATH = Path.cwd() / "checkpoint_2_1_retrieval.log"
-CHROMA_DIR = "chroma_db"
-EMBEDDING_MODEL = "openai/text-embedding-3-small"
 MAX_CONTEXT_CHARS_PER_DOC = 6000
 
 # === SET THIS to the scenario you chose in Checkpoint 1.1 ===
@@ -93,24 +88,11 @@ ANSWER_SYSTEM = (
 )
 
 
-# %%
-def check_api_key() -> str:
-    load_dotenv()
-    key = os.getenv("OPENROUTER_API_KEY")
-    if not key:
-        raise RuntimeError(
-            "OPENROUTER_API_KEY is not set. Use the OpenRouter API key "
-            "provided for this course, put it in a .env file next to this "
-            "script, and rerun."
-        )
-    return key
-
-
 def make_llm() -> ChatOpenAI:
     return ChatOpenAI(
         model=LLM_MODEL,
         temperature=TEMPERATURE,
-        api_key=check_api_key(),
+        api_key=API_KEY,
         base_url=OPENROUTER_BASE_URL,
     )
 
@@ -131,23 +113,6 @@ def log(label: str, text: str) -> None:
 
 
 
-# all 2400+ wiki docs...
-#SAMPLE_DOCS = load_docs_from_directory()
-
-# small test set of 10 wiki docs
-SAMPLE_DOCS = [
-    {"id": "doc1", "text": read_wikipedia_article("28th_Tony_Awards.html")},
-    {"id": "doc2", "text": read_wikipedia_article("The_Beach_Boys.html")},
-    {"id": "doc3", "text": read_wikipedia_article("The_Brady_Bunch.html")},
-    {"id": "doc4", "text": read_wikipedia_article("The_Dukes_of_Hazzard.html")},
-    {"id": "doc5", "text": read_wikipedia_article("Ben_Jones_(American_actor_and_politician).html")},
-    {"id": "doc6", "text": read_wikipedia_article("2026_NFL_draft.html")},
-    {"id": "doc7", "text": read_wikipedia_article("Wide_Mouth_Mason.html")},
-    {"id": "doc8", "text": read_wikipedia_article("United_States_Air_Force.html")},
-    {"id": "doc9", "text": read_wikipedia_article("USS_Mizpah.html")},
-    {"id": "doc10", "text": read_wikipedia_article("Pineapple.html")},
-]
-DOC_BY_ID = {d["id"]: d for d in SAMPLE_DOCS}
 #print(SAMPLE_DOCS[4])
 
 
@@ -161,55 +126,6 @@ DOC_BY_ID = {d["id"]: d for d in SAMPLE_DOCS}
 # `answer` function then asks the LLM using only the retrieved documents.
 
 # %%
-STOPWORDS = {
-    "a", "about", "above", "across", "after", "along", "an", "and", "are",
-    "around", "as", "at", "be", "been", "before", "being", "below", "between",
-    "but", "by", "did", "do", "does", "during", "for", "from", "had", "has",
-    "have", "he", "her", "him", "his", "how", "i", "if", "in", "into", "is",
-    "it", "its", "me", "my", "no", "nor", "not", "of", "on", "onto", "or",
-    "our", "out", "over", "she", "so", "that", "the", "their", "them",
-    "these", "they", "this", "those", "through", "to", "under", "up", "upon",
-    "us", "was", "we", "were", "what", "when", "where", "which", "who", "why",
-    "with", "yet", "you", "your",
-    "1st", "2nd", "3rd",
-}
-
-def _normalize_token(token: str) -> str:
-    """Handle a couple of simple word endings for this beginner baseline."""
-    if token.endswith("ed") and len(token) > 4:
-        return token[:-2]
-    return token
-
-
-def _tokens(text: str) -> set[str]:
-    tokens = re.findall(r"[a-z0-9]+", text.lower())
-    return {
-        _normalize_token(token)
-        for token in tokens
-        if token not in STOPWORDS and not (token.isdigit() and len(token) < 4)
-    }
-
-
-def retrieve(query: str, k: int = TOP_K) -> list[tuple[str, float]]:
-    """Baseline keyword retrieval: Score each doc by shared-word count, return top-k."""
-    q = _tokens(query)
-    scored = [(d["id"], float(len(q & _tokens(d["text"])))) for d in SAMPLE_DOCS]
-    scored.sort(key=lambda x: x[1], reverse=True)
-    return [(doc_id, score) for doc_id, score in scored[:k] if score > 0]
-
-
-def answer(llm: ChatOpenAI, query: str, doc_ids: list[str]) -> str:
-    context = "\n\n".join(
-        f"[{i}]\n{DOC_BY_ID[i]['text'][:MAX_CONTEXT_CHARS_PER_DOC]}"
-        for i in doc_ids
-        if i in DOC_BY_ID
-    )
-    messages = [
-        SystemMessage(content=ANSWER_SYSTEM),
-        HumanMessage(content=f"Documents:\n{context}\n\nQuestion: {query}"),
-    ]
-    return llm.invoke(messages).content
-
 
 # %% [markdown]
 # ## Step 3 — Your representative queries (TODO)
@@ -251,20 +167,23 @@ def my_representative_queries() -> list[str]:
 
 # %%
 def run() -> None:
-    llm = make_llm()
+    retriever = HybridRetriever(
+        num_retrieved=TOP_K,
+    )
     queries = my_representative_queries()
-    print(f"Checkpoint 2.1 — baseline retrieval  |  scenario: {SCENARIO}\n")
+    print(f"Checkpoint 2.1 — hybrid retrieval  |  scenario: {SCENARIO}\n")
     for i, query in enumerate(queries, 1):
-        hits = retrieve(query, TOP_K)
+        hits = retriever.getTopK(query, TOP_K)
+        hit_summary = [(doc_id, round(score, 3), source) for doc_id, _, score, source in hits]
         print("=" * 72)
         print(f"QUERY {i}: {query}")
-        print(f"  retrieved: {hits}")
+        print(f"  retrieved: {hit_summary}")
         if not hits:
             print("  (nothing matched — note this in your writeup)")
             continue
-        ans = answer(llm, query, [doc_id for doc_id, _ in hits])
+        ans = retriever.query(query)
         print(f"  answer: {ans}\n")
-        log(f"QUERY {i}: {query}", f"retrieved={hits}\nanswer={ans}")
+        log(f"QUERY {i}: {query}", f"retrieved={hit_summary}\nanswer={ans}")
     print("=" * 72)
     print("Done. Use the retrieved document results above as evidence in your writeup, and "
           "describe your REAL baseline (over your full corpus) in the submission.")

@@ -1,54 +1,62 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings
-from wiki_helpers import html_to_text
+
+load_dotenv()
+
+API_KEY = os.getenv("OPENROUTER_API_KEY")
+CHROMA_DIR = Path(__file__).parent / "chroma_db"
+COLLECTION_NAME = "sample_docs"
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+EMBEDDING_MODEL = "openai/text-embedding-3-small"
 
 
-def get_embeddings(api_key: str, embedding_model: str, base_url: str) -> OpenAIEmbeddings:
+def get_embeddings() -> OpenAIEmbeddings:
     """Create the embedding model Chroma uses for vector search."""
     return OpenAIEmbeddings(
-        model=embedding_model,
-        api_key=api_key,
-        base_url=base_url,
+        model=EMBEDDING_MODEL,
+        api_key=API_KEY,
+        base_url=OPENROUTER_BASE_URL,
     )
 
 
-def build_or_load_db(
-    docs_dir: str | Path,
-    chroma_dir: str,
-    api_key: str,
-    embedding_model: str,
-    base_url: str,
-) -> Chroma:
-    """Load an existing Chroma DB, or build one from local .txt/.html files."""
-    if os.path.isdir(chroma_dir) and os.listdir(chroma_dir):
-        print(f"Loading existing vector DB from {chroma_dir}/")
-        return Chroma(
-            persist_directory=chroma_dir,
-            embedding_function=get_embeddings(api_key, embedding_model, base_url),
-        )
+def load_db() -> Chroma:
+    """Load the existing Chroma DB."""
+    print(f"Loading existing vector DB from {CHROMA_DIR}/")
+    return Chroma(
+        collection_name=COLLECTION_NAME,
+        persist_directory=str(CHROMA_DIR),
+        embedding_function=get_embeddings(),
+    )
 
-    print("Building vector DB (first run - embedding the documents)...")
-    docs = []
-    docs_dir = Path(docs_dir)
 
-    for path in sorted(docs_dir.iterdir()):
-        if path.suffix not in {".txt", ".html"}:
-            continue
+def build_db_from_docs() -> Chroma:
+    """Build a Chroma DB from SAMPLE_DOCS-style dictionaries."""
+    from sample_docs import SAMPLE_DOCS
 
-        text = path.read_text(encoding="utf-8", errors="replace")
-        if path.suffix == ".html":
-            text = html_to_text(text)
+    embeddings = get_embeddings()
 
-        docs.append(Document(page_content=text, metadata={"source": path.name}))
+    docs = [
+        Document(page_content=doc["text"], metadata={"source": doc["id"]})
+        for doc in SAMPLE_DOCS
+    ]
+    ids = [doc["id"] for doc in SAMPLE_DOCS]
 
+    print("Building vector DB from SAMPLE_DOCS (first run - embedding the documents)...")
     db = Chroma.from_documents(
         docs,
-        get_embeddings(api_key, embedding_model, base_url),
-        persist_directory=chroma_dir,
+        embeddings,
+        collection_name=COLLECTION_NAME,
+        ids=ids,
+        persist_directory=str(CHROMA_DIR),
     )
-    print(f"  Indexed {len(docs)} documents into {chroma_dir}/")
+    print(f"  Indexed {len(docs)} sample documents into {CHROMA_DIR}/")
     return db
+
+
+def get_db() -> Chroma:
+    return load_db()
