@@ -65,6 +65,8 @@ from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 
+from hybrid_retriever import HybridRetriever
+
 # %%
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 LLM_MODEL = "openai/gpt-5.4-mini"  # latest small OpenAI model, fast; covered by course credits
@@ -72,7 +74,7 @@ TEMPERATURE = 0.2
 TOP_K = 3
 LOG_PATH = Path.cwd() / "checkpoint_3_1_evaluation.log"
 
-SCENARIO = "research_papers"   # "research_papers" or "wikipedia"
+SCENARIO = "wikipedia"   # "research_papers" or "wikipedia"
 
 ANSWER_SYSTEM = (
     "You are a helpful assistant. Answer the question using ONLY the provided "
@@ -188,8 +190,21 @@ def my_eval_set() -> list[dict]:
 
     Delete the raise NotImplementedError line once your code works.
     """
-    raise NotImplementedError("my_eval_set() — see the TODO above.")
-
+    #raise NotImplementedError("my_eval_set() — see the TODO above.")
+    return [
+        {
+            "question": "Who were the first three players drafted in the 2026 NFL draft?",
+            "grading_notes": "The answer should name Fernando Mendoza, David Bailey, and Jeremiyah Love as the first three picks."
+        },
+        {
+            "question": "When did Ben Jones, who played Cooter Davenport, die?",
+            "grading_notes": "The answer should state the death date from the Ben Jones article."
+        },
+        {
+            "question": "When and for how much did the Brady Bunch house sell?",
+            "grading_notes": "The answer should include both the sale date/time period and the sale price from the Brady Bunch article which was September 10, 2023."
+        },
+    ]
 
 # %% [markdown]
 # Run the demonstration code to understand the evaluation workflow. Then apply the same evaluation 
@@ -205,19 +220,30 @@ def my_eval_set() -> list[dict]:
 # %%
 def run_evaluation() -> None:
     llm = make_llm()
+    retriever = HybridRetriever(num_retrieved=TOP_K)
+
     eval_set = my_eval_set()
     passes = 0
     print(f"Checkpoint 3.1 — baseline evaluation  |  scenario: {SCENARIO}\n")
     for i, item in enumerate(eval_set, 1):
-        hits = retrieve(item["question"], TOP_K)
-        ans = answer(llm, item["question"], [doc_id for doc_id, _ in hits]) if hits else "(no documents retrieved)"
+        # hits = retrieve(item["question"], TOP_K)
+        # ans = answer(llm, item["question"], [doc_id for doc_id, _ in hits]) if hits else "(no documents retrieved)"
+        # verdict = judge(llm, ans, item["grading_notes"])
+        # passes += verdict == "pass"
+
+        hits = retriever.getTopK(item["question"], TOP_K)
+        ans = retriever.query(item["question"]) if hits else "(no documents retrieved)"
         verdict = judge(llm, ans, item["grading_notes"])
+
         passes += verdict == "pass"
+
+        hit_summary = [(doc_id, round(score, 3), source) for doc_id, _, score, source in hits]
+
         print("=" * 72)
         print(f"Q{i}: {item['question']}")
-        print(f"  retrieved={hits}  verdict={verdict.upper()}")
+        print(f"  retrieved={hit_summary}  verdict={verdict.upper()}")
         print(f"  answer: {ans}")
-        log(f"Q{i}: {item['question']}", f"retrieved={hits}\nverdict={verdict}\nanswer={ans}")
+        log(f"Q{i}: {item['question']}", f"retrieved={hit_summary}\nverdict={verdict}\nanswer={ans}")
     print("=" * 72)
     print(f"Baseline pass rate: {passes}/{len(eval_set)}")
 
@@ -236,7 +262,8 @@ def validate_framework() -> None:
     q = "What is BM25?"
     notes = "States that BM25 is a keyword / term-frequency ranking function for documents."
     good = answer(llm, q, [doc_id for doc_id, _ in retrieve(q)])
-    manipulated = "BM25 is a deep neural network that generates images from text prompts."
+    #manipulated = "BM25 is a deep neural network that generates images from text prompts."
+    manipulated = "The first three players drafted were Tom Brady, Patrick Mahomes, and Joe Burrow."
     good_verdict = judge(llm, good, notes)
     manip_verdict = judge(llm, manipulated, notes)
     print("\n--- Framework validation ---")

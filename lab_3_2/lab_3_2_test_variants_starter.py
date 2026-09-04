@@ -56,6 +56,7 @@ load_dotenv()
 
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 LLM_MODEL = "openai/gpt-5.4-mini"  # Latest small OpenAI model, fast; covered by course credits
+SCRIPT_DIR = Path(__file__).resolve().parent
 
 VARIANT_SYSTEM_PROMPT = (
     "You rephrase questions. Given a question, produce alternative phrasings a "
@@ -92,10 +93,10 @@ def make_variants(llm: ChatOpenAI, question: str, n: int) -> list[str]:
 
 
 def main():
-    in_path = sys.argv[1] if len(sys.argv) > 1 else "testInputs.json"
+    in_path = Path(sys.argv[1]) if len(sys.argv) > 1 else SCRIPT_DIR / "testInputs.json"
     n = int(sys.argv[2]) if len(sys.argv) > 2 else 3
-    out_path = sys.argv[3] if len(sys.argv) > 3 else str(
-        Path(in_path).with_name(Path(in_path).stem + "_variants.json")
+    out_path = Path(sys.argv[3]) if len(sys.argv) > 3 else (
+        in_path.with_name(in_path.stem + "_variants.json")
     )
 
     with open(in_path, "r", encoding="utf-8") as f:

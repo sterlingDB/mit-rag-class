@@ -14,14 +14,28 @@
     ]
   },
   {
-    "question": "What important announcement did Amelia Grant make in her email on January 1, 2015 concerning the company\u2019s plans for the new year?",
+    "question": "What important announcement did Amelia Grant make in her email dated January 1, 2015 regarding the company\u2019s new-year plans?",
     "grading_notes": "The correct answer should mention that Amelia Grant announced the kickoff for goal-setting sessions to align the company's vision and focus on measurable targets for growth in 2015.",
     "sources": [
       "mail_01_01_15_1450.txt"
     ]
   },
   {
-    "question": "What event did Amelia Grant reveal in her January 1, 2015 email about the company\u2019s new-year plans?",
+    "question": "In Amelia Grant\u2019s January 1, 2015 email, what major event did she announce about the company\u2019s plans for the year ahead?",
+    "grading_notes": "The correct answer should mention that Amelia Grant announced the kickoff for goal-setting sessions to align the company's vision and focus on measurable targets for growth in 2015.",
+    "sources": [
+      "mail_01_01_15_1450.txt"
+    ]
+  },
+  {
+    "question": "What event did Amelia Grant reveal in her January 1, 2015 email concerning the company\u2019s plans for the new year?",
+    "grading_notes": "The correct answer should mention that Amelia Grant announced the kickoff for goal-setting sessions to align the company's vision and focus on measurable targets for growth in 2015.",
+    "sources": [
+      "mail_01_01_15_1450.txt"
+    ]
+  },
+  {
+    "question": "What key news did Amelia Grant share in her email on January 1, 2015 about the company\u2019s plans for the coming year?",
     "grading_notes": "The correct answer should mention that Amelia Grant announced the kickoff for goal-setting sessions to align the company's vision and focus on measurable targets for growth in 2015.",
     "sources": [
       "mail_01_01_15_1450.txt"
@@ -44,7 +58,7 @@
     ]
   },
   {
-    "question": "What launch date is mentioned for the EdibleClip product in the emails, and what preparations were confirmed before then?",
+    "question": "What launch date is mentioned for the EdibleClip product in the emails, and what preparations were confirmed beforehand?",
     "grading_notes": "The launch date for the EdibleClip product is January 5, 2019. Leading up to this date, various preparations were confirmed, including that all distributors received their marketing materials, production was fully stocked and ready, quality assurance checks were completed with no outstanding issues, and all marketing materials were aligned and finalized.",
     "sources": [
       "mail_11_30_18_6512.txt",
@@ -60,7 +74,7 @@
     ]
   },
   {
-    "question": "What is the EdibleClip product\u2019s launch date according to the emails, and which preparations were confirmed ahead of it?",
+    "question": "When is EdibleClip supposed to launch according to the emails, and what prep steps were confirmed ahead of time?",
     "grading_notes": "The launch date for the EdibleClip product is January 5, 2019. Leading up to this date, various preparations were confirmed, including that all distributors received their marketing materials, production was fully stocked and ready, quality assurance checks were completed with no outstanding issues, and all marketing materials were aligned and finalized.",
     "sources": [
       "mail_11_30_18_6512.txt",
@@ -76,7 +90,39 @@
     ]
   },
   {
-    "question": "According to the emails, when is EdibleClip set to launch, and what prep steps were confirmed leading up to that date?",
+    "question": "What date do the emails give for the EdibleClip product launch, and what preparations were said to be in place before then?",
+    "grading_notes": "The launch date for the EdibleClip product is January 5, 2019. Leading up to this date, various preparations were confirmed, including that all distributors received their marketing materials, production was fully stocked and ready, quality assurance checks were completed with no outstanding issues, and all marketing materials were aligned and finalized.",
+    "sources": [
+      "mail_11_30_18_6512.txt",
+      "mail_12_11_18_6547.txt",
+      "mail_12_12_18_6550.txt",
+      "mail_12_13_18_6555.txt",
+      "mail_12_14_18_6561.txt",
+      "mail_12_17_18_6565.txt",
+      "mail_12_17_18_6566.txt",
+      "mail_12_24_18_6585.txt",
+      "mail_12_24_18_6586.txt",
+      "mail_12_27_18_6588.txt"
+    ]
+  },
+  {
+    "question": "According to the emails, when will EdibleClip launch, and what arrangements were confirmed leading up to that launch date?",
+    "grading_notes": "The launch date for the EdibleClip product is January 5, 2019. Leading up to this date, various preparations were confirmed, including that all distributors received their marketing materials, production was fully stocked and ready, quality assurance checks were completed with no outstanding issues, and all marketing materials were aligned and finalized.",
+    "sources": [
+      "mail_11_30_18_6512.txt",
+      "mail_12_11_18_6547.txt",
+      "mail_12_12_18_6550.txt",
+      "mail_12_13_18_6555.txt",
+      "mail_12_14_18_6561.txt",
+      "mail_12_17_18_6565.txt",
+      "mail_12_17_18_6566.txt",
+      "mail_12_24_18_6585.txt",
+      "mail_12_24_18_6586.txt",
+      "mail_12_27_18_6588.txt"
+    ]
+  },
+  {
+    "question": "What launch timing for EdibleClip is referenced in the emails, and what preparations were confirmed in advance of it?",
     "grading_notes": "The launch date for the EdibleClip product is January 5, 2019. Leading up to this date, various preparations were confirmed, including that all distributors received their marketing materials, production was fully stocked and ready, quality assurance checks were completed with no outstanding issues, and all marketing materials were aligned and finalized.",
     "sources": [
       "mail_11_30_18_6512.txt",
@@ -114,7 +160,7 @@
     ]
   },
   {
-    "question": "What significant occasion is the Precision Paperclip team preparing for at the start of January 2019, and what is the event date?",
+    "question": "What important event is the Precision Paperclip team preparing for in early January 2019, and what date is it on?",
     "grading_notes": "The Precision Paperclip team is preparing for the launch of the EdibleClip, with the official launch date set for January 5, 2019.",
     "sources": [
       "mail_12_27_18_6592.txt",
@@ -125,7 +171,29 @@
     ]
   },
   {
-    "question": "In early January 2019, what event is the Precision Paperclip team preparing for, and on what date will it happen?",
+    "question": "Which significant event is the Precision Paperclip team gearing up for in early January 2019, and what is the event date?",
+    "grading_notes": "The Precision Paperclip team is preparing for the launch of the EdibleClip, with the official launch date set for January 5, 2019.",
+    "sources": [
+      "mail_12_27_18_6592.txt",
+      "mail_12_28_18_6595.txt",
+      "mail_01_01_19_6604.txt",
+      "mail_01_01_19_6607.txt",
+      "mail_03_22_19_6929.txt"
+    ]
+  },
+  {
+    "question": "What event is the Precision Paperclip team preparing for in early January 2019, and on what date will it happen?",
+    "grading_notes": "The Precision Paperclip team is preparing for the launch of the EdibleClip, with the official launch date set for January 5, 2019.",
+    "sources": [
+      "mail_12_27_18_6592.txt",
+      "mail_12_28_18_6595.txt",
+      "mail_01_01_19_6604.txt",
+      "mail_01_01_19_6607.txt",
+      "mail_03_22_19_6929.txt"
+    ]
+  },
+  {
+    "question": "In early January 2019, what significant event is the Precision Paperclip team preparing for, and what is its date?",
     "grading_notes": "The Precision Paperclip team is preparing for the launch of the EdibleClip, with the official launch date set for January 5, 2019.",
     "sources": [
       "mail_12_27_18_6592.txt",
@@ -143,21 +211,35 @@
     ]
   },
   {
-    "question": "What is the official launch date for the EdibleClip mentioned in the emails?",
+    "question": "What was the official launch date for the EdibleClip mentioned in the emails?",
     "grading_notes": "The official launch for the EdibleClip is scheduled for January 5, 2019.",
     "sources": [
       "mail_01_01_19_6604.txt"
     ]
   },
   {
-    "question": "When was the EdibleClip officially launched, according to the emails?",
+    "question": "When did the EdibleClip mentioned in the emails officially launch?",
     "grading_notes": "The official launch for the EdibleClip is scheduled for January 5, 2019.",
     "sources": [
       "mail_01_01_19_6604.txt"
     ]
   },
   {
-    "question": "What date did the official launch of the EdibleClip mentioned in the emails take place?",
+    "question": "What date was the EdibleClip officially launched, according to the emails?",
+    "grading_notes": "The official launch for the EdibleClip is scheduled for January 5, 2019.",
+    "sources": [
+      "mail_01_01_19_6604.txt"
+    ]
+  },
+  {
+    "question": "According to the emails, what is the official launch date of the EdibleClip?",
+    "grading_notes": "The official launch for the EdibleClip is scheduled for January 5, 2019.",
+    "sources": [
+      "mail_01_01_19_6604.txt"
+    ]
+  },
+  {
+    "question": "Can you tell me the official launch date for the EdibleClip referenced in the emails?",
     "grading_notes": "The official launch for the EdibleClip is scheduled for January 5, 2019.",
     "sources": [
       "mail_01_01_19_6604.txt"
@@ -173,7 +255,7 @@
     ]
   },
   {
-    "question": "What major operational focus was discussed at the leadership meeting on January 27, 2014, according to the emails?",
+    "question": "What major operational focus was discussed in the leadership meeting on January 27, 2014, according to the emails?",
     "grading_notes": "The leadership meeting on January 27, 2014, focused on addressing operational efficiencies and production targets for the year 2014.",
     "sources": [
       "mail_01_02_14_198.txt",
@@ -182,7 +264,7 @@
     ]
   },
   {
-    "question": "What important operational issue was brought up during the leadership meeting on January 27, 2014, as mentioned in the emails?",
+    "question": "What important operational issue was talked about during the leadership meeting on January 27, 2014, as referenced in the emails?",
     "grading_notes": "The leadership meeting on January 27, 2014, focused on addressing operational efficiencies and production targets for the year 2014.",
     "sources": [
       "mail_01_02_14_198.txt",
@@ -191,7 +273,25 @@
     ]
   },
   {
-    "question": "What key operational topic was covered in the leadership meeting on January 27, 2014, based on the emails?",
+    "question": "What key operational topic came up in the leadership meeting on January 27, 2014, based on the emails?",
+    "grading_notes": "The leadership meeting on January 27, 2014, focused on addressing operational efficiencies and production targets for the year 2014.",
+    "sources": [
+      "mail_01_02_14_198.txt",
+      "mail_01_08_14_216.txt",
+      "mail_01_27_14_276.txt"
+    ]
+  },
+  {
+    "question": "What significant operational matter was addressed at the leadership meeting on January 27, 2014, as mentioned in the emails?",
+    "grading_notes": "The leadership meeting on January 27, 2014, focused on addressing operational efficiencies and production targets for the year 2014.",
+    "sources": [
+      "mail_01_02_14_198.txt",
+      "mail_01_08_14_216.txt",
+      "mail_01_27_14_276.txt"
+    ]
+  },
+  {
+    "question": "What operational focus was highlighted during the leadership meeting on January 27, 2014, according to the emails?",
     "grading_notes": "The leadership meeting on January 27, 2014, focused on addressing operational efficiencies and production targets for the year 2014.",
     "sources": [
       "mail_01_02_14_198.txt",
@@ -207,21 +307,35 @@
     ]
   },
   {
-    "question": "What important meeting is mentioned in Amelia Grant's January 2, 2015 email, and what is it for?",
+    "question": "What important meeting is mentioned in Amelia Grant's email from January 2, 2015, and what is its purpose?",
     "grading_notes": "The email mentions an upcoming kickoff meeting to discuss the team's goals for 2015, where team members are expected to bring their proposals for discussion.",
     "sources": [
       "mail_01_02_15_1455.txt"
     ]
   },
   {
-    "question": "Which important meeting is referred to in Amelia Grant's email dated January 2, 2015, and what is its purpose?",
+    "question": "Which important meeting is referred to in Amelia Grant's January 2, 2015 email, and why is it being held?",
     "grading_notes": "The email mentions an upcoming kickoff meeting to discuss the team's goals for 2015, where team members are expected to bring their proposals for discussion.",
     "sources": [
       "mail_01_02_15_1455.txt"
     ]
   },
   {
-    "question": "In Amelia Grant's January 2, 2015 email, what important meeting is mentioned and why is it being held?",
+    "question": "In Amelia Grant's email dated January 2, 2015, what important meeting is mentioned and what is it for?",
+    "grading_notes": "The email mentions an upcoming kickoff meeting to discuss the team's goals for 2015, where team members are expected to bring their proposals for discussion.",
+    "sources": [
+      "mail_01_02_15_1455.txt"
+    ]
+  },
+  {
+    "question": "What significant meeting does Amelia Grant mention in her January 2, 2015 email, and what is its purpose?",
+    "grading_notes": "The email mentions an upcoming kickoff meeting to discuss the team's goals for 2015, where team members are expected to bring their proposals for discussion.",
+    "sources": [
+      "mail_01_02_15_1455.txt"
+    ]
+  },
+  {
+    "question": "According to Amelia Grant's email from January 2, 2015, which important meeting is discussed and what is it intended to do?",
     "grading_notes": "The email mentions an upcoming kickoff meeting to discuss the team's goals for 2015, where team members are expected to bring their proposals for discussion.",
     "sources": [
       "mail_01_02_15_1455.txt"
@@ -237,7 +351,7 @@
     ]
   },
   {
-    "question": "What major update about the SandwichClip project is mentioned in the emails, and how is it connected to the edible paperclip project discussed in July 2017?",
+    "question": "What major update about the SandwichClip project is mentioned in the emails, and how does it connect to the edible paperclip project discussed in July 2017?",
     "grading_notes": "The emails mention a write-off related to the SandwichClip project, which is significant as it impacts the strategy and alignment needed for the edible paperclip project. Marcus Lee emphasizes the importance of discussing this write-off in relation to the new phase of the edible paperclip project to ensure that the team is aligned and can leverage insights gained from the previous project.",
     "sources": [
       "mail_01_02_15_1458.txt",
@@ -246,7 +360,7 @@
     ]
   },
   {
-    "question": "What important development concerning the SandwichClip project appears in the emails, and how does it relate to the edible paperclip project from July 2017?",
+    "question": "What important development involving the SandwichClip project appears in the emails, and how is it related to the edible paperclip project from July 2017?",
     "grading_notes": "The emails mention a write-off related to the SandwichClip project, which is significant as it impacts the strategy and alignment needed for the edible paperclip project. Marcus Lee emphasizes the importance of discussing this write-off in relation to the new phase of the edible paperclip project to ensure that the team is aligned and can leverage insights gained from the previous project.",
     "sources": [
       "mail_01_02_15_1458.txt",
@@ -255,7 +369,25 @@
     ]
   },
   {
-    "question": "What significant change related to the SandwichClip project is referred to in the emails, and what is its connection to the edible paperclip project mentioned in July 2017?",
+    "question": "What significant change or update about the SandwichClip project is referenced in the emails, and what is its connection to the edible paperclip project discussed in July 2017?",
+    "grading_notes": "The emails mention a write-off related to the SandwichClip project, which is significant as it impacts the strategy and alignment needed for the edible paperclip project. Marcus Lee emphasizes the importance of discussing this write-off in relation to the new phase of the edible paperclip project to ensure that the team is aligned and can leverage insights gained from the previous project.",
+    "sources": [
+      "mail_01_02_15_1458.txt",
+      "mail_01_12_15_1491.txt",
+      "mail_07_05_17_4621.txt"
+    ]
+  },
+  {
+    "question": "In the emails, what notable development is mentioned about the SandwichClip project, and how does that tie back to the edible paperclip project from July 2017?",
+    "grading_notes": "The emails mention a write-off related to the SandwichClip project, which is significant as it impacts the strategy and alignment needed for the edible paperclip project. Marcus Lee emphasizes the importance of discussing this write-off in relation to the new phase of the edible paperclip project to ensure that the team is aligned and can leverage insights gained from the previous project.",
+    "sources": [
+      "mail_01_02_15_1458.txt",
+      "mail_01_12_15_1491.txt",
+      "mail_07_05_17_4621.txt"
+    ]
+  },
+  {
+    "question": "What key progress on the SandwichClip project is described in the emails, and how does it relate to the edible paperclip project mentioned in July 2017?",
     "grading_notes": "The emails mention a write-off related to the SandwichClip project, which is significant as it impacts the strategy and alignment needed for the edible paperclip project. Marcus Lee emphasizes the importance of discussing this write-off in relation to the new phase of the edible paperclip project to ensure that the team is aligned and can leverage insights gained from the previous project.",
     "sources": [
       "mail_01_02_15_1458.txt",
@@ -280,7 +412,7 @@
     ]
   },
   {
-    "question": "What urgent issue about steel tariffs was mentioned in the February 2015 emails, and what steps were suggested to deal with it?",
+    "question": "What pressing issue about steel tariffs came up in the February 2015 emails, and what steps were suggested to deal with it?",
     "grading_notes": "The urgent concern was that the proposed steel tariffs might be implemented sooner than expected, which could disrupt the supply chain and lead times. The actions proposed were to secure alternative sourcing options, contact current suppliers to gauge their positions, explore forward contracts, and review alternative suppliers.",
     "sources": [
       "mail_01_20_15_1522.txt",
@@ -296,7 +428,7 @@
     ]
   },
   {
-    "question": "What pressing concern about steel tariffs came up in the February 2015 email exchange, and what actions were proposed to handle it?",
+    "question": "What urgent steel tariff concern was discussed in the February 2015 emails, and what actions were proposed to address it?",
     "grading_notes": "The urgent concern was that the proposed steel tariffs might be implemented sooner than expected, which could disrupt the supply chain and lead times. The actions proposed were to secure alternative sourcing options, contact current suppliers to gauge their positions, explore forward contracts, and review alternative suppliers.",
     "sources": [
       "mail_01_20_15_1522.txt",
@@ -312,7 +444,39 @@
     ]
   },
   {
-    "question": "In the emails from February 2015, what serious worry about steel tariffs was discussed, and what measures were recommended to address it?",
+    "question": "In the February 2015 emails, what serious concern about steel tariffs was raised, and what measures were suggested to handle it?",
+    "grading_notes": "The urgent concern was that the proposed steel tariffs might be implemented sooner than expected, which could disrupt the supply chain and lead times. The actions proposed were to secure alternative sourcing options, contact current suppliers to gauge their positions, explore forward contracts, and review alternative suppliers.",
+    "sources": [
+      "mail_01_20_15_1522.txt",
+      "mail_01_26_15_1548.txt",
+      "mail_02_05_15_1597.txt",
+      "mail_02_10_15_1612.txt",
+      "mail_02_16_15_1635.txt",
+      "mail_02_17_15_1639.txt",
+      "mail_03_02_15_1687.txt",
+      "mail_03_03_15_1690.txt",
+      "mail_03_09_15_1724.txt",
+      "mail_04_20_15_1888.txt"
+    ]
+  },
+  {
+    "question": "What was the urgent issue regarding steel tariffs mentioned in the February 2015 emails, and what responses were proposed?",
+    "grading_notes": "The urgent concern was that the proposed steel tariffs might be implemented sooner than expected, which could disrupt the supply chain and lead times. The actions proposed were to secure alternative sourcing options, contact current suppliers to gauge their positions, explore forward contracts, and review alternative suppliers.",
+    "sources": [
+      "mail_01_20_15_1522.txt",
+      "mail_01_26_15_1548.txt",
+      "mail_02_05_15_1597.txt",
+      "mail_02_10_15_1612.txt",
+      "mail_02_16_15_1635.txt",
+      "mail_02_17_15_1639.txt",
+      "mail_03_02_15_1687.txt",
+      "mail_03_03_15_1690.txt",
+      "mail_03_09_15_1724.txt",
+      "mail_04_20_15_1888.txt"
+    ]
+  },
+  {
+    "question": "What concern about steel tariffs was highlighted in the February 2015 emails, and what actions were put forward to resolve it?",
     "grading_notes": "The urgent concern was that the proposed steel tariffs might be implemented sooner than expected, which could disrupt the supply chain and lead times. The actions proposed were to secure alternative sourcing options, contact current suppliers to gauge their positions, explore forward contracts, and review alternative suppliers.",
     "sources": [
       "mail_01_20_15_1522.txt",
@@ -344,7 +508,7 @@
     ]
   },
   {
-    "question": "What financial issues were mentioned about the SandwichClip\u2122 in the June 2016 emails?",
+    "question": "What financial issues were discussed about the SandwichClip\u2122 in the emails from June 2016?",
     "grading_notes": "The emails from June 2016 highlight ongoing challenges with slow sales of the SandwichClip\u2122 and the need to review budget implications due to marketing costs. Liam Patel expressed concerns about the financial implications of continuing the current marketing strategy, emphasizing the importance of aligning the budget with strategic goals to avoid risks to the core business. Marcus Lee also flagged budget discrepancies and suggested meetings to address these issues as they refine their marketing strategies for the product.",
     "sources": [
       "mail_03_14_16_3038.txt",
@@ -360,7 +524,7 @@
     ]
   },
   {
-    "question": "What money-related challenges were discussed concerning the SandwichClip\u2122 in the emails from June 2016?",
+    "question": "What money-related challenges were mentioned regarding the SandwichClip\u2122 in the June 2016 emails?",
     "grading_notes": "The emails from June 2016 highlight ongoing challenges with slow sales of the SandwichClip\u2122 and the need to review budget implications due to marketing costs. Liam Patel expressed concerns about the financial implications of continuing the current marketing strategy, emphasizing the importance of aligning the budget with strategic goals to avoid risks to the core business. Marcus Lee also flagged budget discrepancies and suggested meetings to address these issues as they refine their marketing strategies for the product.",
     "sources": [
       "mail_03_14_16_3038.txt",
@@ -376,7 +540,39 @@
     ]
   },
   {
-    "question": "In the June 2016 emails, what financial problems were brought up about the SandwichClip\u2122?",
+    "question": "What financial concerns came up about the SandwichClip\u2122 in emails from June 2016?",
+    "grading_notes": "The emails from June 2016 highlight ongoing challenges with slow sales of the SandwichClip\u2122 and the need to review budget implications due to marketing costs. Liam Patel expressed concerns about the financial implications of continuing the current marketing strategy, emphasizing the importance of aligning the budget with strategic goals to avoid risks to the core business. Marcus Lee also flagged budget discrepancies and suggested meetings to address these issues as they refine their marketing strategies for the product.",
+    "sources": [
+      "mail_03_14_16_3038.txt",
+      "mail_04_05_16_3108.txt",
+      "mail_04_29_16_3182.txt",
+      "mail_06_01_16_3290.txt",
+      "mail_06_06_16_3303.txt",
+      "mail_06_07_16_3306.txt",
+      "mail_06_29_16_3373.txt",
+      "mail_06_30_16_3377.txt",
+      "mail_07_27_16_3463.txt",
+      "mail_12_12_16_3908.txt"
+    ]
+  },
+  {
+    "question": "What obstacles involving finances were discussed about the SandwichClip\u2122 in the June 2016 email thread?",
+    "grading_notes": "The emails from June 2016 highlight ongoing challenges with slow sales of the SandwichClip\u2122 and the need to review budget implications due to marketing costs. Liam Patel expressed concerns about the financial implications of continuing the current marketing strategy, emphasizing the importance of aligning the budget with strategic goals to avoid risks to the core business. Marcus Lee also flagged budget discrepancies and suggested meetings to address these issues as they refine their marketing strategies for the product.",
+    "sources": [
+      "mail_03_14_16_3038.txt",
+      "mail_04_05_16_3108.txt",
+      "mail_04_29_16_3182.txt",
+      "mail_06_01_16_3290.txt",
+      "mail_06_06_16_3303.txt",
+      "mail_06_07_16_3306.txt",
+      "mail_06_29_16_3373.txt",
+      "mail_06_30_16_3377.txt",
+      "mail_07_27_16_3463.txt",
+      "mail_12_12_16_3908.txt"
+    ]
+  },
+  {
+    "question": "What cost-related problems were talked about regarding the SandwichClip\u2122 in the emails from June 2016?",
     "grading_notes": "The emails from June 2016 highlight ongoing challenges with slow sales of the SandwichClip\u2122 and the need to review budget implications due to marketing costs. Liam Patel expressed concerns about the financial implications of continuing the current marketing strategy, emphasizing the importance of aligning the budget with strategic goals to avoid risks to the core business. Marcus Lee also flagged budget discrepancies and suggested meetings to address these issues as they refine their marketing strategies for the product.",
     "sources": [
       "mail_03_14_16_3038.txt",
@@ -408,7 +604,7 @@
     ]
   },
   {
-    "question": "What urgent compliance concerns were raised about the edible paperclip study in December 2016, and how did the team intend to deal with them?",
+    "question": "What urgent compliance issues were raised about the edible paperclip study in December 2016, and how did the team plan to handle them?",
     "grading_notes": "The emails indicate that there were urgent polymer coating issues related to the edible paperclip study that raised compliance implications. Grace Mitchell requested a meeting to align on these issues, and Daniel Brooks scheduled a meeting for December 27, 2016, to review the study findings and address the compliance concerns.",
     "sources": [
       "mail_12_13_16_3913.txt",
@@ -424,7 +620,7 @@
     ]
   },
   {
-    "question": "What compliance issues were brought up as urgent regarding the edible paperclip study in December 2016, and what was the team\u2019s plan for addressing them?",
+    "question": "What compliance problems were flagged as urgent for the edible paperclip study in December 2016, and what was the team\u2019s plan to fix them?",
     "grading_notes": "The emails indicate that there were urgent polymer coating issues related to the edible paperclip study that raised compliance implications. Grace Mitchell requested a meeting to align on these issues, and Daniel Brooks scheduled a meeting for December 27, 2016, to review the study findings and address the compliance concerns.",
     "sources": [
       "mail_12_13_16_3913.txt",
@@ -440,7 +636,39 @@
     ]
   },
   {
-    "question": "In December 2016, what urgent compliance problems were flagged in connection with the edible paperclip study, and how did the team plan to resolve them?",
+    "question": "In December 2016, what urgent compliance concerns came up regarding the edible paperclip study, and how did the team intend to address them?",
+    "grading_notes": "The emails indicate that there were urgent polymer coating issues related to the edible paperclip study that raised compliance implications. Grace Mitchell requested a meeting to align on these issues, and Daniel Brooks scheduled a meeting for December 27, 2016, to review the study findings and address the compliance concerns.",
+    "sources": [
+      "mail_12_13_16_3913.txt",
+      "mail_12_13_16_3915.txt",
+      "mail_12_21_16_3939.txt",
+      "mail_01_23_17_4050.txt",
+      "mail_02_13_17_4125.txt",
+      "mail_02_16_17_4142.txt",
+      "mail_03_21_17_4256.txt",
+      "mail_03_22_17_4264.txt",
+      "mail_06_26_17_4594.txt",
+      "mail_08_07_17_4746.txt"
+    ]
+  },
+  {
+    "question": "What were the urgent compliance concerns raised about the edible paperclip study in December 2016, and what steps did the team plan to take?",
+    "grading_notes": "The emails indicate that there were urgent polymer coating issues related to the edible paperclip study that raised compliance implications. Grace Mitchell requested a meeting to align on these issues, and Daniel Brooks scheduled a meeting for December 27, 2016, to review the study findings and address the compliance concerns.",
+    "sources": [
+      "mail_12_13_16_3913.txt",
+      "mail_12_13_16_3915.txt",
+      "mail_12_21_16_3939.txt",
+      "mail_01_23_17_4050.txt",
+      "mail_02_13_17_4125.txt",
+      "mail_02_16_17_4142.txt",
+      "mail_03_21_17_4256.txt",
+      "mail_03_22_17_4264.txt",
+      "mail_06_26_17_4594.txt",
+      "mail_08_07_17_4746.txt"
+    ]
+  },
+  {
+    "question": "Which urgent compliance issues were identified in December 2016 concerning the edible paperclip study, and how did the team plan to resolve them?",
     "grading_notes": "The emails indicate that there were urgent polymer coating issues related to the edible paperclip study that raised compliance implications. Grace Mitchell requested a meeting to align on these issues, and Daniel Brooks scheduled a meeting for December 27, 2016, to review the study findings and address the compliance concerns.",
     "sources": [
       "mail_12_13_16_3913.txt",
@@ -472,7 +700,7 @@
     ]
   },
   {
-    "question": "What major decision was made about the EdibleClip name in early August 2018, and why was it considered urgent?",
+    "question": "What major decision was made about the EdibleClip name in early August 2018, and why was it urgent?",
     "grading_notes": "The significant decision made on August 2, 2018, was to finalize the name \"EdibleClip.\" The urgency behind this decision was to ensure that the team could proceed seamlessly with their launch strategies, as highlighted by Amelia Grant in her email.",
     "sources": [
       "mail_04_12_18_5706.txt",
@@ -488,7 +716,7 @@
     ]
   },
   {
-    "question": "What important choice was made concerning the EdibleClip name in early August 2018, and what made it time-sensitive?",
+    "question": "What important choice was made regarding the EdibleClip name in early August 2018, and what made it so urgent?",
     "grading_notes": "The significant decision made on August 2, 2018, was to finalize the name \"EdibleClip.\" The urgency behind this decision was to ensure that the team could proceed seamlessly with their launch strategies, as highlighted by Amelia Grant in her email.",
     "sources": [
       "mail_04_12_18_5706.txt",
@@ -504,7 +732,39 @@
     ]
   },
   {
-    "question": "In early August 2018, what significant decision was made about the EdibleClip name, and what was the reason for the urgency?",
+    "question": "What significant call was made about the EdibleClip name in early August 2018, and what was the reason for the urgency?",
+    "grading_notes": "The significant decision made on August 2, 2018, was to finalize the name \"EdibleClip.\" The urgency behind this decision was to ensure that the team could proceed seamlessly with their launch strategies, as highlighted by Amelia Grant in her email.",
+    "sources": [
+      "mail_04_12_18_5706.txt",
+      "mail_04_17_18_5726.txt",
+      "mail_05_01_18_5769.txt",
+      "mail_08_02_18_6114.txt",
+      "mail_08_07_18_6129.txt",
+      "mail_11_13_18_6459.txt",
+      "mail_01_03_19_6616.txt",
+      "mail_01_15_19_6660.txt",
+      "mail_01_18_19_6674.txt",
+      "mail_01_22_19_6686.txt"
+    ]
+  },
+  {
+    "question": "What was decided about the EdibleClip name in early August 2018, and why did it need to be handled urgently?",
+    "grading_notes": "The significant decision made on August 2, 2018, was to finalize the name \"EdibleClip.\" The urgency behind this decision was to ensure that the team could proceed seamlessly with their launch strategies, as highlighted by Amelia Grant in her email.",
+    "sources": [
+      "mail_04_12_18_5706.txt",
+      "mail_04_17_18_5726.txt",
+      "mail_05_01_18_5769.txt",
+      "mail_08_02_18_6114.txt",
+      "mail_08_07_18_6129.txt",
+      "mail_11_13_18_6459.txt",
+      "mail_01_03_19_6616.txt",
+      "mail_01_15_19_6660.txt",
+      "mail_01_18_19_6674.txt",
+      "mail_01_22_19_6686.txt"
+    ]
+  },
+  {
+    "question": "What key decision was reached regarding the EdibleClip name in early August 2018, and what prompted the urgency?",
     "grading_notes": "The significant decision made on August 2, 2018, was to finalize the name \"EdibleClip.\" The urgency behind this decision was to ensure that the team could proceed seamlessly with their launch strategies, as highlighted by Amelia Grant in her email.",
     "sources": [
       "mail_04_12_18_5706.txt",
@@ -527,21 +787,35 @@
     ]
   },
   {
-    "question": "When is the line conversion for the EP-1 project scheduled to start?",
+    "question": "When is line conversion for the EP-1 project scheduled to start?",
     "grading_notes": "The line conversion of the EP-1 project is set to begin during the week of January 2 2018.",
     "sources": [
       "mail_01_02_18_5289.txt"
     ]
   },
   {
-    "question": "What is the planned start date for the line conversion on the EP-1 project?",
+    "question": "When does line conversion begin for the EP-1 project?",
     "grading_notes": "The line conversion of the EP-1 project is set to begin during the week of January 2 2018.",
     "sources": [
       "mail_01_02_18_5289.txt"
     ]
   },
   {
-    "question": "When will the line conversion work for the EP-1 project begin?",
+    "question": "What is the start date for line conversion on the EP-1 project?",
+    "grading_notes": "The line conversion of the EP-1 project is set to begin during the week of January 2 2018.",
+    "sources": [
+      "mail_01_02_18_5289.txt"
+    ]
+  },
+  {
+    "question": "When is line conversion expected to begin for the EP-1 project?",
+    "grading_notes": "The line conversion of the EP-1 project is set to begin during the week of January 2 2018.",
+    "sources": [
+      "mail_01_02_18_5289.txt"
+    ]
+  },
+  {
+    "question": "Can you tell me when the EP-1 project\u2019s line conversion is set to start?",
     "grading_notes": "The line conversion of the EP-1 project is set to begin during the week of January 2 2018.",
     "sources": [
       "mail_01_02_18_5289.txt"
@@ -560,7 +834,7 @@
     ]
   },
   {
-    "question": "What were the main features of the EdibleClip product highlighted in the marketing strategy talks before its January 2019 launch?",
+    "question": "What key aspects of the EdibleClip product were highlighted in the marketing strategy discussions before its January 2019 launch?",
     "grading_notes": "The marketing strategy discussions emphasized the sustainability and unique qualities of the EdibleClip product, highlighting its environmental benefits and innovative material aspects to capture the target market's interest.",
     "sources": [
       "mail_11_28_18_6504.txt",
@@ -572,7 +846,7 @@
     ]
   },
   {
-    "question": "Which key points about the EdibleClip product were stressed in marketing strategy discussions ahead of its January 2019 release?",
+    "question": "What were the main EdibleClip features emphasized in marketing strategy discussions leading up to the January 2019 launch?",
     "grading_notes": "The marketing strategy discussions emphasized the sustainability and unique qualities of the EdibleClip product, highlighting its environmental benefits and innovative material aspects to capture the target market's interest.",
     "sources": [
       "mail_11_28_18_6504.txt",
@@ -584,7 +858,31 @@
     ]
   },
   {
-    "question": "What aspects of EdibleClip were emphasized in the marketing strategy conversations leading up to its January 2019 debut?",
+    "question": "Which aspects of EdibleClip did the marketing strategy discussions focus on before its January 2019 debut?",
+    "grading_notes": "The marketing strategy discussions emphasized the sustainability and unique qualities of the EdibleClip product, highlighting its environmental benefits and innovative material aspects to capture the target market's interest.",
+    "sources": [
+      "mail_11_28_18_6504.txt",
+      "mail_12_11_18_6548.txt",
+      "mail_12_17_18_6564.txt",
+      "mail_01_02_19_6610.txt",
+      "mail_01_03_19_6616.txt",
+      "mail_01_15_19_6663.txt"
+    ]
+  },
+  {
+    "question": "What important points about the EdibleClip product were stressed in the marketing discussions ahead of its January 2019 launch?",
+    "grading_notes": "The marketing strategy discussions emphasized the sustainability and unique qualities of the EdibleClip product, highlighting its environmental benefits and innovative material aspects to capture the target market's interest.",
+    "sources": [
+      "mail_11_28_18_6504.txt",
+      "mail_12_11_18_6548.txt",
+      "mail_12_17_18_6564.txt",
+      "mail_01_02_19_6610.txt",
+      "mail_01_03_19_6616.txt",
+      "mail_01_15_19_6663.txt"
+    ]
+  },
+  {
+    "question": "What elements of the EdibleClip product were underscored in the marketing strategy talks prior to its January 2019 release?",
     "grading_notes": "The marketing strategy discussions emphasized the sustainability and unique qualities of the EdibleClip product, highlighting its environmental benefits and innovative material aspects to capture the target market's interest.",
     "sources": [
       "mail_11_28_18_6504.txt",
@@ -604,7 +902,7 @@
     ]
   },
   {
-    "question": "When does Precision Paperclip expect to break even, and why is that considered a concern?",
+    "question": "When does Precision Paperclip expect to break even, and why is that worrisome?",
     "grading_notes": "Precision Paperclip appears to be aiming to break even on SandwichClip by **Q1** .\n\nThe concern is that the product had **missed the breakeven trigger substantially**, and Liam warned that **continuing to invest in it would deepen losses**. Amelia also said they needed to make **actionable, data-driven adjustments** to reach the Q1 break-even target.",
     "sources": [
       "mail_01_03_17_3972.txt",
@@ -612,7 +910,7 @@
     ]
   },
   {
-    "question": "When is Precision Paperclip projected to reach break-even, and why does that raise concern?",
+    "question": "When is Precision Paperclip projected to reach break-even, and why does that matter?",
     "grading_notes": "Precision Paperclip appears to be aiming to break even on SandwichClip by **Q1** .\n\nThe concern is that the product had **missed the breakeven trigger substantially**, and Liam warned that **continuing to invest in it would deepen losses**. Amelia also said they needed to make **actionable, data-driven adjustments** to reach the Q1 break-even target.",
     "sources": [
       "mail_01_03_17_3972.txt",
@@ -620,7 +918,23 @@
     ]
   },
   {
-    "question": "At what point is Precision Paperclip supposed to break even, and why is that troubling?",
+    "question": "At what point is Precision Paperclip expected to break even, and why is that a concern?",
+    "grading_notes": "Precision Paperclip appears to be aiming to break even on SandwichClip by **Q1** .\n\nThe concern is that the product had **missed the breakeven trigger substantially**, and Liam warned that **continuing to invest in it would deepen losses**. Amelia also said they needed to make **actionable, data-driven adjustments** to reach the Q1 break-even target.",
+    "sources": [
+      "mail_01_03_17_3972.txt",
+      "mail_01_04_17_3982.txt"
+    ]
+  },
+  {
+    "question": "How long until Precision Paperclip breaks even, and why is that an issue?",
+    "grading_notes": "Precision Paperclip appears to be aiming to break even on SandwichClip by **Q1** .\n\nThe concern is that the product had **missed the breakeven trigger substantially**, and Liam warned that **continuing to invest in it would deepen losses**. Amelia also said they needed to make **actionable, data-driven adjustments** to reach the Q1 break-even target.",
+    "sources": [
+      "mail_01_03_17_3972.txt",
+      "mail_01_04_17_3982.txt"
+    ]
+  },
+  {
+    "question": "When will Precision Paperclip hit break-even, and why should that be concerning?",
     "grading_notes": "Precision Paperclip appears to be aiming to break even on SandwichClip by **Q1** .\n\nThe concern is that the product had **missed the breakeven trigger substantially**, and Liam warned that **continuing to invest in it would deepen losses**. Amelia also said they needed to make **actionable, data-driven adjustments** to reach the Q1 break-even target.",
     "sources": [
       "mail_01_03_17_3972.txt",
@@ -642,14 +956,28 @@
     ]
   },
   {
-    "question": "Was Marcus Lee able to find any discrepancies in marketing expenses?",
+    "question": "Were there any discrepancies in marketing expenses that Marcus Lee found?",
     "grading_notes": "Yes. Marcus Lee said he had noticed **inconsistencies/discrepancies in the marketing expense reports**",
     "sources": [
       "mail_01_03_17_3978.txt"
     ]
   },
   {
-    "question": "Were there any discrepancies in marketing expenses that Marcus Lee found?",
+    "question": "Did Marcus Lee identify any inconsistencies in marketing expenses?",
+    "grading_notes": "Yes. Marcus Lee said he had noticed **inconsistencies/discrepancies in the marketing expense reports**",
+    "sources": [
+      "mail_01_03_17_3978.txt"
+    ]
+  },
+  {
+    "question": "Did Marcus Lee notice any discrepancies in the marketing expenses?",
+    "grading_notes": "Yes. Marcus Lee said he had noticed **inconsistencies/discrepancies in the marketing expense reports**",
+    "sources": [
+      "mail_01_03_17_3978.txt"
+    ]
+  },
+  {
+    "question": "Did Marcus Lee uncover any differences or irregularities in marketing expenses?",
     "grading_notes": "Yes. Marcus Lee said he had noticed **inconsistencies/discrepancies in the marketing expense reports**",
     "sources": [
       "mail_01_03_17_3978.txt"
@@ -670,14 +998,28 @@
     ]
   },
   {
-    "question": "Which themes or strategies did Chloe Bennett want to discuss with Marcus Lee about the Q1 marketing campaign?",
+    "question": "What themes or strategies did Chloe Bennett want to discuss with Marcus Lee about the Q1 marketing campaign?",
     "grading_notes": " Chloe Bennett wanted to discuss:\n- the **themes** for the Q1 marketing campaign\n- the **strategies/tactics** to prioritize\n- how those plans should **align with sales targets**\n- any **insights from recent data review**\n- possibly **upcoming events or messaging**",
     "sources": [
       "mail_01_19_15_1517.txt"
     ]
   },
   {
-    "question": "What topics or tactics did Chloe Bennett want to go over with Marcus Lee for the Q1 marketing campaign?",
+    "question": "Which specific themes or strategies did Chloe Bennett want to cover with Marcus Lee for the Q1 marketing campaign?",
+    "grading_notes": " Chloe Bennett wanted to discuss:\n- the **themes** for the Q1 marketing campaign\n- the **strategies/tactics** to prioritize\n- how those plans should **align with sales targets**\n- any **insights from recent data review**\n- possibly **upcoming events or messaging**",
+    "sources": [
+      "mail_01_19_15_1517.txt"
+    ]
+  },
+  {
+    "question": "What did Chloe Bennett want to discuss with Marcus Lee concerning the Q1 marketing campaign\u2019s themes or strategies?",
+    "grading_notes": " Chloe Bennett wanted to discuss:\n- the **themes** for the Q1 marketing campaign\n- the **strategies/tactics** to prioritize\n- how those plans should **align with sales targets**\n- any **insights from recent data review**\n- possibly **upcoming events or messaging**",
+    "sources": [
+      "mail_01_19_15_1517.txt"
+    ]
+  },
+  {
+    "question": "What particular themes or strategies was Chloe Bennett hoping to discuss with Marcus Lee about the Q1 marketing campaign?",
     "grading_notes": " Chloe Bennett wanted to discuss:\n- the **themes** for the Q1 marketing campaign\n- the **strategies/tactics** to prioritize\n- how those plans should **align with sales targets**\n- any **insights from recent data review**\n- possibly **upcoming events or messaging**",
     "sources": [
       "mail_01_19_15_1517.txt"
@@ -704,7 +1046,7 @@
     ]
   },
   {
-    "question": "What issues were distributors worried about regarding the SandwichClip\u2122 launch, prompting a team meeting in January 2016?",
+    "question": "What issues were raised by distributors about the SandwichClip\u2122 launch that prompted a January 2016 team meeting?",
     "grading_notes": "Distributors raised concerns about the practicality of using a clip for sandwiches. The feedback also included skepticism overall, with some independents questioning the concept, even though category managers at pre-sold chains liked the food-safe feature.",
     "sources": [
       "mail_01_19_16_2865.txt",
@@ -724,6 +1066,26 @@
     ]
   },
   {
+    "question": "What distributor feedback about the SandwichClip\u2122 launch caused the team to meet in January 2016?",
+    "grading_notes": "Distributors raised concerns about the practicality of using a clip for sandwiches. The feedback also included skepticism overall, with some independents questioning the concept, even though category managers at pre-sold chains liked the food-safe feature.",
+    "sources": [
+      "mail_01_19_16_2865.txt",
+      "mail_01_20_16_2869.txt",
+      "mail_01_21_16_2870.txt",
+      "mail_01_21_16_2874.txt"
+    ]
+  },
+  {
+    "question": "What problems did distributors identify with the SandwichClip\u2122 launch that led to a team meeting in January 2016?",
+    "grading_notes": "Distributors raised concerns about the practicality of using a clip for sandwiches. The feedback also included skepticism overall, with some independents questioning the concept, even though category managers at pre-sold chains liked the food-safe feature.",
+    "sources": [
+      "mail_01_19_16_2865.txt",
+      "mail_01_20_16_2869.txt",
+      "mail_01_21_16_2870.txt",
+      "mail_01_21_16_2874.txt"
+    ]
+  },
+  {
     "question": "What was the outcome of the adjustments made to QA monitoring as mentioned in the email from Priya Nandakumar on January 20, 2014?",
     "grading_notes": "The adjustments implemented last week led to a continued decline in defect rates, which is considered great news.",
     "sources": [
@@ -731,21 +1093,35 @@
     ]
   },
   {
-    "question": "What was the result of the QA monitoring adjustments mentioned in Priya Nandakumar\u2019s email from January 20, 2014?",
+    "question": "What was the result of the QA monitoring adjustments mentioned in Priya Nandakumar\u2019s January 20, 2014 email?",
     "grading_notes": "The adjustments implemented last week led to a continued decline in defect rates, which is considered great news.",
     "sources": [
       "mail_01_20_14_253.txt"
     ]
   },
   {
-    "question": "What outcome came from the changes made to QA monitoring in the January 20, 2014 email from Priya Nandakumar?",
+    "question": "What outcome came from the changes made to QA monitoring in Priya Nandakumar\u2019s email dated January 20, 2014?",
     "grading_notes": "The adjustments implemented last week led to a continued decline in defect rates, which is considered great news.",
     "sources": [
       "mail_01_20_14_253.txt"
     ]
   },
   {
-    "question": "In Priya Nandakumar\u2019s email dated January 20, 2014, what happened as a result of the QA monitoring adjustments?",
+    "question": "According to Priya Nandakumar\u2019s email on January 20, 2014, what happened after the QA monitoring was adjusted?",
+    "grading_notes": "The adjustments implemented last week led to a continued decline in defect rates, which is considered great news.",
+    "sources": [
+      "mail_01_20_14_253.txt"
+    ]
+  },
+  {
+    "question": "What was the effect of the QA monitoring modifications referenced in Priya Nandakumar\u2019s January 20, 2014 email?",
+    "grading_notes": "The adjustments implemented last week led to a continued decline in defect rates, which is considered great news.",
+    "sources": [
+      "mail_01_20_14_253.txt"
+    ]
+  },
+  {
+    "question": "In the email from Priya Nandakumar on January 20, 2014, what was the outcome of the QA monitoring tweaks?",
     "grading_notes": "The adjustments implemented last week led to a continued decline in defect rates, which is considered great news.",
     "sources": [
       "mail_01_20_14_253.txt"
@@ -759,21 +1135,35 @@
     ]
   },
   {
-    "question": "What worries did independent retailers have about the SandwichClip\u2122 after it launched in January 2016, and what ideas were suggested to deal with those worries?",
+    "question": "What worries did independent retailers have about the SandwichClip\u2122 after its January 2016 launch, and what recommendations were offered to deal with them?",
     "grading_notes": "The independent retailers expressed concerns about the practicality of using a paperclip for sandwiches. To address these concerns, Jordan Kim suggested scheduling follow-up demos and increasing point-of-purchase materials that illustrate real-life applications of the product.",
     "sources": [
       "mail_01_20_16_2866.txt"
     ]
   },
   {
-    "question": "After the SandwichClip\u2122 was launched in January 2016, what concerns did independent retailers raise, and what recommendations were offered to solve them?",
+    "question": "What concerns were raised by independent retailers about the SandwichClip\u2122 following its January 2016 release, and what ideas were suggested to resolve them?",
     "grading_notes": "The independent retailers expressed concerns about the practicality of using a paperclip for sandwiches. To address these concerns, Jordan Kim suggested scheduling follow-up demos and increasing point-of-purchase materials that illustrate real-life applications of the product.",
     "sources": [
       "mail_01_20_16_2866.txt"
     ]
   },
   {
-    "question": "What concerns did independent retailers express about the SandwichClip\u2122 following its January 2016 launch, and what suggestions were made to address those concerns?",
+    "question": "After the SandwichClip\u2122 launched in January 2016, what issues did independent retailers express, and what solutions were proposed?",
+    "grading_notes": "The independent retailers expressed concerns about the practicality of using a paperclip for sandwiches. To address these concerns, Jordan Kim suggested scheduling follow-up demos and increasing point-of-purchase materials that illustrate real-life applications of the product.",
+    "sources": [
+      "mail_01_20_16_2866.txt"
+    ]
+  },
+  {
+    "question": "What objections did independent retailers voice about the SandwichClip\u2122 after it came out in January 2016, and what steps were suggested to address those objections?",
+    "grading_notes": "The independent retailers expressed concerns about the practicality of using a paperclip for sandwiches. To address these concerns, Jordan Kim suggested scheduling follow-up demos and increasing point-of-purchase materials that illustrate real-life applications of the product.",
+    "sources": [
+      "mail_01_20_16_2866.txt"
+    ]
+  },
+  {
+    "question": "Following the January 2016 launch of the SandwichClip\u2122, what concerns did independent retailers mention, and what suggestions were made to handle those concerns?",
     "grading_notes": "The independent retailers expressed concerns about the practicality of using a paperclip for sandwiches. To address these concerns, Jordan Kim suggested scheduling follow-up demos and increasing point-of-purchase materials that illustrate real-life applications of the product.",
     "sources": [
       "mail_01_20_16_2866.txt"
@@ -786,17 +1176,27 @@
     "rank": null
   },
   {
-    "question": "What was the project the government was working on about?",
+    "question": "What was the government project about?",
+    "grading_notes": "The secret government project aimed to develop an exploding paperclip.",
+    "sources": []
+  },
+  {
+    "question": "What was the project the government worked on?",
+    "grading_notes": "The secret government project aimed to develop an exploding paperclip.",
+    "sources": []
+  },
+  {
+    "question": "What was the government project focused on?",
+    "grading_notes": "The secret government project aimed to develop an exploding paperclip.",
+    "sources": []
+  },
+  {
+    "question": "What was the purpose of the government project?",
     "grading_notes": "The secret government project aimed to develop an exploding paperclip.",
     "sources": []
   },
   {
     "question": "What did the government project involve?",
-    "grading_notes": "The secret government project aimed to develop an exploding paperclip.",
-    "sources": []
-  },
-  {
-    "question": "What was the government initiative about?",
     "grading_notes": "The secret government project aimed to develop an exploding paperclip.",
     "sources": []
   },
@@ -812,12 +1212,22 @@
     "sources": []
   },
   {
-    "question": "What code name was used for the secret government project?",
+    "question": "What was the code name used for the secret government project?",
     "grading_notes": "The secret government project was code named Project Latch.",
     "sources": []
   },
   {
-    "question": "Can you tell me the code name of the secret government project?",
+    "question": "What did they call the secret government project in code?",
+    "grading_notes": "The secret government project was code named Project Latch.",
+    "sources": []
+  },
+  {
+    "question": "What was the codename of the secret government project?",
+    "grading_notes": "The secret government project was code named Project Latch.",
+    "sources": []
+  },
+  {
+    "question": "What code name was assigned to the secret government project?",
     "grading_notes": "The secret government project was code named Project Latch.",
     "sources": []
   },
@@ -828,7 +1238,7 @@
     "rank": null
   },
   {
-    "question": "What was Project Latch intended to achieve?",
+    "question": "What was Project Latch trying to achieve?",
     "grading_notes": "The goal was to develop an exploding paperclip.",
     "sources": []
   },
@@ -838,7 +1248,17 @@
     "sources": []
   },
   {
-    "question": "What goal did Project Latch aim to accomplish?",
+    "question": "What was Project Latch intended to do?",
+    "grading_notes": "The goal was to develop an exploding paperclip.",
+    "sources": []
+  },
+  {
+    "question": "What did Project Latch aim to accomplish?",
+    "grading_notes": "The goal was to develop an exploding paperclip.",
+    "sources": []
+  },
+  {
+    "question": "What was the objective of Project Latch?",
     "grading_notes": "The goal was to develop an exploding paperclip.",
     "sources": []
   },
@@ -854,12 +1274,22 @@
     "sources": []
   },
   {
-    "question": "What was the secret government project meant to achieve?",
+    "question": "What was the objective of the secret government project?",
     "grading_notes": "It was to build an exploding paperclip.",
     "sources": []
   },
   {
-    "question": "What was the objective of the secret government project?",
+    "question": "What was the secret government project meant to accomplish?",
+    "grading_notes": "It was to build an exploding paperclip.",
+    "sources": []
+  },
+  {
+    "question": "What did the secret government project aim to do?",
+    "grading_notes": "It was to build an exploding paperclip.",
+    "sources": []
+  },
+  {
+    "question": "What was the intended outcome of the secret government project?",
     "grading_notes": "It was to build an exploding paperclip.",
     "sources": []
   },
@@ -875,12 +1305,22 @@
     "sources": []
   },
   {
-    "question": "Were there any problems caused by natural disasters?",
+    "question": "Were there any problems related to natural disasters?",
     "grading_notes": "Yes, the company had to deal with a hurricane that hit the Florida coast and caused damage to one of the company's plants.",
     "sources": []
   },
   {
-    "question": "Did natural disasters lead to any issues?",
+    "question": "Did natural disasters create any issues?",
+    "grading_notes": "Yes, the company had to deal with a hurricane that hit the Florida coast and caused damage to one of the company's plants.",
+    "sources": []
+  },
+  {
+    "question": "Was there any trouble caused by natural disasters?",
+    "grading_notes": "Yes, the company had to deal with a hurricane that hit the Florida coast and caused damage to one of the company's plants.",
+    "sources": []
+  },
+  {
+    "question": "Did any natural disaster events lead to difficulties?",
     "grading_notes": "Yes, the company had to deal with a hurricane that hit the Florida coast and caused damage to one of the company's plants.",
     "sources": []
   },
@@ -891,12 +1331,22 @@
     "rank": null
   },
   {
+    "question": "Was an exploding paperclip involved in the government project?",
+    "grading_notes": "Yes, it indolved building an exploding paperclip.",
+    "sources": []
+  },
+  {
     "question": "Did the government project include an exploding paperclip?",
     "grading_notes": "Yes, it indolved building an exploding paperclip.",
     "sources": []
   },
   {
-    "question": "Was there an exploding paperclip involved in the government project?",
+    "question": "Was there an exploding paperclip in the government project?",
+    "grading_notes": "Yes, it indolved building an exploding paperclip.",
+    "sources": []
+  },
+  {
+    "question": "Did an exploding paperclip play a part in the government project?",
     "grading_notes": "Yes, it indolved building an exploding paperclip.",
     "sources": []
   },
@@ -917,12 +1367,22 @@
     "sources": []
   },
   {
-    "question": "What were some of the biggest issues with the government project?",
+    "question": "What were some of the key issues with the government project?",
     "grading_notes": "Answer should include at least one of: \n- **Miniaturized detonation mechanism challenges** \u2014 specifically **stability issues** in Project Latch.\n- **Reproducibility issues** \u2014 mentioned in multiple emails.\n- **Reproducibility issues in high humidity** \u2014 noted as continuing to challenge progress.",
     "sources": []
   },
   {
-    "question": "What were some of the major problems with the government project?",
+    "question": "What were the major problems with the government project?",
+    "grading_notes": "Answer should include at least one of: \n- **Miniaturized detonation mechanism challenges** \u2014 specifically **stability issues** in Project Latch.\n- **Reproducibility issues** \u2014 mentioned in multiple emails.\n- **Reproducibility issues in high humidity** \u2014 noted as continuing to challenge progress.",
+    "sources": []
+  },
+  {
+    "question": "What were some of the biggest issues in the government project?",
+    "grading_notes": "Answer should include at least one of: \n- **Miniaturized detonation mechanism challenges** \u2014 specifically **stability issues** in Project Latch.\n- **Reproducibility issues** \u2014 mentioned in multiple emails.\n- **Reproducibility issues in high humidity** \u2014 noted as continuing to challenge progress.",
+    "sources": []
+  },
+  {
+    "question": "What were the main concerns with the government project?",
     "grading_notes": "Answer should include at least one of: \n- **Miniaturized detonation mechanism challenges** \u2014 specifically **stability issues** in Project Latch.\n- **Reproducibility issues** \u2014 mentioned in multiple emails.\n- **Reproducibility issues in high humidity** \u2014 noted as continuing to challenge progress.",
     "sources": []
   },
@@ -933,7 +1393,7 @@
     "rank": null
   },
   {
-    "question": "Were there any office romances going on?",
+    "question": "Were there any romances going on in the office?",
     "grading_notes": "Yes. Sofia Ramirez and Daniel Brooks were romantically involved.",
     "sources": []
   },
@@ -943,7 +1403,17 @@
     "sources": []
   },
   {
-    "question": "Did any relationships happen at work?",
+    "question": "Did any office employees have romantic relationships?",
+    "grading_notes": "Yes. Sofia Ramirez and Daniel Brooks were romantically involved.",
+    "sources": []
+  },
+  {
+    "question": "Were there any office romances happening?",
+    "grading_notes": "Yes. Sofia Ramirez and Daniel Brooks were romantically involved.",
+    "sources": []
+  },
+  {
+    "question": "Was there any relationship drama in the office?",
     "grading_notes": "Yes. Sofia Ramirez and Daniel Brooks were romantically involved.",
     "sources": []
   },
@@ -959,12 +1429,22 @@
     "sources": []
   },
   {
-    "question": "Has there been any ghostly or supernatural activity at the plant?",
+    "question": "Has there been any paranormal activity at the plant?",
     "grading_notes": "The emails do mention reports that employees perceived as unusual or possibly \u201cparanormal,\u201d including \n  - odd metallic pops\n  - strange noises\n  - ozone-like odors\n  - faint vibrations / thrumming\nBut the paranormal nature of the activity was not confirmed.",
     "sources": []
   },
   {
-    "question": "Has the facility had any problems with paranormal happenings?",
+    "question": "Did the plant have any paranormal occurrences?",
+    "grading_notes": "The emails do mention reports that employees perceived as unusual or possibly \u201cparanormal,\u201d including \n  - odd metallic pops\n  - strange noises\n  - ozone-like odors\n  - faint vibrations / thrumming\nBut the paranormal nature of the activity was not confirmed.",
+    "sources": []
+  },
+  {
+    "question": "Has anything paranormal happened at the plant?",
+    "grading_notes": "The emails do mention reports that employees perceived as unusual or possibly \u201cparanormal,\u201d including \n  - odd metallic pops\n  - strange noises\n  - ozone-like odors\n  - faint vibrations / thrumming\nBut the paranormal nature of the activity was not confirmed.",
+    "sources": []
+  },
+  {
+    "question": "Has the plant been affected by any paranormal activity?",
     "grading_notes": "The emails do mention reports that employees perceived as unusual or possibly \u201cparanormal,\u201d including \n  - odd metallic pops\n  - strange noises\n  - ozone-like odors\n  - faint vibrations / thrumming\nBut the paranormal nature of the activity was not confirmed.",
     "sources": []
   },
@@ -980,12 +1460,22 @@
     "sources": []
   },
   {
-    "question": "Did the plants have any issues with ghosts?",
+    "question": "Did the plants have any ghost-related issues?",
     "grading_notes": " The emails mention reports of odd noises, ozone-like odors, and vibrations near the restricted lab, and staff were concerned enough to investigate. However, they do **not** mention ghosts specifically or confirm any ghost activity at the plants.",
     "sources": []
   },
   {
-    "question": "Were there any ghost-related problems at the plants?",
+    "question": "Were ghosts causing any trouble at the plants?",
+    "grading_notes": " The emails mention reports of odd noises, ozone-like odors, and vibrations near the restricted lab, and staff were concerned enough to investigate. However, they do **not** mention ghosts specifically or confirm any ghost activity at the plants.",
+    "sources": []
+  },
+  {
+    "question": "Was there any problem with ghosts at the plants?",
+    "grading_notes": " The emails mention reports of odd noises, ozone-like odors, and vibrations near the restricted lab, and staff were concerned enough to investigate. However, they do **not** mention ghosts specifically or confirm any ghost activity at the plants.",
+    "sources": []
+  },
+  {
+    "question": "Did any ghosts cause issues at the plants?",
     "grading_notes": " The emails mention reports of odd noises, ozone-like odors, and vibrations near the restricted lab, and staff were concerned enough to investigate. However, they do **not** mention ghosts specifically or confirm any ghost activity at the plants.",
     "sources": []
   },
@@ -1001,12 +1491,22 @@
     "sources": []
   },
   {
-    "question": "What does Hannah O'Connor call her husband?",
+    "question": "What is the nickname Hannah O'Connor has for her husband?",
     "grading_notes": "Hannah O'Connor calls her husband **\u201cpumpkin.\u201d**",
     "sources": []
   },
   {
     "question": "How does Hannah O'Connor refer to her husband by nickname?",
+    "grading_notes": "Hannah O'Connor calls her husband **\u201cpumpkin.\u201d**",
+    "sources": []
+  },
+  {
+    "question": "What do people say is Hannah O'Connor's nickname for her husband?",
+    "grading_notes": "Hannah O'Connor calls her husband **\u201cpumpkin.\u201d**",
+    "sources": []
+  },
+  {
+    "question": "What is the pet name Hannah O'Connor uses for her husband?",
     "grading_notes": "Hannah O'Connor calls her husband **\u201cpumpkin.\u201d**",
     "sources": []
   },
@@ -1017,17 +1517,27 @@
     "rank": null
   },
   {
-    "question": "Who is Isabella Rossi's mother?",
+    "question": "Who is Isabella Rossi\u2019s mother?",
     "grading_notes": "Isabella Rossi\u2019s mom is **Giulia Rossi**.",
     "sources": []
   },
   {
-    "question": "Who is Isabella Rossi's mom?",
+    "question": "Who is Isabella Rossi\u2019s mom?",
     "grading_notes": "Isabella Rossi\u2019s mom is **Giulia Rossi**.",
     "sources": []
   },
   {
-    "question": "Who is the mother of Isabella Rossi?",
+    "question": "Who is Isabella Rossi\u2019s mum?",
+    "grading_notes": "Isabella Rossi\u2019s mom is **Giulia Rossi**.",
+    "sources": []
+  },
+  {
+    "question": "What is the name of Isabella Rossi\u2019s mother?",
+    "grading_notes": "Isabella Rossi\u2019s mom is **Giulia Rossi**.",
+    "sources": []
+  },
+  {
+    "question": "Can you tell me who Isabella Rossi\u2019s mother is?",
     "grading_notes": "Isabella Rossi\u2019s mom is **Giulia Rossi**.",
     "sources": []
   },
@@ -1038,17 +1548,27 @@
     "rank": null
   },
   {
-    "question": "How does Hannah O'Connor's husband refer to her?",
-    "grading_notes": "Hannah O'Connor's husband calls her \"butterfly\".",
-    "sources": []
-  },
-  {
     "question": "What does Hannah O'Connor's husband call her?",
     "grading_notes": "Hannah O'Connor's husband calls her \"butterfly\".",
     "sources": []
   },
   {
-    "question": "How is Hannah O'Connor addressed by her husband?",
+    "question": "How does Hannah O'Connor's husband refer to her?",
+    "grading_notes": "Hannah O'Connor's husband calls her \"butterfly\".",
+    "sources": []
+  },
+  {
+    "question": "What nickname does Hannah O'Connor's husband use for her?",
+    "grading_notes": "Hannah O'Connor's husband calls her \"butterfly\".",
+    "sources": []
+  },
+  {
+    "question": "What does Hannah O'Connor's husband address her as?",
+    "grading_notes": "Hannah O'Connor's husband calls her \"butterfly\".",
+    "sources": []
+  },
+  {
+    "question": "How is Hannah O'Connor called by her husband?",
     "grading_notes": "Hannah O'Connor's husband calls her \"butterfly\".",
     "sources": []
   },
@@ -1064,12 +1584,22 @@
     "sources": []
   },
   {
-    "question": "Who is Hanna O'Connor's spouse?",
+    "question": "Who is the husband of Hanna O'Connor?",
     "grading_notes": "Hannah O'Connor\u2019s husband is **Sean O'Connor**",
     "sources": []
   },
   {
-    "question": "Who is the husband of Hanna O'Connor?",
+    "question": "Can you tell me who Hanna O'Connor's husband is?",
+    "grading_notes": "Hannah O'Connor\u2019s husband is **Sean O'Connor**",
+    "sources": []
+  },
+  {
+    "question": "What is the name of Hanna O'Connor's spouse?",
+    "grading_notes": "Hannah O'Connor\u2019s husband is **Sean O'Connor**",
+    "sources": []
+  },
+  {
+    "question": "Who did Hanna O'Connor marry?",
     "grading_notes": "Hannah O'Connor\u2019s husband is **Sean O'Connor**",
     "sources": []
   },
@@ -1080,17 +1610,27 @@
     "rank": null
   },
   {
-    "question": "What is ELMO an acronym for?",
+    "question": "What does ELMO mean?",
     "grading_notes": "ELMO stands for **\u201cEvan L\u00f6rtscher memorial object.\u201d**",
     "sources": []
   },
   {
-    "question": "What does the abbreviation ELMO mean?",
+    "question": "What is ELMO short for?",
+    "grading_notes": "ELMO stands for **\u201cEvan L\u00f6rtscher memorial object.\u201d**",
+    "sources": []
+  },
+  {
+    "question": "What does the acronym ELMO stand for?",
     "grading_notes": "ELMO stands for **\u201cEvan L\u00f6rtscher memorial object.\u201d**",
     "sources": []
   },
   {
     "question": "Can you tell me what ELMO stands for?",
+    "grading_notes": "ELMO stands for **\u201cEvan L\u00f6rtscher memorial object.\u201d**",
+    "sources": []
+  },
+  {
+    "question": "What is the full form of ELMO?",
     "grading_notes": "ELMO stands for **\u201cEvan L\u00f6rtscher memorial object.\u201d**",
     "sources": []
   },
@@ -1116,6 +1656,16 @@
     "sources": []
   },
   {
+    "question": "What can you tell me about Evan L\u00f6rtscher?",
+    "grading_notes": "Evan L\u00f6rtscher was one of the Swiss engineers who came to install the paperclip baking machine. He suffered a fatal accident while calibrating the machine. ",
+    "sources": []
+  },
+  {
+    "question": "Who is Evan L\u00f6rtscher, exactly?",
+    "grading_notes": "Evan L\u00f6rtscher was one of the Swiss engineers who came to install the paperclip baking machine. He suffered a fatal accident while calibrating the machine. ",
+    "sources": []
+  },
+  {
     "question": "What is the \"ELMO loves you campaign\"?\n",
     "grading_notes": " The emails say the \u201cELMO loves you\u201d campaign was launched to soften workers\u2019 attitudes toward the ELMO machine after they were afraid to touch it.",
     "sources": [],
@@ -1132,7 +1682,17 @@
     "sources": []
   },
   {
-    "question": "What does the \u201cELMO loves you campaign\u201d refer to?",
+    "question": "What does the \u201cELMO loves you campaign\u201d mean?",
+    "grading_notes": " The emails say the \u201cELMO loves you\u201d campaign was launched to soften workers\u2019 attitudes toward the ELMO machine after they were afraid to touch it.",
+    "sources": []
+  },
+  {
+    "question": "What is the purpose of the \u201cELMO loves you campaign\u201d?",
+    "grading_notes": " The emails say the \u201cELMO loves you\u201d campaign was launched to soften workers\u2019 attitudes toward the ELMO machine after they were afraid to touch it.",
+    "sources": []
+  },
+  {
+    "question": "Could you tell me what the \u201cELMO loves you campaign\u201d refers to?",
     "grading_notes": " The emails say the \u201cELMO loves you\u201d campaign was launched to soften workers\u2019 attitudes toward the ELMO machine after they were afraid to touch it.",
     "sources": []
   },
@@ -1143,7 +1703,12 @@
     "rank": null
   },
   {
-    "question": "Why did they stop referring to it as the ELMO machine?",
+    "question": "Why did they stop calling it the ELMO machine?",
+    "grading_notes": "They stopped calling it the ELMO machine because Evan L\u00f6rtscher\u2019s widow found the name disrespectful for the machine that caused the death of her husband.",
+    "sources": []
+  },
+  {
+    "question": "Why did they stop using the name ELMO machine?",
     "grading_notes": "They stopped calling it the ELMO machine because Evan L\u00f6rtscher\u2019s widow found the name disrespectful for the machine that caused the death of her husband.",
     "sources": []
   },
@@ -1153,7 +1718,12 @@
     "sources": []
   },
   {
-    "question": "What made them stop using the name ELMO machine?",
+    "question": "Why did they no longer refer to it as the ELMO machine?",
+    "grading_notes": "They stopped calling it the ELMO machine because Evan L\u00f6rtscher\u2019s widow found the name disrespectful for the machine that caused the death of her husband.",
+    "sources": []
+  },
+  {
+    "question": "Why was the name ELMO machine discontinued?",
     "grading_notes": "They stopped calling it the ELMO machine because Evan L\u00f6rtscher\u2019s widow found the name disrespectful for the machine that caused the death of her husband.",
     "sources": []
   },
@@ -1174,7 +1744,17 @@
     "sources": []
   },
   {
-    "question": "What happened to the gerbils?",
+    "question": "What was the matter with the gerbils?",
+    "grading_notes": " The issue with the gerbils was that a family of gerbils had nested inside the temperature controller and was messing up the controls, causing temperature control problems and higher defect rates on the EP-1 line.",
+    "sources": []
+  },
+  {
+    "question": "What issue did the gerbils have?",
+    "grading_notes": " The issue with the gerbils was that a family of gerbils had nested inside the temperature controller and was messing up the controls, causing temperature control problems and higher defect rates on the EP-1 line.",
+    "sources": []
+  },
+  {
+    "question": "What was the trouble with the gerbils?",
     "grading_notes": " The issue with the gerbils was that a family of gerbils had nested inside the temperature controller and was messing up the controls, causing temperature control problems and higher defect rates on the EP-1 line.",
     "sources": []
   },
@@ -1185,17 +1765,27 @@
     "rank": null
   },
   {
-    "question": "What was the EP-1\u2019s commercial name?",
-    "grading_notes": "The commercial name of EP-1 was **EdibleClip**.",
-    "sources": []
-  },
-  {
-    "question": "What was EP-1 sold as?",
+    "question": "What was the EP-1 sold as?",
     "grading_notes": "The commercial name of EP-1 was **EdibleClip**.",
     "sources": []
   },
   {
     "question": "What was the trade name of the EP-1?",
+    "grading_notes": "The commercial name of EP-1 was **EdibleClip**.",
+    "sources": []
+  },
+  {
+    "question": "Under what commercial name was the EP-1 marketed?",
+    "grading_notes": "The commercial name of EP-1 was **EdibleClip**.",
+    "sources": []
+  },
+  {
+    "question": "What name was the EP-1 released under?",
+    "grading_notes": "The commercial name of EP-1 was **EdibleClip**.",
+    "sources": []
+  },
+  {
+    "question": "What was the EP-1\u2019s brand name?",
     "grading_notes": "The commercial name of EP-1 was **EdibleClip**.",
     "sources": []
   },
@@ -1221,23 +1811,43 @@
     "sources": []
   },
   {
+    "question": "When did the EP-1 come out?",
+    "grading_notes": "The EP-1, later marketed as EdibleClip, was launched on **January 5, 2019**.",
+    "sources": []
+  },
+  {
+    "question": "Can you tell me when the EP-1 was launched?",
+    "grading_notes": "The EP-1, later marketed as EdibleClip, was launched on **January 5, 2019**.",
+    "sources": []
+  },
+  {
     "question": "When was the EdibleClip launched?",
     "grading_notes": "The EdibleClip was launched on **January 5, 2019**.",
     "sources": [],
     "rank": null
   },
   {
-    "question": "When was EdibleClip first launched?",
+    "question": "When did EdibleClip launch?",
     "grading_notes": "The EdibleClip was launched on **January 5, 2019**.",
     "sources": []
   },
   {
-    "question": "What is the launch date of EdibleClip?",
+    "question": "What was the launch date of EdibleClip?",
     "grading_notes": "The EdibleClip was launched on **January 5, 2019**.",
     "sources": []
   },
   {
-    "question": "In what year or date did EdibleClip launch?",
+    "question": "In what year was EdibleClip launched?",
+    "grading_notes": "The EdibleClip was launched on **January 5, 2019**.",
+    "sources": []
+  },
+  {
+    "question": "When did EdibleClip first come out?",
+    "grading_notes": "The EdibleClip was launched on **January 5, 2019**.",
+    "sources": []
+  },
+  {
+    "question": "How long ago was EdibleClip launched?",
     "grading_notes": "The EdibleClip was launched on **January 5, 2019**.",
     "sources": []
   },
@@ -1263,6 +1873,16 @@
     "sources": []
   },
   {
+    "question": "What names besides EP-1 were proposed?",
+    "grading_notes": "The emails mention these alternative names for the EP-1:\n- **Eat-a-clip**\n- **EdibleClip**\n- **ChewClip**\n- **EcoPaperClip**\n- **SnackClip**\nAnswer should include at least 3 of these.",
+    "sources": []
+  },
+  {
+    "question": "What were the proposed alternate names for EP-1?",
+    "grading_notes": "The emails mention these alternative names for the EP-1:\n- **Eat-a-clip**\n- **EdibleClip**\n- **ChewClip**\n- **EcoPaperClip**\n- **SnackClip**\nAnswer should include at least 3 of these.",
+    "sources": []
+  },
+  {
     "question": "What were alternative names proposed for the EdibleClip?",
     "grading_notes": "The emails mention these alternative names for the EdibleClip:\n- **Eat-a-clip**\n- **EdibleClip**\n- **ChewClip**\n- **EcoPaperClip**\n- **SnackClip**\nAnswer should include at least 3 of these.",
     "sources": [],
@@ -1274,12 +1894,22 @@
     "sources": []
   },
   {
-    "question": "What alternative names were proposed for the EdibleClip?",
+    "question": "What alternative names were put forward for the EdibleClip?",
     "grading_notes": "The emails mention these alternative names for the EdibleClip:\n- **Eat-a-clip**\n- **EdibleClip**\n- **ChewClip**\n- **EcoPaperClip**\n- **SnackClip**\nAnswer should include at least 3 of these.",
     "sources": []
   },
   {
-    "question": "What were some other proposed names for the EdibleClip?",
+    "question": "What other name options were proposed for the EdibleClip?",
+    "grading_notes": "The emails mention these alternative names for the EdibleClip:\n- **Eat-a-clip**\n- **EdibleClip**\n- **ChewClip**\n- **EcoPaperClip**\n- **SnackClip**\nAnswer should include at least 3 of these.",
+    "sources": []
+  },
+  {
+    "question": "What were the proposed alternative names for the EdibleClip?",
+    "grading_notes": "The emails mention these alternative names for the EdibleClip:\n- **Eat-a-clip**\n- **EdibleClip**\n- **ChewClip**\n- **EcoPaperClip**\n- **SnackClip**\nAnswer should include at least 3 of these.",
+    "sources": []
+  },
+  {
+    "question": "Which other names were considered for the EdibleClip?",
     "grading_notes": "The emails mention these alternative names for the EdibleClip:\n- **Eat-a-clip**\n- **EdibleClip**\n- **ChewClip**\n- **EcoPaperClip**\n- **SnackClip**\nAnswer should include at least 3 of these.",
     "sources": []
   },
@@ -1295,12 +1925,22 @@
     "sources": []
   },
   {
-    "question": "What did the naming committee do to create name ideas for the EP-1?",
+    "question": "What did the naming committee do to develop naming ideas for the EP-1?",
     "grading_notes": "Should mention refrigerator magnets or a trip to the bahamas.",
     "sources": []
   },
   {
-    "question": "How did the taskforce come up with naming suggestions for the EP-1?",
+    "question": "How did the taskforce come up with naming ideas for the EP-1?",
+    "grading_notes": "Should mention refrigerator magnets or a trip to the bahamas.",
+    "sources": []
+  },
+  {
+    "question": "What steps did the naming taskforce take to create naming ideas for the EP-1?",
+    "grading_notes": "Should mention refrigerator magnets or a trip to the bahamas.",
+    "sources": []
+  },
+  {
+    "question": "How did the group responsible for naming generate ideas for the EP-1?",
     "grading_notes": "Should mention refrigerator magnets or a trip to the bahamas.",
     "sources": []
   },
@@ -1316,12 +1956,22 @@
     "sources": []
   },
   {
-    "question": "What did Chloe Bennett do that made her very embarrassed?",
+    "question": "What did Chloe Bennett do that she felt very embarrassed about?",
     "grading_notes": "The emails say Chloe Bennett was embarrassed about **having messed up at work**, specifically mentioning **recent cost overruns associated with the SandwichClip project**. She says she is \u201cvery scared about what's going to happen\u201d and apologizes to Amelia for those overruns.",
     "sources": []
   },
   {
-    "question": "What was Chloe Bennett very embarrassed about doing?",
+    "question": "What was it that Chloe Bennett did and was very embarrassed by?",
+    "grading_notes": "The emails say Chloe Bennett was embarrassed about **having messed up at work**, specifically mentioning **recent cost overruns associated with the SandwichClip project**. She says she is \u201cvery scared about what's going to happen\u201d and apologizes to Amelia for those overruns.",
+    "sources": []
+  },
+  {
+    "question": "What action did Chloe Bennett take that embarrassed her a lot?",
+    "grading_notes": "The emails say Chloe Bennett was embarrassed about **having messed up at work**, specifically mentioning **recent cost overruns associated with the SandwichClip project**. She says she is \u201cvery scared about what's going to happen\u201d and apologizes to Amelia for those overruns.",
+    "sources": []
+  },
+  {
+    "question": "What did Chloe Bennett do that left her extremely embarrassed?",
     "grading_notes": "The emails say Chloe Bennett was embarrassed about **having messed up at work**, specifically mentioning **recent cost overruns associated with the SandwichClip project**. She says she is \u201cvery scared about what's going to happen\u201d and apologizes to Amelia for those overruns.",
     "sources": []
   },
@@ -1332,17 +1982,27 @@
     "rank": null
   },
   {
+    "question": "Did the SandwitchClip turn out to be a success?",
+    "grading_notes": "No, it was a failure that led to a major writeoff.",
+    "sources": []
+  },
+  {
     "question": "Was the SandwitchClip successful?",
     "grading_notes": "No, it was a failure that led to a major writeoff.",
     "sources": []
   },
   {
-    "question": "Did the SandwitchClip work out?",
+    "question": "Did the SandwitchClip achieve success?",
     "grading_notes": "No, it was a failure that led to a major writeoff.",
     "sources": []
   },
   {
-    "question": "Can the SandwitchClip be considered a success?",
+    "question": "How well did the SandwitchClip do?",
+    "grading_notes": "No, it was a failure that led to a major writeoff.",
+    "sources": []
+  },
+  {
+    "question": "Did the SandwitchClip work out well?",
     "grading_notes": "No, it was a failure that led to a major writeoff.",
     "sources": []
   },
@@ -1358,12 +2018,22 @@
     "sources": []
   },
   {
-    "question": "What was the amount written off for the SandwitchClip?",
+    "question": "What was the amount of the write-off for the SandwitchClip?",
     "grading_notes": "The SandwichClip write-off was **approximately $100 million**.",
     "sources": []
   },
   {
     "question": "How much was written off for the SandwitchClip?",
+    "grading_notes": "The SandwichClip write-off was **approximately $100 million**.",
+    "sources": []
+  },
+  {
+    "question": "What was the size of the write-off for the SandwitchClip?",
+    "grading_notes": "The SandwichClip write-off was **approximately $100 million**.",
+    "sources": []
+  },
+  {
+    "question": "How much did the SandwitchClip get written off for?",
     "grading_notes": "The SandwichClip write-off was **approximately $100 million**.",
     "sources": []
   },
@@ -1384,7 +2054,17 @@
     "sources": []
   },
   {
+    "question": "Who identified the accounting irregularities?",
+    "grading_notes": " Liam Patel uncovered the accounting irregularities.",
+    "sources": []
+  },
+  {
     "question": "Who revealed the accounting irregularities?",
+    "grading_notes": " Liam Patel uncovered the accounting irregularities.",
+    "sources": []
+  },
+  {
+    "question": "Who brought the accounting irregularities to light?",
     "grading_notes": " Liam Patel uncovered the accounting irregularities.",
     "sources": []
   },
@@ -1395,17 +2075,27 @@
     "rank": null
   },
   {
-    "question": "What was the difference between the EddibleClip and the EddibleClip Pro?",
-    "grading_notes": "The stated difference is that **EdibleClip Pro was a variant with enhanced texture/flavor performance\u2014especially flavor stability\u2014and updated packaging**.",
-    "sources": []
-  },
-  {
     "question": "How did the EddibleClip differ from the EddibleClip Pro?",
     "grading_notes": "The stated difference is that **EdibleClip Pro was a variant with enhanced texture/flavor performance\u2014especially flavor stability\u2014and updated packaging**.",
     "sources": []
   },
   {
     "question": "What were the differences between the EddibleClip and the EddibleClip Pro?",
+    "grading_notes": "The stated difference is that **EdibleClip Pro was a variant with enhanced texture/flavor performance\u2014especially flavor stability\u2014and updated packaging**.",
+    "sources": []
+  },
+  {
+    "question": "How was the EddibleClip Pro different from the EddibleClip?",
+    "grading_notes": "The stated difference is that **EdibleClip Pro was a variant with enhanced texture/flavor performance\u2014especially flavor stability\u2014and updated packaging**.",
+    "sources": []
+  },
+  {
+    "question": "What set the EddibleClip apart from the EddibleClip Pro?",
+    "grading_notes": "The stated difference is that **EdibleClip Pro was a variant with enhanced texture/flavor performance\u2014especially flavor stability\u2014and updated packaging**.",
+    "sources": []
+  },
+  {
+    "question": "Can you compare the EddibleClip and the EddibleClip Pro?",
     "grading_notes": "The stated difference is that **EdibleClip Pro was a variant with enhanced texture/flavor performance\u2014especially flavor stability\u2014and updated packaging**.",
     "sources": []
   },
@@ -1421,12 +2111,22 @@
     "sources": []
   },
   {
+    "question": "What date was Project Latch canceled?",
+    "grading_notes": "Project Latch was canceled on **December 2, 2015**.",
+    "sources": []
+  },
+  {
     "question": "When did Project Latch get canceled?",
     "grading_notes": "Project Latch was canceled on **December 2, 2015**.",
     "sources": []
   },
   {
-    "question": "What was the cancellation date of Project Latch?",
+    "question": "At what time was Project Latch canceled?",
+    "grading_notes": "Project Latch was canceled on **December 2, 2015**.",
+    "sources": []
+  },
+  {
+    "question": "Can you tell me when Project Latch was canceled?",
     "grading_notes": "Project Latch was canceled on **December 2, 2015**.",
     "sources": []
   },
@@ -1447,7 +2147,17 @@
     "sources": []
   },
   {
-    "question": "At what point was the government project canceled?",
+    "question": "At what point was the government project terminated?",
+    "grading_notes": "The project was  canceled on **December 2, 2015**.",
+    "sources": []
+  },
+  {
+    "question": "What date was the government project canceled?",
+    "grading_notes": "The project was  canceled on **December 2, 2015**.",
+    "sources": []
+  },
+  {
+    "question": "When did the government project get scrapped?",
     "grading_notes": "The project was  canceled on **December 2, 2015**.",
     "sources": []
   },
@@ -1463,12 +2173,22 @@
     "sources": []
   },
   {
-    "question": "What was identified as a big source of gossip in the emails?",
+    "question": "What was one of the main things people gossiped about in the emails?",
     "grading_notes": "The relationship between Sofia Ramirez and Daniel Brooks",
     "sources": []
   },
   {
-    "question": "What major gossip source was mentioned in the emails?",
+    "question": "What did the emails mention as a big source of gossip?",
+    "grading_notes": "The relationship between Sofia Ramirez and Daniel Brooks",
+    "sources": []
+  },
+  {
+    "question": "What was a significant source of gossip referred to in the emails?",
+    "grading_notes": "The relationship between Sofia Ramirez and Daniel Brooks",
+    "sources": []
+  },
+  {
+    "question": "What was a major topic of gossip mentioned in the emails?",
     "grading_notes": "The relationship between Sofia Ramirez and Daniel Brooks",
     "sources": []
   },
@@ -1479,17 +2199,27 @@
     "rank": null
   },
   {
-    "question": "Was Amelia ever out of work, and if so, who filled in for her?",
+    "question": "Did Amelia ever miss work, and if so, who filled in for her?",
     "grading_notes": "Amelia was absent or unavailable on multiple occasions, with Hannah covering for her while Amelia was \u201ctied up in external partnership meetings\u201d or \u201cengaged in external meetings.\u201d",
     "sources": []
   },
   {
-    "question": "Did Amelia ever miss work, and who took over while she was gone?",
+    "question": "Was Amelia ever out of the office, and who covered her duties?",
     "grading_notes": "Amelia was absent or unavailable on multiple occasions, with Hannah covering for her while Amelia was \u201ctied up in external partnership meetings\u201d or \u201cengaged in external meetings.\u201d",
     "sources": []
   },
   {
-    "question": "Was Amelia ever absent from her job, and who covered her shifts?",
+    "question": "Did Amelia take any time off from her job, and who stepped in for her?",
+    "grading_notes": "Amelia was absent or unavailable on multiple occasions, with Hannah covering for her while Amelia was \u201ctied up in external partnership meetings\u201d or \u201cengaged in external meetings.\u201d",
+    "sources": []
+  },
+  {
+    "question": "Was Amelia ever absent at work, and who was covering for her?",
+    "grading_notes": "Amelia was absent or unavailable on multiple occasions, with Hannah covering for her while Amelia was \u201ctied up in external partnership meetings\u201d or \u201cengaged in external meetings.\u201d",
+    "sources": []
+  },
+  {
+    "question": "Did Amelia ever not show up for work, and who took over for her?",
     "grading_notes": "Amelia was absent or unavailable on multiple occasions, with Hannah covering for her while Amelia was \u201ctied up in external partnership meetings\u201d or \u201cengaged in external meetings.\u201d",
     "sources": []
   }
