@@ -120,30 +120,28 @@ def log(label: str, text: str) -> None:
 # ## Demonstration corpus + retriever (provided to illustrate the evaluation workflow)
 
 # %%
-SAMPLE_DOCS = [
-    {"id": "doc1", "text": "Program synthesis: generating programs automatically from a specification, such as input-output examples or a logical formula."},
-    {"id": "doc2", "text": "The sketching approach lets a programmer write a partial program with holes, and a synthesizer fills the holes to satisfy a specification."},
-    {"id": "doc3", "text": "Retrieval-augmented generation grounds a language model's answers in documents retrieved from a corpus, reducing hallucination."},
-    {"id": "doc4", "text": "BM25 is a keyword ranking function that scores documents by term frequency and inverse document frequency."},
-    {"id": "doc5", "text": "Vector search embeds text into dense vectors and ranks documents by cosine similarity to the query embedding."},
-    {"id": "doc6", "text": "Evaluation of retrieval systems measures whether the retrieved documents actually contain the information needed to answer the query."},
-]
-DOC_BY_ID = {d["id"]: d for d in SAMPLE_DOCS}
+# SAMPLE_DOCS = [
+#     {"id": "doc1", "text": "Program synthesis: generating programs automatically from a specification, such as input-output examples or a logical formula."},
+#     {"id": "doc2", "text": "The sketching approach lets a programmer write a partial program with holes, and a synthesizer fills the holes to satisfy a specification."},
+#     {"id": "doc3", "text": "Retrieval-augmented generation grounds a language model's answers in documents retrieved from a corpus, reducing hallucination."},
+#     {"id": "doc4", "text": "BM25 is a keyword ranking function that scores documents by term frequency and inverse document frequency."},
+#     {"id": "doc5", "text": "Vector search embeds text into dense vectors and ranks documents by cosine similarity to the query embedding."},
+#     {"id": "doc6", "text": "Evaluation of retrieval systems measures whether the retrieved documents actually contain the information needed to answer the query."},
+# ]
+# DOC_BY_ID = {d["id"]: d for d in SAMPLE_DOCS}
 
 
 def _tokens(text: str) -> set[str]:
     return set(re.findall(r"[a-z0-9]+", text.lower()))
 
 
-def retrieve(query: str, k: int = TOP_K) -> list[tuple[str, float]]:
-    q = _tokens(query)
-    scored = [(d["id"], float(len(q & _tokens(d["text"])))) for d in SAMPLE_DOCS]
-    scored.sort(key=lambda x: x[1], reverse=True)
-    return [(doc_id, score) for doc_id, score in scored[:k] if score > 0]
 
 
-def answer(llm: ChatOpenAI, query: str, doc_ids: list[str]) -> str:
-    context = "\n\n".join(f"[{i}] {DOC_BY_ID[i]['text']}" for i in doc_ids if i in DOC_BY_ID)
+def answer(llm: ChatOpenAI, query: str, hits: list[tuple[str, str, float, str]]) -> str:
+    if not hits:
+        return "(no documents retrieved)"
+    # Use the document text from HybridRetriever, keeping source names for citations.
+    context = "\n\n".join(f"[{doc_id}]\n{text}" for doc_id, text, _, _ in hits)
     messages = [
         SystemMessage(content=ANSWER_SYSTEM),
         HumanMessage(content=f"Documents:\n{context}\n\nQuestion: {query}"),
@@ -226,13 +224,8 @@ def run_evaluation() -> None:
     passes = 0
     print(f"Checkpoint 3.1 — baseline evaluation  |  scenario: {SCENARIO}\n")
     for i, item in enumerate(eval_set, 1):
-        # hits = retrieve(item["question"], TOP_K)
-        # ans = answer(llm, item["question"], [doc_id for doc_id, _ in hits]) if hits else "(no documents retrieved)"
-        # verdict = judge(llm, ans, item["grading_notes"])
-        # passes += verdict == "pass"
-
         hits = retriever.getTopK(item["question"], TOP_K)
-        ans = retriever.query(item["question"]) if hits else "(no documents retrieved)"
+        ans = answer(llm, item["question"], hits)
         verdict = judge(llm, ans, item["grading_notes"])
 
         passes += verdict == "pass"
@@ -259,10 +252,12 @@ def run_evaluation() -> None:
 # %%
 def validate_framework() -> None:
     llm = make_llm()
-    q = "What is BM25?"
-    notes = "States that BM25 is a keyword / term-frequency ranking function for documents."
-    good = answer(llm, q, [doc_id for doc_id, _ in retrieve(q)])
-    #manipulated = "BM25 is a deep neural network that generates images from text prompts."
+    retriever = HybridRetriever(num_retrieved=TOP_K)
+    item = my_eval_set()[0]
+    q = item["question"]
+    notes = item["grading_notes"]
+    hits = retriever.getTopK(q, TOP_K)
+    good = answer(llm, q, hits)
     manipulated = "The first three players drafted were Tom Brady, Patrick Mahomes, and Joe Burrow."
     good_verdict = judge(llm, good, notes)
     manip_verdict = judge(llm, manipulated, notes)
