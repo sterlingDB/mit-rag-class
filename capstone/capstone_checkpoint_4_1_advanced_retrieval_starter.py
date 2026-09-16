@@ -85,7 +85,7 @@ TEMPERATURE = 0.2
 LOG_PATH = Path.cwd() / "checkpoint_4_1_responses.log"
 
 # === SET THIS to the scenario you chose in Checkpoint 1.1 ===
-SCENARIO = "research_papers"   # "research_papers" or "wikipedia"
+SCENARIO = "wikipedia"   # "research_papers" or "wikipedia"
 
 DECOMPOSE_SYSTEM = (
     "You are a query decomposition assistant for a document retrieval system. "
@@ -274,8 +274,21 @@ def my_advanced_plan() -> dict[str, Any]:
 
     Delete the raise NotImplementedError line once your code works.
     """
-    raise NotImplementedError("my_advanced_plan() — see the TODO above.")
-
+    #raise NotImplementedError("my_advanced_plan() — see the TODO above.")
+    return {
+        "technique": "both",
+        "node_types": ["article", "linked_article", "topic/entity"],
+        "edge_types": ["links_to", "mentions_entity", "shares_topic"],
+        "test_queries": [
+            "Who were the 1st 3 players drafted in the NFL in 2026?",
+            "when did Cooter Davenport die in real life?",
+            "When and for how much, did the brady bunch house sell?",
+        ],
+        "rationale": (
+            "Wikipedia articles naturally connect through hyperlinks and shared entities. "
+            "Query decomposition can split multi-part questions, while graph retrieval can pull in related articles that do not directly match every query term."
+        ),
+    }
 
 # %% [markdown]
 # ## Step 5 — Run baseline vs. advanced and capture the evidence

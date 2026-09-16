@@ -3,3 +3,4 @@ langchain-openai
 langchain-core
 langchain_chroma
 rank_bm25
+networkx

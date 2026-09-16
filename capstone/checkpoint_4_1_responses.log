@@ -1,0 +1,12 @@
+[2026-09-16T17:28:18]  GRAPH  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   How does breaking a question into parts and following document links help retrieval?
+RESPONSE: Breaking a question into parts can help because, as the documents say, “Query decomposition breaks a complex question into sub-queries, improving multi-aspect retrieval” [d4].  
+
+Following document links can also help because “Graph-based retrieval traverses relationships between documents to add related context” [d5].  
+
+So, together, they help retrieval by:
+- splitting the question into smaller sub-queries to capture different aspects
+- using document relationships to bring in related context
+
+The documents do not say more than that about the combined effect.
+------------------------------------------------------------------------
