@@ -28,7 +28,7 @@ The user is new to Python but familiar with Node.js. When explaining Python code
 ## Testing and Verification
 
 - For small Python scripts, run the script directly with `python main.py` or the relevant entry point.
-- If tests are added later, include the command here and keep examples easy to run locally.
+- Run graph retrieval tests without API credentials: `.venv/bin/python -m unittest discover -s capstone/tests`.
 - Verify that code still works without requiring unavailable API credentials unless the user explicitly wants an API-backed example.
 
 ## Style

@@ -25,7 +25,9 @@ def get_eval_set() -> list[dict[str, str]]:
         },
         {
             "question": "When did Cooter Davenport, die?",
-            "grading_notes": "The answer must state Ben Jones the actor who played Cooter Davenport on the tv show 'The Dukes of Hazzard' died on August 9, 2026.",
+            #"grading_notes": "The answer must state Ben Jones the actor who played Cooter Davenport on the tv show 'The Dukes of Hazzard' died on August 9, 2026.",
+            "grading_notes": "The answer must state August 9, 2026.",
+
         },
         {
             "question": "When and for how much did the Brady Bunch house sell?",

@@ -10,3 +10,325 @@ So, together, they help retrieval by:
 
 The documents do not say more than that about the combined effect.
 ------------------------------------------------------------------------
+[2026-09-17T06:27:53]  SUB_QUERIES  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: ["Who were the first three picks in the 2026 NFL Draft?", "Which players were selected with picks 1, 2, and 3 in the 2026 NFL Draft?", "What were the names of the top three draft selections in the 2026 NFL Draft?"]
+------------------------------------------------------------------------
+[2026-09-17T06:27:59]  BASELINE  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: retrieved=[('Baltimore_Ravens', 0.5, 'bm25'), ('2026_NFL_draft', 0.5, 'vector'), ('2021_NBA_draft', 0.424, 'vector')]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza** — QB, **Las Vegas Raiders**
+2. **David Bailey** — OLB, **New York Jets**
+3. **Jeremiyah Love** — RB, **Arizona Cardinals**
+
+This is shown in the draft list: “**1 1 Las Vegas Raiders Fernando Mendoza QB Indiana**,” “**1 2 New York Jets David Bailey OLB Texas Tech**,” and “**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**.”
+verdict=pass
+grading_notes=The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third.
+------------------------------------------------------------------------
+[2026-09-17T06:28:03]  MULTISTEP  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: retrieved=[('2026_NFL_draft', 1.596, 'multistep'), ('2020_NFL_draft', 1.442, 'multistep'), ('Baltimore_Ravens', 1.29, 'multistep')]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza** — QB, Las Vegas Raiders  
+2. **David Bailey** — OLB, New York Jets  
+3. **Jeremiyah Love** — RB, Arizona Cardinals
+
+As listed in the document: “**1 1 Las Vegas Raiders Fernando Mendoza QB Indiana**,” “**1 2 New York Jets David Bailey OLB Texas Tech**,” and “**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**.”
+verdict=pass
+grading_notes=The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third.
+------------------------------------------------------------------------
+[2026-09-17T06:28:04]  SUB_QUERIES  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: ["Who is Cooter Davenport and what is his date of death?", "What reliable sources list Cooter Davenport's death date?", "Are there any records or obituaries confirming when Cooter Davenport died?"]
+------------------------------------------------------------------------
+[2026-09-17T06:28:08]  BASELINE  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: retrieved=[('Ben_Jones_(American_actor_and_politician)', 1.0, 'bm25+vector'), ('The_Dukes_of_Hazzard', 0.81, 'bm25+vector'), ('Davy_Crockett', 0.341, 'bm25+vector')]
+answer=The documents do **not** say that Cooter Davenport died.
+
+They do say that Ben Jones, the actor who played Cooter Davenport, died on **August 9, 2026**, and that Jones “died from a massive heart attack at his home in Washington, Virginia.” But for the character Cooter Davenport, no death date is given.
+verdict=fail
+grading_notes=The answer must state Ben Jones the actor who played Cooter Davenport on the tv show 'The Dukes of Hazzard' died on August 9, 2026.
+------------------------------------------------------------------------
+[2026-09-17T06:28:10]  MULTISTEP  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: retrieved=[('Ben_Jones_(American_actor_and_politician)', 2.795, 'multistep'), ('The_Dukes_of_Hazzard', 1.657, 'multistep'), ('Davy_Crockett', 1.243, 'multistep')]
+answer=The documents do **not** say that Cooter Davenport died.
+
+They only mention that **Ben Jones**, who portrayed Cooter Davenport, died: “**Jones died from a massive heart attack at his home in Washington, Virginia, on August 9, 2026, aged 84**.”
+verdict=fail
+grading_notes=The answer must state Ben Jones the actor who played Cooter Davenport on the tv show 'The Dukes of Hazzard' died on August 9, 2026.
+------------------------------------------------------------------------
+[2026-09-17T06:28:12]  SUB_QUERIES  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: ["What is the sale date of the Brady Bunch house?", "What was the sale price of the Brady Bunch house?", "Which property is referred to as the Brady Bunch house?"]
+------------------------------------------------------------------------
+[2026-09-17T06:28:15]  BASELINE  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: retrieved=[('The_Brady_Bunch', 1.0, 'bm25+vector'), ('Once_Upon_a_Time_in_Hollywood', 0.116, 'bm25'), ('The_Washington_Post', 0.093, 'bm25')]
+answer=The documents say the Brady Bunch house was “bought on September 11, 2023” for “$3.2 million.”
+verdict=pass
+grading_notes=The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional.
+------------------------------------------------------------------------
+[2026-09-17T06:28:18]  MULTISTEP  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: retrieved=[('The_Brady_Bunch', 3.0, 'multistep'), ('List_of_In_Living_Color_episodes', 0.348, 'multistep'), ('Friends', 0.16, 'multistep')]
+answer=The documents say the Brady Bunch house was bought on **September 11, 2023**, for **$3.2 million**: “**The house was bought on September 11, 2023 ... for $3.2 million.**”
+verdict=pass
+grading_notes=The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional.
+------------------------------------------------------------------------
+[2026-09-17T06:48:38]  SUB_QUERIES  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: ["Who were the first three picks in the 2026 NFL Draft?", "What players were selected with the 1st, 2nd, and 3rd overall picks in the 2026 NFL Draft?", "Which teams made the first three selections in the 2026 NFL Draft and who did they draft?"]
+------------------------------------------------------------------------
+[2026-09-17T06:48:43]  BASELINE  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: retrieved=[('Baltimore_Ravens', 0.5, 'bm25'), ('2026_NFL_draft', 0.5, 'vector'), ('2021_NBA_draft', 0.424, 'vector')]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. Fernando Mendoza — “QB, Las Vegas Raiders”
+2. David Bailey — “OLB, Texas Tech”
+3. Jeremiyah Love — “RB, Notre Dame”
+
+This is stated in the draft list: “Las Vegas Raiders Fernando Mendoza QB Indiana,” “New York Jets David Bailey OLB Texas Tech,” and “Arizona Cardinals Jeremiyah Love RB Notre Dame.”
+verdict=pass
+grading_notes=The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third.
+------------------------------------------------------------------------
+[2026-09-17T06:48:46]  MULTISTEP  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: retrieved=[('2026_NFL_draft', 1.5, 'multistep'), ('2020_NFL_draft', 1.464, 'multistep'), ('National_Football_League', 1.27, 'multistep')]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza** — QB, **Las Vegas Raiders**  
+2. **David Bailey** — OLB, **New York Jets**  
+3. **Jeremiyah Love** — RB, **Arizona Cardinals**
+
+This comes directly from the draft list: “**1 1 Las Vegas Raiders Fernando Mendoza QB Indiana**,” “**1 2 New York Jets David Bailey OLB Texas Tech**,” and “**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**.”
+verdict=pass
+grading_notes=The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third.
+------------------------------------------------------------------------
+[2026-09-17T06:48:49]  GRAPH  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: retrieved=[('Baltimore_Ravens', 0.5, 'primary: bm25'), ('2026_NFL_draft', 0.5, 'primary: vector'), ('National_Football_League', 30.715, 'context: linked from Baltimore_Ravens, 2026_NFL_draft; BM25')]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza** — QB, Las Vegas Raiders  
+2. **David Bailey** — OLB, New York Jets  
+3. **Jeremiyah Love** — RB, Arizona Cardinals  
+
+This is shown in the draft list: “**1 1 Las Vegas Raiders Fernando Mendoza QB Indiana**,” “**1 2 New York Jets David Bailey OLB Texas Tech**,” and “**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**.”
+verdict=pass
+grading_notes=The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third.
+------------------------------------------------------------------------
+[2026-09-17T06:48:51]  COMBINED  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: retrieved=[('2026_NFL_draft', 1.5, 'primary: multistep'), ('2020_NFL_draft', 1.464, 'primary: multistep'), ('National_Football_League', 30.715, 'context: linked from 2026_NFL_draft, 2020_NFL_draft; BM25')]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. Fernando Mendoza — QB, Las Vegas Raiders  
+2. David Bailey — OLB, New York Jets  
+3. Jeremiyah Love — RB, Arizona Cardinals
+
+This is shown in the draft list: “1 1 Las Vegas Raiders Fernando Mendoza,” “1 2 New York Jets David Bailey,” and “1 3 Arizona Cardinals Jeremiyah Love.”
+verdict=pass
+grading_notes=The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third.
+------------------------------------------------------------------------
+[2026-09-17T06:48:53]  SUB_QUERIES  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: ["When did Cooter Davenport die?", "What is the reported date of death for Cooter Davenport?", "Are there any biographical sources confirming Cooter Davenport's death date?"]
+------------------------------------------------------------------------
+[2026-09-17T06:48:57]  BASELINE  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: retrieved=[('Ben_Jones_(American_actor_and_politician)', 1.0, 'bm25+vector'), ('The_Dukes_of_Hazzard', 0.81, 'bm25+vector'), ('Davy_Crockett', 0.341, 'bm25+vector')]
+answer=The documents do not say that Cooter Davenport died. They identify Cooter Davenport as a character portrayed by Ben Jones, but there is no death date given for Cooter Davenport.
+verdict=fail
+grading_notes=The answer must state Ben Jones the actor who played Cooter Davenport on the tv show 'The Dukes of Hazzard' died on August 9, 2026.
+------------------------------------------------------------------------
+[2026-09-17T06:48:59]  MULTISTEP  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: retrieved=[('Ben_Jones_(American_actor_and_politician)', 2.747, 'multistep'), ('The_Dukes_of_Hazzard', 1.58, 'multistep'), ('Davy_Crockett', 1.226, 'multistep')]
+answer=The documents do **not** say that Cooter Davenport died.
+
+They do say that Ben Jones, the actor who played Cooter Davenport, “**died from a massive heart attack at his home in Washington, Virginia, on August 9, 2026**,” but that is Ben Jones, not the character Cooter Davenport.
+verdict=fail
+grading_notes=The answer must state Ben Jones the actor who played Cooter Davenport on the tv show 'The Dukes of Hazzard' died on August 9, 2026.
+------------------------------------------------------------------------
+[2026-09-17T06:49:02]  GRAPH  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: retrieved=[('Ben_Jones_(American_actor_and_politician)', 1.0, 'primary: bm25+vector'), ('The_Dukes_of_Hazzard', 0.81, 'primary: bm25+vector'), ('Nashville,_Tennessee', 5.587, 'context: linked from The_Dukes_of_Hazzard; BM25')]
+answer=The documents do **not** say when Cooter Davenport died.
+
+They do say that the actor who played him, Ben Jones, died on **August 9, 2026**: “Jones died from a massive heart attack at his home in Washington, Virginia, on August 9, 2026, aged 84.” But I don’t see any death date for the character **Cooter Davenport** himself.
+verdict=fail
+grading_notes=The answer must state Ben Jones the actor who played Cooter Davenport on the tv show 'The Dukes of Hazzard' died on August 9, 2026.
+------------------------------------------------------------------------
+[2026-09-17T06:49:05]  COMBINED  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: retrieved=[('Ben_Jones_(American_actor_and_politician)', 2.747, 'primary: multistep'), ('The_Dukes_of_Hazzard', 1.58, 'primary: multistep'), ('Nashville,_Tennessee', 5.587, 'context: linked from The_Dukes_of_Hazzard; BM25')]
+answer=Cooter Davenport did **not** die in the documents provided. The relevant document says Ben Jones played Cooter Davenport, and that **“Jones died from a massive heart attack at his home in Washington, Virginia, on August 9, 2026, aged 84”** — that refers to **Ben Jones**, not the character Cooter Davenport.
+
+If you meant the actor Ben Jones, he died on **August 9, 2026**.
+verdict=fail
+grading_notes=The answer must state Ben Jones the actor who played Cooter Davenport on the tv show 'The Dukes of Hazzard' died on August 9, 2026.
+------------------------------------------------------------------------
+[2026-09-17T06:49:06]  SUB_QUERIES  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: ["What is the sale date of the Brady Bunch house?", "What was the sale price of the Brady Bunch house?", "What source or record confirms the Brady Bunch house sale details?"]
+------------------------------------------------------------------------
+[2026-09-17T06:49:10]  BASELINE  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: retrieved=[('The_Brady_Bunch', 1.0, 'bm25+vector'), ('Once_Upon_a_Time_in_Hollywood', 0.116, 'bm25'), ('The_Washington_Post', 0.093, 'bm25')]
+answer=The documents say the Brady house “was bought on **September 11, 2023**, … for **$3.2 million**.”
+
+It also says the house was listed for **$5.5 million** in May 2023, but the sale price given is **$3.2 million**.
+verdict=pass
+grading_notes=The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional.
+------------------------------------------------------------------------
+[2026-09-17T06:49:14]  MULTISTEP  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: retrieved=[('The_Brady_Bunch', 3.0, 'multistep'), ('List_of_In_Living_Color_episodes', 0.472, 'multistep'), ('Happy_Days', 0.202, 'multistep')]
+answer=The document says the house was “bought on September 11, 2023” for “$3.2 million.”
+verdict=pass
+grading_notes=The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional.
+------------------------------------------------------------------------
+[2026-09-17T06:49:17]  GRAPH  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: retrieved=[('The_Brady_Bunch', 1.0, 'primary: bm25+vector'), ('Once_Upon_a_Time_in_Hollywood', 0.116, 'primary: bm25'), ('The_Washington_Post', 17.831, 'context: linked from The_Brady_Bunch, Once_Upon_a_Time_in_Hollywood; BM25')]
+answer=The documents say the Brady house was sold **on September 11, 2023**, for **$3.2 million**. The text states: “**The house was bought on September 11, 2023 … for $3.2 million.**”
+verdict=pass
+grading_notes=The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional.
+------------------------------------------------------------------------
+[2026-09-17T06:49:20]  COMBINED  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: retrieved=[('The_Brady_Bunch', 3.0, 'primary: multistep'), ('List_of_In_Living_Color_episodes', 0.472, 'primary: multistep'), ('The_Washington_Post', 17.831, 'context: linked from The_Brady_Bunch; BM25')]
+answer=The document says the Brady Bunch house “was bought on **September 11, 2023** … for **$3.2 million**.”
+verdict=pass
+grading_notes=The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional.
+------------------------------------------------------------------------
+[2026-09-17T06:51:47]  SUB_QUERIES  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: ["Who were the first three picks in the 2026 NFL Draft?", "What teams selected the first three players in the 2026 NFL Draft?", "What positions and colleges did the first three players drafted in the 2026 NFL Draft play for/attend?"]
+------------------------------------------------------------------------
+[2026-09-17T06:51:55]  BASELINE  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: retrieved=[('Baltimore_Ravens', 0.5, 'bm25'), ('2026_NFL_draft', 0.5, 'vector'), ('2021_NBA_draft', 0.424, 'vector')]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. Fernando Mendoza — QB, Las Vegas Raiders  
+2. David Bailey — OLB, New York Jets  
+3. Jeremiyah Love — RB, Arizona Cardinals
+
+This is stated in the draft list: “Las Vegas Raiders Fernando Mendoza QB Indiana,” “New York Jets David Bailey OLB Texas Tech,” and “Arizona Cardinals Jeremiyah Love RB Notre Dame.”
+verdict=pass
+grading_notes=The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third.
+------------------------------------------------------------------------
+[2026-09-17T06:51:59]  MULTISTEP  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: retrieved=[('National_Football_League', 1.427, 'multistep'), ('2026_NFL_draft', 1.372, 'multistep'), ('2020_NFL_draft', 1.32, 'multistep')]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza** — QB, Las Vegas Raiders  
+2. **David Bailey** — OLB, New York Jets  
+3. **Jeremiyah Love** — RB, Arizona Cardinals  
+
+The draft listing says: “**1 1 Las Vegas Raiders Fernando Mendoza QB Indiana**,” “**1 2 New York Jets David Bailey OLB Texas Tech**,” and “**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**.”
+verdict=pass
+grading_notes=The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third.
+------------------------------------------------------------------------
+[2026-09-17T06:52:02]  GRAPH  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: retrieved=[('Baltimore_Ravens', 0.5, 'primary: bm25'), ('2026_NFL_draft', 0.5, 'primary: vector'), ('National_Football_League', 30.715, 'context: linked from Baltimore_Ravens, 2026_NFL_draft; BM25')]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. Fernando Mendoza — QB, Las Vegas Raiders
+2. David Bailey — OLB, New York Jets
+3. Jeremiyah Love — RB, Arizona Cardinals
+
+As the draft document says, the first three selections were “Fernando Mendoza,” “David Bailey,” and “Jeremiyah Love.”
+verdict=pass
+grading_notes=The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third.
+------------------------------------------------------------------------
+[2026-09-17T06:52:06]  COMBINED  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   Who were the first three players drafted in the 2026 NFL draft?
+RESPONSE: retrieved=[('National_Football_League', 1.427, 'primary: multistep'), ('2026_NFL_draft', 1.372, 'primary: multistep'), ('Baltimore_Ravens', 31.631, 'context: linked from National_Football_League; BM25')]
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza** — QB, Las Vegas Raiders  
+2. **David Bailey** — OLB, New York Jets  
+3. **Jeremiyah Love** — RB, Arizona Cardinals  
+
+As the draft list says, the first round began: “**1 1 Las Vegas Raiders Fernando Mendoza QB Indiana**,” then “**1 2 New York Jets David Bailey OLB Texas Tech**,” and “**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**.”
+verdict=pass
+grading_notes=The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third.
+------------------------------------------------------------------------
+[2026-09-17T06:52:08]  SUB_QUERIES  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: ["Who is Cooter Davenport and what is his date of death?", "What sources report the death date of Cooter Davenport?", "Is Cooter Davenport still living or deceased?"]
+------------------------------------------------------------------------
+[2026-09-17T06:52:12]  BASELINE  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: retrieved=[('Ben_Jones_(American_actor_and_politician)', 1.0, 'bm25+vector'), ('The_Dukes_of_Hazzard', 0.81, 'bm25+vector'), ('Davy_Crockett', 0.341, 'bm25+vector')]
+answer=Cooter Davenport did **not** die in the documents provided. The documents say that **Ben Jones**, who portrayed Cooter Davenport, “**died August 9, 2026**” and that he “**died from a massive heart attack at his home in Washington, Virginia**.”
+
+So, if you meant the actor who played Cooter Davenport: **August 9, 2026**.
+verdict=pass
+grading_notes=The answer must state August 9, 2026.
+------------------------------------------------------------------------
+[2026-09-17T06:52:14]  MULTISTEP  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: retrieved=[('Ben_Jones_(American_actor_and_politician)', 2.807, 'multistep'), ('The_Dukes_of_Hazzard', 2.152, 'multistep'), ('Davy_Crockett', 1.139, 'multistep')]
+answer=The documents do not say that Cooter Davenport died. In the **The Dukes of Hazzard** article, Cooter Davenport is a fictional character, and there is no death date given for him. The only death information provided is for the actor Ben Jones, who “died from a massive heart attack” on **August 9, 2026**.
+verdict=fail
+grading_notes=The answer must state August 9, 2026.
+------------------------------------------------------------------------
+[2026-09-17T06:52:17]  GRAPH  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: retrieved=[('Ben_Jones_(American_actor_and_politician)', 1.0, 'primary: bm25+vector'), ('The_Dukes_of_Hazzard', 0.81, 'primary: bm25+vector'), ('Nashville,_Tennessee', 5.587, 'context: linked from The_Dukes_of_Hazzard; BM25')]
+answer=According to the documents, **Ben Jones**, who played **Cooter Davenport**, **died on August 9, 2026**. The Ben Jones document says he “**died August 9, 2026**” and later, “**Jones died from a massive heart attack at his home in Washington, Virginia, on August 9, 2026, aged 84**.”
+verdict=pass
+grading_notes=The answer must state August 9, 2026.
+------------------------------------------------------------------------
+[2026-09-17T06:52:19]  COMBINED  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When did Cooter Davenport, die?
+RESPONSE: retrieved=[('Ben_Jones_(American_actor_and_politician)', 2.807, 'primary: multistep'), ('The_Dukes_of_Hazzard', 2.152, 'primary: multistep'), ('Nashville,_Tennessee', 5.587, 'context: linked from The_Dukes_of_Hazzard; BM25')]
+answer=Cooter Davenport did **not** die in the documents provided. The character is listed as **fictional** and portrayed by Ben Jones in *The Dukes of Hazzard*, but there is no death date given for Cooter Davenport.
+verdict=fail
+grading_notes=The answer must state August 9, 2026.
+------------------------------------------------------------------------
+[2026-09-17T06:52:21]  SUB_QUERIES  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: ["What was the sale date of the Brady Bunch house?", "What was the sale price of the Brady Bunch house?", "What source reports the Brady Bunch house sale details?"]
+------------------------------------------------------------------------
+[2026-09-17T06:52:26]  BASELINE  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: retrieved=[('The_Brady_Bunch', 1.0, 'bm25+vector'), ('Once_Upon_a_Time_in_Hollywood', 0.116, 'bm25'), ('The_Washington_Post', 0.093, 'bm25')]
+answer=The documents say the Brady Bunch house was sold **on September 11, 2023**, for **$3.2 million**.
+
+Quote: “**The house was bought on September 11, 2023 … for $3.2 million.**”
+verdict=pass
+grading_notes=The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional.
+------------------------------------------------------------------------
+[2026-09-17T06:52:28]  MULTISTEP  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: retrieved=[('The_Brady_Bunch', 3.0, 'multistep'), ('List_of_In_Living_Color_episodes', 0.454, 'multistep'), ('The_Washington_Post', 0.245, 'multistep')]
+answer=The documents say the Brady Bunch house was “bought on September 11, 2023 … for $3.2 million.”
+verdict=pass
+grading_notes=The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional.
+------------------------------------------------------------------------
+[2026-09-17T06:52:32]  GRAPH  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: retrieved=[('The_Brady_Bunch', 1.0, 'primary: bm25+vector'), ('Once_Upon_a_Time_in_Hollywood', 0.116, 'primary: bm25'), ('The_Washington_Post', 17.831, 'context: linked from The_Brady_Bunch, Once_Upon_a_Time_in_Hollywood; BM25')]
+answer=The document says the Brady house “was bought on **September 11, 2023**, by media executive Tina Trahan … for **$3.2 million**.”
+verdict=pass
+grading_notes=The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional.
+------------------------------------------------------------------------
+[2026-09-17T06:52:34]  COMBINED  SCENARIO=wikipedia  MODEL=openai/gpt-5.4-mini
+PROMPT:   When and for how much did the Brady Bunch house sell?
+RESPONSE: retrieved=[('The_Brady_Bunch', 3.0, 'primary: multistep'), ('List_of_In_Living_Color_episodes', 0.454, 'primary: multistep'), ('The_Washington_Post', 17.831, 'context: linked from The_Brady_Bunch; BM25')]
+answer=The documents say the Brady Bunch house “was bought on **September 11, 2023** … for **$3.2 million**.”
+verdict=pass
+grading_notes=The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional.
+------------------------------------------------------------------------

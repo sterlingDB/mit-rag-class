@@ -73,11 +73,11 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-import networkx as nx
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from hybrid_retriever import HybridRetriever
+from graph_retriever import GraphRetriever
 from evaluation import get_eval_set, judge
 
 # %%
@@ -164,22 +164,6 @@ def log_response(label: str, prompt: str, response: str) -> None:
 # DOC_BY_ID = {d["id"]: d for d in SAMPLE_DOCS}
 
 
-def keyword_score(query: str, text: str) -> float:
-    """A tiny, dependency-free relevance score: shared word count. This stands in for
-    your real hybrid retriever, so the retrieval step needs no extra dependencies. The
-    demo still calls the LLM, which requires an OpenRouter API key."""
-    q = set(re.findall(r"[a-z0-9]+", query.lower()))
-    t = set(re.findall(r"[a-z0-9]+", text.lower()))
-    return float(len(q & t))
-
-
-def sample_retrieve(query: str, k: int = 3) -> list[tuple[str, float]]:
-    """Single-pass retrieval: Score every doc once, take the top k. (id, score)."""
-    scored = [(d["id"], keyword_score(query, d["text"])) for d in SAMPLE_DOCS]
-    scored.sort(key=lambda x: x[1], reverse=True)
-    return [(i, s) for i, s in scored[:k] if s > 0]
-
-
 # %% [markdown]
 # ## Step 2 — Multistep retrieval (provided, adapted from Lab 4.1)
 #
@@ -238,37 +222,6 @@ def multistep_retrieve(
 # seed's linked documents and topic-siblings as extra context — deduplicated.
 
 # %%
-def build_graph(docs: list[dict]) -> nx.DiGraph:
-    G = nx.DiGraph()
-    for d in docs:
-        G.add_node(f"doc:{d['id']}", node_type="doc")
-        for other in d["links"]:
-            G.add_edge(f"doc:{d['id']}", f"doc:{other}", edge_type="links_to")
-        for topic in d["topics"]:
-            G.add_node(f"topic:{topic}", node_type="topic")
-            G.add_edge(f"doc:{d['id']}", f"topic:{topic}", edge_type="relates_to")
-    return G
-
-
-def graph_retrieve(graph: nx.DiGraph, query: str, k: int = 3) -> dict[str, str]:
-    """Return {doc_id: source_label}: baseline seeds plus their graph neighbors."""
-    union: dict[str, str] = {}
-    for doc_id, _ in sample_retrieve(query, k):
-        union[doc_id] = "seed"
-    for seed in list(union):
-        node = f"doc:{seed}"
-        if not graph.has_node(node):
-            continue
-        for _, target, ed in graph.out_edges(node, data=True):
-            if ed.get("edge_type") == "links_to":
-                union.setdefault(target.removeprefix("doc:"), "linked")
-            elif ed.get("edge_type") == "relates_to":
-                for sib, _, ed2 in graph.in_edges(target, data=True):  # Source docs on this topic
-                    if ed2.get("edge_type") == "relates_to":
-                        union.setdefault(sib.removeprefix("doc:"), "topic")
-    return union
-
-
 # %% [markdown]
 # ## Step 4 — Your advanced-retrieval plan (TODO)
 #
@@ -295,11 +248,11 @@ def my_advanced_plan() -> dict[str, Any]:
     #raise NotImplementedError("my_advanced_plan() — see the TODO above.")
     return {
         "technique": "both",
-        "node_types": ["article", "linked_article", "topic/entity"],
-        "edge_types": ["links_to", "mentions_entity", "shares_topic"],
+        "node_types": ["article"],
+        "edge_types": ["links_to"],
         "test_queries": [item["question"] for item in get_eval_set()],
         "rationale": (
-            "Wikipedia articles naturally connect through hyperlinks and shared entities. "
+            "Wikipedia articles naturally connect through hyperlinks in the saved HTML. "
             "Query decomposition can split multi-part questions, while graph retrieval can pull in related articles that do not directly match every query term."
         ),
     }
@@ -319,7 +272,11 @@ def answer_from_docs(
     if not hits:
         return "(no documents retrieved)"
     # Preserve source names for citations and use the actual retrieved text.
-    context = "\n\n".join(f"[{doc_id}]\n{text}" for doc_id, text, _, _ in hits)
+    sections = []
+    for doc_id, text, _, source in hits:
+        role = source if source.startswith(("primary:", "context:")) else f"primary: {source}"
+        sections.append(f"[{doc_id}]\nRetrieval role: {role}\n{text}")
+    context = "\n\n".join(sections)
     messages = [
         SystemMessage(content=ANSWER_SYSTEM),
         HumanMessage(content=f"Documents:\n{context}\n\nQuestion: {query}"),
@@ -330,21 +287,26 @@ def answer_from_docs(
 def run_demo() -> None:
     llm = make_llm()
     retriever = HybridRetriever(num_retrieved=TOP_K)
+    graph_retriever = GraphRetriever(retriever)
     plan = my_advanced_plan()
-    print(f"Checkpoint 4.1 — hybrid baseline vs. multistep | scenario: {SCENARIO}")
+    print(f"Checkpoint 4.1 — baseline, multistep, graph, and combined | scenario: {SCENARIO}")
     print("Your advanced-retrieval plan:")
     print(json.dumps(plan, indent=2))
-    print("Graph retrieval is still sample-only and is not included in this comparison.")
+    print(f"Graph: {graph_retriever.graph.number_of_nodes()} articles, "
+          f"{graph_retriever.graph.number_of_edges()} links")
 
     eval_set = get_eval_set()
-    passes = {"BASELINE": 0, "MULTISTEP": 0}
+    passes = {"BASELINE": 0, "MULTISTEP": 0, "GRAPH": 0, "COMBINED": 0}
     for item in eval_set:
         query = item["question"]
         print("=" * 72)
         print(f"Query: {query}")
         base = baseline_retrieve(retriever, query, TOP_K)
         multi = multistep_retrieve(llm, retriever, query, TOP_K)
-        for label, hits in [("BASELINE", base), ("MULTISTEP", multi)]:
+        graph_hits = graph_retriever.getTopK(query, TOP_K, seed_hits=base)
+        combined = graph_retriever.getTopK(query, TOP_K, seed_hits=multi)
+        for label, hits in [("BASELINE", base), ("MULTISTEP", multi),
+                            ("GRAPH", graph_hits), ("COMBINED", combined)]:
             summary = [(doc_id, round(score, 3), source) for doc_id, _, score, source in hits]
             print(f"{label} retrieved ({len(hits)} documents): {summary}")
             answer = answer_from_docs(llm, query, hits)
@@ -356,7 +318,7 @@ def run_demo() -> None:
     print("=" * 72)
     for label, count in passes.items():
         print(f"{label} pass rate: {count}/{len(eval_set)}")
-    print("Done. Both strategies were graded with the shared Checkpoint 3.1 rubric.")
+    print("Done. All strategies were graded with the shared Checkpoint 3.1 rubric.")
 
 
 if __name__ == "__main__":

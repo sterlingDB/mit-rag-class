@@ -109,6 +109,20 @@ class HybridRetriever:
     def _build_user_message(self, query: str, context: str) -> str:
         return f"Context (documents):\n{context}\n\nQuestion: {query}"
 
+    def get_documents(self) -> dict[str, str]:
+        """Return indexed article IDs and text without making an API call."""
+        return dict(zip(self._paths, self._contents))
+
+    def score_documents(self, query: str, doc_ids: list[str]) -> dict[str, float]:
+        """Score graph candidates using the existing corpus-wide BM25 index."""
+        scores = self._bm25.get_scores(tokenize(query))
+        wanted = set(doc_ids)
+        return {
+            doc_id: float(score)
+            for doc_id, score in zip(self._paths, scores)
+            if doc_id in wanted
+        }
+
     def getTopK(self, query: str, k: int) -> list[tuple[str, str, float, str]]:
         """Fuse BM25 keyword results with Chroma vector results."""
         bm = bm25_topk(self._bm25, self._paths, self._contents, query, CANDIDATE_POOL)
