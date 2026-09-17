@@ -77,11 +77,14 @@ import networkx as nx
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
+from hybrid_retriever import HybridRetriever
+from evaluation import get_eval_set, judge
 
 # %%
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 LLM_MODEL = "openai/gpt-5.4-mini"  # Latest small OpenAI model, fast; covered by course credits
 TEMPERATURE = 0.2
+TOP_K = 3  # Match the document budget used in Checkpoint 3.1.
 LOG_PATH = Path.cwd() / "checkpoint_4_1_responses.log"
 
 # === SET THIS to the scenario you chose in Checkpoint 1.1 ===
@@ -144,21 +147,21 @@ def log_response(label: str, prompt: str, response: str) -> None:
 # Wikipedia). Your real system would derive these from your actual data.
 
 # %%
-SAMPLE_DOCS = [
-    {"id": "d1", "text": "Paper on retrieval-augmented generation: Grounding LLM answers in retrieved documents reduces hallucination.",
-     "topics": ["RAG", "hallucination"], "links": ["d2", "d3"]},
-    {"id": "d2", "text": "Study of hallucination in language models: Models fabricate specifics when they lack grounding.",
-     "topics": ["hallucination"], "links": ["d1"]},
-    {"id": "d3", "text": "Hybrid retrieval combines keyword and vector search to improve recall over either alone.",
-     "topics": ["RAG", "retrieval"], "links": ["d1", "d4"]},
-    {"id": "d4", "text": "Query decomposition breaks a complex question into sub-queries, improving multi-aspect retrieval.",
-     "topics": ["retrieval", "decomposition"], "links": ["d3"]},
-    {"id": "d5", "text": "Graph-based retrieval traverses relationships between documents to add related context.",
-     "topics": ["retrieval", "graph"], "links": ["d4", "d6"]},
-    {"id": "d6", "text": "Evaluation of RAG systems uses an LLM judge to score answers against grading notes.",
-     "topics": ["evaluation", "RAG"], "links": ["d5"]},
-]
-DOC_BY_ID = {d["id"]: d for d in SAMPLE_DOCS}
+# SAMPLE_DOCS = [
+#     {"id": "d1", "text": "Paper on retrieval-augmented generation: Grounding LLM answers in retrieved documents reduces hallucination.",
+#      "topics": ["RAG", "hallucination"], "links": ["d2", "d3"]},
+#     {"id": "d2", "text": "Study of hallucination in language models: Models fabricate specifics when they lack grounding.",
+#      "topics": ["hallucination"], "links": ["d1"]},
+#     {"id": "d3", "text": "Hybrid retrieval combines keyword and vector search to improve recall over either alone.",
+#      "topics": ["RAG", "retrieval"], "links": ["d1", "d4"]},
+#     {"id": "d4", "text": "Query decomposition breaks a complex question into sub-queries, improving multi-aspect retrieval.",
+#      "topics": ["retrieval", "decomposition"], "links": ["d3"]},
+#     {"id": "d5", "text": "Graph-based retrieval traverses relationships between documents to add related context.",
+#      "topics": ["retrieval", "graph"], "links": ["d4", "d6"]},
+#     {"id": "d6", "text": "Evaluation of RAG systems uses an LLM judge to score answers against grading notes.",
+#      "topics": ["evaluation", "RAG"], "links": ["d5"]},
+# ]
+# DOC_BY_ID = {d["id"]: d for d in SAMPLE_DOCS}
 
 
 def keyword_score(query: str, text: str) -> float:
@@ -170,7 +173,7 @@ def keyword_score(query: str, text: str) -> float:
     return float(len(q & t))
 
 
-def baseline_retrieve(query: str, k: int = 3) -> list[tuple[str, float]]:
+def sample_retrieve(query: str, k: int = 3) -> list[tuple[str, float]]:
     """Single-pass retrieval: Score every doc once, take the top k. (id, score)."""
     scored = [(d["id"], keyword_score(query, d["text"])) for d in SAMPLE_DOCS]
     scored.sort(key=lambda x: x[1], reverse=True)
@@ -201,15 +204,30 @@ def decompose_query(llm: ChatOpenAI, query: str) -> list[str]:
     return [query]
 
 
-def multistep_retrieve(llm: ChatOpenAI, query: str, k: int = 3) -> list[str]:
+def baseline_retrieve(
+    retriever: HybridRetriever, query: str, k: int = TOP_K
+) -> list[tuple[str, str, float, str]]:
+    """Return (source name, document text, score, retrieval method) hits."""
+    return retriever.getTopK(query, k)
+
+
+def multistep_retrieve(
+    llm: ChatOpenAI, retriever: HybridRetriever, query: str, k: int = TOP_K
+) -> list[tuple[str, str, float, str]]:
     sub_queries = decompose_query(llm, query)
     print(f"  decomposed into: {sub_queries}")
+    log_response("SUB_QUERIES", query, json.dumps(sub_queries))
     score_map: dict[str, float] = {}
+    text_by_id: dict[str, str] = {}
     for sq in sub_queries:
-        for doc_id, score in baseline_retrieve(sq, 3 * k):
+        for doc_id, text, score, _ in baseline_retrieve(retriever, sq, 3 * k):
             score_map[doc_id] = score_map.get(doc_id, 0.0) + score
+            text_by_id[doc_id] = text
     ranked = sorted(score_map.items(), key=lambda kv: kv[1], reverse=True)
-    return [doc_id for doc_id, _ in ranked[:k]]
+    return [
+        (doc_id, text_by_id[doc_id], score, "multistep")
+        for doc_id, score in ranked[:k]
+    ]
 
 
 # %% [markdown]
@@ -235,7 +253,7 @@ def build_graph(docs: list[dict]) -> nx.DiGraph:
 def graph_retrieve(graph: nx.DiGraph, query: str, k: int = 3) -> dict[str, str]:
     """Return {doc_id: source_label}: baseline seeds plus their graph neighbors."""
     union: dict[str, str] = {}
-    for doc_id, _ in baseline_retrieve(query, k):
+    for doc_id, _ in sample_retrieve(query, k):
         union[doc_id] = "seed"
     for seed in list(union):
         node = f"doc:{seed}"
@@ -279,11 +297,7 @@ def my_advanced_plan() -> dict[str, Any]:
         "technique": "both",
         "node_types": ["article", "linked_article", "topic/entity"],
         "edge_types": ["links_to", "mentions_entity", "shares_topic"],
-        "test_queries": [
-            "Who were the 1st 3 players drafted in the NFL in 2026?",
-            "when did Cooter Davenport die in real life?",
-            "When and for how much, did the brady bunch house sell?",
-        ],
+        "test_queries": [item["question"] for item in get_eval_set()],
         "rationale": (
             "Wikipedia articles naturally connect through hyperlinks and shared entities. "
             "Query decomposition can split multi-part questions, while graph retrieval can pull in related articles that do not directly match every query term."
@@ -299,8 +313,13 @@ def my_advanced_plan() -> dict[str, Any]:
 # baseline misses. Then run the same comparison in your real system for your report.
 
 # %%
-def answer_from_docs(llm: ChatOpenAI, query: str, doc_ids: list[str]) -> str:
-    context = "\n\n".join(f"[{i}] {DOC_BY_ID[i]['text']}" for i in doc_ids if i in DOC_BY_ID)
+def answer_from_docs(
+    llm: ChatOpenAI, query: str, hits: list[tuple[str, str, float, str]]
+) -> str:
+    if not hits:
+        return "(no documents retrieved)"
+    # Preserve source names for citations and use the actual retrieved text.
+    context = "\n\n".join(f"[{doc_id}]\n{text}" for doc_id, text, _, _ in hits)
     messages = [
         SystemMessage(content=ANSWER_SYSTEM),
         HumanMessage(content=f"Documents:\n{context}\n\nQuestion: {query}"),
@@ -310,39 +329,38 @@ def answer_from_docs(llm: ChatOpenAI, query: str, doc_ids: list[str]) -> str:
 
 def run_demo() -> None:
     llm = make_llm()
-    graph = build_graph(SAMPLE_DOCS)
-    query = "How does breaking a question into parts and following document links help retrieval?"
+    retriever = HybridRetriever(num_retrieved=TOP_K)
+    plan = my_advanced_plan()
+    print(f"Checkpoint 4.1 — hybrid baseline vs. multistep | scenario: {SCENARIO}")
+    print("Your advanced-retrieval plan:")
+    print(json.dumps(plan, indent=2))
+    print("Graph retrieval is still sample-only and is not included in this comparison.")
+
+    eval_set = get_eval_set()
+    passes = {"BASELINE": 0, "MULTISTEP": 0}
+    for item in eval_set:
+        query = item["question"]
+        print("=" * 72)
+        print(f"Query: {query}")
+        base = baseline_retrieve(retriever, query, TOP_K)
+        multi = multistep_retrieve(llm, retriever, query, TOP_K)
+        for label, hits in [("BASELINE", base), ("MULTISTEP", multi)]:
+            summary = [(doc_id, round(score, 3), source) for doc_id, _, score, source in hits]
+            print(f"{label} retrieved ({len(hits)} documents): {summary}")
+            answer = answer_from_docs(llm, query, hits)
+            verdict = judge(llm, answer, item["grading_notes"])
+            passes[label] += verdict == "pass"
+            print(f"{label} answer:\n{answer}\nVerdict: {verdict.upper()}\n")
+            log_response(label, query, f"retrieved={summary}\nanswer={answer}\nverdict={verdict}\ngrading_notes={item['grading_notes']}")
 
     print("=" * 72)
-    print(f"Checkpoint 4.1 demo — scenario: {SCENARIO}\nQuery: {query}\n")
-
-    base = [i for i, _ in baseline_retrieve(query, 3)]
-    print(f"BASELINE (single-pass) retrieved: {base}")
-
-    multi = multistep_retrieve(llm, query, 3)
-    print(f"MULTI-STEP retrieved:             {multi}")
-
-    g = graph_retrieve(graph, query, 3)
-    print(f"GRAPH retrieved (with sources):   {g}")
-
-    answer = answer_from_docs(llm, query, list(g.keys()))
-    print(f"\nGraph-augmented answer:\n{answer}\n")
-    log_response("GRAPH", query, answer)
-
-    # Show your own plan was filled in.
-    try:
-        plan = my_advanced_plan()
-        print("Your advanced-retrieval plan:")
-        print(json.dumps(plan, indent=2))
-    except NotImplementedError as e:
-        print(f"[my_advanced_plan not done yet] {e}")
-
-    print("=" * 72)
-    print("Done. Now reproduce this comparison in YOUR real system (baseline vs "
-          "advanced, matched document count) and use the numbers in your report.")
+    for label, count in passes.items():
+        print(f"{label} pass rate: {count}/{len(eval_set)}")
+    print("Done. Both strategies were graded with the shared Checkpoint 3.1 rubric.")
 
 
-run_demo()
+if __name__ == "__main__":
+    run_demo()
 
 # %% [markdown]
 # ## Step 6

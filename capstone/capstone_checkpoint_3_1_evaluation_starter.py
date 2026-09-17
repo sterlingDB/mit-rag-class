@@ -66,6 +66,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 
 from hybrid_retriever import HybridRetriever
+from evaluation import get_eval_set, judge
 
 # %%
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
@@ -80,11 +81,6 @@ ANSWER_SYSTEM = (
     "You are a helpful assistant. Answer the question using ONLY the provided "
     "documents, and quote from them where you can. If the documents do not contain "
     "the answer, say so rather than guessing."
-)
-JUDGE_SYSTEM = (
-    "You are a strict evaluator. You are given an ANSWER and GRADING NOTES describing "
-    "what a correct answer must contain. Reply with exactly one word: 'pass' if the "
-    "answer satisfies the grading notes, or 'fail' if it does not."
 )
 
 
@@ -158,13 +154,6 @@ def answer(llm: ChatOpenAI, query: str, hits: list[tuple[str, str, float, str]])
 # level, a stronger judge model) is part of the diagnosis.
 
 # %%
-def judge(llm: ChatOpenAI, answer_text: str, grading_notes: str) -> str:
-    messages = [
-        SystemMessage(content=JUDGE_SYSTEM),
-        HumanMessage(content=f"ANSWER:\n{answer_text}\n\nGRADING NOTES:\n{grading_notes}\n\nVerdict (pass/fail):"),
-    ]
-    verdict = llm.invoke(messages).content.strip().lower()
-    return "pass" if "pass" in verdict else "fail"
 
 
 # %% [markdown]
@@ -189,20 +178,7 @@ def my_eval_set() -> list[dict]:
     Delete the raise NotImplementedError line once your code works.
     """
     #raise NotImplementedError("my_eval_set() — see the TODO above.")
-    return [
-        {
-            "question": "Who were the first three players drafted in the 2026 NFL draft?",
-            "grading_notes": "The answer should name Fernando Mendoza, David Bailey, and Jeremiyah Love as the first three picks."
-        },
-        {
-            "question": "When did Ben Jones, who played Cooter Davenport, die?",
-            "grading_notes": "The answer should state the death date from the Ben Jones article."
-        },
-        {
-            "question": "When and for how much did the Brady Bunch house sell?",
-            "grading_notes": "The answer should include both the sale date/time period and the sale price from the Brady Bunch article which was September 10, 2023."
-        },
-    ]
+    return get_eval_set()
 
 # %% [markdown]
 # Run the demonstration code to understand the evaluation workflow. Then apply the same evaluation 
@@ -269,8 +245,9 @@ def validate_framework() -> None:
 
 
 # %%
-run_evaluation()
-validate_framework()
+if __name__ == "__main__":
+    run_evaluation()
+    validate_framework()
 
 # %% [markdown]
 # ## Step 6 — Your written responses in the Capstone Checkpoint 3.1 worksheet

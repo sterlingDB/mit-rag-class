@@ -1,0 +1,78 @@
+[2026-09-17T06:22:13] Q1: Who were the first three players drafted in the 2026 NFL draft?
+retrieved=[('Baltimore_Ravens', 0.5, 'bm25'), ('2026_NFL_draft', 0.5, 'vector'), ('2021_NBA_draft', 0.424, 'vector')]
+verdict=pass
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza** — QB, Las Vegas Raiders  
+2. **David Bailey** — OLB, New York Jets  
+3. **Jeremiyah Love** — RB, Arizona Cardinals
+
+This is from the document’s “First selection” and the draft list: “**Fernando Mendoza, QB, Las Vegas Raiders**,” followed by “**David Bailey**” and “**Jeremiyah Love**.”
+------------------------------------------------------------------------
+[2026-09-17T06:22:16] Q2: When did Ben Jones, who played Cooter Davenport, die?
+retrieved=[('Ben_Jones_(American_actor_and_politician)', 1.0, 'bm25+vector'), ('The_Dukes_of_Hazzard', 0.634, 'bm25+vector'), ('Davy_Crockett', 0.121, 'bm25+vector')]
+verdict=pass
+answer=Ben Jones died on **August 9, 2026**. The document says: “**Jones died from a massive heart attack at his home in Washington, Virginia, on August 9, 2026, aged 84**.”
+------------------------------------------------------------------------
+[2026-09-17T06:22:19] Q3: When and for how much did the Brady Bunch house sell?
+retrieved=[('The_Brady_Bunch', 1.0, 'bm25+vector'), ('Once_Upon_a_Time_in_Hollywood', 0.116, 'bm25'), ('The_Washington_Post', 0.093, 'bm25')]
+verdict=pass
+answer=The documents say the Brady Bunch house was **bought on September 11, 2023, for $3.2 million**. It also says that in May 2023 HGTV had listed it for $5.5 million, but the actual sale mentioned was on September 11, 2023 for $3.2 million.
+------------------------------------------------------------------------
+[2026-09-17T06:22:32] FRAMEWORK VALIDATION
+good=pass manipulated=fail
+------------------------------------------------------------------------
+[2026-09-17T06:22:46] Q1: Who were the first three players drafted in the 2026 NFL draft?
+retrieved=[('Baltimore_Ravens', 0.5, 'bm25'), ('2026_NFL_draft', 0.5, 'vector'), ('2021_NBA_draft', 0.424, 'vector')]
+verdict=pass
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. Fernando Mendoza — QB, Las Vegas Raiders  
+2. David Bailey — OLB, New York Jets  
+3. Jeremiyah Love — RB, Arizona Cardinals
+
+This is listed in the draft order: “First selection Fernando Mendoza, QB, Las Vegas Raiders,” followed by “David Bailey” and “Jeremiyah Love.”
+------------------------------------------------------------------------
+[2026-09-17T06:22:49] Q2: When did Cooter Davenport, die?
+retrieved=[('Ben_Jones_(American_actor_and_politician)', 1.0, 'bm25+vector'), ('The_Dukes_of_Hazzard', 0.81, 'bm25+vector'), ('Davy_Crockett', 0.341, 'bm25+vector')]
+verdict=fail
+answer=The documents do not say that Cooter Davenport died.
+
+They say Ben Jones, who portrayed Cooter Davenport, died on August 9, 2026: “Jones died from a massive heart attack at his home in Washington, Virginia, on August 9, 2026, aged 84.”
+
+But I don’t see any death date for the character Cooter Davenport himself.
+------------------------------------------------------------------------
+[2026-09-17T06:22:52] Q3: When and for how much did the Brady Bunch house sell?
+retrieved=[('The_Brady_Bunch', 1.0, 'bm25+vector'), ('Once_Upon_a_Time_in_Hollywood', 0.116, 'bm25'), ('The_Washington_Post', 0.093, 'bm25')]
+verdict=pass
+answer=The documents say the Brady Bunch house was sold on **September 11, 2023**, for **$3.2 million**. It states: “**The house was bought on September 11, 2023 ... for $3.2 million.**”
+------------------------------------------------------------------------
+[2026-09-17T06:23:04] FRAMEWORK VALIDATION
+good=pass manipulated=fail
+------------------------------------------------------------------------
+[2026-09-17T06:24:43] Q1: Who were the first three players drafted in the 2026 NFL draft?
+retrieved=[('Baltimore_Ravens', 0.5, 'bm25'), ('2026_NFL_draft', 0.5, 'vector'), ('2021_NBA_draft', 0.424, 'vector')]
+verdict=pass
+answer=The first three players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza** — QB, **Las Vegas Raiders**  
+2. **David Bailey** — OLB, **New York Jets**  
+3. **Jeremiyah Love** — RB, **Arizona Cardinals**
+
+This is listed in the 2026 NFL draft document: “**First selection Fernando Mendoza, QB, Las Vegas Raiders**” and the first three picks shown are Fernando Mendoza, David Bailey, and Jeremiyah Love.
+------------------------------------------------------------------------
+[2026-09-17T06:24:46] Q2: When did Cooter Davenport, die?
+retrieved=[('Ben_Jones_(American_actor_and_politician)', 1.0, 'bm25+vector'), ('The_Dukes_of_Hazzard', 0.81, 'bm25+vector'), ('Davy_Crockett', 0.341, 'bm25+vector')]
+verdict=fail
+answer=The documents do not say that Cooter Davenport died.
+
+They describe Cooter Davenport as a character played by Ben Jones in *The Dukes of Hazzard*, but there is no death date for Cooter Davenport in the provided documents.
+------------------------------------------------------------------------
+[2026-09-17T06:24:48] Q3: When and for how much did the Brady Bunch house sell?
+retrieved=[('The_Brady_Bunch', 1.0, 'bm25+vector'), ('Once_Upon_a_Time_in_Hollywood', 0.116, 'bm25'), ('The_Washington_Post', 0.093, 'bm25')]
+verdict=pass
+answer=The documents say the Brady Bunch house "was bought on September 11, 2023 ... for $3.2 million."
+------------------------------------------------------------------------
+[2026-09-17T06:25:00] FRAMEWORK VALIDATION
+good=pass manipulated=fail
+------------------------------------------------------------------------
