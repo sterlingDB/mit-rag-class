@@ -1,3 +1,4 @@
+import ast
 import io
 import json
 import sys
@@ -5,12 +6,20 @@ import tempfile
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
-from types import SimpleNamespace
+from types import ModuleType, SimpleNamespace
 from unittest.mock import Mock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-import capstone_checkpoint_5_1_agent_rag_starter as agent
 from graph_retriever import GraphRetriever
+
+# Load the functions without executing the script's live API evaluation.
+script_path = Path(__file__).resolve().parents[1] / "capstone_checkpoint_5_1_agent_rag_starter.py"
+script = ast.parse(script_path.read_text())
+assert ast.unparse(script.body[-1]) == "run()"
+script.body.pop()
+agent = ModuleType("checkpoint_5_1")
+agent.__file__ = str(script_path)
+exec(compile(script, str(script_path), "exec"), agent.__dict__)
 
 
 class FakeLLM:

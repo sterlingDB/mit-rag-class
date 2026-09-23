@@ -537,8 +537,7 @@ def run() -> None:
     print(f"Evidence saved to {LOG_PATH}")
 
 
-if __name__ == "__main__":
-    run()
+run()
 
 # %% [markdown]
 # ## Step 4 — Your written submission (the graded deliverable)
