@@ -17,16 +17,15 @@ def get_eval_set() -> list[dict[str, str]]:
     """Use identical questions and corpus-based expectations for every strategy."""
     return [
          {
-            "question": "what spot did Jeremiyah Love get drafted in football?",
+            "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
             "grading_notes": (
-                "The answer must be pick 3 in the 2026 NFL draft, "
+                "The answer must be pick 3 in the 2026 NFL draft,"
             ),
-        },
+        },  
         {
-            "question": "Who were the first three players drafted in the 2026 NFL draft?",
+            "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
             "grading_notes": (
-                "The answer must name Fernando Mendoza as the first pick, "
-                "David Bailey as the second, and Jeremiyah Love as the third."
+                ""
             ),
         },
         {
