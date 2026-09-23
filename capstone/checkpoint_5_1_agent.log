@@ -14,3 +14,663 @@ A: The first three players drafted in the 2026 NFL draft were:
 
 This is listed in the document under the 2026 NFL draft first-round selections.
 ------------------------------------------------------------------------
+[2026-09-23T15:55:17] RUN
+{
+  "scenario": "wikipedia",
+  "model": "openai/gpt-5.4-mini",
+  "temperature": 0.2,
+  "top_k": 3,
+  "max_steps": 3,
+  "max_context_docs": 6,
+  "plan": {
+    "tools": [
+      "search",
+      "follow_links",
+      "clarify",
+      "answer"
+    ],
+    "stop_condition": "Stop when the retrieved articles support every part of the question, after 3 action rounds, after collecting 6 articles, or when no useful new action remains. If evidence is still missing, explain what could not be answered.",
+    "system_prompt_idea": "Search the indexed Wikipedia articles first, then target missing information with new queries or follow links from relevant retrieved articles without repeating completed actions. Ask for clarification when ambiguity prevents progress, and answer only from retrieved text with article citations.",
+    "test_tasks": [
+      "Who played Cooter Davenport in The Dukes of Hazzard, and which congressional district did that actor represent and during what years?",
+      "In which U.S. state is the fictional Hazzard County in The Dukes of Hazzard located, and what is that state's capital?"
+    ]
+  }
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:23] BASELINE_RESULT
+{
+  "question": "Who were the first three players drafted in the 2026 NFL draft?",
+  "answer": "The first three players drafted in the 2026 NFL draft were:\n\n1. Fernando Mendoza \u2014 QB, Las Vegas Raiders [2026_NFL_draft]\n2. David Bailey \u2014 OLB, New York Jets [2026_NFL_draft]\n3. Jeremiyah Love \u2014 RB, Arizona Cardinals [2026_NFL_draft]\n\nThese are listed as the first three selections in the draft overview [2026_NFL_draft].",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 6.3055,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 244780,
+  "sources": [
+    {
+      "article_id": "Baltimore_Ravens",
+      "score": 0.5,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "2026_NFL_draft",
+      "score": 0.5,
+      "retrieval_method": "vector"
+    },
+    {
+      "article_id": "2021_NBA_draft",
+      "score": 0.4243797780590934,
+      "retrieval_method": "vector"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:24] EVALUATION
+{
+  "strategy": "BASELINE",
+  "question": "Who were the first three players drafted in the 2026 NFL draft?",
+  "answer": "The first three players drafted in the 2026 NFL draft were:\n\n1. Fernando Mendoza \u2014 QB, Las Vegas Raiders [2026_NFL_draft]\n2. David Bailey \u2014 OLB, New York Jets [2026_NFL_draft]\n3. Jeremiyah Love \u2014 RB, Arizona Cardinals [2026_NFL_draft]\n\nThese are listed as the first three selections in the draft overview [2026_NFL_draft].",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 6.3055,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 244780,
+  "sources": [
+    {
+      "article_id": "Baltimore_Ravens",
+      "score": 0.5,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "2026_NFL_draft",
+      "score": 0.5,
+      "retrieval_method": "vector"
+    },
+    {
+      "article_id": "2021_NBA_draft",
+      "score": 0.4243797780590934,
+      "retrieval_method": "vector"
+    }
+  ],
+  "verdict": "pass",
+  "judge_elapsed_seconds": 1.0951,
+  "judge_calls": 1,
+  "grading_notes": "The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third."
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:25] AGENT_STEP
+{
+  "question": "Who were the first three players drafted in the 2026 NFL draft?",
+  "step": 1,
+  "action": "search",
+  "queries": [
+    "Who were the first three players drafted in the 2026 NFL draft?"
+  ],
+  "reasoning": "Search the original question first.",
+  "retrievals": [
+    {
+      "query": "Who were the first three players drafted in the 2026 NFL draft?",
+      "sources": [
+        {
+          "article_id": "Baltimore_Ravens",
+          "score": 0.5,
+          "retrieval_method": "bm25"
+        },
+        {
+          "article_id": "2026_NFL_draft",
+          "score": 0.5,
+          "retrieval_method": "vector"
+        },
+        {
+          "article_id": "2021_NBA_draft",
+          "score": 0.42427838563782516,
+          "retrieval_method": "vector"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "Baltimore_Ravens",
+    "2026_NFL_draft",
+    "2021_NBA_draft"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:29] AGENT_STEP
+{
+  "question": "Who were the first three players drafted in the 2026 NFL draft?",
+  "step": 2,
+  "action": "answer",
+  "reasoning": "The retrieved 2026 NFL draft article directly lists the first three selections: 1) Fernando Mendoza, QB, Las Vegas Raiders; 2) David Bailey, OLB, New York Jets; 3) Jeremiyah Love, RB, Arizona Cardinals.",
+  "retrievals": [],
+  "collected_article_ids": [
+    "Baltimore_Ravens",
+    "2026_NFL_draft",
+    "2021_NBA_draft"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:31] AGENTIC_RESULT
+{
+  "question": "Who were the first three players drafted in the 2026 NFL draft?",
+  "answer": "The first three players drafted in the 2026 NFL draft were:\n\n1. Fernando Mendoza, QB, Las Vegas Raiders [2026_NFL_draft]  \n2. David Bailey, OLB, New York Jets [2026_NFL_draft]  \n3. Jeremiyah Love, RB, Arizona Cardinals [2026_NFL_draft]",
+  "status": "answered",
+  "stop_reason": "The retrieved 2026 NFL draft article directly lists the first three selections: 1) Fernando Mendoza, QB, Las Vegas Raiders; 2) David Bailey, OLB, New York Jets; 3) Jeremiyah Love, RB, Arizona Cardinals.",
+  "steps": 2,
+  "planner_calls": 1,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 7.0705,
+  "model_calls": 2,
+  "context_documents": 3,
+  "context_characters": 244780,
+  "sources": [
+    {
+      "article_id": "Baltimore_Ravens",
+      "score": 0.5,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "2026_NFL_draft",
+      "score": 0.5,
+      "retrieval_method": "vector"
+    },
+    {
+      "article_id": "2021_NBA_draft",
+      "score": 0.42427838563782516,
+      "retrieval_method": "vector"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:33] EVALUATION
+{
+  "strategy": "AGENTIC",
+  "question": "Who were the first three players drafted in the 2026 NFL draft?",
+  "answer": "The first three players drafted in the 2026 NFL draft were:\n\n1. Fernando Mendoza, QB, Las Vegas Raiders [2026_NFL_draft]  \n2. David Bailey, OLB, New York Jets [2026_NFL_draft]  \n3. Jeremiyah Love, RB, Arizona Cardinals [2026_NFL_draft]",
+  "status": "answered",
+  "stop_reason": "The retrieved 2026 NFL draft article directly lists the first three selections: 1) Fernando Mendoza, QB, Las Vegas Raiders; 2) David Bailey, OLB, New York Jets; 3) Jeremiyah Love, RB, Arizona Cardinals.",
+  "steps": 2,
+  "planner_calls": 1,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 7.0705,
+  "model_calls": 2,
+  "context_documents": 3,
+  "context_characters": 244780,
+  "sources": [
+    {
+      "article_id": "Baltimore_Ravens",
+      "score": 0.5,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "2026_NFL_draft",
+      "score": 0.5,
+      "retrieval_method": "vector"
+    },
+    {
+      "article_id": "2021_NBA_draft",
+      "score": 0.42427838563782516,
+      "retrieval_method": "vector"
+    }
+  ],
+  "verdict": "pass",
+  "judge_elapsed_seconds": 1.8424,
+  "judge_calls": 1,
+  "grading_notes": "The answer must name Fernando Mendoza as the first pick, David Bailey as the second, and Jeremiyah Love as the third."
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:37] BASELINE_RESULT
+{
+  "question": "When did Cooter Davenport, die?",
+  "answer": "Cooter Davenport did **not** die in the documents provided. The character is described as a fictional character from *The Dukes of Hazzard*, portrayed by Ben Jones, but no death date is given for Cooter Davenport himself in either document. The only death date in the Ben Jones article is for **Ben Jones**, who \u201cdied from a massive heart attack \u2026 on **August 9, 2026**\u201d [Ben_Jones_(American_actor_and_politician)].\n\nIf you meant **Ben Jones** rather than Cooter Davenport, he died on **August 9, 2026** [Ben_Jones_(American_actor_and_politician)].",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 3.7958,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8061855233704986,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.33708510056020036,
+      "retrieval_method": "bm25+vector"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:38] EVALUATION
+{
+  "strategy": "BASELINE",
+  "question": "When did Cooter Davenport, die?",
+  "answer": "Cooter Davenport did **not** die in the documents provided. The character is described as a fictional character from *The Dukes of Hazzard*, portrayed by Ben Jones, but no death date is given for Cooter Davenport himself in either document. The only death date in the Ben Jones article is for **Ben Jones**, who \u201cdied from a massive heart attack \u2026 on **August 9, 2026**\u201d [Ben_Jones_(American_actor_and_politician)].\n\nIf you meant **Ben Jones** rather than Cooter Davenport, he died on **August 9, 2026** [Ben_Jones_(American_actor_and_politician)].",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 3.7958,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8061855233704986,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.33708510056020036,
+      "retrieval_method": "bm25+vector"
+    }
+  ],
+  "verdict": "pass",
+  "judge_elapsed_seconds": 1.1823,
+  "judge_calls": 1,
+  "grading_notes": "The answer must state August 9, 2026."
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:38] AGENT_STEP
+{
+  "question": "When did Cooter Davenport, die?",
+  "step": 1,
+  "action": "search",
+  "queries": [
+    "When did Cooter Davenport, die?"
+  ],
+  "reasoning": "Search the original question first.",
+  "retrievals": [
+    {
+      "query": "When did Cooter Davenport, die?",
+      "sources": [
+        {
+          "article_id": "Ben_Jones_(American_actor_and_politician)",
+          "score": 1.0,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "The_Dukes_of_Hazzard",
+          "score": 0.8061855233704986,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "Davy_Crockett",
+          "score": 0.33708510056020036,
+          "retrieval_method": "bm25+vector"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "Ben_Jones_(American_actor_and_politician)",
+    "The_Dukes_of_Hazzard",
+    "Davy_Crockett"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:40] AGENT_STEP
+{
+  "question": "When did Cooter Davenport, die?",
+  "step": 2,
+  "action": "answer",
+  "reasoning": "The retrieved article for Ben Jones states that he portrayed Cooter Davenport and that he died on August 9, 2026. So Cooter Davenport\u2019s actor, Ben Jones, died on August 9, 2026.",
+  "retrievals": [],
+  "collected_article_ids": [
+    "Ben_Jones_(American_actor_and_politician)",
+    "The_Dukes_of_Hazzard",
+    "Davy_Crockett"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:43] AGENTIC_RESULT
+{
+  "question": "When did Cooter Davenport, die?",
+  "answer": "Cooter Davenport did not die in the provided documents. The character information says Cooter Davenport is a fictional character in *The Dukes of Hazzard* and describes his role, but gives no death date for him [The_Dukes_of_Hazzard].\n\nIf you meant the actor who played Cooter Davenport, Ben Jones, he died on **August 9, 2026**, aged 84 [Ben_Jones_(American_actor_and_politician)].",
+  "status": "answered",
+  "stop_reason": "The retrieved article for Ben Jones states that he portrayed Cooter Davenport and that he died on August 9, 2026. So Cooter Davenport\u2019s actor, Ben Jones, died on August 9, 2026.",
+  "steps": 2,
+  "planner_calls": 1,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 5.1459,
+  "model_calls": 2,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8061855233704986,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.33708510056020036,
+      "retrieval_method": "bm25+vector"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:45] EVALUATION
+{
+  "strategy": "AGENTIC",
+  "question": "When did Cooter Davenport, die?",
+  "answer": "Cooter Davenport did not die in the provided documents. The character information says Cooter Davenport is a fictional character in *The Dukes of Hazzard* and describes his role, but gives no death date for him [The_Dukes_of_Hazzard].\n\nIf you meant the actor who played Cooter Davenport, Ben Jones, he died on **August 9, 2026**, aged 84 [Ben_Jones_(American_actor_and_politician)].",
+  "status": "answered",
+  "stop_reason": "The retrieved article for Ben Jones states that he portrayed Cooter Davenport and that he died on August 9, 2026. So Cooter Davenport\u2019s actor, Ben Jones, died on August 9, 2026.",
+  "steps": 2,
+  "planner_calls": 1,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 5.1459,
+  "model_calls": 2,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8061855233704986,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.33708510056020036,
+      "retrieval_method": "bm25+vector"
+    }
+  ],
+  "verdict": "fail",
+  "judge_elapsed_seconds": 1.749,
+  "judge_calls": 1,
+  "grading_notes": "The answer must state August 9, 2026."
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:51] BASELINE_RESULT
+{
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "answer": "The Brady Bunch house was bought on **September 11, 2023** for **$3.2 million** [The_Brady_Bunch].\n\nThe document says: \u201c**The house was bought on September 11, 2023, by media executive Tina Trahan \u2026 for $3.2 million**\u201d [The_Brady_Bunch].",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 6.3719,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 332745,
+  "sources": [
+    {
+      "article_id": "The_Brady_Bunch",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Once_Upon_a_Time_in_Hollywood",
+      "score": 0.11631488381151983,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "The_Washington_Post",
+      "score": 0.0930777503202135,
+      "retrieval_method": "bm25"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:54] EVALUATION
+{
+  "strategy": "BASELINE",
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "answer": "The Brady Bunch house was bought on **September 11, 2023** for **$3.2 million** [The_Brady_Bunch].\n\nThe document says: \u201c**The house was bought on September 11, 2023, by media executive Tina Trahan \u2026 for $3.2 million**\u201d [The_Brady_Bunch].",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 6.3719,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 332745,
+  "sources": [
+    {
+      "article_id": "The_Brady_Bunch",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Once_Upon_a_Time_in_Hollywood",
+      "score": 0.11631488381151983,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "The_Washington_Post",
+      "score": 0.0930777503202135,
+      "retrieval_method": "bm25"
+    }
+  ],
+  "verdict": "pass",
+  "judge_elapsed_seconds": 2.4373,
+  "judge_calls": 1,
+  "grading_notes": "The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional."
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:54] AGENT_STEP
+{
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "step": 1,
+  "action": "search",
+  "queries": [
+    "When and for how much did the Brady Bunch house sell?"
+  ],
+  "reasoning": "Search the original question first.",
+  "retrievals": [
+    {
+      "query": "When and for how much did the Brady Bunch house sell?",
+      "sources": [
+        {
+          "article_id": "The_Brady_Bunch",
+          "score": 1.0,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "Once_Upon_a_Time_in_Hollywood",
+          "score": 0.11631488381151983,
+          "retrieval_method": "bm25"
+        },
+        {
+          "article_id": "The_Washington_Post",
+          "score": 0.0930777503202135,
+          "retrieval_method": "bm25"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "The_Brady_Bunch",
+    "Once_Upon_a_Time_in_Hollywood",
+    "The_Washington_Post"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:57] AGENT_STEP
+{
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "step": 2,
+  "action": "answer",
+  "reasoning": "The retrieved Brady Bunch article directly states the house was put up for sale in summer 2018 for $1.885 million, and that HGTV later bought it on September 11, 2023 for $3.2 million. These cover the likely intended question about when and for how much it sold.",
+  "retrievals": [],
+  "collected_article_ids": [
+    "The_Brady_Bunch",
+    "Once_Upon_a_Time_in_Hollywood",
+    "The_Washington_Post"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T15:55:59] AGENTIC_RESULT
+{
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "answer": "The Brady Bunch house was bought on **September 11, 2023**, for **$3.2 million** ([The_Brady_Bunch]). The document says: \u201c**The house was bought on September 11, 2023 \u2026 for $3.2 million**\u201d ([The_Brady_Bunch]).",
+  "status": "answered",
+  "stop_reason": "The retrieved Brady Bunch article directly states the house was put up for sale in summer 2018 for $1.885 million, and that HGTV later bought it on September 11, 2023 for $3.2 million. These cover the likely intended question about when and for how much it sold.",
+  "steps": 2,
+  "planner_calls": 1,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 5.6957,
+  "model_calls": 2,
+  "context_documents": 3,
+  "context_characters": 332745,
+  "sources": [
+    {
+      "article_id": "The_Brady_Bunch",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Once_Upon_a_Time_in_Hollywood",
+      "score": 0.11631488381151983,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "The_Washington_Post",
+      "score": 0.0930777503202135,
+      "retrieval_method": "bm25"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T15:56:01] EVALUATION
+{
+  "strategy": "AGENTIC",
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "answer": "The Brady Bunch house was bought on **September 11, 2023**, for **$3.2 million** ([The_Brady_Bunch]). The document says: \u201c**The house was bought on September 11, 2023 \u2026 for $3.2 million**\u201d ([The_Brady_Bunch]).",
+  "status": "answered",
+  "stop_reason": "The retrieved Brady Bunch article directly states the house was put up for sale in summer 2018 for $1.885 million, and that HGTV later bought it on September 11, 2023 for $3.2 million. These cover the likely intended question about when and for how much it sold.",
+  "steps": 2,
+  "planner_calls": 1,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 5.6957,
+  "model_calls": 2,
+  "context_documents": 3,
+  "context_characters": 332745,
+  "sources": [
+    {
+      "article_id": "The_Brady_Bunch",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Once_Upon_a_Time_in_Hollywood",
+      "score": 0.11631488381151983,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "The_Washington_Post",
+      "score": 0.0930777503202135,
+      "retrieval_method": "bm25"
+    }
+  ],
+  "verdict": "pass",
+  "judge_elapsed_seconds": 1.5701,
+  "judge_calls": 1,
+  "grading_notes": "The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional."
+}
+------------------------------------------------------------------------
+[2026-09-23T15:56:01] SUMMARY
+{
+  "strategy": "BASELINE",
+  "passes": 3,
+  "tasks": 3,
+  "elapsed_seconds": 16.4732,
+  "model_calls": 3,
+  "search_calls": 3,
+  "link_calls": 0,
+  "judge_calls": 3
+}
+------------------------------------------------------------------------
+[2026-09-23T15:56:01] SUMMARY
+{
+  "strategy": "AGENTIC",
+  "passes": 2,
+  "tasks": 3,
+  "elapsed_seconds": 17.9121,
+  "model_calls": 6,
+  "search_calls": 3,
+  "link_calls": 0,
+  "judge_calls": 3
+}
+------------------------------------------------------------------------
