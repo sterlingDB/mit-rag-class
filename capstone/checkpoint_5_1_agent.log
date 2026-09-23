@@ -1,0 +1,16 @@
+[2026-09-23T15:26:40] AGENTIC
+Q: How does an agentic retriever differ from a fixed pipeline, and how is it evaluated?
+A: An agentic retriever “decides at each step whether it has enough information or should search again” [d4], while a fixed pipeline is a “fixed single-pass pipeline” [d6]. So the key difference is that the agentic retriever can iteratively choose to retrieve more information, rather than doing only one predetermined pass.
+
+It is evaluated by “comparing its answers and cost against a fixed single-pass pipeline” [d6].
+------------------------------------------------------------------------
+[2026-09-23T15:37:52] AGENTIC
+Q: Who were the first three players drafted in the 2026 NFL draft?
+A: The first three players drafted in the 2026 NFL draft were:
+
+1. **Fernando Mendoza** — QB, Las Vegas Raiders  
+2. **David Bailey** — OLB, New York Jets  
+3. **Jeremiyah Love** — RB, Arizona Cardinals  
+
+This is listed in the document under the 2026 NFL draft first-round selections.
+------------------------------------------------------------------------

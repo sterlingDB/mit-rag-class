@@ -64,7 +64,6 @@ warnings.filterwarnings("ignore")
 
 import json
 import os
-import re
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -72,16 +71,20 @@ from typing import Any
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
+from hybrid_retriever import HybridRetriever
+from graph_retriever import GraphRetriever
+from evaluation import get_eval_set, judge
 
 # %%
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 LLM_MODEL = "openai/gpt-5.4-mini"
 TEMPERATURE = 0.2
+TOP_K = 3
 MAX_STEPS = 3
 LOG_PATH = Path.cwd() / "checkpoint_5_1_agent.log"
 
 # === SET THIS to the scenario you chose in Checkpoint 1.1 ===
-SCENARIO = "research_papers"   # "research_papers" or "wikipedia"
+SCENARIO = "wikipedia"   # "research_papers" or "wikipedia"
 
 DECIDE_SYSTEM = (
     "You are an agent retrieving from a small document collection. Given the question, "
@@ -123,26 +126,14 @@ def log(label: str, text: str) -> None:
 # ## A tiny sample corpus + a keyword retriever (provided)
 
 # %%
-SAMPLE_DOCS = [
-    {"id": "d1", "text": "Program synthesis generates programs from a specification, such as input-output examples."},
-    {"id": "d2", "text": "The sketching approach lets a programmer leave holes in a program for a synthesizer to fill."},
-    {"id": "d3", "text": "Retrieval-augmented generation grounds a model's answers in retrieved documents to reduce hallucination."},
-    {"id": "d4", "text": "An agentic retriever decides at each step whether it has enough information or should search again."},
-    {"id": "d5", "text": "A tool-using agent chooses among actions — search, look up by date, ask the user — to complete a task."},
-    {"id": "d6", "text": "Evaluating an agent compares its answers and cost against a fixed single-pass pipeline."},
-]
-DOC_BY_ID = {d["id"]: d for d in SAMPLE_DOCS}
-
-
-def retrieve(query: str, k: int = 2) -> list[str]:
-    q = set(re.findall(r"[a-z0-9]+", query.lower()))
-    scored = [(d["id"], len(q & set(re.findall(r"[a-z0-9]+", d["text"].lower())))) for d in SAMPLE_DOCS]
-    scored.sort(key=lambda x: x[1], reverse=True)
-    return [doc_id for doc_id, s in scored[:k] if s > 0]
+def retrieve(
+    retriever: HybridRetriever, query: str, k: int = TOP_K
+) -> list[tuple[str, str, float, str]]:
+    return retriever.getTopK(query, k)
 
 
 def decide(llm: ChatOpenAI, question: str, collected: dict[str, str], executed: list[str]) -> dict:
-    docs = "\n".join(f"[{i}] {DOC_BY_ID[i]['text']}" for i in collected) or "(none yet)"
+    docs = "\n".join(f"[{i}] {text}" for i, text in collected.items()) or "(none yet)"
     user = f"Question: {question}\n\nQueries run: {executed or '(none)'}\n\nDocuments so far:\n{docs}"
     raw = llm.invoke([SystemMessage(content=DECIDE_SYSTEM), HumanMessage(content=user)]).content.strip()
     if raw.startswith("```"):
@@ -155,15 +146,15 @@ def decide(llm: ChatOpenAI, question: str, collected: dict[str, str], executed: 
         return {"done": True, "new_queries": [], "reasoning": "parse-fail -> stop"}
 
 
-def agentic_answer(llm: ChatOpenAI, question: str) -> str:
+def agentic_answer(llm: ChatOpenAI, retriever: HybridRetriever, question: str) -> str:
     """Provided: a minimal agentic loop — retrieve, decide whether to continue, repeat."""
     collected: dict[str, str] = {}
     executed: list[str] = []
     pending = [question]
     for step in range(MAX_STEPS):
         for q in pending:
-            for doc_id in retrieve(q):
-                collected[doc_id] = DOC_BY_ID[doc_id]["text"]
+            for doc_id, text, _, _ in retrieve(retriever, q):
+                collected[doc_id] = text
             executed.append(q)
         d = decide(llm, question, collected, executed)
         print(f"  step {step + 1}: have {sorted(collected)}  -> done={d['done']}  ({d['reasoning'][:60]})")
@@ -210,7 +201,26 @@ def my_agent_plan() -> dict[str, Any]:
 
     Delete the raise NotImplementedError line once your code works.
     """
-    raise NotImplementedError("my_agent_plan() — see the TODO above.")
+    return {
+        "tools": ["search", "follow_links", "clarify", "answer"],
+        "stop_condition": (
+            "Stop when the retrieved articles support every part of the question, "
+            f"after {MAX_STEPS} action rounds, or when no useful new action remains. "
+            "If evidence is still missing, explain what could not be answered."
+        ),
+        "system_prompt_idea": (
+            "Search the indexed Wikipedia articles first, then target missing information "
+            "with new queries or follow links from relevant retrieved articles without "
+            "repeating completed actions. Ask for clarification when ambiguity prevents "
+            "progress, and answer only from retrieved text with article citations."
+        ),
+        "test_tasks": [
+            "Who played Cooter Davenport in The Dukes of Hazzard, and which "
+            "congressional district did that actor represent and during what years?",
+            "In which U.S. state is the fictional Hazzard County in The Dukes of "
+            "Hazzard located, and what is that state's capital?",
+        ],
+    }
 
 
 # %% [markdown]
@@ -223,10 +233,14 @@ def my_agent_plan() -> dict[str, Any]:
 # %%
 def run() -> None:
     llm = make_llm()
-    question = "How does an agentic retriever differ from a fixed pipeline, and how is it evaluated?"
+    retriever = HybridRetriever(num_retrieved=TOP_K)
+    graph_retriever = GraphRetriever(retriever)
+    question = get_eval_set()[0]["question"]
     print(f"Checkpoint 5.1 — agentic RAG demo  |  scenario: {SCENARIO}")
+    print(f"Graph: {graph_retriever.graph.number_of_nodes()} articles, "
+          f"{graph_retriever.graph.number_of_edges()} links")
     print(f"Question: {question}\n")
-    answer = agentic_answer(llm, question)
+    answer = agentic_answer(llm, retriever, question)
     print(f"\nAgent answer:\n{answer}\n")
     log("AGENTIC", f"Q: {question}\nA: {answer}")
     try:
