@@ -149,11 +149,13 @@ def decide(
     available_actions: tuple[str, ...] = ("search", "follow_links", "clarify", "answer"),
     action_history: list[str] | None = None,
     clarification_history: list[str] | None = None,
+    expanded_articles: set[str] | None = None,
 ) -> dict[str, Any]:
     docs = "\n".join(f"[{i}] {text}" for i, text in collected.items()) or "(none yet)"
     user = (
         f"Original question: {question}\n\nQueries run: {executed or '(none)'}\n\n"
         f"Previous actions: {action_history or '(none)'}\n\n"
+        f"Articles whose links were already followed: {sorted(expanded_articles or set())}\n\n"
         f"Clarifications: {clarification_history or '(none)'}\n\n"
         f"Documents so far:\n{docs}"
     )
@@ -198,7 +200,13 @@ def decide(
                 raise ValueError("follow_links requires 1-2 article IDs")
             if any(not isinstance(article_id, str) or article_id not in collected for article_id in article_ids):
                 raise ValueError("follow_links must use retrieved article IDs")
-            result["article_ids"] = list(dict.fromkeys(article_ids))
+            new_article_ids = [
+                article_id for article_id in dict.fromkeys(article_ids)
+                if article_id not in (expanded_articles or set())
+            ]
+            if not new_article_ids:
+                raise ValueError("no new link expansions remain")
+            result["article_ids"] = new_article_ids
         elif action == "clarify":
             clarification = decision.get("clarification")
             if not isinstance(clarification, str) or not clarification.strip():
@@ -209,24 +217,81 @@ def decide(
         return {"action": "answer", "reasoning": f"Invalid planner decision; stopping: {error}"}
 
 
-def agentic_answer(llm: ChatOpenAI, retriever: HybridRetriever, question: str) -> str:
+def agentic_answer(
+    llm: ChatOpenAI,
+    retriever: HybridRetriever,
+    graph_retriever: GraphRetriever,
+    question: str,
+    *,
+    interactive: bool = False,
+) -> str:
     """Provided: a minimal agentic loop — retrieve, decide whether to continue, repeat."""
-    collected: dict[str, str] = {}
+    collected: dict[str, tuple[str, str, float, str]] = {}
     executed: list[str] = []
-    pending = [question]
+    expanded_articles: set[str] = set()
+    action_history: list[str] = []
+    clarification_history: list[str] = []
+    decision = {"action": "search", "queries": [question], "reasoning": "Search the original question first."}
+    stop_reason = f"Reached the limit of {MAX_STEPS} action rounds."
     for step in range(MAX_STEPS):
-        for q in pending:
-            for doc_id, text, _, _ in retrieve(retriever, q):
-                collected[doc_id] = text
-            executed.append(q)
-        d = decide(llm, question, collected, executed, available_actions=("search", "answer"))
-        print(f"  step {step + 1}: have {sorted(collected)}  -> action={d['action']}  ({d['reasoning'][:60]})")
-        if d["action"] == "answer":
+        action = decision["action"]
+        print(f"  step {step + 1}: action={action}  ({decision['reasoning'][:60]})")
+        hits = []
+        if action == "answer":
+            stop_reason = decision["reasoning"] or "Planner chose to answer."
             break
-        pending = d["queries"]
-    context = "\n\n".join(f"[{i}] {collected[i]}" for i in collected)
+        if action == "search":
+            for query in decision["queries"]:
+                query_hits = retrieve(retriever, query)
+                hits.extend(query_hits)
+                executed.append(query)
+                action_history.append(f"search {query!r}: {[hit[0] for hit in query_hits]}")
+        elif action == "follow_links":
+            article_ids = decision["article_ids"]
+            seeds = [collected[article_id] for article_id in article_ids]
+            query = "\n".join([question] + clarification_history)
+            hits = graph_retriever.getTopK(query, TOP_K, seed_hits=seeds)
+            expanded_articles.update(article_ids)
+            action_history.append(f"follow_links {article_ids}: {[hit[0] for hit in hits]}")
+        elif action == "clarify":
+            clarification = decision["clarification"]
+            if not interactive:
+                return f"Clarification needed: {clarification}"
+            print(f"\nAssistant: {clarification}")
+            try:
+                response = input("You: ").strip()
+            except EOFError:
+                response = ""
+            if not response:
+                return f"Clarification needed: {clarification}"
+            clarification_history.append(f"Q: {clarification}\nA: {response}")
+            action_history.append(f"clarify: {clarification}")
+
+        for hit in hits:
+            collected.setdefault(hit[0], hit)
+        print(f"    collected articles: {sorted(collected)}")
+        if step + 1 == MAX_STEPS:
+            break
+        decision = decide(
+            llm,
+            question,
+            {doc_id: hit[1] for doc_id, hit in collected.items()},
+            executed,
+            action_history=action_history,
+            clarification_history=clarification_history,
+            expanded_articles=expanded_articles,
+        )
+
+    print(f"  stopped: {stop_reason}")
+    context = "\n\n".join(f"[{doc_id}] {text}" for doc_id, text, _, _ in collected.values())
+    user = (
+        f"Documents:\n{context}\n\nQuestion: {question}\n\n"
+        f"User clarifications (use these to interpret the question):\n"
+        + ("\n\n".join(clarification_history) or "(none)")
+        + f"\n\nStopping reason: {stop_reason}"
+    )
     return llm.invoke([SystemMessage(content=ANSWER_SYSTEM),
-                       HumanMessage(content=f"Documents:\n{context}\n\nQuestion: {question}")]).content
+                       HumanMessage(content=user)]).content
 
 
 # %% [markdown]
@@ -303,7 +368,7 @@ def run() -> None:
     print(f"Graph: {graph_retriever.graph.number_of_nodes()} articles, "
           f"{graph_retriever.graph.number_of_edges()} links")
     print(f"Question: {question}\n")
-    answer = agentic_answer(llm, retriever, question)
+    answer = agentic_answer(llm, retriever, graph_retriever, question, interactive=True)
     print(f"\nAgent answer:\n{answer}\n")
     log("AGENTIC", f"Q: {question}\nA: {answer}")
     try:
