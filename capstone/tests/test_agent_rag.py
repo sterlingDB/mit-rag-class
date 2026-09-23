@@ -51,6 +51,13 @@ class FakeRetriever:
         return {name: 1.0 for name in doc_ids}
 
 
+def supported_answer(reasoning="Enough evidence"):
+    return {
+        "action": "answer", "reasoning": reasoning,
+        "requirements": [{"question": "First fact", "article_id": "A", "quote": "Evidence for A"}],
+    }
+
+
 class AgentTests(unittest.TestCase):
     def setUp(self):
         directory = tempfile.TemporaryDirectory()
@@ -72,9 +79,59 @@ class AgentTests(unittest.TestCase):
         return [json.loads(entry.split("\n", 1)[1]) for entry in entries
                 if entry and entry.split("\n", 1)[0].endswith(f"] {label}")]
 
+    def test_unsupported_five_draft_answer_triggers_another_search(self):
+        question = "Compare Jeremiyah Love's draft spot with five older drafts for Arizona."
+        hits = [
+            ("2026_NFL_draft", "Arizona selected Love third overall in 2026.", 0.9, "bm25+vector"),
+            ("2020_NFL_draft", "Arizona selected Simmons eighth overall in 2020.", 0.8, "bm25+vector"),
+            ("National_Football_League", "The NFL holds an annual draft.", 0.7, "bm25+vector"),
+        ]
+        unsupported = {"action": "answer", "reasoning": "The articles cover five older drafts."}
+        llm = FakeLLM(unsupported, unsupported, "Four older drafts are missing.")
+        with patch.object(self.retriever, "getTopK", return_value=hits):
+            result = agent.agentic_answer(llm, self.retriever, self.graph, question)
+        self.assertGreater(result["search_calls"], 1)
+        self.assertLessEqual(result["steps"], agent.MAX_STEPS)
+        self.assertEqual(result["answer"], "Four older drafts are missing.")
+
+    def test_missing_requirement_becomes_a_focused_search(self):
+        decision = {
+            "action": "answer",
+            "requirements": [
+                {"question": "First fact", "article_id": "A", "quote": "Evidence for A"},
+                {"question": "Second fact", "article_id": "", "quote": ""},
+            ],
+        }
+        result = agent.decide(FakeLLM(decision), "Compare two facts", {"A": "Evidence for A"}, ["Compare two facts"])
+        self.assertEqual(result["action"], "search")
+        self.assertEqual(result["queries"], ["Second fact"])
+
+    def test_invented_quote_or_source_cannot_justify_early_answer(self):
+        for article_id, quote in [("A", "Invented evidence"), ("Missing", "Evidence for A")]:
+            with self.subTest(article_id=article_id, quote=quote):
+                decision = {"action": "answer", "requirements": [
+                    {"question": "Find the missing fact", "article_id": article_id, "quote": quote},
+                ]}
+                result = agent.decide(FakeLLM(decision), "Question", {"A": "Evidence for A"}, ["Question"])
+                self.assertEqual(result["action"], "search")
+                self.assertEqual(result["queries"], ["Find the missing fact"])
+
+    def test_supported_checklist_accepts_whitespace_differences(self):
+        result = agent.decide(FakeLLM(supported_answer()), "Question", {"A": "Evidence\n for  A"}, ["Question"])
+        self.assertEqual(result["action"], "answer")
+        self.assertEqual(result["missing_information"], [])
+
+    def test_malformed_checklists_trigger_search_without_crashing(self):
+        for requirements in [None, [], "text", [None], [{}], [{"question": []}],
+                             [{"question": "Find a fact", "article_id": [], "quote": "Text"}]]:
+            with self.subTest(requirements=requirements):
+                decision = {"action": "answer", "requirements": requirements}
+                result = agent.decide(FakeLLM(decision), "Question", {"A": "Evidence for A"}, ["Question"])
+                self.assertEqual(result["action"], "search")
+
     def test_baseline_and_agent_use_same_cited_answer_prompt(self):
         baseline_llm = FakeLLM("Answer [A].")
-        agent_llm = FakeLLM({"action": "answer", "reasoning": "Enough evidence"}, "Answer [A].")
+        agent_llm = FakeLLM(supported_answer(), "Answer [A].")
         baseline = agent.baseline_answer(baseline_llm, self.retriever, "Question")
         result = self.run_agent(agent_llm)
         self.assertEqual(baseline_llm.messages[-1], agent_llm.messages[-1])
@@ -155,7 +212,7 @@ class AgentTests(unittest.TestCase):
     def test_interactive_clarification_reaches_planner_answer_and_log(self):
         llm = FakeLLM(
             {"action": "clarify", "clarification": "Which actor?"},
-            {"action": "answer"}, "Answer [A].",
+            supported_answer(), "Answer [A].",
         )
         with patch("builtins.input", return_value="Ben Jones"):
             result = self.run_agent(llm, interactive=True)
@@ -176,11 +233,12 @@ class AgentTests(unittest.TestCase):
         self.assertIn("3 action rounds", result["stop_reason"])
 
     def test_empty_retrieval_skips_answer_model(self):
-        self.retriever.results = {"Question": []}
+        self.retriever.results = {"Question": [], "Question supporting evidence": []}
         baseline = agent.baseline_answer(FakeLLM(), self.retriever, "Question")
-        result = self.run_agent(FakeLLM({"action": "answer"}))
+        result = self.run_agent(FakeLLM({"action": "answer"}, {"action": "answer"}))
         self.assertEqual(baseline["model_calls"], 0)
-        self.assertEqual(result["model_calls"], 1)
+        self.assertEqual(result["model_calls"], 2)
+        self.assertEqual(result["search_calls"], 2)
         for value in [baseline, result]:
             self.assertEqual(value["status"], "no_evidence")
             self.assertEqual(value["answer_calls"], 0)
@@ -194,7 +252,7 @@ class AgentTests(unittest.TestCase):
         self.assertIn("Invalid planner decision", self.read_events("AGENT_STEP")[-1]["reasoning"])
 
     def test_evaluation_uses_shared_grading_and_separates_judge_cost(self):
-        llm = FakeLLM("Baseline [A].", "pass", {"action": "answer"}, "Agent [A].", "fail")
+        llm = FakeLLM("Baseline [A].", "pass", supported_answer(), "Agent [A].", "fail")
         tasks = [{"question": "Question", "grading_notes": "Expected evidence A"}]
         with patch.object(agent, "make_llm", return_value=llm), \
              patch.object(agent, "HybridRetriever", return_value=self.retriever), \
@@ -221,7 +279,7 @@ class AgentTests(unittest.TestCase):
         self.assertIn("AGENTIC pass rate: 0/1", self.output.getvalue())
 
     def test_disabled_judge_keeps_answers_without_grading_calls(self):
-        llm = FakeLLM("Baseline [A].", {"action": "answer"}, "Agent [A].")
+        llm = FakeLLM("Baseline [A].", supported_answer(), "Agent [A].")
         tasks = [{"question": "Question", "grading_notes": "Expected evidence A"}]
         with patch.object(agent, "make_llm", return_value=llm), \
              patch.object(agent, "HybridRetriever", return_value=self.retriever), \

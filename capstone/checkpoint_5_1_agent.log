@@ -7406,3 +7406,1248 @@ This is listed in the document under the 2026 NFL draft first-round selections.
   "judge_calls": 0
 }
 ------------------------------------------------------------------------
+[2026-09-23T16:32:16] RUN
+{
+  "scenario": "wikipedia",
+  "model": "openai/gpt-5.4-mini",
+  "temperature": 0.2,
+  "top_k": 3,
+  "max_steps": 3,
+  "max_context_docs": 6,
+  "run_judge": false,
+  "plan": {
+    "tools": [
+      "search",
+      "follow_links",
+      "clarify",
+      "answer"
+    ],
+    "stop_condition": "Stop when the retrieved articles support every part of the question, after 3 action rounds, after collecting 6 articles, or when no useful new action remains. If evidence is still missing, explain what could not be answered.",
+    "system_prompt_idea": "Search the indexed Wikipedia articles first, then target missing information with new queries or follow links from relevant retrieved articles without repeating completed actions. Ask for clarification when ambiguity prevents progress, and answer only from retrieved text with article citations.",
+    "test_tasks": [
+      "Who played Cooter Davenport in The Dukes of Hazzard, and which congressional district did that actor represent and during what years?",
+      "In which U.S. state is the fictional Hazzard County in The Dukes of Hazzard located, and what is that state's capital?"
+    ]
+  }
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:19] BASELINE_RESULT
+{
+  "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+  "answer": "Jeremiyah Love was drafted **3rd overall** in the **1st round** by the **Arizona Cardinals**: \u201c**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**\u201d [2026_NFL_draft].\n\nFor the **same round** in **five older drafts** involving Arizona\u2019s first-round pick, the Arizona Cardinals picked:\n\n- **2020:** **8th overall** \u2014 Isaiah Simmons [2020_NFL_draft]  \n- **2026:** **3rd overall** \u2014 Jeremiyah Love [2026_NFL_draft]\n\nThe provided documents only include **one older draft for Arizona** besides 2026, so I\u2019m missing four additional older Arizona drafts to make a full five-draft comparison.",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 3.3388,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 245429,
+  "sources": [
+    {
+      "article_id": "2026_NFL_draft",
+      "score": 0.9507434942107451,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "National_Football_League",
+      "score": 0.5,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "2020_NFL_draft",
+      "score": 0.46207213338559366,
+      "retrieval_method": "bm25+vector"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:19] EVALUATION
+{
+  "strategy": "BASELINE",
+  "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+  "answer": "Jeremiyah Love was drafted **3rd overall** in the **1st round** by the **Arizona Cardinals**: \u201c**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**\u201d [2026_NFL_draft].\n\nFor the **same round** in **five older drafts** involving Arizona\u2019s first-round pick, the Arizona Cardinals picked:\n\n- **2020:** **8th overall** \u2014 Isaiah Simmons [2020_NFL_draft]  \n- **2026:** **3rd overall** \u2014 Jeremiyah Love [2026_NFL_draft]\n\nThe provided documents only include **one older draft for Arizona** besides 2026, so I\u2019m missing four additional older Arizona drafts to make a full five-draft comparison.",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 3.3388,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 245429,
+  "sources": [
+    {
+      "article_id": "2026_NFL_draft",
+      "score": 0.9507434942107451,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "National_Football_League",
+      "score": 0.5,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "2020_NFL_draft",
+      "score": 0.46207213338559366,
+      "retrieval_method": "bm25+vector"
+    }
+  ],
+  "verdict": "skipped",
+  "judge_elapsed_seconds": 0.0,
+  "judge_calls": 0,
+  "grading_notes": "The answer must be pick 3 in the 2026 NFL draft,"
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:20] AGENT_STEP
+{
+  "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+  "step": 1,
+  "action": "search",
+  "queries": [
+    "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona."
+  ],
+  "reasoning": "Search the original question first.",
+  "retrievals": [
+    {
+      "query": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+      "sources": [
+        {
+          "article_id": "2026_NFL_draft",
+          "score": 0.9507434942107451,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "National_Football_League",
+          "score": 0.5,
+          "retrieval_method": "bm25"
+        },
+        {
+          "article_id": "2020_NFL_draft",
+          "score": 0.4621805582938261,
+          "retrieval_method": "bm25+vector"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "2026_NFL_draft",
+    "National_Football_League",
+    "2020_NFL_draft"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:22] AGENT_STEP
+{
+  "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+  "step": 2,
+  "action": "search",
+  "reasoning": "Missing or invalid evidence for: what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+  "requirements": [],
+  "missing_information": [
+    "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona."
+  ],
+  "queries": [
+    "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona. supporting evidence"
+  ],
+  "retrievals": [
+    {
+      "query": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona. supporting evidence",
+      "sources": [
+        {
+          "article_id": "2026_NFL_draft",
+          "score": 0.9341333697877776,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "National_Football_League",
+          "score": 0.5,
+          "retrieval_method": "bm25"
+        },
+        {
+          "article_id": "2021_NBA_draft",
+          "score": 0.4956882938139962,
+          "retrieval_method": "vector"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "2026_NFL_draft",
+    "National_Football_League",
+    "2020_NFL_draft",
+    "2021_NBA_draft"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:25] AGENT_STEP
+{
+  "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+  "step": 3,
+  "action": "search",
+  "reasoning": "Missing or invalid evidence for: Compare it to the same round of 5 older drafts for Arizona.",
+  "requirements": [
+    {
+      "question": "What spot did Jeremiyah Love get drafted?",
+      "article_id": "2026_NFL_draft",
+      "quote": "1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame"
+    },
+    {
+      "question": "Compare it to the same round of 5 older drafts for Arizona.",
+      "article_id": "2026_NFL_draft",
+      "quote": "3 65 Arizona Cardinals Carson Beck QB Miami (FL) ... 4 104 Arizona Cardinals Kaleb Proctor DT Southeastern Louisiana ... 5 143 Arizona Cardinals Reggie Virgil WR Texas Tech ... 6 183 Arizona Cardinals Karson Sharar LB Iowa ... 7 217 Arizona Cardinals Jayden Williams T Ole Miss"
+    }
+  ],
+  "missing_information": [
+    "Compare it to the same round of 5 older drafts for Arizona."
+  ],
+  "queries": [
+    "Compare it to the same round of 5 older drafts for Arizona."
+  ],
+  "retrievals": [
+    {
+      "query": "Compare it to the same round of 5 older drafts for Arizona.",
+      "sources": [
+        {
+          "article_id": "2026_NFL_draft",
+          "score": 0.658805354003871,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "2020_NFL_draft",
+          "score": 0.5537426371220094,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "National_Football_League",
+          "score": 0.5,
+          "retrieval_method": "bm25"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "2026_NFL_draft",
+    "National_Football_League",
+    "2020_NFL_draft",
+    "2021_NBA_draft"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:28] AGENTIC_RESULT
+{
+  "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+  "answer": "Jeremiyah Love was drafted **3rd overall** by the **Arizona Cardinals** in the **1st round** of the 2026 NFL draft: \u201c**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**\u201d ([2026_NFL_draft]).\n\nIf by \u201ccompare it to the same round of 5 older drafts for Arizona\u201d you mean Arizona\u2019s **1st-round picks in the previous five NFL drafts**, the documents only provide this information for **2020** and **2026**:\n\n- **2020**: Arizona picked **Isaiah Simmons** at **8th overall** in Round 1 ([2020_NFL_draft]).\n- **2026**: Arizona picked **Jeremiyah Love** at **3rd overall** in Round 1 ([2026_NFL_draft]).\n\nThe documents do **not** include Arizona\u2019s 1st-round picks for the other three intervening drafts, so I can\u2019t fully compare all five older drafts from the provided sources.",
+  "status": "answered",
+  "stop_reason": "Reached the limit of 3 action rounds.",
+  "steps": 3,
+  "planner_calls": 2,
+  "answer_calls": 1,
+  "search_calls": 3,
+  "link_calls": 0,
+  "unique_documents_retrieved": 4,
+  "elapsed_seconds": 8.7844,
+  "model_calls": 3,
+  "context_documents": 4,
+  "context_characters": 309146,
+  "sources": [
+    {
+      "article_id": "2026_NFL_draft",
+      "score": 0.9507434942107451,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "National_Football_League",
+      "score": 0.5,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "2020_NFL_draft",
+      "score": 0.4621805582938261,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "2021_NBA_draft",
+      "score": 0.4956882938139962,
+      "retrieval_method": "vector"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:28] EVALUATION
+{
+  "strategy": "AGENTIC",
+  "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+  "answer": "Jeremiyah Love was drafted **3rd overall** by the **Arizona Cardinals** in the **1st round** of the 2026 NFL draft: \u201c**1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame**\u201d ([2026_NFL_draft]).\n\nIf by \u201ccompare it to the same round of 5 older drafts for Arizona\u201d you mean Arizona\u2019s **1st-round picks in the previous five NFL drafts**, the documents only provide this information for **2020** and **2026**:\n\n- **2020**: Arizona picked **Isaiah Simmons** at **8th overall** in Round 1 ([2020_NFL_draft]).\n- **2026**: Arizona picked **Jeremiyah Love** at **3rd overall** in Round 1 ([2026_NFL_draft]).\n\nThe documents do **not** include Arizona\u2019s 1st-round picks for the other three intervening drafts, so I can\u2019t fully compare all five older drafts from the provided sources.",
+  "status": "answered",
+  "stop_reason": "Reached the limit of 3 action rounds.",
+  "steps": 3,
+  "planner_calls": 2,
+  "answer_calls": 1,
+  "search_calls": 3,
+  "link_calls": 0,
+  "unique_documents_retrieved": 4,
+  "elapsed_seconds": 8.7844,
+  "model_calls": 3,
+  "context_documents": 4,
+  "context_characters": 309146,
+  "sources": [
+    {
+      "article_id": "2026_NFL_draft",
+      "score": 0.9507434942107451,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "National_Football_League",
+      "score": 0.5,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "2020_NFL_draft",
+      "score": 0.4621805582938261,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "2021_NBA_draft",
+      "score": 0.4956882938139962,
+      "retrieval_method": "vector"
+    }
+  ],
+  "verdict": "skipped",
+  "judge_elapsed_seconds": 0.0,
+  "judge_calls": 0,
+  "grading_notes": "The answer must be pick 3 in the 2026 NFL draft,"
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:30] BASELINE_RESULT
+{
+  "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "answer": "The actor was Ben Jones, who \u201cserved for four years in the United States House of Representatives\u201d and was \u201cMember of the U.S. House of Representatives from Georgia\u2019s 4th district\u201d ([Ben_Jones_(American_actor_and_politician)]). The capital of Georgia is Atlanta.",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 2.1924,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8250242435623527,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.24230039287496952,
+      "retrieval_method": "bm25+vector"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:30] EVALUATION
+{
+  "strategy": "BASELINE",
+  "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "answer": "The actor was Ben Jones, who \u201cserved for four years in the United States House of Representatives\u201d and was \u201cMember of the U.S. House of Representatives from Georgia\u2019s 4th district\u201d ([Ben_Jones_(American_actor_and_politician)]). The capital of Georgia is Atlanta.",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 2.1924,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8250242435623527,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.24230039287496952,
+      "retrieval_method": "bm25+vector"
+    }
+  ],
+  "verdict": "skipped",
+  "judge_elapsed_seconds": 0.0,
+  "judge_calls": 0,
+  "grading_notes": ""
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:30] AGENT_STEP
+{
+  "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "step": 1,
+  "action": "search",
+  "queries": [
+    "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?"
+  ],
+  "reasoning": "Search the original question first.",
+  "retrievals": [
+    {
+      "query": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+      "sources": [
+        {
+          "article_id": "Ben_Jones_(American_actor_and_politician)",
+          "score": 1.0,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "The_Dukes_of_Hazzard",
+          "score": 0.8250242435623527,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "Davy_Crockett",
+          "score": 0.24230039287496952,
+          "retrieval_method": "bm25+vector"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "Ben_Jones_(American_actor_and_politician)",
+    "The_Dukes_of_Hazzard",
+    "Davy_Crockett"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:34] AGENT_STEP
+{
+  "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "step": 2,
+  "action": "search",
+  "reasoning": "Missing or invalid evidence for: What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "requirements": [
+    {
+      "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "quote": "Jones also served for four years in the United States House of Representatives from January 3, 1989, to January 3, 1993."
+    },
+    {
+      "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "quote": "Member of the U.S. House of Representatives from Georgia's 4th district"
+    },
+    {
+      "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+      "article_id": "",
+      "quote": ""
+    }
+  ],
+  "missing_information": [
+    "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?"
+  ],
+  "queries": [
+    "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress? supporting evidence"
+  ],
+  "retrievals": [
+    {
+      "query": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress? supporting evidence",
+      "sources": [
+        {
+          "article_id": "Ben_Jones_(American_actor_and_politician)",
+          "score": 1.0,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "The_Dukes_of_Hazzard",
+          "score": 0.8192311440687718,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "Davy_Crockett",
+          "score": 0.28728971243190304,
+          "retrieval_method": "bm25+vector"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "Ben_Jones_(American_actor_and_politician)",
+    "The_Dukes_of_Hazzard",
+    "Davy_Crockett"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:36] AGENT_STEP
+{
+  "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "step": 3,
+  "action": "answer",
+  "reasoning": "Missing evidence; no new queries remain.",
+  "requirements": [
+    {
+      "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "quote": "Jones also served for four years in the United States House of Representatives from January 3, 1989, to January 3, 1993."
+    },
+    {
+      "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+      "article_id": "",
+      "quote": ""
+    }
+  ],
+  "missing_information": [
+    "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?"
+  ],
+  "retrievals": [],
+  "collected_article_ids": [
+    "Ben_Jones_(American_actor_and_politician)",
+    "The_Dukes_of_Hazzard",
+    "Davy_Crockett"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:37] AGENTIC_RESULT
+{
+  "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "answer": "Ben Jones, who played Cooter Davenport in *The Dukes of Hazzard*, represented Georgia in the U.S. House of Representatives from Georgia's 4th district [Ben_Jones_(American_actor_and_politician)]. The capital of Georgia is Atlanta [missing from provided documents].",
+  "status": "answered",
+  "stop_reason": "Missing evidence; no new queries remain.",
+  "steps": 3,
+  "planner_calls": 2,
+  "answer_calls": 1,
+  "search_calls": 2,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 6.9265,
+  "model_calls": 3,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8250242435623527,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.24230039287496952,
+      "retrieval_method": "bm25+vector"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:37] EVALUATION
+{
+  "strategy": "AGENTIC",
+  "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "answer": "Ben Jones, who played Cooter Davenport in *The Dukes of Hazzard*, represented Georgia in the U.S. House of Representatives from Georgia's 4th district [Ben_Jones_(American_actor_and_politician)]. The capital of Georgia is Atlanta [missing from provided documents].",
+  "status": "answered",
+  "stop_reason": "Missing evidence; no new queries remain.",
+  "steps": 3,
+  "planner_calls": 2,
+  "answer_calls": 1,
+  "search_calls": 2,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 6.9265,
+  "model_calls": 3,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8250242435623527,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.24230039287496952,
+      "retrieval_method": "bm25+vector"
+    }
+  ],
+  "verdict": "skipped",
+  "judge_elapsed_seconds": 0.0,
+  "judge_calls": 0,
+  "grading_notes": ""
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:39] BASELINE_RESULT
+{
+  "question": "When did Cooter Davenport, die?",
+  "answer": "Cooter Davenport did not die in the provided documents. The document about the character says he is a fictional character in *The Dukes of Hazzard* and gives no death date for him [The_Dukes_of_Hazzard]. It\u2019s possible you meant Ben Jones, the actor who played Cooter Davenport; that document says Ben Jones died on **August 9, 2026**, aged 84 [Ben_Jones_(American_actor_and_politician)].",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 2.037,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8061855233704986,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.33708510056020036,
+      "retrieval_method": "bm25+vector"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:39] EVALUATION
+{
+  "strategy": "BASELINE",
+  "question": "When did Cooter Davenport, die?",
+  "answer": "Cooter Davenport did not die in the provided documents. The document about the character says he is a fictional character in *The Dukes of Hazzard* and gives no death date for him [The_Dukes_of_Hazzard]. It\u2019s possible you meant Ben Jones, the actor who played Cooter Davenport; that document says Ben Jones died on **August 9, 2026**, aged 84 [Ben_Jones_(American_actor_and_politician)].",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 2.037,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8061855233704986,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.33708510056020036,
+      "retrieval_method": "bm25+vector"
+    }
+  ],
+  "verdict": "skipped",
+  "judge_elapsed_seconds": 0.0,
+  "judge_calls": 0,
+  "grading_notes": "The answer must state August 9, 2026."
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:40] AGENT_STEP
+{
+  "question": "When did Cooter Davenport, die?",
+  "step": 1,
+  "action": "search",
+  "queries": [
+    "When did Cooter Davenport, die?"
+  ],
+  "reasoning": "Search the original question first.",
+  "retrievals": [
+    {
+      "query": "When did Cooter Davenport, die?",
+      "sources": [
+        {
+          "article_id": "Ben_Jones_(American_actor_and_politician)",
+          "score": 1.0,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "The_Dukes_of_Hazzard",
+          "score": 0.8061855233704986,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "Davy_Crockett",
+          "score": 0.33708510056020036,
+          "retrieval_method": "bm25+vector"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "Ben_Jones_(American_actor_and_politician)",
+    "The_Dukes_of_Hazzard",
+    "Davy_Crockett"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:41] AGENT_STEP
+{
+  "question": "When did Cooter Davenport, die?",
+  "step": 2,
+  "action": "search",
+  "reasoning": "Missing or invalid evidence for: When did Cooter Davenport, die?",
+  "requirements": [
+    {
+      "question": "When did Cooter Davenport, die?",
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "quote": "Jones died from a massive heart attack at his home in Washington, Virginia, on August 9, 2026, aged 84 according to his wife Alma Viator."
+    }
+  ],
+  "missing_information": [
+    "When did Cooter Davenport, die?"
+  ],
+  "queries": [
+    "When did Cooter Davenport, die? supporting evidence"
+  ],
+  "retrievals": [
+    {
+      "query": "When did Cooter Davenport, die? supporting evidence",
+      "sources": [
+        {
+          "article_id": "Ben_Jones_(American_actor_and_politician)",
+          "score": 0.9584002649301804,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "The_Dukes_of_Hazzard",
+          "score": 0.6448853625642395,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "Davy_Crockett",
+          "score": 0.5519829776685314,
+          "retrieval_method": "bm25+vector"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "Ben_Jones_(American_actor_and_politician)",
+    "The_Dukes_of_Hazzard",
+    "Davy_Crockett"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:44] AGENT_STEP
+{
+  "question": "When did Cooter Davenport, die?",
+  "step": 3,
+  "action": "search",
+  "reasoning": "Missing or invalid evidence for: When did Cooter Davenport die?",
+  "requirements": [
+    {
+      "question": "When did Cooter Davenport die?",
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "quote": "Benjamin Lewis Jones (August 30, 1941 \u2013 August 9, 2026) was an American actor... best known for his role as Cooter Davenport in The Dukes of Hazzard ... Jones died from a massive heart attack at his home in Washington, Virginia, on August 9, 2026, aged 84 according to his wife Alma Viator."
+    }
+  ],
+  "missing_information": [
+    "When did Cooter Davenport die?"
+  ],
+  "queries": [
+    "When did Cooter Davenport die?"
+  ],
+  "retrievals": [
+    {
+      "query": "When did Cooter Davenport die?",
+      "sources": [
+        {
+          "article_id": "Ben_Jones_(American_actor_and_politician)",
+          "score": 1.0,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "The_Dukes_of_Hazzard",
+          "score": 0.8313135436030337,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "Davy_Crockett",
+          "score": 0.3261890134847773,
+          "retrieval_method": "bm25+vector"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "Ben_Jones_(American_actor_and_politician)",
+    "The_Dukes_of_Hazzard",
+    "Davy_Crockett"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:46] AGENTIC_RESULT
+{
+  "question": "When did Cooter Davenport, die?",
+  "answer": "The documents do not say that Cooter Davenport died. They only identify Cooter Davenport as a character portrayed by Ben Jones in *The Dukes of Hazzard* [The_Dukes_of_Hazzard] and describe Ben Jones\u2019s death in 2026 [Ben_Jones_(American_actor_and_politician)]. So the missing information is Cooter Davenport\u2019s death date, if any.",
+  "status": "answered",
+  "stop_reason": "Reached the limit of 3 action rounds.",
+  "steps": 3,
+  "planner_calls": 2,
+  "answer_calls": 1,
+  "search_calls": 3,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 6.7571,
+  "model_calls": 3,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8061855233704986,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.33708510056020036,
+      "retrieval_method": "bm25+vector"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:46] EVALUATION
+{
+  "strategy": "AGENTIC",
+  "question": "When did Cooter Davenport, die?",
+  "answer": "The documents do not say that Cooter Davenport died. They only identify Cooter Davenport as a character portrayed by Ben Jones in *The Dukes of Hazzard* [The_Dukes_of_Hazzard] and describe Ben Jones\u2019s death in 2026 [Ben_Jones_(American_actor_and_politician)]. So the missing information is Cooter Davenport\u2019s death date, if any.",
+  "status": "answered",
+  "stop_reason": "Reached the limit of 3 action rounds.",
+  "steps": 3,
+  "planner_calls": 2,
+  "answer_calls": 1,
+  "search_calls": 3,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 6.7571,
+  "model_calls": 3,
+  "context_documents": 3,
+  "context_characters": 181118,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8061855233704986,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.33708510056020036,
+      "retrieval_method": "bm25+vector"
+    }
+  ],
+  "verdict": "skipped",
+  "judge_elapsed_seconds": 0.0,
+  "judge_calls": 0,
+  "grading_notes": "The answer must state August 9, 2026."
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:48] BASELINE_RESULT
+{
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "answer": "The Brady Bunch house was bought on **September 11, 2023**, for **$3.2 million** [The_Brady_Bunch]. The document says: \u201c**The house was bought on September 11, 2023, by media executive Tina Trahan \u2026 for $3.2 million**\u201d [The_Brady_Bunch].",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 2.0905,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 332745,
+  "sources": [
+    {
+      "article_id": "The_Brady_Bunch",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Once_Upon_a_Time_in_Hollywood",
+      "score": 0.11631488381151983,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "The_Washington_Post",
+      "score": 0.0930777503202135,
+      "retrieval_method": "bm25"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:48] EVALUATION
+{
+  "strategy": "BASELINE",
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "answer": "The Brady Bunch house was bought on **September 11, 2023**, for **$3.2 million** [The_Brady_Bunch]. The document says: \u201c**The house was bought on September 11, 2023, by media executive Tina Trahan \u2026 for $3.2 million**\u201d [The_Brady_Bunch].",
+  "status": "answered",
+  "stop_reason": "Completed single-pass retrieval.",
+  "steps": 1,
+  "planner_calls": 0,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "elapsed_seconds": 2.0905,
+  "model_calls": 1,
+  "context_documents": 3,
+  "context_characters": 332745,
+  "sources": [
+    {
+      "article_id": "The_Brady_Bunch",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Once_Upon_a_Time_in_Hollywood",
+      "score": 0.11631488381151983,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "The_Washington_Post",
+      "score": 0.0930777503202135,
+      "retrieval_method": "bm25"
+    }
+  ],
+  "verdict": "skipped",
+  "judge_elapsed_seconds": 0.0,
+  "judge_calls": 0,
+  "grading_notes": "The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional."
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:48] AGENT_STEP
+{
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "step": 1,
+  "action": "search",
+  "queries": [
+    "When and for how much did the Brady Bunch house sell?"
+  ],
+  "reasoning": "Search the original question first.",
+  "retrievals": [
+    {
+      "query": "When and for how much did the Brady Bunch house sell?",
+      "sources": [
+        {
+          "article_id": "The_Brady_Bunch",
+          "score": 1.0,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "Once_Upon_a_Time_in_Hollywood",
+          "score": 0.11631488381151983,
+          "retrieval_method": "bm25"
+        },
+        {
+          "article_id": "The_Washington_Post",
+          "score": 0.0930777503202135,
+          "retrieval_method": "bm25"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "The_Brady_Bunch",
+    "Once_Upon_a_Time_in_Hollywood",
+    "The_Washington_Post"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:53] AGENT_STEP
+{
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "step": 2,
+  "action": "search",
+  "reasoning": "Missing or invalid evidence for: When did the Brady Bunch house sell?",
+  "requirements": [
+    {
+      "question": "When did the Brady Bunch house sell?",
+      "article_id": "The_Brady_Bunch",
+      "quote": "In May 2023, it was announced that HGTV was selling the house for $5.5 million. The house was bought on September 11, 2023, by media executive Tina Trahan..."
+    },
+    {
+      "question": "For how much did the Brady Bunch house sell?",
+      "article_id": "The_Brady_Bunch",
+      "quote": "The house was bought on September 11, 2023, by media executive Tina Trahan, the wife of former HBO chief executive Chris Albrecht and a longtime fan of the show, for $3.2 million."
+    }
+  ],
+  "missing_information": [
+    "When did the Brady Bunch house sell?"
+  ],
+  "queries": [
+    "When did the Brady Bunch house sell?"
+  ],
+  "retrievals": [
+    {
+      "query": "When did the Brady Bunch house sell?",
+      "sources": [
+        {
+          "article_id": "The_Brady_Bunch",
+          "score": 1.0,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "Super_Bowl_XLVI",
+          "score": 0.15263603075016946,
+          "retrieval_method": "bm25"
+        },
+        {
+          "article_id": "The_Washington_Post",
+          "score": 0.09580076967682634,
+          "retrieval_method": "bm25"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "The_Brady_Bunch",
+    "Once_Upon_a_Time_in_Hollywood",
+    "The_Washington_Post",
+    "Super_Bowl_XLVI"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:57] AGENT_STEP
+{
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "step": 3,
+  "action": "search",
+  "reasoning": "Missing or invalid evidence for: When did the Brady Bunch house sell?; For how much did the Brady Bunch house sell?",
+  "requirements": [
+    {
+      "question": "When did the Brady Bunch house sell?",
+      "article_id": "The_Brady_Bunch",
+      "quote": "The house was put up for sale, for the first time since 1973, in the summer of 2018 with an asking price of $1.885 million. ... In May 2023, it was announced that HGTV was selling the house for $5.5 million. The house was bought on September 11, 2023, by media executive Tina Trahan... for $3.2 million."
+    },
+    {
+      "question": "For how much did the Brady Bunch house sell?",
+      "article_id": "The_Brady_Bunch",
+      "quote": "The house was bought on September 11, 2023, by media executive Tina Trahan... for $3.2 million."
+    }
+  ],
+  "missing_information": [
+    "When did the Brady Bunch house sell?",
+    "For how much did the Brady Bunch house sell?"
+  ],
+  "queries": [
+    "When did the Brady Bunch house sell? supporting evidence",
+    "For how much did the Brady Bunch house sell?"
+  ],
+  "retrievals": [
+    {
+      "query": "When did the Brady Bunch house sell? supporting evidence",
+      "sources": [
+        {
+          "article_id": "The_Brady_Bunch",
+          "score": 1.0,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "The_Washington_Post",
+          "score": 0.13088592354045492,
+          "retrieval_method": "bm25"
+        },
+        {
+          "article_id": "Once_Upon_a_Time_in_Hollywood",
+          "score": 0.11979511539884115,
+          "retrieval_method": "bm25"
+        }
+      ]
+    },
+    {
+      "query": "For how much did the Brady Bunch house sell?",
+      "sources": [
+        {
+          "article_id": "The_Brady_Bunch",
+          "score": 1.0,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "The_Washington_Post",
+          "score": 0.08800633691932265,
+          "retrieval_method": "bm25"
+        },
+        {
+          "article_id": "Once_Upon_a_Time_in_Hollywood",
+          "score": 0.0871086689169994,
+          "retrieval_method": "bm25"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "The_Brady_Bunch",
+    "Once_Upon_a_Time_in_Hollywood",
+    "The_Washington_Post",
+    "Super_Bowl_XLVI"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:59] AGENTIC_RESULT
+{
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "answer": "The Brady Bunch house was bought on **September 11, 2023**, for **$3.2 million** [The_Brady_Bunch].",
+  "status": "answered",
+  "stop_reason": "Reached the limit of 3 action rounds.",
+  "steps": 3,
+  "planner_calls": 2,
+  "answer_calls": 1,
+  "search_calls": 4,
+  "link_calls": 0,
+  "unique_documents_retrieved": 4,
+  "elapsed_seconds": 10.7069,
+  "model_calls": 3,
+  "context_documents": 4,
+  "context_characters": 416693,
+  "sources": [
+    {
+      "article_id": "The_Brady_Bunch",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Once_Upon_a_Time_in_Hollywood",
+      "score": 0.11631488381151983,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "The_Washington_Post",
+      "score": 0.0930777503202135,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "Super_Bowl_XLVI",
+      "score": 0.15263603075016946,
+      "retrieval_method": "bm25"
+    }
+  ]
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:59] EVALUATION
+{
+  "strategy": "AGENTIC",
+  "question": "When and for how much did the Brady Bunch house sell?",
+  "answer": "The Brady Bunch house was bought on **September 11, 2023**, for **$3.2 million** [The_Brady_Bunch].",
+  "status": "answered",
+  "stop_reason": "Reached the limit of 3 action rounds.",
+  "steps": 3,
+  "planner_calls": 2,
+  "answer_calls": 1,
+  "search_calls": 4,
+  "link_calls": 0,
+  "unique_documents_retrieved": 4,
+  "elapsed_seconds": 10.7069,
+  "model_calls": 3,
+  "context_documents": 4,
+  "context_characters": 416693,
+  "sources": [
+    {
+      "article_id": "The_Brady_Bunch",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Once_Upon_a_Time_in_Hollywood",
+      "score": 0.11631488381151983,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "The_Washington_Post",
+      "score": 0.0930777503202135,
+      "retrieval_method": "bm25"
+    },
+    {
+      "article_id": "Super_Bowl_XLVI",
+      "score": 0.15263603075016946,
+      "retrieval_method": "bm25"
+    }
+  ],
+  "verdict": "skipped",
+  "judge_elapsed_seconds": 0.0,
+  "judge_calls": 0,
+  "grading_notes": "The answer must state September 11, 2023, and $3.2 million for the sale to Tina Trahan. Naming the buyer is optional."
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:59] SUMMARY
+{
+  "strategy": "BASELINE",
+  "passes": null,
+  "tasks": 4,
+  "run_judge": false,
+  "elapsed_seconds": 9.6587,
+  "model_calls": 4,
+  "search_calls": 4,
+  "link_calls": 0,
+  "judge_calls": 0
+}
+------------------------------------------------------------------------
+[2026-09-23T16:32:59] SUMMARY
+{
+  "strategy": "AGENTIC",
+  "passes": null,
+  "tasks": 4,
+  "run_judge": false,
+  "elapsed_seconds": 33.1749,
+  "model_calls": 12,
+  "search_calls": 12,
+  "link_calls": 0,
+  "judge_calls": 0
+}
+------------------------------------------------------------------------
