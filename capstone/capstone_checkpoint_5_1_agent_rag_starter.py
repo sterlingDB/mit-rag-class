@@ -112,6 +112,11 @@ DECIDE_SYSTEM = (
     "For questions with multiple parts or comparisons, check that the retrieved "
     "documents support every requested part and each side of the comparison. "
     "Keep comparisons within the context established by the question. "
+    "Use retrieved articles to resolve vague names and references, and carry the "
+    "identified subject, domain, and entities into follow-up queries. Target specific "
+    "missing facts or comparison items, rather than repeating the original request. "
+    "If an evidence check rejects an answer, use its feedback and the retrieved "
+    "articles to choose a focused search, link expansion, or clarification. "
     "If relevant evidence is missing, issue focused searches for that evidence "
     "before answering. Do not treat unrelated documents as sufficient evidence. "
     "If ambiguity prevents a meaningful search or comparison, ask for clarification. "
@@ -265,6 +270,7 @@ def decide(
     action_history: list[str] | None = None,
     clarification_history: list[str] | None = None,
     expanded_articles: set[str] | None = None,
+    evidence_feedback: list[str] | None = None,
 ) -> dict[str, Any]:
     docs = "\n".join(f"[{i}] {text}" for i, text in collected.items()) or "(none yet)"
     user = (
@@ -272,6 +278,7 @@ def decide(
         f"Previous actions: {action_history or '(none)'}\n\n"
         f"Articles whose links were already followed: {sorted(expanded_articles or set())}\n\n"
         f"Clarifications: {clarification_history or '(none)'}\n\n"
+        f"Evidence check feedback (missing or unverified items): {evidence_feedback or '(none)'}\n\n"
         f"Documents so far:\n{docs}"
     )
     system = DECIDE_SYSTEM + f"\nAvailable actions for this run: {', '.join(available_actions)}."
@@ -298,22 +305,9 @@ def decide(
             missing = missing_evidence(result["requirements"], collected, question)
             result["missing_information"] = missing
             if missing:
-                seen = {" ".join(query.split()).casefold() for query in executed}
-                queries = []
-                for subquestion in missing:
-                    query = " ".join(subquestion.split())
-                    if query.casefold() in seen:
-                        query += " supporting evidence"
-                    if query.casefold() not in seen:
-                        queries.append(query)
-                        seen.add(query.casefold())
-                if not queries or "search" not in available_actions:
-                    result["reasoning"] = "Missing evidence; no new queries remain."
-                    return result
-                action = "search"
-                result["action"] = action
+                result["action"] = "replan"
                 result["reasoning"] = "Missing or invalid evidence for: " + "; ".join(missing)
-                decision["queries"] = queries[:2]
+                return result
 
         if action == "search":
             queries = decision.get("queries")
@@ -444,6 +438,23 @@ def agentic_answer(
             clarification_history=clarification_history,
             expanded_articles=expanded_articles,
         )
+        if decision["action"] == "replan":
+            feedback = decision["missing_information"]
+            print("    evidence missing; asking the planner for a focused next action")
+            result["planner_calls"] += 1
+            revised = decide(
+                llm,
+                question,
+                {doc_id: hit[1] for doc_id, hit in collected.items()},
+                executed,
+                available_actions=("search", "follow_links", "clarify"),
+                action_history=action_history,
+                clarification_history=clarification_history,
+                expanded_articles=expanded_articles,
+                evidence_feedback=feedback,
+            )
+            revised["evidence_check"] = decision
+            decision = revised
 
     print(f"  stopped: {stop_reason}")
     result["stop_reason"] = stop_reason

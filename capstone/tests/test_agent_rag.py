@@ -87,14 +87,41 @@ class AgentTests(unittest.TestCase):
             ("National_Football_League", "The NFL holds an annual draft.", 0.7, "bm25+vector"),
         ]
         unsupported = {"action": "answer", "reasoning": "The articles cover five older drafts."}
-        llm = FakeLLM(unsupported, unsupported, "Four older drafts are missing.")
+        llm = FakeLLM(
+            unsupported,
+            {"action": "search", "queries": ["Arizona Cardinals 2025 NFL draft"]},
+            unsupported,
+            {"action": "search", "queries": ["Arizona Cardinals 2024 NFL draft"]},
+            "Four older drafts are missing.",
+        )
         with patch.object(self.retriever, "getTopK", return_value=hits):
             result = agent.agentic_answer(llm, self.retriever, self.graph, question)
         self.assertGreater(result["search_calls"], 1)
         self.assertLessEqual(result["steps"], agent.MAX_STEPS)
         self.assertEqual(result["answer"], "Four older drafts are missing.")
 
-    def test_missing_requirement_becomes_a_focused_search(self):
+    def test_replanning_uses_retrieved_context_to_generate_follow_up_queries(self):
+        question = "Compare Love's draft spot to older drafts for Arizona."
+        hit = ("2026_NFL_draft", "The Arizona Cardinals selected Jeremiyah Love in the NFL draft.", 0.9, "bm25+vector")
+        llm = FakeLLM(
+            {"action": "answer"},
+            {"action": "search", "queries": ["Arizona Cardinals 2025 NFL draft first round"]},
+            {"action": "search", "queries": ["Arizona Cardinals 2024 NFL draft first round"]},
+            "The older draft evidence is still missing.",
+        )
+        with patch.object(self.retriever, "getTopK", return_value=[hit]) as search:
+            result = agent.agentic_answer(llm, self.retriever, self.graph, question)
+        self.assertEqual([call.args[0] for call in search.call_args_list], [
+            question, "Arizona Cardinals 2025 NFL draft first round", "Arizona Cardinals 2024 NFL draft first round",
+        ])
+        self.assertIn("The Arizona Cardinals selected Jeremiyah Love in the NFL draft.", llm.messages[1][1].content)
+        self.assertIn("Evidence check feedback", llm.messages[1][1].content)
+        self.assertIn(question, llm.messages[1][1].content)
+        self.assertEqual(result["planner_calls"], 3)
+        self.assertEqual(result["model_calls"], len(llm.messages))
+        self.assertIn("evidence_check", self.read_events("AGENT_STEP")[1])
+
+    def test_missing_requirement_is_returned_as_replanning_feedback(self):
         decision = {
             "action": "answer",
             "requirements": [
@@ -103,8 +130,8 @@ class AgentTests(unittest.TestCase):
             ],
         }
         result = agent.decide(FakeLLM(decision), "Compare two facts", {"A": "Evidence for A"}, ["Compare two facts"])
-        self.assertEqual(result["action"], "search")
-        self.assertEqual(result["queries"], ["Second fact"])
+        self.assertEqual(result["action"], "replan")
+        self.assertEqual(result["missing_information"], ["Second fact"])
 
     def test_invented_quote_or_source_cannot_justify_early_answer(self):
         for article_id, quote in [("A", "Invented evidence"), ("Missing", "Evidence for A")]:
@@ -113,21 +140,34 @@ class AgentTests(unittest.TestCase):
                     {"question": "Find the missing fact", "article_id": article_id, "quote": quote},
                 ]}
                 result = agent.decide(FakeLLM(decision), "Question", {"A": "Evidence for A"}, ["Question"])
-                self.assertEqual(result["action"], "search")
-                self.assertEqual(result["queries"], ["Find the missing fact"])
+                self.assertEqual(result["action"], "replan")
+                self.assertEqual(result["missing_information"], ["Find the missing fact"])
 
     def test_supported_checklist_accepts_whitespace_differences(self):
         result = agent.decide(FakeLLM(supported_answer()), "Question", {"A": "Evidence\n for  A"}, ["Question"])
         self.assertEqual(result["action"], "answer")
         self.assertEqual(result["missing_information"], [])
 
-    def test_malformed_checklists_trigger_search_without_crashing(self):
+    def test_malformed_checklists_request_replanning_without_crashing(self):
         for requirements in [None, [], "text", [None], [{}], [{"question": []}],
                              [{"question": "Find a fact", "article_id": [], "quote": "Text"}]]:
             with self.subTest(requirements=requirements):
                 decision = {"action": "answer", "requirements": requirements}
                 result = agent.decide(FakeLLM(decision), "Question", {"A": "Evidence for A"}, ["Question"])
-                self.assertEqual(result["action"], "search")
+                self.assertEqual(result["action"], "replan")
+
+    def test_replanning_is_limited_to_one_retry_per_decision(self):
+        llm = FakeLLM({"action": "answer"}, {"action": "answer"}, "Incomplete answer [A].")
+        result = self.run_agent(llm)
+        self.assertEqual(result["planner_calls"], 2)
+        self.assertEqual(result["search_calls"], 1)
+        self.assertIn("unavailable action", result["stop_reason"])
+
+    def test_replanned_query_still_cannot_repeat_an_executed_search(self):
+        llm = FakeLLM({"action": "answer"}, {"action": "search", "queries": ["Question"]}, "Incomplete answer [A].")
+        result = self.run_agent(llm)
+        self.assertEqual(result["search_calls"], 1)
+        self.assertIn("no new queries remain", result["stop_reason"])
 
     def test_baseline_and_agent_use_same_cited_answer_prompt(self):
         baseline_llm = FakeLLM("Answer [A].")
@@ -233,11 +273,15 @@ class AgentTests(unittest.TestCase):
         self.assertIn("3 action rounds", result["stop_reason"])
 
     def test_empty_retrieval_skips_answer_model(self):
-        self.retriever.results = {"Question": [], "Question supporting evidence": []}
+        self.retriever.results = {"Question": [], "More specific query": []}
         baseline = agent.baseline_answer(FakeLLM(), self.retriever, "Question")
-        result = self.run_agent(FakeLLM({"action": "answer"}, {"action": "answer"}))
+        result = self.run_agent(FakeLLM(
+            {"action": "answer"},
+            {"action": "search", "queries": ["More specific query"]},
+            {"action": "search", "queries": ["More specific query"]},
+        ))
         self.assertEqual(baseline["model_calls"], 0)
-        self.assertEqual(result["model_calls"], 2)
+        self.assertEqual(result["model_calls"], 3)
         self.assertEqual(result["search_calls"], 2)
         for value in [baseline, result]:
             self.assertEqual(value["status"], "no_evidence")
