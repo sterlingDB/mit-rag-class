@@ -16,6 +16,12 @@ JUDGE_SYSTEM = (
 def get_eval_set() -> list[dict[str, str]]:
     """Use identical questions and corpus-based expectations for every strategy."""
     return [
+         {
+            "question": "what spot did Jeremiyah Love get drafted in football?",
+            "grading_notes": (
+                "The answer must be pick 3 in the 2026 NFL draft, "
+            ),
+        },
         {
             "question": "Who were the first three players drafted in the 2026 NFL draft?",
             "grading_notes": (
