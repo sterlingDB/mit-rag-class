@@ -191,6 +191,7 @@ class AgentTests(unittest.TestCase):
              patch.object(agent, "HybridRetriever", return_value=self.retriever), \
              patch.object(agent, "GraphRetriever", return_value=self.graph), \
              patch.object(agent, "get_eval_set", return_value=tasks), \
+             patch.object(agent, "RUN_JUDGE", True), \
              patch.object(agent, "perf_counter", side_effect=[0, 2, 100, 109, 200, 205, 300, 311]), \
              patch("builtins.input", side_effect=AssertionError("Unexpected input")):
             agent.run()
@@ -209,6 +210,29 @@ class AgentTests(unittest.TestCase):
         self.assertEqual([summary["passes"] for summary in summaries], [1, 0])
         self.assertIn("BASELINE pass rate: 1/1", self.output.getvalue())
         self.assertIn("AGENTIC pass rate: 0/1", self.output.getvalue())
+
+    def test_disabled_judge_keeps_answers_without_grading_calls(self):
+        llm = FakeLLM("Baseline [A].", {"action": "answer"}, "Agent [A].")
+        tasks = [{"question": "Question", "grading_notes": "Expected evidence A"}]
+        with patch.object(agent, "make_llm", return_value=llm), \
+             patch.object(agent, "HybridRetriever", return_value=self.retriever), \
+             patch.object(agent, "GraphRetriever", return_value=self.graph), \
+             patch.object(agent, "get_eval_set", return_value=tasks), \
+             patch.object(agent, "RUN_JUDGE", False), \
+             patch.object(agent, "judge", side_effect=AssertionError("Unexpected judge call")):
+            agent.run()
+        baseline, result = self.read_events("EVALUATION")
+        self.assertEqual(baseline["answer"], "Baseline [A].")
+        self.assertEqual(result["answer"], "Agent [A].")
+        for record in [baseline, result]:
+            self.assertEqual(record["verdict"], "skipped")
+            self.assertEqual(record["judge_calls"], 0)
+            self.assertEqual(record["judge_elapsed_seconds"], 0.0)
+        for summary in self.read_events("SUMMARY"):
+            self.assertIsNone(summary["passes"])
+            self.assertEqual(summary["judge_calls"], 0)
+        self.assertIn("grading skipped", self.output.getvalue())
+        self.assertNotIn("pass rate", self.output.getvalue())
 
 
 if __name__ == "__main__":

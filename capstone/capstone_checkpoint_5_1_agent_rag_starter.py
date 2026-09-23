@@ -83,6 +83,7 @@ TEMPERATURE = 0.2
 TOP_K = 3
 MAX_STEPS = 3
 MAX_CONTEXT_DOCS = 6
+RUN_JUDGE = False
 LOG_PATH = Path.cwd() / "checkpoint_5_1_agent.log"
 
 # === SET THIS to the scenario you chose in Checkpoint 1.1 ===
@@ -475,12 +476,13 @@ def run() -> None:
           f"kept in retrieval order; up to {TOP_K} per retrieval and {MAX_STEPS} action rounds.")
     print("Elapsed times exclude setup and judging. Model calls count planning and answering; "
           "search calls use query embeddings, while link expansion is local.")
+    print(f"Judge: {'enabled' if RUN_JUDGE else 'disabled'}")
     print("Your agent plan:")
     print(json.dumps(my_agent_plan(), indent=2))
     log("RUN", json.dumps({
         "scenario": SCENARIO, "model": LLM_MODEL, "temperature": TEMPERATURE,
         "top_k": TOP_K, "max_steps": MAX_STEPS, "max_context_docs": MAX_CONTEXT_DOCS,
-        "plan": my_agent_plan(),
+        "run_judge": RUN_JUDGE, "plan": my_agent_plan(),
     }, indent=2))
 
     eval_set = get_eval_set()
@@ -494,10 +496,14 @@ def run() -> None:
                 result = baseline_answer(llm, retriever, question)
             else:
                 result = agentic_answer(llm, retriever, graph_retriever, question)
-            judge_started = perf_counter()
-            result["verdict"] = judge(llm, result["answer"], item["grading_notes"])
-            result["judge_elapsed_seconds"] = round(perf_counter() - judge_started, 4)
-            result["judge_calls"] = 1
+            result["verdict"] = "skipped"
+            result["judge_elapsed_seconds"] = 0.0
+            result["judge_calls"] = 0
+            if RUN_JUDGE:
+                judge_started = perf_counter()
+                result["verdict"] = judge(llm, result["answer"], item["grading_notes"])
+                result["judge_elapsed_seconds"] = round(perf_counter() - judge_started, 4)
+                result["judge_calls"] = 1
             results[label].append(result)
             print(f"{label} answer:\n{result['answer']}\nVerdict: {result['verdict'].upper()}")
             print(f"  status={result['status']}; stop={result['stop_reason']}")
@@ -505,23 +511,26 @@ def run() -> None:
                   f"context={result['context_documents']} articles / {result['context_characters']} characters")
             print(f"  time={result['elapsed_seconds']:.3f}s; model calls={result['model_calls']} "
                   f"(plan={result['planner_calls']}, answer={result['answer_calls']}); "
-                  f"search={result['search_calls']}; links={result['link_calls']}; judge calls=1\n")
+                  f"search={result['search_calls']}; links={result['link_calls']}; "
+                  f"judge calls={result['judge_calls']}\n")
             log("EVALUATION", json.dumps({
                 "strategy": label, **result, "grading_notes": item["grading_notes"],
             }, indent=2))
 
     print("=" * 72)
     for label, runs in results.items():
-        passes = sum(result["verdict"] == "pass" for result in runs)
+        passes = sum(result["verdict"] == "pass" for result in runs) if RUN_JUDGE else None
         summary = {
             "strategy": label, "passes": passes, "tasks": len(runs),
+            "run_judge": RUN_JUDGE,
             "elapsed_seconds": round(sum(result["elapsed_seconds"] for result in runs), 4),
             "model_calls": sum(result["model_calls"] for result in runs),
             "search_calls": sum(result["search_calls"] for result in runs),
             "link_calls": sum(result["link_calls"] for result in runs),
             "judge_calls": sum(result["judge_calls"] for result in runs),
         }
-        print(f"{label} pass rate: {passes}/{len(runs)}; total time={summary['elapsed_seconds']:.3f}s; "
+        grading = f"pass rate: {passes}/{len(runs)}" if RUN_JUDGE else "grading skipped"
+        print(f"{label} {grading}; total time={summary['elapsed_seconds']:.3f}s; "
               f"model calls={summary['model_calls']}; search={summary['search_calls']}; "
               f"links={summary['link_calls']}; judge calls={summary['judge_calls']}")
         log("SUMMARY", json.dumps(summary, indent=2))
