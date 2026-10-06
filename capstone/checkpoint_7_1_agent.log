@@ -4470,3 +4470,481 @@ agent
 [2026-10-06T07:25:28] INPUT_SAFETY
 {"changed": false, "filter_failures": 0}
 ------------------------------------------------------------------------
+[2026-10-06T07:25:36] JUDGE_FAILURE
+{"role": "router", "error_type": "JSONDecodeError"}
+------------------------------------------------------------------------
+[2026-10-06T07:25:36] ROUTE
+agent
+------------------------------------------------------------------------
+[2026-10-06T07:25:36] AGENT_STEP
+{
+  "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "step": 1,
+  "action": "search",
+  "queries": [
+    "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?"
+  ],
+  "reasoning": "Search the original question first.",
+  "retrievals": [
+    {
+      "query": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+      "sources": [
+        {
+          "article_id": "Ben_Jones_(American_actor_and_politician)",
+          "score": 1.0,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "The_Dukes_of_Hazzard",
+          "score": 0.8252928795346195,
+          "retrieval_method": "bm25+vector"
+        },
+        {
+          "article_id": "Davy_Crockett",
+          "score": 0.2424189013051417,
+          "retrieval_method": "bm25+vector"
+        }
+      ]
+    }
+  ],
+  "collected_article_ids": [
+    "Ben_Jones_(American_actor_and_politician)",
+    "The_Dukes_of_Hazzard",
+    "Davy_Crockett"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-10-06T07:25:40] AGENT_STEP
+{
+  "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "step": 2,
+  "action": "answer",
+  "reasoning": "Invalid planner decision; stopping: unknown or unavailable action",
+  "evidence_check": {
+    "action": "replan",
+    "reasoning": "Missing or invalid evidence for: What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+    "requirements": [
+      {
+        "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+        "article_id": "Ben_Jones_(American_actor_and_politician)",
+        "quote": "Member of the U.S. House of Representatives from Georgia 's 4th district"
+      },
+      {
+        "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+        "article_id": "",
+        "quote": ""
+      }
+    ],
+    "missing_information": [
+      "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?"
+    ]
+  },
+  "retrievals": [],
+  "collected_article_ids": [
+    "Ben_Jones_(American_actor_and_politician)",
+    "The_Dukes_of_Hazzard",
+    "Davy_Crockett"
+  ],
+  "omitted_article_ids": []
+}
+------------------------------------------------------------------------
+[2026-10-06T07:25:41] AGENTIC_RESULT
+{
+  "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "answer": "Ben Jones, who played Cooter Davenport in *The Dukes of Hazzard*, represented Georgia in Congress ([Ben_Jones_(American_actor_and_politician)]). The capital of Georgia is Atlanta, but this specific fact is not stated in the retrieved documents, so I lack evidence to support it from the provided sources.",
+  "status": "answered",
+  "stop_reason": "Invalid planner decision; stopping: unknown or unavailable action",
+  "steps": 2,
+  "planner_calls": 2,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "usage": {
+    "safety_filter": {
+      "openai/gpt-5.4-nano": {
+        "input": 110,
+        "output": 31,
+        "cached": 0,
+        "calls": 1,
+        "missing_usage_calls": 0,
+        "failed_calls": 0,
+        "elapsed_seconds": 0.9039667500182986
+      }
+    },
+    "router": {
+      "openai/gpt-5-nano": {
+        "input": 220,
+        "output": 512,
+        "cached": 0,
+        "calls": 1,
+        "missing_usage_calls": 0,
+        "failed_calls": 0,
+        "elapsed_seconds": 7.743437291006558
+      }
+    },
+    "planner": {
+      "openai/gpt-5.4-mini": {
+        "input": 4555,
+        "output": 296,
+        "cached": 3584,
+        "calls": 2,
+        "missing_usage_calls": 0,
+        "failed_calls": 0,
+        "elapsed_seconds": 3.2773566670075525
+      }
+    },
+    "answer": {
+      "openai/gpt-5.4-mini": {
+        "input": 1810,
+        "output": 70,
+        "cached": 1280,
+        "calls": 1,
+        "missing_usage_calls": 0,
+        "failed_calls": 0,
+        "elapsed_seconds": 1.2248787499847822
+      }
+    }
+  },
+  "cost_optimizations": false,
+  "hardened": true,
+  "sanitized_question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "safety_filter_calls": 1,
+  "safety_filter_failures": 0,
+  "estimated_chat_cost_usd": 0.0034140999999999998,
+  "embedding_cost": "Not measured; hybrid search embeds queries. Graph expansion is local.",
+  "elapsed_seconds": 5.0545,
+  "model_calls": 5,
+  "context_documents": 3,
+  "context_characters": 6000,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8252928795346195,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.2424189013051417,
+      "retrieval_method": "bm25+vector"
+    }
+  ],
+  "evidence": {
+    "Ben_Jones_(American_actor_and_politician)": "American actor and politician (1941\u20132026) Ben Jones Jones in 1989 Member of the U.S. House of Representatives from Georgia 's 4th district In office January 3, 1989 \u2013 January 3, 1993 Preceded by Pat Swindall Succeeded by Don Johnson (redistricted) Personal details Born Benjamin Lewis Jones ( 1941-08-30 ) August 30, 1941 Tarboro, North Carolina , U.S. Died August 9, 2026 (2026-08-09) (aged 84) Washington, Virginia , U.S. Party Democratic Education East Carolina University (attended) University of North Carolina, Chapel Hill (attended) Benjamin Lewis Jones (August 30, 1941 \u2013 August 9, 2026) was an American actor, writer, politician, and businessman best known for his role as Cooter Davenport in The Dukes of Hazzard . Jones also served for four years in the United States House of Representatives from January 3, 1989, to January 3, 1993. Jones also served as the International Chief of Heritage Operations for the Sons of Confederate Veterans from July 2014 to late 2018, having been a member for over 15 years. Early life and career [ edit ] Jones and the General Lee , taken outside his store \"Cooter's Place\" in Sperryville , Virginia, in 1999 Jones was born in Edgecombe County, North Carolina , near McNair's Railroad Crossing, on August 30, 1941. His father was Hubert C. \"Buck\" Jones, a railroad section foreman and his mother was Ila Virginia Stephens, the daughter of a railroad section foreman. Within two weeks of his birth, his family moved to Portsmouth, Virginia . The Joneses lived in a \"section house\", a railroad company shack without indoor plumbing and electricity. That house was next to the Pinners Point Railyard that led to the shipping piers there. He graduated from Woodrow Wilson High School in 1959 and worked at a number of odd jobs to save money for college. In 1960, he entered East Carolina College (now East Carolina University ) and in 1961, he was accepted into the University of North Carolina at Chapel Hill , based upon his promise as a writer. At Chapel ",
+    "The_Dukes_of_Hazzard": "American action-comedy television series (1979\u20131985) For other uses, see The Dukes of Hazzard (disambiguation) . This article needs more citations . Please help improve this article by adding citations to reliable sources . Unsourced material may be challenged and removed . Find sources: \"The Dukes of Hazzard\" \u2013 news \u00b7 newspapers \u00b7 books \u00b7 scholar \u00b7 JSTOR ( November 2018 ) ( Learn how and when to remove this message ) The Dukes of Hazzard Title card Genre Action comedy Adventure Comedy drama Created by Gy Waldron Starring Tom Wopat John Schneider Catherine Bach Denver Pyle Rick Hurst Sonny Shroyer Ben Jones James Best Sorrell Booke Waylon Jennings Byron Cherry Christopher Mayer Narrated by Waylon Jennings Opening theme \" Good Ol' Boys \" performed by Waylon Jennings Country of origin United States Original language English No. of seasons 7 No. of episodes 147 ( list of episodes ) Production Camera setup Single-camera Running time 45\u201349 minutes Production companies Paul R. Picard Productions (season 1) Piggy Productions, Inc. (season 1) Lou Step Productions (seasons 2\u20137) Warner Bros. Television Original release Network CBS Release January 26, 1979 ( 1979-01-26 ) \u2013 February 8, 1985 ( 1985-02-08 ) Related Moonrunners (film) Smokey and the Bandit (film) Enos The Dukes The Dukes of Hazzard Reunion! The Dukes of Hazzard: Hazzard in Hollywood The Dukes of Hazzard (film) The Dukes of Hazzard: The Beginning The Dukes of Hazzard is an American action comedy television series created by Gy Waldron that aired on CBS from 1979 to 1985, with seven seasons and a total of 147 episodes . It was consistently among the top-viewed television series in the late 1970s and early 1980s, at one point, ranking second only to Dallas , which immediately followed the show on CBS's Friday night schedule. The show's ensemble cast is about two young male cousins, Bo Duke and Luke Duke , who live in rural Georgia and are on probation for moonshine -running. Probation prevents the \"Duke Boys\" from ow",
+    "Davy_Crockett": "American politician and frontiersman (1786\u20131836) \"David Crockett\" redirects here. For the professional wrestling announcer, see David Crockett (wrestling) . For other uses, see Davy Crockett (disambiguation) . Davy Crockett Portrait by Chester Harding , 1834 Member of the U.S. House of Representatives from Tennessee In office March 4, 1833 \u2013 March 4, 1835 Preceded by Constituency established Succeeded by Adam Huntsman Constituency 12th district In office March 4, 1827 \u2013 March 4, 1831 Preceded by Adam Rankin Alexander Succeeded by William Fitzgerald Constituency 9th district Personal details Born David Crockett ( 1786-08-17 ) August 17, 1786 Limestone , Franklin , U.S. (now Tennessee ) Died March 6, 1836 (1836-03-06) (aged 49) San Antonio , Texas (now U.S.) Cause of death Battle of the Alamo Party National Republican (before 1833) Whig (1833\u20131836) Spouses Polly Finley \u200b \u200b ( m. 1806; died 1815) \u200b Elizabeth Patton \u200b ( m. 1815) \u200b Children 6, including John Signature David Crockett (August 17, 1786 \u2013 March 6, 1836) was an American politician, militia officer and frontiersman. Often referred to in popular culture as the \"King of the Wild Frontier\", he represented Tennessee in the United States House of Representatives and fought in the Texas Revolution . Crockett grew up in East Tennessee , where he gained a reputation for hunting and storytelling. He was made a colonel in the militia of Lawrence County, Tennessee , and was elected to the Tennessee state legislature in 1821. In 1827, he was elected to the U.S. Congress where he vehemently opposed many of the policies of President Andrew Jackson , especially the Indian Removal Act . Crockett's opposition to Jackson's policies led to his defeat in the 1831 elections. He was re-elected in 1833, then narrowly lost in 1835, prompting his angry departure to Texas (then the Mexican state of Tejas ) shortly thereafter. In early 1836, he took part in the Texas Revolution and died at the Battle of the Alamo . It is unclear whether "
+  },
+  "estimated_total_cost_usd": null,
+  "cost_accounting": {
+    "by_role": {
+      "safety_filter": {
+        "calls": 1,
+        "failed_calls": 0,
+        "missing_usage_calls": 0,
+        "input": 110,
+        "output": 31,
+        "cached": 0,
+        "tokens": 141,
+        "elapsed_seconds": 0.904,
+        "estimated_chat_cost_usd": 6.075e-05
+      },
+      "router": {
+        "calls": 1,
+        "failed_calls": 0,
+        "missing_usage_calls": 0,
+        "input": 220,
+        "output": 512,
+        "cached": 0,
+        "tokens": 732,
+        "elapsed_seconds": 7.7434,
+        "estimated_chat_cost_usd": 0.00021580000000000001
+      },
+      "planner": {
+        "calls": 2,
+        "failed_calls": 0,
+        "missing_usage_calls": 0,
+        "input": 4555,
+        "output": 296,
+        "cached": 3584,
+        "tokens": 4851,
+        "elapsed_seconds": 3.2774,
+        "estimated_chat_cost_usd": 0.00232905
+      },
+      "answer": {
+        "calls": 1,
+        "failed_calls": 0,
+        "missing_usage_calls": 0,
+        "input": 1810,
+        "output": 70,
+        "cached": 1280,
+        "tokens": 1880,
+        "elapsed_seconds": 1.2249,
+        "estimated_chat_cost_usd": 0.0008085
+      }
+    },
+    "total": {
+      "calls": 5,
+      "failed_calls": 0,
+      "missing_usage_calls": 0,
+      "input": 6695,
+      "output": 909,
+      "cached": 4864,
+      "tokens": 7604,
+      "elapsed_seconds": 13.1496,
+      "estimated_chat_cost_usd": 0.0034140999999999998
+    },
+    "overhead": {
+      "calls": 2,
+      "failed_calls": 0,
+      "missing_usage_calls": 0,
+      "input": 330,
+      "output": 543,
+      "cached": 0,
+      "tokens": 873,
+      "elapsed_seconds": 8.6474,
+      "estimated_chat_cost_usd": 0.00027655000000000003
+    },
+    "answer_work": {
+      "calls": 3,
+      "failed_calls": 0,
+      "missing_usage_calls": 0,
+      "input": 6365,
+      "output": 366,
+      "cached": 4864,
+      "tokens": 6731,
+      "elapsed_seconds": 4.5022,
+      "estimated_chat_cost_usd": 0.0031375500000000002
+    },
+    "incomplete_estimates": [
+      "Embedding tokens and cost are not measured; chat estimate excludes them"
+    ],
+    "embeddings": {
+      "retrieval_queries": 1,
+      "cache_requests": 0,
+      "tokens": null,
+      "estimated_cost_usd": null,
+      "cache_elapsed_seconds": 0.0
+    }
+  }
+}
+------------------------------------------------------------------------
+[2026-10-06T07:25:49] JUDGE_FAILURE
+{"role": "quality_check", "error_type": "JSONDecodeError"}
+------------------------------------------------------------------------
+[2026-10-06T07:25:49] EFFICIENT_RESULT
+{
+  "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "answer": "Ben Jones, who played Cooter Davenport in *The Dukes of Hazzard*, represented Georgia in Congress ([Ben_Jones_(American_actor_and_politician)]). The capital of Georgia is Atlanta, but this specific fact is not stated in the retrieved documents, so I lack evidence to support it from the provided sources.",
+  "status": "answered",
+  "stop_reason": "Invalid planner decision; stopping: unknown or unavailable action",
+  "steps": 2,
+  "planner_calls": 2,
+  "answer_calls": 1,
+  "search_calls": 1,
+  "link_calls": 0,
+  "unique_documents_retrieved": 3,
+  "usage": {
+    "safety_filter": {
+      "openai/gpt-5.4-nano": {
+        "input": 110,
+        "output": 31,
+        "cached": 0,
+        "calls": 1,
+        "missing_usage_calls": 0,
+        "failed_calls": 0,
+        "elapsed_seconds": 0.9039667500182986
+      }
+    },
+    "router": {
+      "openai/gpt-5-nano": {
+        "input": 220,
+        "output": 512,
+        "cached": 0,
+        "calls": 1,
+        "missing_usage_calls": 0,
+        "failed_calls": 0,
+        "elapsed_seconds": 7.743437291006558
+      }
+    },
+    "planner": {
+      "openai/gpt-5.4-mini": {
+        "input": 4555,
+        "output": 296,
+        "cached": 3584,
+        "calls": 2,
+        "missing_usage_calls": 0,
+        "failed_calls": 0,
+        "elapsed_seconds": 3.2773566670075525
+      }
+    },
+    "answer": {
+      "openai/gpt-5.4-mini": {
+        "input": 1810,
+        "output": 70,
+        "cached": 1280,
+        "calls": 1,
+        "missing_usage_calls": 0,
+        "failed_calls": 0,
+        "elapsed_seconds": 1.2248787499847822
+      }
+    },
+    "quality_check": {
+      "openai/gpt-5-nano": {
+        "input": 1803,
+        "output": 512,
+        "cached": 0,
+        "calls": 1,
+        "missing_usage_calls": 0,
+        "failed_calls": 0,
+        "elapsed_seconds": 8.304270083986921
+      }
+    }
+  },
+  "cost_optimizations": false,
+  "hardened": true,
+  "sanitized_question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+  "safety_filter_calls": 1,
+  "safety_filter_failures": 0,
+  "estimated_chat_cost_usd": 0.0037090499999999998,
+  "embedding_cost": "Not measured; retrieval and semantic cache embeddings are additional API usage.",
+  "elapsed_seconds": 22.0113,
+  "model_calls": 6,
+  "context_documents": 3,
+  "context_characters": 6000,
+  "sources": [
+    {
+      "article_id": "Ben_Jones_(American_actor_and_politician)",
+      "score": 1.0,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "The_Dukes_of_Hazzard",
+      "score": 0.8252928795346195,
+      "retrieval_method": "bm25+vector"
+    },
+    {
+      "article_id": "Davy_Crockett",
+      "score": 0.2424189013051417,
+      "retrieval_method": "bm25+vector"
+    }
+  ],
+  "evidence": {
+    "Ben_Jones_(American_actor_and_politician)": "American actor and politician (1941\u20132026) Ben Jones Jones in 1989 Member of the U.S. House of Representatives from Georgia 's 4th district In office January 3, 1989 \u2013 January 3, 1993 Preceded by Pat Swindall Succeeded by Don Johnson (redistricted) Personal details Born Benjamin Lewis Jones ( 1941-08-30 ) August 30, 1941 Tarboro, North Carolina , U.S. Died August 9, 2026 (2026-08-09) (aged 84) Washington, Virginia , U.S. Party Democratic Education East Carolina University (attended) University of North Carolina, Chapel Hill (attended) Benjamin Lewis Jones (August 30, 1941 \u2013 August 9, 2026) was an American actor, writer, politician, and businessman best known for his role as Cooter Davenport in The Dukes of Hazzard . Jones also served for four years in the United States House of Representatives from January 3, 1989, to January 3, 1993. Jones also served as the International Chief of Heritage Operations for the Sons of Confederate Veterans from July 2014 to late 2018, having been a member for over 15 years. Early life and career [ edit ] Jones and the General Lee , taken outside his store \"Cooter's Place\" in Sperryville , Virginia, in 1999 Jones was born in Edgecombe County, North Carolina , near McNair's Railroad Crossing, on August 30, 1941. His father was Hubert C. \"Buck\" Jones, a railroad section foreman and his mother was Ila Virginia Stephens, the daughter of a railroad section foreman. Within two weeks of his birth, his family moved to Portsmouth, Virginia . The Joneses lived in a \"section house\", a railroad company shack without indoor plumbing and electricity. That house was next to the Pinners Point Railyard that led to the shipping piers there. He graduated from Woodrow Wilson High School in 1959 and worked at a number of odd jobs to save money for college. In 1960, he entered East Carolina College (now East Carolina University ) and in 1961, he was accepted into the University of North Carolina at Chapel Hill , based upon his promise as a writer. At Chapel ",
+    "The_Dukes_of_Hazzard": "American action-comedy television series (1979\u20131985) For other uses, see The Dukes of Hazzard (disambiguation) . This article needs more citations . Please help improve this article by adding citations to reliable sources . Unsourced material may be challenged and removed . Find sources: \"The Dukes of Hazzard\" \u2013 news \u00b7 newspapers \u00b7 books \u00b7 scholar \u00b7 JSTOR ( November 2018 ) ( Learn how and when to remove this message ) The Dukes of Hazzard Title card Genre Action comedy Adventure Comedy drama Created by Gy Waldron Starring Tom Wopat John Schneider Catherine Bach Denver Pyle Rick Hurst Sonny Shroyer Ben Jones James Best Sorrell Booke Waylon Jennings Byron Cherry Christopher Mayer Narrated by Waylon Jennings Opening theme \" Good Ol' Boys \" performed by Waylon Jennings Country of origin United States Original language English No. of seasons 7 No. of episodes 147 ( list of episodes ) Production Camera setup Single-camera Running time 45\u201349 minutes Production companies Paul R. Picard Productions (season 1) Piggy Productions, Inc. (season 1) Lou Step Productions (seasons 2\u20137) Warner Bros. Television Original release Network CBS Release January 26, 1979 ( 1979-01-26 ) \u2013 February 8, 1985 ( 1985-02-08 ) Related Moonrunners (film) Smokey and the Bandit (film) Enos The Dukes The Dukes of Hazzard Reunion! The Dukes of Hazzard: Hazzard in Hollywood The Dukes of Hazzard (film) The Dukes of Hazzard: The Beginning The Dukes of Hazzard is an American action comedy television series created by Gy Waldron that aired on CBS from 1979 to 1985, with seven seasons and a total of 147 episodes . It was consistently among the top-viewed television series in the late 1970s and early 1980s, at one point, ranking second only to Dallas , which immediately followed the show on CBS's Friday night schedule. The show's ensemble cast is about two young male cousins, Bo Duke and Luke Duke , who live in rural Georgia and are on probation for moonshine -running. Probation prevents the \"Duke Boys\" from ow",
+    "Davy_Crockett": "American politician and frontiersman (1786\u20131836) \"David Crockett\" redirects here. For the professional wrestling announcer, see David Crockett (wrestling) . For other uses, see Davy Crockett (disambiguation) . Davy Crockett Portrait by Chester Harding , 1834 Member of the U.S. House of Representatives from Tennessee In office March 4, 1833 \u2013 March 4, 1835 Preceded by Constituency established Succeeded by Adam Huntsman Constituency 12th district In office March 4, 1827 \u2013 March 4, 1831 Preceded by Adam Rankin Alexander Succeeded by William Fitzgerald Constituency 9th district Personal details Born David Crockett ( 1786-08-17 ) August 17, 1786 Limestone , Franklin , U.S. (now Tennessee ) Died March 6, 1836 (1836-03-06) (aged 49) San Antonio , Texas (now U.S.) Cause of death Battle of the Alamo Party National Republican (before 1833) Whig (1833\u20131836) Spouses Polly Finley \u200b \u200b ( m. 1806; died 1815) \u200b Elizabeth Patton \u200b ( m. 1815) \u200b Children 6, including John Signature David Crockett (August 17, 1786 \u2013 March 6, 1836) was an American politician, militia officer and frontiersman. Often referred to in popular culture as the \"King of the Wild Frontier\", he represented Tennessee in the United States House of Representatives and fought in the Texas Revolution . Crockett grew up in East Tennessee , where he gained a reputation for hunting and storytelling. He was made a colonel in the militia of Lawrence County, Tennessee , and was elected to the Tennessee state legislature in 1821. In 1827, he was elected to the U.S. Congress where he vehemently opposed many of the policies of President Andrew Jackson , especially the Indian Removal Act . Crockett's opposition to Jackson's policies led to his defeat in the 1831 elections. He was re-elected in 1833, then narrowly lost in 1835, prompting his angry departure to Texas (then the Mexican state of Tejas ) shortly thereafter. In early 1836, he took part in the Texas Revolution and died at the Battle of the Alamo . It is unclear whether "
+  },
+  "estimated_total_cost_usd": null,
+  "cost_accounting": {
+    "by_role": {
+      "safety_filter": {
+        "calls": 1,
+        "failed_calls": 0,
+        "missing_usage_calls": 0,
+        "input": 110,
+        "output": 31,
+        "cached": 0,
+        "tokens": 141,
+        "elapsed_seconds": 0.904,
+        "estimated_chat_cost_usd": 6.075e-05
+      },
+      "router": {
+        "calls": 1,
+        "failed_calls": 0,
+        "missing_usage_calls": 0,
+        "input": 220,
+        "output": 512,
+        "cached": 0,
+        "tokens": 732,
+        "elapsed_seconds": 7.7434,
+        "estimated_chat_cost_usd": 0.00021580000000000001
+      },
+      "planner": {
+        "calls": 2,
+        "failed_calls": 0,
+        "missing_usage_calls": 0,
+        "input": 4555,
+        "output": 296,
+        "cached": 3584,
+        "tokens": 4851,
+        "elapsed_seconds": 3.2774,
+        "estimated_chat_cost_usd": 0.00232905
+      },
+      "answer": {
+        "calls": 1,
+        "failed_calls": 0,
+        "missing_usage_calls": 0,
+        "input": 1810,
+        "output": 70,
+        "cached": 1280,
+        "tokens": 1880,
+        "elapsed_seconds": 1.2249,
+        "estimated_chat_cost_usd": 0.0008085
+      },
+      "quality_check": {
+        "calls": 1,
+        "failed_calls": 0,
+        "missing_usage_calls": 0,
+        "input": 1803,
+        "output": 512,
+        "cached": 0,
+        "tokens": 2315,
+        "elapsed_seconds": 8.3043,
+        "estimated_chat_cost_usd": 0.00029495000000000004
+      }
+    },
+    "total": {
+      "calls": 6,
+      "failed_calls": 0,
+      "missing_usage_calls": 0,
+      "input": 8498,
+      "output": 1421,
+      "cached": 4864,
+      "tokens": 9919,
+      "elapsed_seconds": 21.4539,
+      "estimated_chat_cost_usd": 0.0037090499999999998
+    },
+    "overhead": {
+      "calls": 3,
+      "failed_calls": 0,
+      "missing_usage_calls": 0,
+      "input": 2133,
+      "output": 1055,
+      "cached": 0,
+      "tokens": 3188,
+      "elapsed_seconds": 16.9517,
+      "estimated_chat_cost_usd": 0.0005715000000000001
+    },
+    "answer_work": {
+      "calls": 3,
+      "failed_calls": 0,
+      "missing_usage_calls": 0,
+      "input": 6365,
+      "output": 366,
+      "cached": 4864,
+      "tokens": 6731,
+      "elapsed_seconds": 4.5022,
+      "estimated_chat_cost_usd": 0.0031375500000000002
+    },
+    "incomplete_estimates": [
+      "Embedding tokens and cost are not measured; chat estimate excludes them"
+    ],
+    "embeddings": {
+      "retrieval_queries": 1,
+      "cache_requests": 0,
+      "tokens": null,
+      "estimated_cost_usd": null,
+      "cache_elapsed_seconds": 0.0
+    }
+  },
+  "path": "agent",
+  "cache_match": null,
+  "cache_embedding_calls": 0,
+  "cache_embedding_seconds": 0.0
+}
+------------------------------------------------------------------------
