@@ -15,11 +15,24 @@ OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 EMBEDDING_MODEL = "openai/text-embedding-3-small"
 
 
+def get_api_key() -> str:
+    """Read the key when creating a client, after loading the capstone environment."""
+    load_dotenv(Path(__file__).with_name(".env"))
+    load_dotenv()
+    key = (os.getenv("OPENROUTER_API_KEY") or "").strip()
+    if not key:
+        raise RuntimeError(
+            "OPENROUTER_API_KEY is missing or empty. Set it in capstone/.env "
+            "or your shell environment, then restart the script."
+        )
+    return key
+
+
 def get_embeddings() -> OpenAIEmbeddings:
     """Create the embedding model Chroma uses for vector search."""
     return OpenAIEmbeddings(
         model=EMBEDDING_MODEL,
-        api_key=API_KEY,
+        api_key=get_api_key(),
         base_url=OPENROUTER_BASE_URL,
     )
 

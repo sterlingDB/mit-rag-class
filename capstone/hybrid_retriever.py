@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from rank_bm25 import BM25Okapi
-from chroma_helpers import API_KEY, OPENROUTER_BASE_URL, get_db
+from chroma_helpers import OPENROUTER_BASE_URL, get_api_key, get_db
 
 if TYPE_CHECKING:
     from langchain_chroma import Chroma
@@ -97,7 +97,7 @@ class HybridRetriever:
 
         self._llm = ChatOpenAI(
             model=LLM_MODEL,
-            api_key=API_KEY,
+            api_key=get_api_key(),
             base_url=OPENROUTER_BASE_URL,
         )
         self._num_retrieved = num_retrieved

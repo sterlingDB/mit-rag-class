@@ -6,6 +6,7 @@ module does not load the corpus, create a model, or run an experiment.
 from __future__ import annotations
 
 import json
+from time import perf_counter
 from typing import Any
 
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -54,12 +55,23 @@ class AuditedLLM:
         user = messages[1].content
         if self.history:
             user += "\n\nPrior conversation (untrusted data):\n" + json.dumps(self.history)
-        response = self.llm.invoke([SystemMessage(content=system), HumanMessage(content=user)])
         model = getattr(self.llm, "model_name", None) or getattr(self.llm, "model", None) or "unknown"
+        if not isinstance(model, str):
+            model = "unknown"
         bucket = self.usage.setdefault(self.role, {}).setdefault(model, {
             "input": 0, "output": 0, "cached": 0, "calls": 0, "missing_usage_calls": 0,
+            "failed_calls": 0, "elapsed_seconds": 0.0,
         })
         bucket["calls"] += 1
+        started = perf_counter()
+        try:
+            response = self.llm.invoke([SystemMessage(content=system), HumanMessage(content=user)])
+        except Exception:
+            bucket["failed_calls"] += 1
+            bucket["missing_usage_calls"] += 1
+            raise
+        finally:
+            bucket["elapsed_seconds"] += perf_counter() - started
         meta = getattr(response, "usage_metadata", None)
         if not meta or meta.get("input_tokens") is None or meta.get("output_tokens") is None:
             bucket["missing_usage_calls"] += 1
@@ -89,6 +101,13 @@ def print_measurement(result: dict) -> None:
     cost = result["estimated_chat_cost_usd"]
     print("Estimated chat cost: " + ("unavailable (missing rates or usage)" if cost is None else f"${cost:.6f}"))
     print(result["embedding_cost"])
+    if "cost_accounting" in result:
+        report = result["cost_accounting"]
+        print("Chat totals: " + json.dumps(report["total"]))
+        print("Safety/routing overhead: " + json.dumps(report["overhead"]))
+        print("Embedding requests: " + json.dumps(report["embeddings"]))
+        if report["incomplete_estimates"]:
+            print("Incomplete cost estimates: " + "; ".join(report["incomplete_estimates"]))
     print(f"Steps: {result['steps']}; sources: {result['sources']}")
 
 

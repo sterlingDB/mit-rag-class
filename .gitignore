@@ -8,3 +8,5 @@ lab_*_*/chroma_db/
 capstone/Wikipedia/
 capstone/ResearchPapers/
 capstone/chroma_db/
+capstone/semantic_cache/
+capstone/tests
