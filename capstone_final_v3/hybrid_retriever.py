@@ -72,6 +72,13 @@ def load_documents_from_db(db: Chroma) -> tuple[list[str], list[str]]:
     documents = records.get("documents") or []
     metadatas = records.get("metadatas") or []
 
+    if not documents:
+        raise RuntimeError(
+            "The article index is empty. Restore a populated chroma_db/ in "
+            "capstone_final_v3, or follow README.md's 'Article data and index' "
+            "steps to build it. Building embeddings uses API credits."
+        )
+
     paths = []
     contents = []
     for index, content in enumerate(documents):

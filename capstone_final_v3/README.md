@@ -58,9 +58,16 @@ With an authorized corpus available:
    This embeds all documents through OpenRouter and writes `chroma_db/`.
    It can consume substantial credits for a large corpus. The normal entry point
    loads an existing index; it does not build one automatically.
+
 3. Keep the HTML corpus and index in sync. After changing articles, preserve the
    old index elsewhere and build a fresh one. There is no automatic stale-index
    detection. Keep the embedding model consistent between indexing and querying.
+
+If startup reports an empty article index, the `chroma_db/` folder exists but
+contains no indexed articles. Having HTML files in `Wikipedia/` alone is not
+enough. Restore a populated index built from the same articles and embedding
+model, or build it explicitly using step 2 above. The retriever checks for an
+empty index before constructing the keyword search index.
 
 The current loader indexes each entire article as one document. It does not
 split articles into passages. At answer time, the agent limits the retained text
@@ -72,12 +79,12 @@ I added the four saved Wikipedia articles in `more-wikipedia-data/` near the
 beginning of the project to supplement the original collection. Many of the
 project's questions and answers drew on these articles:
 
-| File | Role in the evaluation |
-| --- | --- |
-| `2026_NFL_draft.html` | Jeremiyah Love's draft selection and the starting point for the Arizona draft comparison |
-| `Ben_Jones_(American_actor_and_politician).html` | The actor who played Cooter Davenport and his congressional service |
-| `The_Dukes_of_Hazzard.html` | The television series and actor/character context |
-| `The_Brady_Bunch.html` | The series and the house-sale details |
+| File                                             | Role in the evaluation                                                                   |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| `2026_NFL_draft.html`                            | Jeremiyah Love's draft selection and the starting point for the Arizona draft comparison |
+| `Ben_Jones_(American_actor_and_politician).html` | The actor who played Cooter Davenport and his congressional service                      |
+| `The_Dukes_of_Hazzard.html`                      | The television series and actor/character context                                        |
+| `The_Brady_Bunch.html`                           | The series and the house-sale details                                                    |
 
 The loader and link graph read from `Wikipedia/`, not directly from
 `more-wikipedia-data/`. To include these supplemental files, run the following
@@ -114,20 +121,20 @@ Review logs before sharing because they contain questions, answers, and excerpts
 
 Configuration constants are near the top of `capstone.py`:
 
-| Setting | Default |
-| --- | --- |
-| Planner and answer model | `openai/gpt-5.4-mini` |
-| Input filter | `openai/gpt-5.4-nano`, enabled |
-| Routing and quality checks | `openai/gpt-5-nano` |
-| Search results per query | 3 |
-| Maximum action rounds | 3 |
-| Maximum retained documents | 6 |
-| Total document context | 8,000 characters |
-| Per-document excerpt | 2,000 characters |
-| Output budget per model request | 512 tokens |
-| Cache / router | Enabled |
-| Smaller-context cost configuration | Disabled |
-| Expensive answer-model fallback | Disabled |
+| Setting                            | Default                        |
+| ---------------------------------- | ------------------------------ |
+| Planner and answer model           | `openai/gpt-5.4-mini`          |
+| Input filter                       | `openai/gpt-5.4-nano`, enabled |
+| Routing and quality checks         | `openai/gpt-5-nano`            |
+| Search results per query           | 3                              |
+| Maximum action rounds              | 3                              |
+| Maximum retained documents         | 6                              |
+| Total document context             | 8,000 characters               |
+| Per-document excerpt               | 2,000 characters               |
+| Output budget per model request    | 512 tokens                     |
+| Cache / router                     | Enabled                        |
+| Smaller-context cost configuration | Disabled                       |
+| Expensive answer-model fallback    | Disabled                       |
 
 These model IDs describe the code configuration, not a guarantee of provider
 availability. Embeddings use `openai/text-embedding-3-small` in

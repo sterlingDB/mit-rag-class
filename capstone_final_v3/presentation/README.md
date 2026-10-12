@@ -16,7 +16,7 @@ recorded area. Aim for nine minutes, including the slide 7 demonstration. Rehear
 first and check the exported recording.
 
 This is an HTML slideshow, not a PowerPoint file. It uses the existing written
-draft and saved observations. All 45 offline tests passed again on October 12, 2026. Update evidence and limitations if the system changes.
+draft and saved observations. Update evidence and limitations if the system changes.
 
 The presentation now has twelve slides, with one metrics slide per question
 (slides 6–9). All four metrics slides use October 12 live requests, each with an empty answer
