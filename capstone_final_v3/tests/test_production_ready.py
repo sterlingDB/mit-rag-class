@@ -169,21 +169,41 @@ class WikipediaAgentTests(unittest.TestCase):
         self.assertIn("Retrieval role: context: linked from A", answer.messages[0][1].content)
         self.assertIn("AGENT_STEP", agent.LOG_PATH.read_text())
 
-    def test_large_articles_are_bounded_even_without_optimizations(self):
+    def test_article_text_after_2000_characters_reaches_both_answer_paths(self):
+        article = "Evidence A " + "x" * 2500 + " RELEVANT_PASSAGE"
+        self.retriever.getTopK.return_value = [("A", article, 1.0, "bm25")]
+        for path in ("direct", "agent"):
+            with self.subTest(path=path):
+                answer = FakeLLM("Answer [A]")
+                if path == "direct":
+                    result = agent.baseline_answer(answer, self.retriever, "Question", optimize=False)
+                else:
+                    planner = FakeLLM({"action": "answer", "requirements": [
+                        {"question": "Fact", "article_id": "A", "quote": "RELEVANT_PASSAGE"}]})
+                    result = agent.agentic_answer(planner, self.retriever, self.graph, "Question",
+                                                  answer_llm=answer, optimize=False)
+                self.assertEqual(result["evidence"], {"A": article})
+                self.assertIn("RELEVANT_PASSAGE", answer.messages[0][1].content)
+
+    def test_large_articles_share_the_total_budget_in_both_answer_paths(self):
+        self.enterContext(patch.object(agent, "MAX_CONTEXT_CHARACTERS", 12000))
         self.retriever.getTopK.return_value = [
             (name, f"Evidence {name} " + "long article " * 20000 + "OMITTED_TAIL", 1.0, "bm25")
             for name in "ABC"
         ]
-        planner = FakeLLM({"action": "answer", "requirements": [
-            {"question": "Fact", "article_id": "A", "quote": "Evidence A"}]})
-        answer = FakeLLM("Answer [A]")
-        result = agent.agentic_answer(planner, self.retriever, self.graph, "Question",
-                                      answer_llm=answer, optimize=False)
-        self.assertEqual(result["context_characters"], 6000)
-        for messages in (planner.messages[0], answer.messages[0]):
-            self.assertNotIn("OMITTED_TAIL", messages[1].content)
-            for name in "ABC":
-                self.assertIn(f"[{name}]", messages[1].content)
+        for path in ("direct", "agent"):
+            for optimize in (False, True):
+                with self.subTest(path=path, optimize=optimize):
+                    answer = FakeLLM("Answer [A]")
+                    if path == "direct":
+                        result = agent.baseline_answer(answer, self.retriever, "Question", optimize=optimize)
+                    else:
+                        result = agent.agentic_answer(FakeLLM(), self.retriever, self.graph, "Question",
+                                                      answer_llm=answer, optimize=optimize)
+                    budget = agent.OPTIMIZED_CONTEXT_CHARACTERS if optimize else agent.MAX_CONTEXT_CHARACTERS
+                    self.assertEqual(result["context_characters"], budget)
+                    self.assertEqual(list(result["evidence"]), ["A"])
+                    self.assertNotIn("OMITTED_TAIL", answer.messages[0][1].content)
 
     def test_total_context_budget_stops_further_retrieval(self):
         self.retriever.getTopK.return_value = [

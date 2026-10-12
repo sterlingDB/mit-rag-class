@@ -70,8 +70,14 @@ model, or build it explicitly using step 2 above. The retriever checks for an
 empty index before constructing the keyword search index.
 
 The current loader indexes each entire article as one document. It does not
-split articles into passages. At answer time, the agent limits the retained text
-to the first 2,000 characters of each selected document.
+split articles into passages. At answer time, articles share a total 1,500,000-character context budget. There is
+no separate per-article cap (`MAX_DOCUMENT_CHARACTERS = None`). The agent takes
+each article in retrieval order, retaining as much text as the remaining budget
+allows. A long first article can use the entire budget. The optional cost-optimized
+mode still uses its smaller 6,000-character total budget. The default is a rough
+character allowance near the models' context capacity, not an exact token limit.
+Token counts vary with the text, so a large request can still exceed the provider's
+context limit. Larger contexts also increase API usage.
 
 ### Additional articles added for this project
 
@@ -103,7 +109,7 @@ These four files can also seed a smaller demonstration collection, but its
 results will differ from the full-corpus presentation runs. Additional articles
 are needed to support the five older Arizona drafts and the state-capital step.
 Having the right article available also does not guarantee that its relevant
-passage survives the current 2,000-character excerpt limit.
+passage fits within the shared context budget.
 
 ## Run
 
@@ -129,8 +135,8 @@ Configuration constants are near the top of `capstone.py`:
 | Search results per query           | 3                              |
 | Maximum action rounds              | 3                              |
 | Maximum retained documents         | 6                              |
-| Total document context             | 12,000 characters              |
-| Per-document excerpt               | 2,000 characters               |
+| Total document context             | 1,500,000 characters           |
+| Per-document excerpt               | No separate cap (`None`)       |
 | Output budget per model request    | 512 tokens                     |
 | Cache / router                     | Enabled                        |
 | Smaller-context cost configuration | Disabled                       |

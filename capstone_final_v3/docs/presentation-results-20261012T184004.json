@@ -1,0 +1,161 @@
+{
+  "run_started_at_local": "2026-10-12T13:40:04",
+  "timestamp_note": "The program records local timestamps without a UTC offset.",
+  "status": "measurements_complete_assistant_reviewed",
+  "source": "checkpoint_final.log",
+  "source_run_line": 3146,
+  "source_run_sha256": "300af2ccfc7124253aa33bfc8dabc66d89c85e01bc01279e01f9d40ca431b733",
+  "protocol": "Latest normal program run: two questions, once each, with a 1,500,000-character total budget and no per-article cap. Persistent answer cache enabled; neither request used a cached answer. Initial cache contents were not recorded.",
+  "configuration": {
+    "scenario": "wikipedia",
+    "questions": [
+      "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+      "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?"
+    ],
+    "max_steps": 3,
+    "persona_filter": "openai/gpt-5.4-nano",
+    "max_context_characters": 1500000,
+    "max_document_characters": null,
+    "cost_optimizations": false,
+    "cache_enabled": true,
+    "router_enabled": true,
+    "router_model": "openai/gpt-5-nano",
+    "expensive_fallback_enabled": false,
+    "price_per_mtok": {
+      "openai/gpt-5.4-mini": {
+        "input": 0.75,
+        "output": 4.5,
+        "cached": 0.075
+      },
+      "openai/gpt-4o-mini": {
+        "input": 0.15,
+        "output": 0.6,
+        "cached": 0.075
+      },
+      "openai/gpt-5-nano": {
+        "input": 0.05,
+        "output": 0.4
+      },
+      "openai/gpt-5.4-nano": {
+        "input": 0.2,
+        "output": 1.25
+      },
+      "openai/gpt-5.4": {
+        "input": 2.5,
+        "output": 15.0
+      }
+    },
+    "additional_price_sources": {
+      "checked_on": "2026-10-06",
+      "models": [
+        "https://openrouter.ai/openai/gpt-5-nano",
+        "https://openrouter.ai/openai/gpt-5.4-nano",
+        "https://openrouter.ai/openai/gpt-5.4"
+      ],
+      "note": "Estimates only; provider prices vary. Unspecified cached rates use full input price."
+    },
+    "max_output_tokens": 512,
+    "effective_top_k": 3,
+    "effective_context_docs": 6,
+    "effective_context_characters": 1500000,
+    "planner_model": "openai/gpt-5.4-mini",
+    "answer_model": "openai/gpt-5.4-mini"
+  },
+  "cost_scope": "Chat estimates use the configured rates and exclude embeddings. Latency excludes initial index and graph setup. Chat tokens are summed across model calls, not the size of a single prompt.",
+  "review_scope": "Review against retained evidence, not verification against external sources or an aggregate accuracy estimate.",
+  "records": [
+    {
+      "case": "arizona_comparison",
+      "completed_at_local": "2026-10-12T13:40:22",
+      "source_log_line": 3459,
+      "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+      "answer": "Jeremiyah Love was drafted 3rd overall by the Arizona Cardinals in the 2026 NFL draft. [2026_NFL_draft]\n\nFor the same round in five older drafts for Arizona, the retrieved documents provide:\n- 2020 NFL draft: Arizona\u2019s first-round pick was at 8th overall, but it was Isaiah Simmons, not Jeremiyah Love. [2020_NFL_draft]\n- 2026 NFL draft: Arizona\u2019s first-round pick was 3rd overall, Jeremiyah Love. [2026_NFL_draft]\n\nEvidence for \u201cfive older drafts for Arizona\u201d is not available in the retrieved documents. The retrieved documents only contain one older draft list in detail: the 2020 NFL draft. [2020_NFL_draft] [2026_NFL_draft]",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "Invalid planner decision; stopping: unknown or unavailable action",
+      "elapsed_seconds": 17.9457,
+      "model_calls": 6,
+      "estimated_chat_cost_usd": 0.14386274999999998,
+      "cache_match": null,
+      "context_documents": 3,
+      "context_characters": 245429,
+      "search_calls": 1,
+      "link_calls": 0,
+      "steps": 2,
+      "reported_chat_tokens": 251116,
+      "retained_article_ids": [
+        "2026_NFL_draft",
+        "National_Football_League",
+        "2020_NFL_draft"
+      ],
+      "review": {
+        "reviewer": "assistant inspection of full retained evidence",
+        "review_date": "2026-10-12",
+        "task_answered": false,
+        "outcome": "Partial answer: supported draft position and one older Arizona pick; five-draft comparison incomplete.",
+        "supported_claims": [
+          "Jeremiyah Love: 3rd overall, Arizona Cardinals, 2026.",
+          "Isaiah Simmons: 8th overall, Arizona Cardinals, 2020."
+        ],
+        "finding": "The complete retained draft articles support both picks. The response lists 2026 again as part of the older-draft comparison, although it is the current draft, and supplies only one older year."
+      }
+    },
+    {
+      "case": "dukes_capital",
+      "completed_at_local": "2026-10-12T13:40:43",
+      "source_log_line": 3945,
+      "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+      "answer": "Ben Jones, who played Cooter Davenport in *The Dukes of Hazzard*, represented Georgia\u2019s 4th congressional district in Congress [Ben_Jones_(American_actor_and_politician)]. Georgia\u2019s capital is Atlanta [The_Dukes_of_Hazzard].",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "Invalid planner decision; stopping: unknown or unavailable action",
+      "elapsed_seconds": 21.3529,
+      "model_calls": 6,
+      "estimated_chat_cost_usd": 0.10551220000000001,
+      "cache_match": null,
+      "context_documents": 3,
+      "context_characters": 181118,
+      "search_calls": 1,
+      "link_calls": 0,
+      "steps": 2,
+      "reported_chat_tokens": 181091,
+      "retained_article_ids": [
+        "Ben_Jones_(American_actor_and_politician)",
+        "The_Dukes_of_Hazzard",
+        "Davy_Crockett"
+      ],
+      "review": {
+        "reviewer": "assistant inspection of full retained evidence",
+        "review_date": "2026-10-12",
+        "task_answered": false,
+        "outcome": "Actor and state supported. The capital answer has a citation, but the cited article does not establish that claim.",
+        "supported_claims": [
+          "Ben Jones played Cooter Davenport and represented Georgia in Congress."
+        ],
+        "finding": "The Dukes article mentions Atlanta as a nearby city and filming location. It does not identify Atlanta as the state capital. The answer no longer acknowledges this evidence gap."
+      }
+    }
+  ],
+  "judge_failures": [
+    {
+      "at_local": "2026-10-12T13:40:22",
+      "role": "quality_check",
+      "error_type": "JSONDecodeError"
+    },
+    {
+      "at_local": "2026-10-12T13:40:29",
+      "role": "router",
+      "error_type": "JSONDecodeError"
+    },
+    {
+      "at_local": "2026-10-12T13:40:43",
+      "role": "quality_check",
+      "error_type": "JSONDecodeError"
+    }
+  ],
+  "not_rerun": [
+    "draft_pick",
+    "brady_house"
+  ],
+  "total_estimated_chat_cost_usd": 0.24937494999999998
+}

@@ -73,8 +73,8 @@ CACHE_SIMILARITY_THRESHOLD = 0.85
 MAX_STEPS = 3
 TOP_K = 3
 MAX_CONTEXT_DOCS = 6
-MAX_CONTEXT_CHARACTERS = 12000
-MAX_DOCUMENT_CHARACTERS = 2000
+MAX_CONTEXT_CHARACTERS = 1_500_000
+MAX_DOCUMENT_CHARACTERS = None  # No separate per-article cap; use the shared context budget.
 RUN_COST_OPTIMIZATIONS = False
 OPTIMIZED_TOP_K = 2
 OPTIMIZED_CONTEXT_DOCS = 4
@@ -408,7 +408,10 @@ def baseline_answer(llm: ChatOpenAI, retriever: HybridRetriever, question: str,
     for doc_id, text, score, method in hits:
         if remaining <= 0:
             break
-        excerpt = text[:min(MAX_DOCUMENT_CHARACTERS, remaining)]
+        excerpt_limit = remaining
+        if MAX_DOCUMENT_CHARACTERS is not None:
+            excerpt_limit = min(MAX_DOCUMENT_CHARACTERS, remaining)
+        excerpt = text[:excerpt_limit]
         bounded_hits.append((doc_id, excerpt, score, method))
         remaining -= len(excerpt)
     hits = bounded_hits
@@ -647,7 +650,10 @@ def agentic_answer(
             if hit[0] not in collected and len(collected) < context_limit:
                 remaining = character_limit - sum(len(item[1]) for item in collected.values())
                 if remaining > 0:
-                    excerpt = hit[1][:min(MAX_DOCUMENT_CHARACTERS, remaining)]
+                    excerpt_limit = remaining
+                    if MAX_DOCUMENT_CHARACTERS is not None:
+                        excerpt_limit = min(MAX_DOCUMENT_CHARACTERS, remaining)
+                    excerpt = hit[1][:excerpt_limit]
                     collected[hit[0]] = (hit[0], excerpt, hit[2], hit[3])
         event["collected_article_ids"] = list(collected)
         event["omitted_article_ids"] = sorted({hit[0] for hit in hits} - collected.keys())

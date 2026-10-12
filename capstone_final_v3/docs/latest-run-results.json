@@ -1,0 +1,284 @@
+{
+  "created_at_utc": "20261012T201346826306Z",
+  "run_started_at_local": "2026-10-12T15:13:46.826306-05:00",
+  "run_label": "October 12, 3:13 p.m. Central",
+  "status": "measurements_complete_assistant_reviewed",
+  "source": "presentation_runs/20261012T201346826306Z/agent.log",
+  "raw_results": "presentation_runs/20261012T201346826306Z/results.json",
+  "source_log_sha256": "a560883a8f66eabab669a242ef27f3e4ea0c2b89187a13dd37481fcd4f52435d",
+  "protocol": "One request per question; separate empty answer cache per request. Existing article index; setup excluded from request latency. Chat cost uses configured rates and excludes embedding costs.",
+  "configuration": {
+    "LLM_MODEL": "openai/gpt-5.4-mini",
+    "PERSONA_FILTER_MODEL": "openai/gpt-5.4-nano",
+    "ROUTER_MODEL": "openai/gpt-5-nano",
+    "USE_PERSONA_FILTER": true,
+    "USE_ROUTER": true,
+    "USE_CACHE": true,
+    "RUN_COST_OPTIMIZATIONS": false,
+    "MAX_STEPS": 3,
+    "TOP_K": 3,
+    "MAX_CONTEXT_CHARACTERS": 1500000,
+    "MAX_CONTEXT_DOCS": 6,
+    "MAX_DOCUMENT_CHARACTERS": null,
+    "MAX_OUTPUT_TOKENS": 512,
+    "PRICE_PER_MTOK": {
+      "openai/gpt-5.4-mini": {
+        "input": 0.75,
+        "output": 4.5,
+        "cached": 0.075
+      },
+      "openai/gpt-4o-mini": {
+        "input": 0.15,
+        "output": 0.6,
+        "cached": 0.075
+      },
+      "openai/gpt-5-nano": {
+        "input": 0.05,
+        "output": 0.4
+      },
+      "openai/gpt-5.4-nano": {
+        "input": 0.2,
+        "output": 1.25
+      },
+      "openai/gpt-5.4": {
+        "input": 2.5,
+        "output": 15.0
+      }
+    },
+    "USE_EXPENSIVE_FALLBACK": false
+  },
+  "indexed_documents": 2423,
+  "source_sha256": {
+    "capstone.py": "dc868a9a55cb5c0694eeb4c8b088f6bf07033b4209626c9ba0d39c050a499e9f",
+    "chroma_helpers.py": "4095e165dd1a1013b3722048097a6c5001adec0de4c00c36c6f763c73fc1b8ce",
+    "evaluation.py": "6586baa3c461d2b0866d00364171fd6ff1ffc33c8391cf0cd665dfef3090be49",
+    "graph_retriever.py": "2d3b3476034e844450f195f1089c9132a6fd8ade37cfefeea4bbce3675fa58d6",
+    "hybrid_retriever.py": "0a4f9c1504223f47ced4368d160842ee85ad9bd8247bec390463196e78267acd",
+    "production_costs.py": "02ca0f264d14340fcf5dc84a8ba9fea12c9ae51df7a2fd38a7690ddd09eb9a36",
+    "production_evidence.py": "478fe82d72e2a454b88d176277ca280ecbe73aeb5b21940d8aa04c97d5a435fb",
+    "run_presentation.py": "691abc1f8c0ac980b9319ef9ffade693076899722360297259d66765c4df94ee",
+    "sample_docs.py": "5aa690ba1c3666c2a11bfe648b812ba51154e1c8c3850b80a4750466676befd9",
+    "security_cost_helpers.py": "fd6969c72d9ba2480fbb7ddd90ee2950af9c0ed8ecdb53a76970a86dd00e0968",
+    "semantic_answer_cache.py": "ead1f1d64ad92cf26ee3de2e1e93856ca7a15272dba9dedaaab8b4a1f0d0e79e",
+    "wiki_helpers.py": "754666249520a0a465a13e686580369781296166e550b84117b849e4664b740a"
+  },
+  "corpus_fingerprint": "6885be448cb1dd05d49c2734",
+  "cost_scope": "Configured-rate chat estimates, excluding unmeasured embedding costs. Latency excludes initial index and graph setup. Tokens total all model calls for the question.",
+  "review_scope": "Manual review against the retained article text; not an external fact check or overall accuracy estimate.",
+  "records": [
+    {
+      "question": "What overall pick was Jeremiyah Love in the 2026 NFL draft?",
+      "answer": "Jeremiyah Love was the 3rd overall pick in the 2026 NFL draft. [2026_NFL_draft]",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "The retrieved 2026 NFL draft article directly lists Jeremiyah Love as the 3rd overall pick.",
+      "elapsed_seconds": 15.5737,
+      "model_calls": 5,
+      "estimated_chat_cost_usd": 0.078284,
+      "cache_match": null,
+      "context_documents": 3,
+      "context_characters": 185704,
+      "search_calls": 1,
+      "link_calls": 0,
+      "steps": 2,
+      "case": "draft_pick",
+      "completed_at_local": "2026-10-12T15:15:18",
+      "source_log_line": 260,
+      "reported_chat_tokens": 150797,
+      "retained_article_ids": [
+        "2026_NFL_draft",
+        "2020_NFL_draft",
+        "Justin_Jefferson"
+      ],
+      "review": {
+        "outcome": "complete_supported",
+        "summary": "The retained 2026 draft table supports Jeremiyah Love at third overall.",
+        "support": [
+          {
+            "article_id": "2026_NFL_draft",
+            "quote": "1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame 2025 Doak Walker Award winner"
+          }
+        ]
+      }
+    },
+    {
+      "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+      "answer": "Jeremiyah Love was drafted **3rd overall** by the Arizona Cardinals in the **2026 NFL draft** [2026_NFL_draft].\n\nFor “the same round of 5 older drafts for Arizona,” I found **Arizona first-round picks** in the retrieved drafts only for **2020** and **2026**; I did **not** find evidence for 5 older Arizona drafts in the retrieved documents [2020_NFL_draft] [2026_NFL_draft].\n\nWhat I can compare from the evidence:\n- **2026:** Arizona selected Jeremiyah Love at **pick 3** in Round 1 [2026_NFL_draft].\n- **2020:** Arizona’s first-round pick was **Isaiah Simmons at pick 8** [2020_NFL_draft].\n\nRequested facts lacking evidence:\n- The **other 4 older Arizona drafts** in the same round are not present in the retrieved documents [2020_NFL_draft] [2026_NFL_draft].",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "The draft spot for Jeremiyah Love is directly available, and the Arizona first-round picks in five older drafts are also available from the retrieved draft articles.",
+      "elapsed_seconds": 17.7554,
+      "model_calls": 5,
+      "estimated_chat_cost_usd": 0.0707006,
+      "cache_match": null,
+      "context_documents": 3,
+      "context_characters": 245429,
+      "search_calls": 1,
+      "link_calls": 0,
+      "steps": 2,
+      "case": "arizona_comparison",
+      "completed_at_local": "2026-10-12T15:15:36",
+      "source_log_line": 747,
+      "reported_chat_tokens": 188885,
+      "retained_article_ids": [
+        "2026_NFL_draft",
+        "National_Football_League",
+        "2020_NFL_draft"
+      ],
+      "review": {
+        "outcome": "partial_supported",
+        "summary": "Love at third overall in 2026 and Simmons at eighth overall in 2020 are supported. Only one older draft is supplied; four remain missing. The answer acknowledges the gap. The planner incorrectly declared all five older drafts available and repeated requirement items.",
+        "support": [
+          {
+            "article_id": "2026_NFL_draft",
+            "quote": "1 3 Arizona Cardinals Jeremiyah Love RB Notre Dame 2025 Doak Walker Award winner"
+          },
+          {
+            "article_id": "2020_NFL_draft",
+            "quote": "1 8 Arizona Cardinals Isaiah Simmons LB Clemson 2019 Dick Butkus Award winner"
+          }
+        ]
+      }
+    },
+    {
+      "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+      "answer": "The actor who played Cooter Davenport was Ben Jones, who represented Georgia in Congress [Ben_Jones_(American_actor_and_politician)]. The capital of Georgia is Atlanta [Ben_Jones_(American_actor_and_politician)].",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "Invalid planner decision; stopping: unknown or unavailable action",
+      "elapsed_seconds": 20.3083,
+      "model_calls": 6,
+      "estimated_chat_cost_usd": 0.10551625,
+      "cache_match": null,
+      "context_documents": 3,
+      "context_characters": 181118,
+      "search_calls": 1,
+      "link_calls": 0,
+      "steps": 2,
+      "case": "dukes_capital",
+      "completed_at_local": "2026-10-12T15:15:56",
+      "source_log_line": 1233,
+      "reported_chat_tokens": 181083,
+      "retained_article_ids": [
+        "Ben_Jones_(American_actor_and_politician)",
+        "The_Dukes_of_Hazzard",
+        "Davy_Crockett"
+      ],
+      "review": {
+        "outcome": "partially_unsupported",
+        "summary": "The Ben Jones article supports the actor and Georgia. The answer also cites that article for Atlanta as the capital, but its text does not establish the capital relationship. None of the three retained articles contains the word capital. The capital claim is unsupported by this evidence, not judged false.",
+        "support": [
+          {
+            "article_id": "Ben_Jones_(American_actor_and_politician)",
+            "quote": "Member of the U.S. House of Representatives from Georgia"
+          },
+          {
+            "article_id": "Ben_Jones_(American_actor_and_politician)",
+            "quote": "best known for his role as Cooter Davenport in The Dukes of Hazzard"
+          }
+        ]
+      }
+    },
+    {
+      "question": "When and for how much did the Brady Bunch house sell?",
+      "answer": "The Brady Bunch house was bought on September 11, 2023, for $3.2 million. [The_Brady_Bunch]\n\nRequested fact about the sale price and date is supported. [The_Brady_Bunch]",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "The retrieved Brady Bunch article contains the sale date and price of the house, so no further search is needed.",
+      "elapsed_seconds": 26.8537,
+      "model_calls": 7,
+      "estimated_chat_cost_usd": 0.23979265,
+      "cache_match": null,
+      "context_documents": 5,
+      "context_characters": 423628,
+      "search_calls": 3,
+      "link_calls": 0,
+      "steps": 3,
+      "case": "brady_house",
+      "completed_at_local": "2026-10-12T15:16:23",
+      "source_log_line": 1804,
+      "reported_chat_tokens": 494006,
+      "retained_article_ids": [
+        "The_Brady_Bunch",
+        "Once_Upon_a_Time_in_Hollywood",
+        "The_Washington_Post",
+        "Christie_s",
+        "The_Real_Housewives_of_New_York_City"
+      ],
+      "review": {
+        "outcome": "complete_supported",
+        "summary": "The retained Brady Bunch article supports both September 11, 2023 and $3.2 million.",
+        "support": [
+          {
+            "article_id": "The_Brady_Bunch",
+            "quote": "The house was bought on September 11, 2023"
+          },
+          {
+            "article_id": "The_Brady_Bunch",
+            "quote": "for $3.2 million"
+          }
+        ]
+      }
+    }
+  ],
+  "judge_failures": [
+    {
+      "timestamp": "2026-10-12T15:15:08",
+      "line": 4,
+      "data": {
+        "role": "router",
+        "error_type": "JSONDecodeError"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T15:15:18",
+      "line": 257,
+      "data": {
+        "role": "quality_check",
+        "error_type": "JSONDecodeError"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T15:15:36",
+      "line": 744,
+      "data": {
+        "role": "quality_check",
+        "error_type": "JSONDecodeError"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T15:15:44",
+      "line": 961,
+      "data": {
+        "role": "router",
+        "error_type": "JSONDecodeError"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T15:15:56",
+      "line": 1230,
+      "data": {
+        "role": "quality_check",
+        "error_type": "JSONDecodeError"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T15:16:03",
+      "line": 1447,
+      "data": {
+        "role": "router",
+        "error_type": "JSONDecodeError"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T15:16:23",
+      "line": 1801,
+      "data": {
+        "role": "quality_check",
+        "error_type": "JSONDecodeError"
+      }
+    }
+  ],
+  "total_estimated_chat_cost_usd": 0.4942935,
+  "console_log": "presentation_runs/20261012T201346826306Z/console.log"
+}
