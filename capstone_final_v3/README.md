@@ -129,7 +129,7 @@ Configuration constants are near the top of `capstone.py`:
 | Search results per query           | 3                              |
 | Maximum action rounds              | 3                              |
 | Maximum retained documents         | 6                              |
-| Total document context             | 8,000 characters               |
+| Total document context             | 12,000 characters              |
 | Per-document excerpt               | 2,000 characters               |
 | Output budget per model request    | 512 tokens                     |
 | Cache / router                     | Enabled                        |
