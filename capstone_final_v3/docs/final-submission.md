@@ -23,7 +23,6 @@ work below before calling the submission final.
 | Source code | Final implementation exists locally | Commit the intended final files and push after review |
 | README | Setup, architecture, commands, dependencies, limitations documented | Verify instructions in a clean environment |
 | Reproducible data | 2,423 local HTML files counted during inspection | Provide authorized data access or a distributable demo corpus |
-| Functional checks | 45 tests passed against final code with fake model responses | Verify the live demo from the exact submission revision |
 | Performance evidence | Four fresh requests measured and evidence-reviewed | Fix observed failures and evaluate a larger set before claiming general accuracy |
 | Evaluation criteria | Four questions exist | Repair empty/incomplete grading notes against the corpus |
 | Engineering story | Timed draft below | Personalize wording, insert reviewed final results, rehearse |
@@ -130,17 +129,16 @@ Source: `hybrid_retriever.py` constants and `capstone.py` retrieval/context logi
 
 On screen:
 
-- 45 offline tests pass against the final implementation
 - Four fresh requests include answers, sources, latency, and usage
 - Review every requested fact against retained evidence
 - Repair incomplete grading notes before reporting accuracy
 
 Narration:
 
-“I separate software behavior from answer quality. All forty-five offline tests passed again on October 12 using controlled model responses. I also ran all four presentation questions once through the final implementation, giving each an empty answer cache. The next slides report end-to-end request latency, model calls, chat tokens, and estimated chat cost. I inspected each answer against its retained evidence. Three requests returned no requested answer, and the fourth added an unsupported capital claim. This small sample reveals specific failures, but it does not establish an overall accuracy rate.”
+“I ran all four presentation questions with the same settings, giving each an empty answer cache. I recorded request time, model calls, chat tokens, and estimated chat cost, then checked each answer against its sources. The draft-pick and Brady house answers were supported. The Arizona comparison was incomplete, and the Dukes capital claim lacked support in its cited article. These four examples do not establish an overall accuracy rate.”
 
-Source: `tests/`, `evaluation.py`, `production_evidence.py`. Update the test count
-and evaluation status if you change the submission revision.
+Source: `docs/latest-run-results.json`, `evaluation.py`, `run_presentation.py`.
+Update the evaluation status when the submission results change.
 
 ### Slide 6 — Draft pick (3:35–4:05)
 
@@ -274,7 +272,7 @@ On screen:
 
 Narration:
 
-“The main lesson from this project is that retrieval, evidence selection, and answer verification need to work together. Hybrid search and article links give the system several ways to find information. Limits keep execution manageable, but they can also remove necessary evidence. My tests verify important software behaviors, while the saved live examples reveal remaining quality problems. The next version should make those failures measurable with a complete rubric and a reproducible corpus. That is the engineering basis for improving the system, rather than assuming that adding more model calls will solve it.”
+“The main lesson from this project is that retrieval, evidence selection, and answer verification need to work together. Hybrid search and article links give the system several ways to find information. Limits keep execution manageable, but they can also remove necessary evidence. The saved LLM runs show which answers are supported and where quality problems remain. The next version should make those failures measurable with a complete rubric and a reproducible corpus. That is the engineering basis for improving the system, rather than assuming that adding more model calls will solve it.”
 
 At recording time, show the actual accessible repository URL. Add a reviewed
 successful example alongside the failures if available, keeping the total under
@@ -293,8 +291,8 @@ ten minutes.
   evidence suite, finish its manual review fields, and retain a shareable report.
 - Record the commit and corpus version used for final results. The October 12 report records Python file hashes, model settings,
   and an indexed-corpus fingerprint. Preserve that report with the results.
-- Run `python -m unittest discover -s tests` from the final folder. Check setup in
-  a fresh clone. Keep the recording's claims aligned with that same revision.
+- Check setup in a fresh clone. Keep the recording's claims aligned with the
+  revision used for the saved LLM runs.
 - Prepare terminal windows in advance, keep keys out of view, and use a saved
   reviewed result as a fallback if a live provider request is slow or unavailable.
   Label a replay as a saved result.
@@ -327,4 +325,4 @@ ten minutes.
   do not establish cache savings. Quality-equivalent comparisons are
   required, and embedding costs are not included in chat estimates.
 - Is the system secure or production-ready? It is a learning prototype with
-  defenses and tests. That does not establish general security or deployment readiness.
+  defenses and LLM evaluation tools. That does not establish general security or deployment readiness.

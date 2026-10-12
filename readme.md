@@ -1,20 +1,29 @@
-# RAG class project
+## Install
 
-The final capstone implementation is in [`capstone_final_v3`](capstone_final_v3/README.md).
-See its README for setup, offline tests, and known limitations, and the
-[final submission preparation](capstone_final_v3/docs/final-submission.md) for
-the recording script and remaining submission work.
+From the repository root:
 
-## Earlier class exercises
-
-Initial install:
+```sh
 python3 -m venv .venv
-
-Start the python enviroment:
 source .venv/bin/activate
+python -m pip install -r capstone_final_v3/requirements.txt
+```
 
-Install the dependencys
-pip install -r requirements.txt
+Required pip packages (listed in `requirements.txt`):
 
-Run the program:
-python main.py
+- `python-dotenv`
+- `langchain-openai`
+- `langchain-core`
+- `langchain_chroma`
+- `rank_bm25`
+- `networkx`
+
+## Run
+
+```sh
+cd capstone_final_v3
+python capstone.py
+```
+
+## Slideshow
+
+[Wikipedia Research Assistant — Capstone.pdf](<capstone_final_v3/Wikipedia Research Assistant — Capstone.pdf>) is the capstone slideshow.

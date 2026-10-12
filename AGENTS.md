@@ -22,13 +22,13 @@ The user is new to Python but familiar with Node.js. When explaining Python code
 
 - Make retrieval steps visible: loading data, chunking, embedding, search, and answer generation.
 - Preserve source references where possible so answers can be traced back to retrieved material.
-- Prefer deterministic examples for tests and demos when possible.
+- Prefer deterministic examples for demos when possible.
 - Be careful not to present model output as guaranteed fact; include citations or source snippets when the app supports them.
 
-## Testing and Verification
+## Verification
 
 - For small Python scripts, run the script directly with `python main.py` or the relevant entry point.
-- Run graph retrieval tests without API credentials: `.venv/bin/python -m unittest discover -s capstone/tests`.
+- The repository uses LLM evaluation runs; run API-backed evaluations only when requested and preserve their source evidence.
 - Verify that code still works without requiring unavailable API credentials unless the user explicitly wants an API-backed example.
 
 ## Style
