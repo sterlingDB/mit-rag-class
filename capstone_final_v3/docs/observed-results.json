@@ -1,0 +1,175 @@
+{
+  "created_at_utc": "20261012T172424284856Z",
+  "status": "measurements_complete_assistant_reviewed",
+  "protocol": "One request per question; separate empty answer cache per request. Existing article index; setup excluded from request latency. Chat cost uses configured rates and excludes embedding costs.",
+  "source_sha256": {
+    "capstone.py": "19c4e98fd6c3f16e8c087aba94a5b34f2ada4e601a4c715ff831d9bfe65385ef",
+    "chroma_helpers.py": "4095e165dd1a1013b3722048097a6c5001adec0de4c00c36c6f763c73fc1b8ce",
+    "evaluation.py": "6586baa3c461d2b0866d00364171fd6ff1ffc33c8391cf0cd665dfef3090be49",
+    "graph_retriever.py": "2d3b3476034e844450f195f1089c9132a6fd8ade37cfefeea4bbce3675fa58d6",
+    "hybrid_retriever.py": "f7da01a79c74a484459ba1a22c5c38e82c4c04532bef749f9a112afe3e250737",
+    "production_costs.py": "02ca0f264d14340fcf5dc84a8ba9fea12c9ae51df7a2fd38a7690ddd09eb9a36",
+    "production_evidence.py": "478fe82d72e2a454b88d176277ca280ecbe73aeb5b21940d8aa04c97d5a435fb",
+    "run_presentation.py": "691abc1f8c0ac980b9319ef9ffade693076899722360297259d66765c4df94ee",
+    "sample_docs.py": "5aa690ba1c3666c2a11bfe648b812ba51154e1c8c3850b80a4750466676befd9",
+    "security_cost_helpers.py": "fd6969c72d9ba2480fbb7ddd90ee2950af9c0ed8ecdb53a76970a86dd00e0968",
+    "semantic_answer_cache.py": "ead1f1d64ad92cf26ee3de2e1e93856ca7a15272dba9dedaaab8b4a1f0d0e79e",
+    "wiki_helpers.py": "754666249520a0a465a13e686580369781296166e550b84117b849e4664b740a"
+  },
+  "configuration": {
+    "LLM_MODEL": "openai/gpt-5.4-mini",
+    "PERSONA_FILTER_MODEL": "openai/gpt-5.4-nano",
+    "ROUTER_MODEL": "openai/gpt-5-nano",
+    "USE_PERSONA_FILTER": true,
+    "USE_ROUTER": true,
+    "USE_CACHE": true,
+    "RUN_COST_OPTIMIZATIONS": false,
+    "MAX_STEPS": 3,
+    "TOP_K": 3,
+    "MAX_CONTEXT_CHARACTERS": 8000,
+    "MAX_CONTEXT_DOCS": 6,
+    "MAX_DOCUMENT_CHARACTERS": 2000,
+    "MAX_OUTPUT_TOKENS": 512,
+    "PRICE_PER_MTOK": {
+      "openai/gpt-5.4-mini": {
+        "input": 0.75,
+        "output": 4.5,
+        "cached": 0.075
+      },
+      "openai/gpt-4o-mini": {
+        "input": 0.15,
+        "output": 0.6,
+        "cached": 0.075
+      },
+      "openai/gpt-5-nano": {
+        "input": 0.05,
+        "output": 0.4
+      },
+      "openai/gpt-5.4-nano": {
+        "input": 0.2,
+        "output": 1.25
+      },
+      "openai/gpt-5.4": {
+        "input": 2.5,
+        "output": 15.0
+      }
+    },
+    "USE_EXPENSIVE_FALLBACK": false
+  },
+  "indexed_documents": 2423,
+  "corpus_fingerprint": "6885be448cb1dd05d49c2734",
+  "source": "presentation_runs/20261012T172424284856Z/results.json",
+  "source_report_sha256": "0954964281f118d6f427223b6482b01677fbd48e92fdac75e5469ea366964bb5",
+  "scope": "Four requests, once each, empty answer cache per question. Assistant evidence review, not a representative accuracy benchmark. Source excerpts remain in the ignored local report.",
+  "cost_scope": "Configured chat price snapshot, excluding embeddings. Not a current price quotation or total bill.",
+  "records": [
+    {
+      "case": "draft_pick",
+      "question": "What overall pick was Jeremiyah Love in the 2026 NFL draft?",
+      "answer": "I don\u2019t have evidence for Jeremiyah Love\u2019s draft position in the retrieved documents. The 2026 NFL draft document lists the first selection, Mr. Irrelevant, total selections, and some team/format details, but not Jeremiyah Love\u2019s overall pick. [2026_NFL_draft]\n\n",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "Reached the context character budget of 8000.",
+      "elapsed_seconds": 17.3503,
+      "model_calls": 5,
+      "estimated_chat_cost_usd": 0.0045374,
+      "cache_match": null,
+      "reported_chat_tokens": 8095,
+      "retained_article_ids": [
+        "2026_NFL_draft",
+        "2020_NFL_draft",
+        "Justin_Jefferson",
+        "Brandon_Aiyuk"
+      ],
+      "review": {
+        "reviewer": "assistant inspection of retained excerpts and indexed articles",
+        "review_date": "2026-10-12",
+        "task_answered": false,
+        "outcome": "No draft pick returned. The answer acknowledged missing evidence.",
+        "stop": "Reached the 8,000-character context budget.",
+        "finding": "The indexed article contains the player at character 2,559, beyond the retained 2,000-character prefix."
+      }
+    },
+    {
+      "case": "arizona_comparison",
+      "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+      "answer": "I can\u2019t answer this from the retrieved documents alone.\n\nWhat I can support:\n- The retrieved 2026 NFL draft document lists first-round and overall draft information, but it does **not** mention Jeremiyah Love or his draft spot. [2026_NFL_draft]\n- The other retrieved documents are about the NFL generally, the 2020 NFL draft, and Brandon Aiyuk; none mention Jeremiyah Love or \u201cArizona\u201d draft comparisons. [National_Football_League] [2020_NFL_draft] [Brandon_Aiyuk]\n\nRequested facts lacking evidence:\n- Jeremiyah Love\u2019s draft position: no evidence in the retrieved documents.  \n- Comparison to the same round of 5 older drafts for Arizona: no evidence in the retrieved documents.",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "Reached the context character budget of 8000.",
+      "elapsed_seconds": 14.26,
+      "model_calls": 5,
+      "estimated_chat_cost_usd": 0.0048973,
+      "cache_match": null,
+      "reported_chat_tokens": 8068,
+      "retained_article_ids": [
+        "2026_NFL_draft",
+        "National_Football_League",
+        "2020_NFL_draft",
+        "Brandon_Aiyuk"
+      ],
+      "review": {
+        "reviewer": "assistant inspection of retained excerpts and indexed articles",
+        "review_date": "2026-10-12",
+        "task_answered": false,
+        "outcome": "No draft position or five-draft comparison returned. The answer acknowledged missing evidence.",
+        "stop": "Reached the 8,000-character context budget.",
+        "finding": "The requested comparison also leaves the five draft years unspecified."
+      }
+    },
+    {
+      "case": "dukes_capital",
+      "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+      "answer": "Ben Jones played Cooter Davenport in *The Dukes of Hazzard* [The_Dukes_of_Hazzard]. He represented Georgia in the U.S. House of Representatives [Ben_Jones_(American_actor_and_politician)]. The capital of Georgia is Atlanta. I could not find direct evidence for the capital in the retrieved documents, so that part lacks evidence.",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "The retrieved articles identify Ben Jones as the actor who played Cooter Davenport and show that he served in Congress representing Georgia, so the state is Georgia. However, the articles provided do not contain the capital of Georgia, so I cannot answer that part from the available evidence.",
+      "elapsed_seconds": 14.7982,
+      "model_calls": 5,
+      "estimated_chat_cost_usd": 0.00466325,
+      "cache_match": null,
+      "reported_chat_tokens": 7503,
+      "retained_article_ids": [
+        "Ben_Jones_(American_actor_and_politician)",
+        "The_Dukes_of_Hazzard",
+        "Davy_Crockett"
+      ],
+      "review": {
+        "reviewer": "assistant inspection of retained excerpts and indexed articles",
+        "review_date": "2026-10-12",
+        "task_answered": false,
+        "outcome": "The answer supplied a capital while admitting it lacked evidence for that claim.",
+        "stop": "Planner chose to answer after identifying the missing capital evidence.",
+        "finding": "The actor and state are supported in the Ben Jones excerpt. The capital is absent from the retained evidence."
+      }
+    },
+    {
+      "case": "brady_house",
+      "question": "When and for how much did the Brady Bunch house sell?",
+      "answer": "I found evidence about **The Brady Bunch** TV series, but **no retrieved document mentions the Brady Bunch house selling, or provides a sale date or sale price**. [The_Brady_Bunch]\n\nRequested facts lacking evidence:\n- **When** the Brady Bunch house sold \u2014 not evidenced in the retrieved documents. [The_Brady_Bunch]\n- **For how much** it sold \u2014 not evidenced in the retrieved documents. [The_Brady_Bunch]",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "Reached the context character budget of 8000.",
+      "elapsed_seconds": 17.0548,
+      "model_calls": 5,
+      "estimated_chat_cost_usd": 0.004294900000000001,
+      "cache_match": null,
+      "reported_chat_tokens": 7676,
+      "retained_article_ids": [
+        "The_Brady_Bunch",
+        "Once_Upon_a_Time_in_Hollywood",
+        "The_Washington_Post",
+        "Wheatland_(James_Buchanan_House)"
+      ],
+      "review": {
+        "reviewer": "assistant inspection of retained excerpts and indexed articles",
+        "review_date": "2026-10-12",
+        "task_answered": false,
+        "outcome": "No sale date or price returned. The answer acknowledged missing evidence.",
+        "stop": "Reached the 8,000-character context budget.",
+        "finding": "The indexed sale date and price occur at characters 19,537 and 19,679, beyond the 2,000-character prefix."
+      }
+    }
+  ],
+  "total_estimated_chat_cost_usd": 0.018392850000000002
+}

@@ -1,0 +1,63 @@
+{
+  "source": "checkpoint_final.log (local, excluded from Git)",
+  "source_sha256": "fa56a9e44b1f26aa68981c4100b852a6ecebd484879a2923039246c3ce44c400",
+  "scope": "Two pre-existing saved requests, not new measurements or a benchmark. Run code revision is unknown. Full source excerpts remain in the local log and are not redistributed here.",
+  "cost_scope": "Recorded estimates using configured rates, excluding embeddings; not current price quotations.",
+  "records": [
+    {
+      "log_timestamp_without_timezone": "2026-10-10T11:05:41",
+      "question": "what spot did Jeremiyah Love get drafted and compare it to the same round of 5 older drafts for Arizona.",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "Reached the context character budget of 8000.",
+      "answer": "Requested facts lack evidence in the retrieved documents:\n\n- Jeremiyah Love\u2019s draft spot is not provided in the retrieved documents. [2026_NFL_draft]\n- I cannot identify \u201cthe same round\u201d or compare it to \u201c5 older drafts for Arizona\u201d because no Arizona draft documents or Jeremiyah Love selection data were retrieved. [2026_NFL_draft]",
+      "model_calls": 5,
+      "elapsed_seconds": 12.9256,
+      "estimated_chat_cost_usd": 0.00448865,
+      "cache_match": null,
+      "reported_chat_tokens": 7903,
+      "retained_article_ids": [
+        "2026_NFL_draft",
+        "National_Football_League",
+        "2020_NFL_draft",
+        "Justin_Jefferson"
+      ],
+      "retained_excerpt_lengths": {
+        "2026_NFL_draft": 2000,
+        "National_Football_League": 2000,
+        "2020_NFL_draft": 2000,
+        "Justin_Jefferson": 2000
+      }
+    },
+    {
+      "log_timestamp_without_timezone": "2026-10-10T11:05:55",
+      "question": "What is the capital of the state that the actor who played Cooter Davenport in The Dukes of Hazzard represented in Congress?",
+      "path": "agent",
+      "status": "answered",
+      "stop_reason": "Invalid planner decision; stopping: unknown or unavailable action",
+      "answer": "The actor who played Cooter Davenport was Ben Jones, and he represented Georgia in the U.S. House of Representatives. The capital of Georgia is Atlanta. [Ben_Jones_(American_actor_and_politician)]",
+      "model_calls": 6,
+      "elapsed_seconds": 13.617,
+      "estimated_chat_cost_usd": 0.0057806,
+      "cache_match": null,
+      "reported_chat_tokens": 9819,
+      "retained_article_ids": [
+        "Ben_Jones_(American_actor_and_politician)",
+        "The_Dukes_of_Hazzard",
+        "Davy_Crockett"
+      ],
+      "retained_excerpt_lengths": {
+        "Ben_Jones_(American_actor_and_politician)": 2000,
+        "The_Dukes_of_Hazzard": 2000,
+        "Davy_Crockett": 2000
+      }
+    }
+  ],
+  "review": {
+    "draft_comparison": "Did not answer requested comparison; stopped at the 8000-character context budget.",
+    "capital_question": "Retained excerpts identify the actor and state but do not support the capital claim. Planner stopped on an invalid action.",
+    "aggregate_accuracy": null,
+    "cache_savings": null,
+    "security_pass_rate": null
+  }
+}

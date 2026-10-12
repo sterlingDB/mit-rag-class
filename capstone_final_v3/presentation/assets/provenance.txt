@@ -1,0 +1,11 @@
+Illustrations generated October 12, 2026 with the built-in image-generation tool.
+These are conceptual illustrations, not system screenshots or evaluation evidence.
+Delivery assets were resized to 900 pixels and JPEG-encoded for a small offline slideshow.
+
+research-illustration.jpg (slide 1)
+Prompt:
+Create a refined editorial illustration for the RIGHT SIDE of a university engineering presentation about retrieval augmented generation. Square 1:1 composition. A small sculptural cluster of cream paper documents with teal lines, linked by delicate mint connectors to a magnifying glass and an open reference book. Flat deep petrol background exactly #163d48, generous negative space, sophisticated restrained paper-cut / soft 3D editorial style, cream and muted seafoam palette, small amber highlights. No letters, no words, no numbers, no logos, no robots, no brains. Clear silhouettes readable at small size. This is a conceptual illustration, not a technical diagram.
+
+evidence-illustration.jpg (slide 7)
+Prompt:
+Square editorial illustration for a university presentation on checking evidence in a retrieval augmented research assistant. A cream document standing beside a teal magnifying glass examining highlighted lines, with a small understated shield in the background. Visual metaphor for checking sources, not a claim of perfect security. Warm ivory background exactly #f7f5ef, flat composition with generous breathing room. Refined paper-cut / soft 3D editorial style, deep petrol #163d48, muted teal and seafoam, tiny amber highlight. No text, no letters, no numerals, no logos, no check marks, no robots. Objects readable at small size, composition centered.

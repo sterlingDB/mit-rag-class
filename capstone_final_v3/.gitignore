@@ -1,0 +1,10 @@
+Wikipedia/
+chroma_db/
+semantic_cache/
+.env
+__pycache__/
+*.pyc
+*.log
+presentation_runs/
+checkpoint_7_1_evidence*.json
+checkpoint_7_1_evidence*.txt
