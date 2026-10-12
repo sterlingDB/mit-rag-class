@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = HERE
 
 
 def read_events(relative_path):
@@ -60,7 +60,7 @@ def main():
         excerpt, steps, result = make_excerpt(record, events)
         label = latest["run_label"]
         settings = "1,500,000-character budget; no per-article cap; separate empty answer cache per question"
-        references = [f"{source}:{event['line']} — {event['type']} ({event['timestamp']})"
+        references = [f"presentation/{source}:{event['line']} — {event['type']} ({event['timestamp']})"
                       for event in [*steps, result]]
         metrics = (f"Latency: {record['elapsed_seconds']:.2f} s | Model calls: {record['model_calls']} | "
                    f"Chat tokens: {record['reported_chat_tokens']:,} | "
@@ -73,7 +73,7 @@ def main():
 <p class="small">Latency excludes setup. Chat tokens total all model calls; cost excludes embeddings.</p>
 <details><summary>Source files and line numbers</summary>
 <pre>{html.escape(chr(10).join(references))}</pre>
-<p>Console formatting: capstone.py:603, 661, 686, 704, 950, 955; security_cost_helpers.py:99.</p>
+<p>Console formatting: capstone_final_v3/capstone.py:603, 661, 686, 704, 950, 955; capstone_final_v3/security_cost_helpers.py:99.</p>
 </details></section>''')
         links.append(f'<a href="#slide-{slide}">{slide} · {html.escape(title)}</a>')
         text_blocks.append(f"SLIDE {slide}: {title}\n{label}\n{settings}\n\n{excerpt}\n\n{metrics}\n\nSources:\n" + "\n".join(references))

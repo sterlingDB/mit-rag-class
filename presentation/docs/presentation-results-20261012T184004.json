@@ -2,7 +2,7 @@
   "run_started_at_local": "2026-10-12T13:40:04",
   "timestamp_note": "The program records local timestamps without a UTC offset.",
   "status": "measurements_complete_assistant_reviewed",
-  "source": "checkpoint_final.log",
+  "source": "../capstone_final_v3/checkpoint_final.log",
   "source_run_line": 3146,
   "source_run_sha256": "300af2ccfc7124253aa33bfc8dabc66d89c85e01bc01279e01f9d40ca431b733",
   "protocol": "Latest normal program run: two questions, once each, with a 1,500,000-character total budget and no per-article cap. Persistent answer cache enabled; neither request used a cached answer. Initial cache contents were not recorded.",

@@ -1,5 +1,5 @@
 {
-  "source": "checkpoint_final.log (local, excluded from Git)",
+  "source": "../capstone_final_v3/checkpoint_final.log (local, excluded from Git)",
   "source_sha256": "fa56a9e44b1f26aa68981c4100b852a6ecebd484879a2923039246c3ce44c400",
   "scope": "Two pre-existing saved requests, not new measurements or a benchmark. Run code revision is unknown. Full source excerpts remain in the local log and are not redistributed here.",
   "cost_scope": "Recorded estimates using configured rates, excluding embeddings; not current price quotations.",

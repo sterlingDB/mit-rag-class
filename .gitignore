@@ -6,7 +6,11 @@ __pycache__/
 lab_*_*/detailedEmails/
 lab_*_*/chroma_db/
 capstone/Wikipedia/
+capstone_work/Wikipedia/
+capstone_final_v3/Wikipedia/
 capstone/ResearchPapers/
 capstone/chroma_db/
 capstone/semantic_cache/
 capstone/tests
+capstone_work/chroma_db/
+capstone_work/semantic_cache/

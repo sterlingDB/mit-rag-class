@@ -13,7 +13,7 @@ from semantic_answer_cache import cache_namespace
 def main():
     root = Path(__file__).resolve().parent
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
-    output = root / "presentation_runs" / stamp
+    output = root.parent / "presentation" / "presentation_runs" / stamp
     output.mkdir(parents=True)
     agent.LOG_PATH = output / "agent.log"
     report = {

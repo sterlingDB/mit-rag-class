@@ -1,3 +1,7 @@
+> Archived presentation draft. Source-code filenames refer to `capstone_final_v3/`;
+> result paths refer to `presentation/`. Use `capstone-slides.html` in the presentation
+> folder for the current slideshow and notes.
+
 # Final submission preparation
 
 Updated October 12, 2026 with four fresh requests for `capstone_final_v3`.

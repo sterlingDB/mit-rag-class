@@ -26,4 +26,4 @@ python capstone.py
 
 ## Slideshow
 
-[Wikipedia Research Assistant — Capstone.pdf](<Wikipedia Research Assistant — Capstone.pdf>) is the capstone slideshow.
+[Wikipedia Research Assistant — Capstone.pdf](<../presentation/Wikipedia Research Assistant — Capstone.pdf>) is the capstone slideshow.

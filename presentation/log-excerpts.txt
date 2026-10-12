@@ -18,9 +18,9 @@ Jeremiyah Love was the 3rd overall pick in the 2026 NFL draft. [2026_NFL_draft]
 Latency: 15.57 s | Model calls: 5 | Chat tokens: 150,797 | Estimated chat cost: $0.07828
 
 Sources:
-presentation_runs/20261012T201346826306Z/agent.log:10 — AGENT_STEP (2026-10-12T15:15:09)
-presentation_runs/20261012T201346826306Z/agent.log:49 — AGENT_STEP (2026-10-12T15:15:11)
-presentation_runs/20261012T201346826306Z/agent.log:260 — EFFICIENT_RESULT (2026-10-12T15:15:18)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:10 — AGENT_STEP (2026-10-12T15:15:09)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:49 — AGENT_STEP (2026-10-12T15:15:11)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:260 — EFFICIENT_RESULT (2026-10-12T15:15:18)
 
 ================================================================================
 
@@ -51,9 +51,9 @@ Requested facts lacking evidence:
 Latency: 17.76 s | Model calls: 5 | Chat tokens: 188,885 | Estimated chat cost: $0.07070
 
 Sources:
-presentation_runs/20261012T201346826306Z/agent.log:477 — AGENT_STEP (2026-10-12T15:15:24)
-presentation_runs/20261012T201346826306Z/agent.log:516 — AGENT_STEP (2026-10-12T15:15:27)
-presentation_runs/20261012T201346826306Z/agent.log:747 — EFFICIENT_RESULT (2026-10-12T15:15:36)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:477 — AGENT_STEP (2026-10-12T15:15:24)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:516 — AGENT_STEP (2026-10-12T15:15:27)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:747 — EFFICIENT_RESULT (2026-10-12T15:15:36)
 
 ================================================================================
 
@@ -76,9 +76,9 @@ The actor who played Cooter Davenport was Ben Jones, who represented Georgia in 
 Latency: 20.31 s | Model calls: 6 | Chat tokens: 181,083 | Estimated chat cost: $0.10552
 
 Sources:
-presentation_runs/20261012T201346826306Z/agent.log:967 — AGENT_STEP (2026-10-12T15:15:45)
-presentation_runs/20261012T201346826306Z/agent.log:1006 — AGENT_STEP (2026-10-12T15:15:49)
-presentation_runs/20261012T201346826306Z/agent.log:1233 — EFFICIENT_RESULT (2026-10-12T15:15:56)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:967 — AGENT_STEP (2026-10-12T15:15:45)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:1006 — AGENT_STEP (2026-10-12T15:15:49)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:1233 — EFFICIENT_RESULT (2026-10-12T15:15:56)
 
 ================================================================================
 
@@ -105,7 +105,7 @@ Requested fact about the sale price and date is supported. [The_Brady_Bunch]
 Latency: 26.85 s | Model calls: 7 | Chat tokens: 494,006 | Estimated chat cost: $0.23979
 
 Sources:
-presentation_runs/20261012T201346826306Z/agent.log:1453 — AGENT_STEP (2026-10-12T15:16:04)
-presentation_runs/20261012T201346826306Z/agent.log:1492 — AGENT_STEP (2026-10-12T15:16:10)
-presentation_runs/20261012T201346826306Z/agent.log:1574 — AGENT_STEP (2026-10-12T15:16:14)
-presentation_runs/20261012T201346826306Z/agent.log:1804 — EFFICIENT_RESULT (2026-10-12T15:16:23)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:1453 — AGENT_STEP (2026-10-12T15:16:04)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:1492 — AGENT_STEP (2026-10-12T15:16:10)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:1574 — AGENT_STEP (2026-10-12T15:16:14)
+presentation/presentation_runs/20261012T201346826306Z/agent.log:1804 — EFFICIENT_RESULT (2026-10-12T15:16:23)

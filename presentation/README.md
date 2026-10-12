@@ -1,5 +1,11 @@
 # Capstone slideshow
 
+The PDF, editable HTML slideshow, presenter notes, assets, and supporting results
+are kept here. The application code stays in `../capstone_final_v3/`.
+
+Run all four questions with `python -u run_presentation.py` from that application
+folder. New reports are saved here under `presentation_runs/`.
+
 Open `capstone-slides.html` in Chrome, Edge, or Safari. The file is self-contained
 and does not need a server, installation, network connection, or API key.
 
@@ -24,9 +30,9 @@ Central and completed at 3:16 p.m. Each question used the same settings:
 1,500,000 total context characters, no per-article cap, three action rounds,
 and up to six articles. Each request started with its own empty answer cache;
 none was a cache hit. No agent settings were changed for this rerun.
-`../docs/latest-run-results.json` contains the reviewed four-question summary.
+`docs/latest-run-results.json` contains the reviewed four-question summary.
 The raw report, retained evidence, structured log, and captured console output
-are in `../presentation_runs/20261012T201346826306Z/`.
+are in `presentation_runs/20261012T201346826306Z/`.
 Review found two complete supported answers, one incomplete comparison, and
 one answer with an unsupported capital claim. These are four observations,
 not an overall accuracy estimate. Chat cost totals about $0.49429 using the
@@ -53,5 +59,5 @@ the same material with navigation links and an **Open separate window** button.
 The console-style text is reconstructed from saved structured log records,
 not a captured stdout transcript; source file names and line numbers are included.
 Regenerate both files without model calls using
-`python3 capstone_final_v3/presentation/build_log_excerpts.py` from the repo root.
+`python3 presentation/build_log_excerpts.py` from the repo root.
 The original local log files must be present to regenerate the excerpts.
