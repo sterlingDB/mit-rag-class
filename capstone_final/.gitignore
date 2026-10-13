@@ -6,3 +6,4 @@ __pycache__/
 *.pyc
 checkpoint_7_1_evidence*.json
 checkpoint_7_1_evidence*.txt
+.DS_Store
