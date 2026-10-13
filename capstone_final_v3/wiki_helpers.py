@@ -56,11 +56,6 @@ def html_to_text(html: str) -> str:
     return parser.text()
 
 
-def read_wikipedia_article(filename: str) -> str:
-    """Read one Wikipedia HTML file and return plain article text."""
-    path = WIKIPEDIA_DIR / filename
-    return html_to_text(path.read_text(encoding="utf-8", errors="replace"))
-
 def load_docs_from_directory() -> list[dict[str, str]]:
     """Read every .html file from WIKIPEDIA_DIR into document dictionaries."""
     docs = []

@@ -8,7 +8,6 @@ from langchain_openai import OpenAIEmbeddings
 
 load_dotenv()
 
-API_KEY = os.getenv("OPENROUTER_API_KEY")
 CHROMA_DIR = Path(__file__).parent / "chroma_db"
 COLLECTION_NAME = "sample_docs"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"

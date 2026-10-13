@@ -39,7 +39,7 @@ def main():
     print(f"Report: {output / 'results.json'}", flush=True)
     try:
         agent.check_api_key()
-        retriever = agent.HybridRetriever(num_retrieved=agent.TOP_K)
+        retriever = agent.HybridRetriever()
         print("Building the local link graph from the HTML corpus...", flush=True)
         graph = agent.GraphRetriever(retriever)
         print("Local graph ready.", flush=True)

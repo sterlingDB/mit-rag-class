@@ -3,24 +3,15 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING
 
-from langchain_core.messages import HumanMessage, SystemMessage
-from langchain_openai import ChatOpenAI
 from rank_bm25 import BM25Okapi
-from chroma_helpers import OPENROUTER_BASE_URL, get_api_key, get_db
+from chroma_helpers import get_db
 
 if TYPE_CHECKING:
     from langchain_chroma import Chroma
 
-LLM_MODEL = "openai/gpt-5.4-mini"
-NUM_RETRIEVED = 4
 CANDIDATE_POOL = 10
 WEIGHT_BM25 = 0.5
 WEIGHT_VECTOR = 0.5
-
-SYSTEM_PROMPT = """You are a helpful assistant. Answer the question using ONLY the
-provided documents, and quote from them where you can. If the documents do not
-contain the answer, say so rather than guessing."""
-
 
 _STOPWORDS = {
     "a", "an", "the", "and", "but", "or", "nor", "so", "yet", "for",
@@ -98,23 +89,14 @@ def retrieval_source(bm25_score: float, vector_score: float) -> str:
 
 
 class HybridRetriever:
-    def __init__(self, db: Chroma | None = None, num_retrieved: int = NUM_RETRIEVED):
+    def __init__(self, db: Chroma | None = None):
         if db is None:
             db = get_db()
 
-        self._llm = ChatOpenAI(
-            model=LLM_MODEL,
-            api_key=get_api_key(),
-            base_url=OPENROUTER_BASE_URL,
-        )
-        self._num_retrieved = num_retrieved
         self._db = db
         self._paths, self._contents = load_documents_from_db(db)
         self._bm25 = BM25Okapi([tokenize(doc) for doc in self._contents])
         print(f"Hybrid retriever ready over {len(self._paths)} documents.")
-
-    def _build_user_message(self, query: str, context: str) -> str:
-        return f"Context (documents):\n{context}\n\nQuestion: {query}"
 
     def get_documents(self) -> dict[str, str]:
         """Return indexed article IDs and text without making an API call."""
@@ -160,16 +142,3 @@ class HybridRetriever:
         ]
         fused.sort(key=lambda t: t[2], reverse=True)
         return fused[:k]
-
-    def retrievedContext(self, query: str) -> str:
-        results = self.getTopK(query, self._num_retrieved)
-        return "\n\n---\n\n".join(f"[{name}]\n{content}" for name, content, _, _ in results)
-
-    def query(self, question: str) -> str:
-        context = self.retrievedContext(question)
-        messages = [
-            SystemMessage(content=SYSTEM_PROMPT),
-            HumanMessage(content=self._build_user_message(question, context)),
-        ]
-        response = self._llm.invoke(messages)
-        return response.content if hasattr(response, "content") else str(response)

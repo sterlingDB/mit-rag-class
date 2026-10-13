@@ -1,27 +1,3 @@
-r"""Wikipedia RAG agent with input safety, answer caching, and cost measurements.
-Jupytext-style cell markers support both plain-script and notebook-style use.
-"""
-
-# %% [markdown]
-# # Wikipedia RAG: Security and Performance Optimization
-#
-# Search saved Wikipedia articles with hybrid keyword/vector retrieval, follow
-# article links when more evidence is needed, and generate answers with citations.
-# Input cleaning and XML prompts separate untrusted data from instructions.
-# Answer caching, routing, and bounded context help control model usage.
-#
-# ## Setup and execution
-# 1. Activate the project's Python virtual environment.
-# 2. Install dependencies with `pip install -r requirements.txt`.
-# 3. Set OPENROUTER_API_KEY in a .env file beside this script or in your shell.
-# 4. Use the local Wikipedia/ articles and the existing chroma_db/ index.
-# 5. Run `python capstone.py` for the configured evaluation questions.
-#
-# `python capstone.py --evidence` runs live performance/security comparisons.
-# These runs use API credits. To refresh a reviewed report without API calls,
-# use `python capstone.py --summarize-evidence PATH`.
-
-# %%
 from __future__ import annotations
 
 import warnings
@@ -86,10 +62,7 @@ MAX_HISTORY_CHARACTERS = 6000
 COST_QUESTION_LIMIT = 2
 EVIDENCE_MODELS = [LLM_MODEL, OPTIMIZED_PLANNER_MODEL]
 EVIDENCE_PATH = Path(__file__).with_name("checkpoint_7_1_evidence.json")
-# Supply verified USD rates per million tokens; absent rates are reported as unavailable.
-# Snapshot checked 2026-09-29; provider routing and future price changes can affect bills.
-# https://openrouter.ai/openai/gpt-5.4-mini
-# https://openrouter.ai/openai/gpt-4o-mini/providers
+
 PRICE_PER_MTOK: dict[str, dict[str, float]] = {
     "openai/gpt-5.4-mini": {"input": 0.75, "output": 4.50, "cached": 0.075},
     "openai/gpt-4o-mini": {"input": 0.15, "output": 0.60, "cached": 0.075},
@@ -199,18 +172,6 @@ def log(label: str, text: str) -> None:
 
 
 # Input safety and prompt boundaries.
-# A pasted BEGIN...END EMAIL BLOCK is untrusted wholesale, so remove the entire block,
-# including the body. Stripping only headers leaves fabricated source text
-# in the user turn, where it pollutes retrieval and distracts the answer.
-_EMAIL_BLOCK_RE = re.compile(r"(?is)begin email block.*?(?:end email block|\Z)")
-# [^\S\n]* = whitespace EXCEPT newline. A bare \s* here would swallow the newline after
-# "END EMAIL BLOCK" and delete the user's real question on the next line with it.
-# A colon is required after a header keyword. With an optional colon, any legitimate
-# line whose first word merely starts with to/from/date/subject ("To summarize, ...",
-# "Today, ...", "Dates aside, ...") would be deleted wholesale. Block markers need no colon.
-_EMAIL_HEADER_RE = re.compile(
-    r"(?im)^[^\S\n]*(?:(?:from|to|subject|date)[^\S\n]*:|begin email block|end email block)[^\n]*$"
-)
 _INJECTION_RE = re.compile(
     r"(?i)\b(ignore|forget|disregard|override)\b[^.\n]*\b(instruction|instructions|rule|rules|context|prompt)\b"
     r"|\byou are now\b|\bact as\b|\bpretend (you|to)\b|\byour new (role|persona)\b|\bfrom now on\b"
@@ -236,9 +197,7 @@ _SOURCE_BLOCK_RE = re.compile(
 
 def clean_input(text: str) -> str:
     """Clean search text without XML encoding; escape only when building the prompt."""
-    text = _EMAIL_BLOCK_RE.sub("[removed injected e-mail block]", text)
     text = _SOURCE_BLOCK_RE.sub("[removed pasted source block]", text)
-    text = _EMAIL_HEADER_RE.sub("[removed injected header line]", text)
     text = _INJECTION_RE.sub("[removed instruction-injection]", text)
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
@@ -913,7 +872,7 @@ def run() -> None:
     if not questions:
         raise ValueError("The Wikipedia agent needs at least one evaluation question.")
     check_api_key()
-    retriever = HybridRetriever(num_retrieved=TOP_K)
+    retriever = HybridRetriever()
     graph_retriever = GraphRetriever(retriever)
     planner, answer_model = make_models(RUN_COST_OPTIMIZATIONS)
     router_model = make_llm(ROUTER_MODEL)
@@ -971,7 +930,7 @@ def main() -> None:
     elif args.evidence:
         from production_evidence import run_evidence
         check_api_key()
-        retriever = HybridRetriever(num_retrieved=TOP_K)
+        retriever = HybridRetriever()
         graph = GraphRetriever(retriever)
         models = list(dict.fromkeys(EVIDENCE_MODELS + ([FALLBACK_MODEL] if args.include_expensive_model else [])))
         report = run_evidence(sys.modules[__name__], retriever, graph, models, args.evidence_output)
