@@ -4,6 +4,5 @@ semantic_cache/
 .env
 __pycache__/
 *.pyc
-*.log
 checkpoint_7_1_evidence*.json
 checkpoint_7_1_evidence*.txt

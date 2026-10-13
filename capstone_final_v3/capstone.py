@@ -59,7 +59,6 @@ OPTIMIZED_PLANNER_MODEL = "openai/gpt-4o-mini"
 OPTIMIZED_ANSWER_MODEL = LLM_MODEL
 MAX_HISTORY_MESSAGES = 6
 MAX_HISTORY_CHARACTERS = 6000
-COST_QUESTION_LIMIT = 2
 EVIDENCE_MODELS = [LLM_MODEL, OPTIMIZED_PLANNER_MODEL]
 EVIDENCE_PATH = Path(__file__).with_name("checkpoint_7_1_evidence.json")
 
@@ -868,7 +867,7 @@ def run() -> None:
     """Run the Wikipedia questions with input safety, routing, caching, and measurement."""
     print(f"Checkpoint 7.1 — Wikipedia agent | scenario: {SCENARIO}")
     print(json.dumps(my_production_plan(), indent=2))
-    questions = [item["question"] for item in get_eval_set()[:COST_QUESTION_LIMIT]]
+    questions = [item["question"] for item in get_eval_set()]
     if not questions:
         raise ValueError("The Wikipedia agent needs at least one evaluation question.")
     check_api_key()
